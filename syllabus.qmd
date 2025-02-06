@@ -37,53 +37,54 @@ By the end of the course, students will be able to...
 
 ### Structure
 
-This course consists of a hands-on lecture and drop-in office hours, each once a week for two hours.
+This course consists of a two-hour hands-on lecture and an optional two-hour hands-on office hour.
 
-**In person or remote?** This course is intended to be primarily in person, but I recognize that life happens, so I will plan to hold lectures and office hours in a hybrid fashion in case you need to join remotely sometimes. This way we can also post lecture recordings in case you want to review something from class.
+**In person or remote?** This course is intended to be primarily in person, but I recognize that life happens, so I will plan to hold lectures in a hybrid fashion in case you need to join remotely sometimes. This way we can also post lecture recordings in case you want to review something from class.
 
 #### Lectures
 
 For a schedule of lecture topics, please see the [Lectures](Lectures/lectures.qmd) page. Note that the course will **not** meet during final exam week.
 
-Please **bring a laptop** to class each week; I will spend a lot of class "live coding", meaning I will move at a pace and in a sequence that is intended for you to code along with me and ask questions as they come up. I will also have some practice problems for you to work on during class. If you do not have a laptop you can bring to class and are not sure how to borrow one, please let me know in advance.
+Please **bring a laptop** to class each week so that you can follow along with examples, practice problems, and live coding in class. If you do not have a laptop you can bring to class and are not sure how to borrow one, please let me know in advance.
 
 #### Office hours
 
-Office hours are optional/drop-in and are a great space for asking questions, getting advice, or continuing discussions from class.
+Office hours are optional and are a great space for asking questions, getting more practice, working on homework, and continuing discussions from class.
 
 ### Resources
 
-This course has no required text. I will guide you through content during lecture, and the lecture notes will all be here on this website. There are also many helpful resources available for free online if you would like further references along the way or after this class ends, and here is just a selection that you might find useful:
-
--   [R for Data Science](https://r4ds.hadley.nz/) by Hadley Wickham, Mine Çetinkaya-Rundel, & Garrett Grolemund.
+This course has no required text. I will guide you through content during lecture, and the lecture notes will all be here on this website. There are also many helpful resources available for free online if you would like further references along the way or after this class ends. In particular, if you'd like an extra reference, you can check out [R for Data Science](https://r4ds.hadley.nz/) by Hadley Wickham, Mine Çetinkaya-Rundel, & Garrett Grolemund.
 
 ### Class communication
 
--   Course content (lecture notes) and homework instructions will be posted here on this course website.
--   You will be submitting your assignments and peer reviews through Canvas.
--   Check your Canvas notification settings and make sure you get our course announcements! This is how I will send out homework clarifications, schedule changes, and other important information.
--   Please use Ed Discussion to post your questions to peers and provide some advice to others! I will also keep an eye on the discussions and step in as needed, but the primary goal is to encourage collaboration and discussion among members of the class.
--   Please also make good use of my office hours to address your questions and get extra practice with the material.
+-   Course content (lecture notes) and homework instructions will be posted here on the course website.
+-   Submit your assignments and peer reviews through Canvas.
+-   I will send out homework clarifications, schedule changes, and other important information through Ed Discussion announcements which will send you an email.
+-   Please use Ed Discussion to post your questions to peers and answer others' questions! I will also keep an eye on the discussions and reply as needed.
+-   For administrative emails, please send them through Ed Discussion as a private thread, which will send only to me.
+-   Please make good use of my office hours to address your questions, work through homework, and get extra practice with the material.
 -   When asking questions, please provide the code you ran and the error you gave, be specific and concrete, and try to provide a minimal reproducible example. This helps me and your fellow students give you the most helpful feedback!
 
 ### Anonymous feedback
 
-Throughout the course, I welcome your feedback through [this short anonymous feedback survey](https://forms.gle/yHH1HA1c9fvYBeKC9) on what's working for you about the class environment or format, what's not, and any suggestions or ideas you have.
+Throughout the course, I welcome your feedback through [this short anonymous feedback survey](https://forms.gle/ukzZQn5XGQDia2jG9) on what's working for you about the class environment or format, what's not, and any suggestions or ideas you have.
 
 ### Grading
 
 This course is graded as credit/no credit. To pass you need to receive at least 60% of the available points. There will be 9 graded homework assignments, assigned weekly for the first 9 weeks of instruction. There are 4 points possible for each week that features a homework.
 
--   **Homework (75%; 3 points):** These must be turned in as rendered Markdown documents which we will learn to create and for which templates are provided. They will be graded for completion (3 points if submitted, 0 otherwise). These are designed first and foremost to develop skills rather than "prove" you have learned concepts. I encourage you to communicate and work together, so long as you write and explain your code yourself and do not copy work. You can learn a lot from replicating others' code, but you will learn nothing if you copy it without knowing how it works! In other words, you're not really going to learn unless you do the coding yourself!
+-   **Homework (75%; 3 points):** These must be submitted as pdf documents; we will go over how to create these. I will grade these assignments for completion (3 points if submitted, 0 otherwise) and provide feedback on your work. These are designed first and foremost to develop skills rather than "prove" you have learned concepts. I encourage you to communicate and work together, so long as you write and explain your code yourself and do not copy work.
 
 -   **Peer Review (25%; 1 point):** Each week an assignment is due, students will be randomly assigned to provide constructive feedback on another student's submission. Reading others' code is an important skill and you will write better code knowing others will see it. These reviews will be due **5 days** after homework is due. Each peer review is worth 1 point and will be graded for completion.
 
--   **Schedule:** We have a 2-hour interactive lecture/lab session on Tuesdays. Office Hours will be be held on Wednesdays. Homeworks will be due before class each Tuesday and peer reviews will be due 5 days later, by end-of-day on Sundays. Make sure to check the [Homework page](Homework/homework.qmd) or Canvas for all due dates!
+-   **Schedule:** Homework assignments will be due before class each Tuesday and peer reviews will be due 5 days later, by end-of-day on Sundays. You can see a list of due dates on the [Homework page](Homework/homework.qmd).
+
+-   **Late assignments:** No late assignments will be accepted. The reason for this is to ensure you are getting feedback at regular intervals and staying on track. The grading is lenient, so submit whatever you have by each deadline, and your grade will be fine if you miss submitting an assignment or two due to illness or emergencies.
 
 
 ### Classroom Environment
 
-I'm committed to fostering a friendly and inclusive classroom environment in which all students have an equal opportunity to learn and succeed. This course is an attempt to make an often difficult and frustrating experience (learning `R` for the first time) less obfuscating, daunting, and stressful. That said, learning happens in different ways at at a different pace for everyone. Learning is *also* a collaborative and creative process and my aim is to create an environment in which you all feel comfortable asking questions of me *and* each other. Treat **your peers** and **yourself** with empathy and respect as you all approach this topic from a range of backgrounds and experiences (in programming and in life).
+I'm committed to fostering a friendly and inclusive classroom environment in which all students have an equal opportunity to learn and succeed. Learning is a collaborative and creative process, and my aim is to create an environment in which you all feel comfortable asking questions of me *and* each other. Treat **your peers** and **yourself** with empathy and respect as you all approach this topic from a range of backgrounds and experiences (in programming and in life).
 
 -   **Names & Pronouns:** Everyone deserves to be addressed respectfully and correctly. You are welcome to send me your preferred name and correct gender pronouns at any time.
 
