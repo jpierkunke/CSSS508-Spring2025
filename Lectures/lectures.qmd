@@ -7,12 +7,12 @@ title: "Lecture schedule"
 | Lecture | Date        | Topic                                            |
 |:-------:|-------------|--------------------------------------------------|
 |    1    | 01 Apr 2025 | Introduction to R, R Studio, and Quarto          |
-|    2    | 08 Apr 2025 | Data Manipulation with base R                    |
-|    3    | 15 Apr 2025 | Data Manipulation with **tidyverse**             |
-|    4    | 22 Apr 2025 | Debugging and review                             |
-|    5    | 29 Apr 2025 | Intro to data viz with **tidyverse**             |
-|    6    | 06 May 2025 | Better plots and vocab review                    |
-|    7    | 13 May 2025 | Importing, Exporting, Cleaning, and Joining Data |
-|    8    | 20 May 2025 | Working with text data/objects in R              |
-|    9    | 27 May 2025 | Regression in R                                  |
-|   10    | 03 Jun 2025 | Iteration, writing functions, and beyond         |
+|    2    | 08 Apr 2025 | Data Visualization and Debugging                 |
+|    3    | 15 Apr 2025 | Data Manipulation                                |
+|    4    | 22 Apr 2025 | Summary Statistics                               |
+|    5    | 29 Apr 2025 | Importing and Exporting Data                     |
+|    6    | 06 May 2025 | Cleaning and Joining Data                        |
+|    7    | 13 May 2025 | Data Structures and Types; Regression in R       |
+|    8    | 20 May 2025 | Working with Text Data/Objects in R              |
+|    9    | 27 May 2025 | Iteration and Writing Functions                  |
+|   10    | 03 Jun 2025 | Next Steps                                       |

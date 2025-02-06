@@ -100,7 +100,7 @@
     "href": "Lectures/lectures.html",
     "title": "Lecture schedule",
     "section": "",
-    "text": "Please note that this schedule is subject to change.\n\n\n\n\n\n\n\n\nLecture\nDate\nTopic\n\n\n\n\n1\n01 Apr 2025\nIntroduction to R, R Studio, and Quarto\n\n\n2\n08 Apr 2025\nData Manipulation with base R\n\n\n3\n15 Apr 2025\nData Manipulation with tidyverse\n\n\n4\n22 Apr 2025\nDebugging and review\n\n\n5\n29 Apr 2025\nIntro to data viz with tidyverse\n\n\n6\n06 May 2025\nBetter plots and vocab review\n\n\n7\n13 May 2025\nImporting, Exporting, Cleaning, and Joining Data\n\n\n8\n20 May 2025\nWorking with text data/objects in R\n\n\n9\n27 May 2025\nRegression in R\n\n\n10\n03 Jun 2025\nIteration, writing functions, and beyond",
+    "text": "Please note that this schedule is subject to change.\n\n\n\n\n\n\n\n\nLecture\nDate\nTopic\n\n\n\n\n1\n01 Apr 2025\nIntroduction to R, R Studio, and Quarto\n\n\n2\n08 Apr 2025\nData Visualization and Debugging\n\n\n3\n15 Apr 2025\nData Manipulation\n\n\n4\n22 Apr 2025\nSummary Statistics\n\n\n5\n29 Apr 2025\nImporting and Exporting Data\n\n\n6\n06 May 2025\nCleaning and Joining Data\n\n\n7\n13 May 2025\nData Structures and Types; Regression in R\n\n\n8\n20 May 2025\nWorking with Text Data/Objects in R\n\n\n9\n27 May 2025\nIteration and Writing Functions\n\n\n10\n03 Jun 2025\nNext Steps",
     "crumbs": [
       "Lectures",
       "Lecture schedule"
