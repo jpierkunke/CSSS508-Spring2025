@@ -39,9 +39,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -165,40 +162,38 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This page contains general instructions for assignments and peer reviews. For homework-specific instructions and templates go to the specific assignment listed on the left.</p>
-<p>All assignments should be created using Quarto and uploaded to Canvas as both html and qmd files. Your document should be pleasant for a peer to look at and follow all instructions. Use sections for organization, label figures/tables, and use code chunks.</p>
+<p>This page contains general instructions for assignments and peer reviews. For specific instructions and templates for individual assignments, click on that assignment listed on the left.</p>
+<p>All assignments should be created using Quarto and uploaded to Canvas. Your document should be pleasant for a peer to look at and follow all instructions. Use sections for organization, label figures/tables, and use code chunks.</p>
 <p>This is a one-credit pass/fail course intended to help you learn R. The focus is on learning and practice, not on points. Assignments and peer reviews will be graded for completion, but the points are not the point: they are key opportunities to practice R/RStudio/Quarto and to learn from each other. Feel free to work together, discussion questions on Ed Discussion, trade ideas and tips.</p>
 <section id="peer-review" class="level2">
 <h2 class="anchored" data-anchor-id="peer-review">Peer Review</h2>
-<p>You are required to examine and provide feedback on a peer’s homework submission each week. Reading and evaluating the work of others is useful and important! Good programmers realize that most problems have been solved by others; the trick is figuring out how to apply existing code to new problems. You will develop this skill by reading others’ code, seeing how other people approached the problems, providing suggestions, and pointing out when you learned something new. Please give constructive, polite, and insightful comments that encourage your classmate and help them learn from you.</p>
-</section>
-<section id="a-note-about-rendering-your-html-documents" class="level2">
-<h2 class="anchored" data-anchor-id="a-note-about-rendering-your-html-documents">A Note About Rendering Your HTML documents</h2>
-<p>You need to include <code>embed-resources: true</code> in your YAML header in order for your HTML documents to include any plot output when you upload them to Canvas. It should look something like the following:</p>
-<p><a href="images/quarto_embed.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="images/quarto_embed.png" class="img-fluid"></a></p>
-<p>You can read more about this option <a href="https://quarto.org/docs/reference/formats/html.html#rendering">here</a> but basically, whenever you render a .qmd file to HTML, all output created goes into a separate, associated folder, which is referenced when displaying the page in your web browser. However, when you upload the HTML file separately from that folder (e.g.&nbsp;to Canvas or through email), it doesn’t have the specific output images to reference, so they won’t appear. When you specify in your YAML header that you want to embed resources, you’re explicitly adding the output created by your code to the HTML file so that a separate output folder is longer created and you can send your HTML file with all its output as one entity.</p>
+<p>You are required to examine and provide feedback on a peer’s homework submission each week. Reading and evaluating others’ code gives you the chance to see how other people approached the problems and share how you do things differently. Please give constructive, polite, and insightful comments that encourage your classmate and help them learn from you. Try to mention each of the following: one or more things they did well, one or more tips you have to improve their work, and one or more things you learned from reading their work.</p>
+<!-- ## A Note About Rendering Your HTML documents -->
+<!-- You need to include `embed-resources: true` in your YAML header in order for your HTML documents to include any plot output when you upload them to Canvas. It should look something like the following: -->
+<!-- ![](images/quarto_embed.png) -->
+<!-- You can read more about this option [here](https://quarto.org/docs/reference/formats/html.html#rendering) but basically, whenever you render a .qmd file to HTML, all output created goes into a separate, associated folder, which is referenced when displaying the page in your web browser. However, when you upload the HTML file separately from that folder (e.g. to Canvas or through email), it doesn't have the specific output images to reference, so they won't appear. When you specify in your YAML header that you want to embed resources, you're explicitly adding the output created by your code to the HTML file so that a separate output folder is longer created and you can send your HTML file with all its output as one entity. -->
 </section>
 <section id="assignment-due-dates" class="level2">
 <h2 class="anchored" data-anchor-id="assignment-due-dates">Assignment Due Dates</h2>
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
-<div id="itvcwuzugc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#itvcwuzugc table {
+<div id="wvtpidmjvk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wvtpidmjvk table {
   font-family: Raleway, Fraunces;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#itvcwuzugc thead, #itvcwuzugc tbody, #itvcwuzugc tfoot, #itvcwuzugc tr, #itvcwuzugc td, #itvcwuzugc th {
+#wvtpidmjvk thead, #wvtpidmjvk tbody, #wvtpidmjvk tfoot, #wvtpidmjvk tr, #wvtpidmjvk td, #wvtpidmjvk th {
   border-style: none;
 }
 
-#itvcwuzugc p {
+#wvtpidmjvk p {
   margin: 0;
   padding: 0;
 }
 
-#itvcwuzugc .gt_table {
+#wvtpidmjvk .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -224,12 +219,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#itvcwuzugc .gt_caption {
+#wvtpidmjvk .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#itvcwuzugc .gt_title {
+#wvtpidmjvk .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -241,7 +236,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#itvcwuzugc .gt_subtitle {
+#wvtpidmjvk .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -253,7 +248,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#itvcwuzugc .gt_heading {
+#wvtpidmjvk .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -265,13 +260,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#itvcwuzugc .gt_bottom_border {
+#wvtpidmjvk .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#itvcwuzugc .gt_col_headings {
+#wvtpidmjvk .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -286,7 +281,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#itvcwuzugc .gt_col_heading {
+#wvtpidmjvk .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -306,7 +301,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#itvcwuzugc .gt_column_spanner_outer {
+#wvtpidmjvk .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -318,15 +313,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#itvcwuzugc .gt_column_spanner_outer:first-child {
+#wvtpidmjvk .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#itvcwuzugc .gt_column_spanner_outer:last-child {
+#wvtpidmjvk .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#itvcwuzugc .gt_column_spanner {
+#wvtpidmjvk .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -338,11 +333,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#itvcwuzugc .gt_spanner_row {
+#wvtpidmjvk .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#itvcwuzugc .gt_group_heading {
+#wvtpidmjvk .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -368,7 +363,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#itvcwuzugc .gt_empty_group_heading {
+#wvtpidmjvk .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -383,15 +378,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#itvcwuzugc .gt_from_md > :first-child {
+#wvtpidmjvk .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#itvcwuzugc .gt_from_md > :last-child {
+#wvtpidmjvk .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#itvcwuzugc .gt_row {
+#wvtpidmjvk .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -410,7 +405,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#itvcwuzugc .gt_stub {
+#wvtpidmjvk .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -423,7 +418,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#itvcwuzugc .gt_stub_row_group {
+#wvtpidmjvk .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -437,15 +432,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#itvcwuzugc .gt_row_group_first td {
+#wvtpidmjvk .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#itvcwuzugc .gt_row_group_first th {
+#wvtpidmjvk .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#itvcwuzugc .gt_summary_row {
+#wvtpidmjvk .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -455,16 +450,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#itvcwuzugc .gt_first_summary_row {
+#wvtpidmjvk .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#itvcwuzugc .gt_first_summary_row.thick {
+#wvtpidmjvk .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#itvcwuzugc .gt_last_summary_row {
+#wvtpidmjvk .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -474,7 +469,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#itvcwuzugc .gt_grand_summary_row {
+#wvtpidmjvk .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -484,7 +479,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#itvcwuzugc .gt_first_grand_summary_row {
+#wvtpidmjvk .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -494,7 +489,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#itvcwuzugc .gt_last_grand_summary_row_top {
+#wvtpidmjvk .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -504,11 +499,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#itvcwuzugc .gt_striped {
+#wvtpidmjvk .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#itvcwuzugc .gt_table_body {
+#wvtpidmjvk .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -517,7 +512,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#itvcwuzugc .gt_footnotes {
+#wvtpidmjvk .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -531,7 +526,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#itvcwuzugc .gt_footnote {
+#wvtpidmjvk .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -540,7 +535,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#itvcwuzugc .gt_sourcenotes {
+#wvtpidmjvk .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -554,7 +549,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#itvcwuzugc .gt_sourcenote {
+#wvtpidmjvk .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -562,72 +557,72 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#itvcwuzugc .gt_left {
+#wvtpidmjvk .gt_left {
   text-align: left;
 }
 
-#itvcwuzugc .gt_center {
+#wvtpidmjvk .gt_center {
   text-align: center;
 }
 
-#itvcwuzugc .gt_right {
+#wvtpidmjvk .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#itvcwuzugc .gt_font_normal {
+#wvtpidmjvk .gt_font_normal {
   font-weight: normal;
 }
 
-#itvcwuzugc .gt_font_bold {
+#wvtpidmjvk .gt_font_bold {
   font-weight: bold;
 }
 
-#itvcwuzugc .gt_font_italic {
+#wvtpidmjvk .gt_font_italic {
   font-style: italic;
 }
 
-#itvcwuzugc .gt_super {
+#wvtpidmjvk .gt_super {
   font-size: 65%;
 }
 
-#itvcwuzugc .gt_footnote_marks {
+#wvtpidmjvk .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#itvcwuzugc .gt_asterisk {
+#wvtpidmjvk .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#itvcwuzugc .gt_indent_1 {
+#wvtpidmjvk .gt_indent_1 {
   text-indent: 5px;
 }
 
-#itvcwuzugc .gt_indent_2 {
+#wvtpidmjvk .gt_indent_2 {
   text-indent: 10px;
 }
 
-#itvcwuzugc .gt_indent_3 {
+#wvtpidmjvk .gt_indent_3 {
   text-indent: 15px;
 }
 
-#itvcwuzugc .gt_indent_4 {
+#wvtpidmjvk .gt_indent_4 {
   text-indent: 20px;
 }
 
-#itvcwuzugc .gt_indent_5 {
+#wvtpidmjvk .gt_indent_5 {
   text-indent: 25px;
 }
 
-#itvcwuzugc .katex-display {
+#wvtpidmjvk .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#itvcwuzugc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#wvtpidmjvk div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -643,48 +638,48 @@ ul.task-list li input[type="checkbox"] {
 <tbody class="gt_table_body">
 <tr class="odd">
 <td class="gt_row gt_center" headers="Homework" style="background-color: #F6F7F9">1</td>
-<td class="gt_row gt_center" headers="Due_Date" style="background-color: #C7CDAC">08 October</td>
-<td class="gt_row gt_center" headers="Peer_Due_Date" style="background-color: #99A486">13 October</td>
+<td class="gt_row gt_center" headers="Due_Date" style="background-color: #C7CDAC">08 April</td>
+<td class="gt_row gt_center" headers="Peer_Due_Date" style="background-color: #99A486">13 April</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_center" headers="Homework" style="background-color: #F6F7F9">2</td>
-<td class="gt_row gt_center" headers="Due_Date" style="background-color: #C7CDAC">15 October</td>
-<td class="gt_row gt_center" headers="Peer_Due_Date" style="background-color: #99A486">20 October</td>
+<td class="gt_row gt_center" headers="Due_Date" style="background-color: #C7CDAC">15 April</td>
+<td class="gt_row gt_center" headers="Peer_Due_Date" style="background-color: #99A486">20 April</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_center" headers="Homework" style="background-color: #F6F7F9">3</td>
-<td class="gt_row gt_center" headers="Due_Date" style="background-color: #C7CDAC">22 October</td>
-<td class="gt_row gt_center" headers="Peer_Due_Date" style="background-color: #99A486">27 October</td>
+<td class="gt_row gt_center" headers="Due_Date" style="background-color: #C7CDAC">22 April</td>
+<td class="gt_row gt_center" headers="Peer_Due_Date" style="background-color: #99A486">27 April</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_center" headers="Homework" style="background-color: #F6F7F9">4</td>
-<td class="gt_row gt_center" headers="Due_Date" style="background-color: #C7CDAC">29 October</td>
-<td class="gt_row gt_center" headers="Peer_Due_Date" style="background-color: #99A486">03 November</td>
+<td class="gt_row gt_center" headers="Due_Date" style="background-color: #C7CDAC">29 April</td>
+<td class="gt_row gt_center" headers="Peer_Due_Date" style="background-color: #99A486">03 May</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_center" headers="Homework" style="background-color: #F6F7F9">5</td>
-<td class="gt_row gt_center" headers="Due_Date" style="background-color: #C7CDAC">05 November</td>
-<td class="gt_row gt_center" headers="Peer_Due_Date" style="background-color: #99A486">10 November</td>
+<td class="gt_row gt_center" headers="Due_Date" style="background-color: #C7CDAC">06 May</td>
+<td class="gt_row gt_center" headers="Peer_Due_Date" style="background-color: #99A486">11 May</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_center" headers="Homework" style="background-color: #F6F7F9">6</td>
-<td class="gt_row gt_center" headers="Due_Date" style="background-color: #C7CDAC">12 November</td>
-<td class="gt_row gt_center" headers="Peer_Due_Date" style="background-color: #99A486">17 November</td>
+<td class="gt_row gt_center" headers="Due_Date" style="background-color: #C7CDAC">13 May</td>
+<td class="gt_row gt_center" headers="Peer_Due_Date" style="background-color: #99A486">18 May</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_center" headers="Homework" style="background-color: #F6F7F9">7</td>
-<td class="gt_row gt_center" headers="Due_Date" style="background-color: #C7CDAC">19 November</td>
-<td class="gt_row gt_center" headers="Peer_Due_Date" style="background-color: #99A486">24 November</td>
+<td class="gt_row gt_center" headers="Due_Date" style="background-color: #C7CDAC">20 May</td>
+<td class="gt_row gt_center" headers="Peer_Due_Date" style="background-color: #99A486">25 May</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_center" headers="Homework" style="background-color: #F6F7F9">8</td>
-<td class="gt_row gt_center" headers="Due_Date" style="background-color: #C7CDAC">26 November</td>
-<td class="gt_row gt_center" headers="Peer_Due_Date" style="background-color: #99A486">01 December</td>
+<td class="gt_row gt_center" headers="Due_Date" style="background-color: #C7CDAC">27 May</td>
+<td class="gt_row gt_center" headers="Peer_Due_Date" style="background-color: #99A486">01 June</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_center" headers="Homework" style="background-color: #F6F7F9">9</td>
-<td class="gt_row gt_center" headers="Due_Date" style="background-color: #C7CDAC">03 December</td>
-<td class="gt_row gt_center" headers="Peer_Due_Date" style="background-color: #99A486">08 December</td>
+<td class="gt_row gt_center" headers="Due_Date" style="background-color: #C7CDAC">03 June</td>
+<td class="gt_row gt_center" headers="Peer_Due_Date" style="background-color: #99A486">08 June</td>
 </tr>
 </tbody>
 </table>
@@ -1118,38 +1113,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","loop":false,"closeEffect":"zoom","selector":".lightbox","openEffect":"zoom"});
-(function() {
-  let previousOnload = window.onload;
-  window.onload = () => {
-    if (previousOnload) {
-      previousOnload();
-    }
-    lightboxQuarto.on('slide_before_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      const href = trigger.getAttribute('href');
-      if (href !== null) {
-        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-        if (imgEl !== null) {
-          const srcAttr = imgEl.getAttribute("src");
-          if (srcAttr && srcAttr.startsWith("data:")) {
-            slideConfig.href = srcAttr;
-          }
-        }
-      } 
-    });
-  
-    lightboxQuarto.on('slide_after_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(slideNode);
-      }
-    });
-  
-  };
-  
-})();
-          </script>
 
 
 

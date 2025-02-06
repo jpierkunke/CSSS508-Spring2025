@@ -60,7 +60,7 @@
     "href": "Homework/homework.html",
     "title": "Overview",
     "section": "",
-    "text": "This page contains general instructions for assignments and peer reviews. For homework-specific instructions and templates go to the specific assignment listed on the left.\nAll assignments should be created using Quarto and uploaded to Canvas as both html and qmd files. Your document should be pleasant for a peer to look at and follow all instructions. Use sections for organization, label figures/tables, and use code chunks.\nThis is a one-credit pass/fail course intended to help you learn R. The focus is on learning and practice, not on points. Assignments and peer reviews will be graded for completion, but the points are not the point: they are key opportunities to practice R/RStudio/Quarto and to learn from each other. Feel free to work together, discussion questions on Ed Discussion, trade ideas and tips.",
+    "text": "This page contains general instructions for assignments and peer reviews. For specific instructions and templates for individual assignments, click on that assignment listed on the left.\nAll assignments should be created using Quarto and uploaded to Canvas. Your document should be pleasant for a peer to look at and follow all instructions. Use sections for organization, label figures/tables, and use code chunks.\nThis is a one-credit pass/fail course intended to help you learn R. The focus is on learning and practice, not on points. Assignments and peer reviews will be graded for completion, but the points are not the point: they are key opportunities to practice R/RStudio/Quarto and to learn from each other. Feel free to work together, discussion questions on Ed Discussion, trade ideas and tips.",
     "crumbs": [
       "Homework",
       "Overview"
@@ -71,18 +71,7 @@
     "href": "Homework/homework.html#peer-review",
     "title": "Overview",
     "section": "Peer Review",
-    "text": "Peer Review\nYou are required to examine and provide feedback on a peer’s homework submission each week. Reading and evaluating the work of others is useful and important! Good programmers realize that most problems have been solved by others; the trick is figuring out how to apply existing code to new problems. You will develop this skill by reading others’ code, seeing how other people approached the problems, providing suggestions, and pointing out when you learned something new. Please give constructive, polite, and insightful comments that encourage your classmate and help them learn from you.",
-    "crumbs": [
-      "Homework",
-      "Overview"
-    ]
-  },
-  {
-    "objectID": "Homework/homework.html#a-note-about-rendering-your-html-documents",
-    "href": "Homework/homework.html#a-note-about-rendering-your-html-documents",
-    "title": "Overview",
-    "section": "A Note About Rendering Your HTML documents",
-    "text": "A Note About Rendering Your HTML documents\nYou need to include embed-resources: true in your YAML header in order for your HTML documents to include any plot output when you upload them to Canvas. It should look something like the following:\n\nYou can read more about this option here but basically, whenever you render a .qmd file to HTML, all output created goes into a separate, associated folder, which is referenced when displaying the page in your web browser. However, when you upload the HTML file separately from that folder (e.g. to Canvas or through email), it doesn’t have the specific output images to reference, so they won’t appear. When you specify in your YAML header that you want to embed resources, you’re explicitly adding the output created by your code to the HTML file so that a separate output folder is longer created and you can send your HTML file with all its output as one entity.",
+    "text": "Peer Review\nYou are required to examine and provide feedback on a peer’s homework submission each week. Reading and evaluating others’ code gives you the chance to see how other people approached the problems and share how you do things differently. Please give constructive, polite, and insightful comments that encourage your classmate and help them learn from you. Try to mention each of the following: one or more things they did well, one or more tips you have to improve their work, and one or more things you learned from reading their work.",
     "crumbs": [
       "Homework",
       "Overview"
@@ -93,7 +82,7 @@
     "href": "Homework/homework.html#assignment-due-dates",
     "title": "Overview",
     "section": "Assignment Due Dates",
-    "text": "Assignment Due Dates\n\n\n\n\n\n\n\n\n#\nHomework Due\nPeer Review Due\n\n\n\n\n1\n08 October\n13 October\n\n\n2\n15 October\n20 October\n\n\n3\n22 October\n27 October\n\n\n4\n29 October\n03 November\n\n\n5\n05 November\n10 November\n\n\n6\n12 November\n17 November\n\n\n7\n19 November\n24 November\n\n\n8\n26 November\n01 December\n\n\n9\n03 December\n08 December",
+    "text": "Assignment Due Dates\n\n\n\n\n\n\n\n\n#\nHomework Due\nPeer Review Due\n\n\n\n\n1\n08 April\n13 April\n\n\n2\n15 April\n20 April\n\n\n3\n22 April\n27 April\n\n\n4\n29 April\n03 May\n\n\n5\n06 May\n11 May\n\n\n6\n13 May\n18 May\n\n\n7\n20 May\n25 May\n\n\n8\n27 May\n01 June\n\n\n9\n03 June\n08 June",
     "crumbs": [
       "Homework",
       "Overview"
