@@ -1,0 +1,98 @@
+---
+title: "Syllabus"
+sidebar: false
+---
+
+Welcome! I look forward to working with you this quarter.
+
+*This syllabus is subject to change. All changes will be announced in class and via Canvas announcements.*
+
+### Overview
+
+This course is intended to give students a foundational understanding of programming in the statistical language `R`. This knowledge is intended to be broadly useful wherever you encounter data in your education and career.
+
+**This course has no prerequisites**; we do **not** assume you have any prior programming experience with R or any other language. We will also cover almost no statistics, but this course should help prepare you for CSSS, STAT, or other departments' methods courses so that you can focus on the methods they cover more than the coding itself. Additionally, the basic concepts you learn will be applicable to other programming languages and research in general, such as logic and algorithmic thinking.
+
+### Learning objectives
+
+By the end of the course, students will be able to...
+
+-   Develop more confidence in their programming skills and their understanding of computation more broadly
+
+-   Be familiar with the RStudio application and the syntax of the R language
+
+-   Organize and document coding projects for reproducibility and efficient workflow
+
+-   Read in data from a file and explore the data
+
+-   Manipulate and reformat data for quality control, summary statistics, and other purposes
+
+-   Combine multiple data sets from different sources and of different types
+
+-   Create beautiful, clear, and informative data visualizations
+
+-   Combine text, code, and output into reports using Quarto
+
+-   Gain confidence troubleshooting, debugging, and learning how to do new things in R
+
+### Structure
+
+This course consists of a hands-on lecture and drop-in office hours, each once a week for two hours.
+
+**In person or remote?** This course is intended to be primarily in person, but I recognize that life happens, so I will plan to hold lectures and office hours in a hybrid fashion in case you need to join remotely sometimes. This way we can also post lecture recordings in case you want to review something from class.
+
+#### Lectures
+
+For a schedule of lecture topics, please see the [Lectures](Lectures/lectures.qmd) page. Note that the course will **not** meet during final exam week.
+
+Please **bring a laptop** to class each week; I will spend a lot of class "live coding", meaning I will move at a pace and in a sequence that is intended for you to code along with me and ask questions as they come up. I will also have some practice problems for you to work on during class. If you do not have a laptop you can bring to class and are not sure how to borrow one, please let me know in advance.
+
+#### Office hours
+
+Office hours are optional/drop-in and are a great space for asking questions, getting advice, or continuing discussions from class.
+
+### Resources
+
+This course has no required text. I will guide you through content during lecture, and the lecture notes will all be here on this website. There are also many helpful resources available for free online if you would like further references along the way or after this class ends, and here is just a selection that you might find useful:
+
+-   [R for Data Science](https://r4ds.hadley.nz/) by Hadley Wickham, Mine Çetinkaya-Rundel, & Garrett Grolemund.
+
+### Class communication
+
+-   Course content (lecture notes) and homework instructions will be posted here on this course website.
+-   You will be submitting your assignments and peer reviews through Canvas.
+-   Check your Canvas notification settings and make sure you get our course announcements! This is how I will send out homework clarifications, schedule changes, and other important information.
+-   Please use Ed Discussion to post your questions to peers and provide some advice to others! I will also keep an eye on the discussions and step in as needed, but the primary goal is to encourage collaboration and discussion among members of the class.
+-   Please also make good use of my office hours to address your questions and get extra practice with the material.
+-   When asking questions, please provide the code you ran and the error you gave, be specific and concrete, and try to provide a minimal reproducible example. This helps me and your fellow students give you the most helpful feedback!
+
+### Anonymous feedback
+
+Throughout the course, I welcome your feedback through [this short anonymous feedback survey](https://forms.gle/yHH1HA1c9fvYBeKC9) on what's working for you about the class environment or format, what's not, and any suggestions or ideas you have.
+
+### Grading
+
+This course is graded as credit/no credit. To pass you need to receive at least 60% of the available points. There will be 9 graded homework assignments, assigned weekly for the first 9 weeks of instruction. There are 4 points possible for each week that features a homework.
+
+-   **Homework (75%; 3 points):** These must be turned in as rendered Markdown documents which we will learn to create and for which templates are provided. They will be graded for completion (3 points if submitted, 0 otherwise). These are designed first and foremost to develop skills rather than "prove" you have learned concepts. I encourage you to communicate and work together, so long as you write and explain your code yourself and do not copy work. You can learn a lot from replicating others' code, but you will learn nothing if you copy it without knowing how it works! In other words, you're not really going to learn unless you do the coding yourself!
+
+-   **Peer Review (25%; 1 point):** Each week an assignment is due, students will be randomly assigned to provide constructive feedback on another student's submission. Reading others' code is an important skill and you will write better code knowing others will see it. These reviews will be due **5 days** after homework is due. Each peer review is worth 1 point and will be graded for completion.
+
+-   **Schedule:** We have a 2-hour interactive lecture/lab session on Tuesdays. Office Hours will be be held on Wednesdays. Homeworks will be due before class each Tuesday and peer reviews will be due 5 days later, by end-of-day on Sundays. Make sure to check the [Homework page](Homework/homework.qmd) or Canvas for all due dates!
+
+
+### Classroom Environment
+
+I'm committed to fostering a friendly and inclusive classroom environment in which all students have an equal opportunity to learn and succeed. This course is an attempt to make an often difficult and frustrating experience (learning `R` for the first time) less obfuscating, daunting, and stressful. That said, learning happens in different ways at at a different pace for everyone. Learning is *also* a collaborative and creative process and my aim is to create an environment in which you all feel comfortable asking questions of me *and* each other. Treat **your peers** and **yourself** with empathy and respect as you all approach this topic from a range of backgrounds and experiences (in programming and in life).
+
+-   **Names & Pronouns:** Everyone deserves to be addressed respectfully and correctly. You are welcome to send me your preferred name and correct gender pronouns at any time.
+
+-   **Getting Help:** If at any point during the quarter you find yourself struggling to keep up, please let me know! I am here to help. A great place to start this process is by chatting after class, coming to office hours, or sending me an email.
+
+-   **Diversity:** Diverse backgrounds, embodiments, and experiences are essential to the critical thinking endeavor at the heart of university education. Therefore, I expect you to follow the [UW Student Conduct Code](https://www.washington.edu/cssc/for-students/student-code-of-conduct/) in your interactions with your colleagues and me in this course by respecting the many social and cultural differences among us, which may include, but are not limited to: age, cultural background, disability, ethnicity, family status, gender identity and presentation, body size/shape, citizenship and immigration status, national origin, race, religious and political beliefs, sex, sexual orientation, socioeconomic status, and veteran status.
+
+-   **Accessibility & Accommodations:** Your experience in this class is important to me. If you have already established accommodations with Disability Resources for Students (DRS), please communicate your approved accommodations to me at your earliest convenience so we can discuss your needs in this course. If you have not yet established services through DRS, but have a temporary health condition or permanent disability that requires accommodations (conditions include but not limited to; mental health, attention-related, learning, vision, hearing, physical or health impacts), you are welcome to contact DRS at 206-543-8924, uwdrs\@uw.edu, or through their [website](https://depts.washington.edu/uwdrs/). DRS offers resources and coordinates reasonable accommodations for students with disabilities and/or temporary health conditions. Reasonable accommodations are established through an interactive process between you, me (your instructor), and DRS. It is the policy and practice of the University of Washington to create inclusive and accessible learning environments consistent with federal and state law.
+
+-   **Academic Integrity:** Academic integrity is essential to this course and to your learning. In this course, violations of the academic integrity policy include but are not limited to: copying from a peer, copying from an online resource, or using resources from a previous iteration of the course. That said, I hope you will collaborate with peers on assignments, and use Internet resources when questions arise to help solve issues. The key is that you ultimately submit your own work. Anything found in violation of this policy will be automatically given a score of 0 with no exceptions. If the situation merits, it will also be reported to the [UW Student Conduct Office](https://www.washington.edu/cssc/), at which point it is out of my hands. If you have any questions about this policy, please do not hesitate to reach out and ask.
+
+-   **Religious Accommodations:** Washington state law requires that UW develop a policy for accommodation of student absences or significant hardship due to reasons of faith or conscience, or for organized religious activities. The UW's policy, including more information about how to request an accommodation, is available at [Religious Accommodations Policy](https://registrar.washington.edu/staffandfaculty/religious-accommodations-policy/). Accommodations must be requested within the first two weeks of this course using the [Religious Accommodations Request form](https://registrar.washington.edu/students/religious-accommodations-request/).

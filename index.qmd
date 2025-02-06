@@ -1,0 +1,34 @@
+---
+title: "CSSS 508: Intro to R for Social Scientists"
+subtitle: "Spring 2025"
+image: images/csss-logo.png
+sidebar: false
+about:
+  template: trestles
+  image-shape: rectangle
+  image-width: 10cm
+toc: false
+---
+
+## Welcome!
+
+### Instructor:
+
+[Jess Kunke](https://jpierkunke.github.io/) (she/they)
+
+### Lecture:
+
+Tuesdays 4:30-6:20pm
+
+[Thomson Hall](https://www.washington.edu/maps/#!/THO), Room 125
+
+### Office hours:
+
+Wednesdays 4-6pm
+
+[Savery Hall](https://www.washington.edu/maps/#!/SAV), Room 117 ([CSSCR](https://depts.washington.edu/csscr/) Lab)
+
+For further course details, please see the syllabus.
+
+**Thank you Vic Sass for the fantastic website design!**
+

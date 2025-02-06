@@ -1,0 +1,78 @@
+project:
+  type: website
+  output-dir: docs
+  # render:
+  #   - "*.qmd"
+  #   - "!Homework/CSSS508_HW1_*.qmd"
+  #   - "!notes/*.qmd"
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: false
+    grid: 
+      sidebar-width: 300px
+      body-width: 1000px
+    fontsize: 1.1rem
+
+website:
+  reader-mode: true
+  title: "CSSS 508"
+  navbar:
+    left:
+      - syllabus.qmd
+      - file: Lectures/lectures.qmd
+        text: "Lectures"
+      - file: Homework/homework.qmd
+        text: "Homework"
+  sidebar: 
+    - title: "Lectures"
+      style: "docked"
+      contents: 
+        - Lectures/lectures.qmd
+        # - file: Lectures/lec1_intro.qmd
+        #   text: "Lecture 1: Getting started"
+        # - file: Lectures/lec2_data_manip.qmd
+        #   text: "Lecture 2: Data manipulation with base R"
+        # - file: Lectures/lec3_data_manip_tidyverse.qmd
+        #   text: "Lecture 3: Data manipulation with tidyverse"
+        # - file: Lectures/lec4_debugging_review.qmd
+        #   text: "Lecture 4: Debugging and review"
+        # - file: Lectures/lec5_data_viz.qmd
+        #   text: "Lecture 5: Data visualization"
+        # - file: Lectures/lec6_better_plots.qmd
+        #   text: "Lecture 6: Better plots"
+        # - file: Lectures/lec7_import_export_clean_join.qmd
+        #   text: "Lecture 7: Import, process, join and export data"
+        # - file: Lectures/lec8_text.qmd
+        #   text: "Lecture 8: Working with text in R"
+        # - file: Lectures/lec9_regression.qmd
+        #   text: "Lecture 9: Regression in R"
+        # - file: Lectures/lec10_advanced_topics.qmd
+        #   text: "Lecture 10: Iteration, writing functions, and beyond"
+
+    - title: "Homework"
+      contents: 
+        - Homework/homework.qmd
+        # - file: Homework/homework1.qmd
+        #   text: "Homework 1"
+        # - file: Homework/homework2.qmd
+        #   text: "Homework 2"
+        # - file: Homework/homework3.qmd
+        #   text: "Homework 3"
+        # - file: Homework/homework4.qmd
+        #   text: "Homework 4"
+        # - file: Homework/homework4_followup.qmd
+        #   text: "HW4 follow-up: When does order matter?"
+        # - file: Homework/homework5.qmd
+        #   text: "Homework 5"
+        # - file: Homework/homework6.qmd
+        #   text: "Homework 6"
+        # - file: Homework/homework7.qmd
+        #   text: "Homework 7"
+        # - file: Homework/homework8.qmd
+        #   text: "Homework 8"
+        # - file: Homework/homework9.qmd
+        #   text: "Homework 9"
+
