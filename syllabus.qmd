@@ -35,6 +35,16 @@ By the end of the course, students will be able to...
 
 -   Gain confidence troubleshooting, debugging, and learning how to do new things in R
 
+### Installing R, RStudio, Quarto
+
+If you do not have both R and RStudio on your computer, or if it has been over a year or so since you updated them, please follow these two-part instructions to install/update them.  (If you have concerns about updating your current versions for research compatibility or other reasons, please feel free to email me first to see how best to proceed.)
+
+First, download and install R for your particular operating system by [going to this website](https://cran.r-project.org/) and [following these instructions](https://rstudio-education.github.io/hopr/starting.html#how-to-download-and-install-r).
+
+Then, [download RStudio here](https://posit.co/download/rstudio-desktop/#download) by clicking the blue button at the top if you have macOS 10.15+ (64-bit) or clicking the appropriate link below that for your operating system. 
+
+If you just downloaded or already had a recent version of RStudio, Quarto comes with it and you don't need to do anything further to install it but you can check out [this intro to Quarto](https://quarto.org/docs/get-started/hello/rstudio.html). I **highly recommend** having an updated version of R and RStudio. If for some reason you need to download Quarto directly, you can do so [here](https://quarto.org/docs/get-started/).
+
 ### Structure
 
 This course consists of a two-hour hands-on lecture and an optional two-hour hands-on office hour.
