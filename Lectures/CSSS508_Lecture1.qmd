@@ -44,14 +44,6 @@ require(xml2)
 - Syllabus
 - Lecture 1: Introduction to R, RStudio, and Quarto
 
-## Some reasons I love R, RStudio, and Quarto
-
-My research:
-
-![Making pretty maps, doing analyses](figures/benchmark_networks.png)
-
-Teaching materials (these slides and the website are made with Quarto!)
-
 
 ## Introductions
 
@@ -70,6 +62,14 @@ Let's start by getting to know each other a bit better. Share the following with
 . . . 
 
 Pair up with someone nearby and introduce yourself to one another (~ 5 min). 
+
+## Some reasons I love R, RStudio, and Quarto
+
+My research:
+
+![Making pretty maps, doing analyses](figures/benchmark_networks.png)
+
+Teaching materials (these slides and the website are made with Quarto!)
 
 
 ## Syllabus and course goals
