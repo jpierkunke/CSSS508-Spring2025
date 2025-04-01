@@ -1,0 +1,20 @@
+---
+title: "Homework 1"
+highlight-style: a11y-dark
+---
+
+### Instructions
+
+Write up a .qmd file showing some exploratory analyses of the Swiss fertility data. Upload both the `.qmd` file and the `.html` file to Canvas. You must upload **BOTH** for credit.
+
+Mix inline R calculations, R output, and plots with text describing the relationships you see. Include *at least* two plots and *at least* one instance of inline R code (e.g. functions like `nrow()`, `mean()`, `sd()`, `cor()`, `median()`, `min()`). You are encouraged to include more! *You may not hard-code any numbers referenced in your text*.
+
+Your document should be pleasant for a peer to look at, with some organization using sections or lists, and all plots labeled clearly. Use chunk options `echo` and `output` to limit the code/output you show in the .html. Discussion of specific values should be summarized in sentences in your text---*not as printed code and output*---and rounded so as not to be absurdly precise (e.g. round `x` with `round(x, 2)`).
+
+### Template
+
+[rendered html file](CSSS508_HW1_Template.html) • [raw qmd file](https://raw.githubusercontent.com/vsass/CSSS508/main/Homework/HW1/CSSS508_HW1_Template.qmd)
+
+### Example
+
+[rendered html file](CSSS508_HW1_Example.html) • [raw qmd file](https://github.com/jpierkunke/CSSS508-Fall2024/blob/main/Homework/CSSS508_HW1_Example.qmd)

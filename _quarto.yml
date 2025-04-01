@@ -31,8 +31,8 @@ website:
       style: "docked"
       contents: 
         - Lectures/lectures.qmd
-        # - file: Lectures/lec1_intro.qmd
-        #   text: "Lecture 1: Getting started"
+        - file: Lectures/CSSS508_Lecture1.qmd
+          text: "Lecture 1: Getting started"
         # - file: Lectures/lec2_data_manip.qmd
         #   text: "Lecture 2: Data manipulation with base R"
         # - file: Lectures/lec3_data_manip_tidyverse.qmd
@@ -55,8 +55,8 @@ website:
     - title: "Homework"
       contents: 
         - Homework/homework.qmd
-        # - file: Homework/homework1.qmd
-        #   text: "Homework 1"
+        - file: Homework/homework1.qmd
+          text: "Homework 1"
         # - file: Homework/homework2.qmd
         #   text: "Homework 2"
         # - file: Homework/homework3.qmd
