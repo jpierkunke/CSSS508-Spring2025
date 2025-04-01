@@ -6,7 +6,7 @@ title: "Lecture schedule"
 
 | Lecture | Date        | Topic                                            | Recommended Readings      |
 |:-------:|-------------|--------------------------------------------------|---------------------------|
-|    1    | 01 Apr 2025 | Introduction to R, R Studio, and Quarto          | [R for Data Science](https://r4ds.hadley.nz/): Introduction, Ch 28 Quarto |
+|    1    | 01 Apr 2025 | Introduction to R, R Studio, and Quarto          | R for Data Science: [Introduction](https://r4ds.hadley.nz/intro.html), [Ch 28 Quarto](https://r4ds.hadley.nz/quarto.html) |
 |    2    | 08 Apr 2025 | Data Visualization and Debugging                 | |
 |    3    | 15 Apr 2025 | Data Manipulation                                | |
 |    4    | 22 Apr 2025 | Summary Statistics                               | |
