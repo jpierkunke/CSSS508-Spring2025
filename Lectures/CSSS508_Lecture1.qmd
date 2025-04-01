@@ -5,7 +5,6 @@ execute:
   warning: false
 format: 
   revealjs:
-    highlight-style: a11y-dark
     reference-location: margin
     theme: lecture_styles.scss
     controls: true
@@ -1547,4 +1546,4 @@ We no longer need `as.data.frame.matrix()` since we're no longer using `summary(
 
 # Homework{.section-title background-color="#1e4655"}
 
-## {data-menu-title="Homework 1" background-iframe="https://jpierkunke.github.io/CSSS508-Spring2025/Homework/homework.html" background-interactive=TRUE}
+## {data-menu-title="Homework 1" background-iframe="https://jpierkunke.github.io/CSSS508-Spring2025/Homework/homework1.html" background-interactive=TRUE}
