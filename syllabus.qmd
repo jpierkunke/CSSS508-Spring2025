@@ -73,7 +73,7 @@ Throughout the course, I welcome your feedback through [this short anonymous fee
 
 This course is graded as credit/no credit. To pass you need to receive at least 60% of the available points. There will be 9 graded homework assignments, assigned weekly for the first 9 weeks of instruction. There are 4 points possible for each week that features a homework.
 
--   **Homework (75%; 3 points):** These must be submitted as pdf documents; we will go over how to create these. I will grade these assignments for completion (3 points if submitted, 0 otherwise) and provide feedback on your work. These are designed first and foremost to develop skills rather than "prove" you have learned concepts. I encourage you to communicate and work together, so long as you write and explain your code yourself and do not copy work.
+-   **Homework (75%; 3 points):** These must be submitted as both .html and .qmd documents; we will go over how to create these. I will grade these assignments for completion (3 points if submitted, 0 otherwise) and peers will provide feedback on your work through peer review assignments. These homework assignments are designed first and foremost to develop skills rather than "prove" you have learned concepts. I encourage you to communicate and work together, so long as you write and explain your code yourself and do not copy work.
 
 -   **Peer Review (25%; 1 point):** Each week an assignment is due, students will be randomly assigned to provide constructive feedback on another student's submission. Reading others' code is an important skill and you will write better code knowing others will see it. These reviews will be due **5 days** after homework is due. Each peer review is worth 1 point and will be graded for completion.
 
@@ -88,7 +88,7 @@ I'm committed to fostering a friendly and inclusive classroom environment in whi
 
 -   **Names & Pronouns:** Everyone deserves to be addressed respectfully and correctly. You are welcome to send me your preferred name and correct gender pronouns at any time.
 
--   **Getting Help:** If at any point during the quarter you find yourself struggling to keep up, please let me know! I am here to help. A great place to start this process is by chatting after class, coming to office hours, or sending me an email.
+-   **Getting Help:** If at any point during the quarter you find yourself struggling to keep up, please let me know! I am here to help. A great place to start this process is by chatting before or after class, attending office hours, and/or reaching out on Ed Discussion. As much as possible, I encourage you to use my office hours.
 
 -   **Diversity:** Diverse backgrounds, embodiments, and experiences are essential to the critical thinking endeavor at the heart of university education. Therefore, I expect you to follow the [UW Student Conduct Code](https://www.washington.edu/cssc/for-students/student-code-of-conduct/) in your interactions with your colleagues and me in this course by respecting the many social and cultural differences among us, which may include, but are not limited to: age, cultural background, disability, ethnicity, family status, gender identity and presentation, body size/shape, citizenship and immigration status, national origin, race, religious and political beliefs, sex, sexual orientation, socioeconomic status, and veteran status.
 

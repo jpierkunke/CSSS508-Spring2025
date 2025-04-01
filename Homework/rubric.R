@@ -5,10 +5,10 @@ library(gt)
 
 ## homework
 
-rubric_table <- tibble(Evaluation = c("Didn't turn anything in.", 
-                                "Turned in but low effort, ignoring many directions.", 
-                                "Decent effort, followed directions with some minor issues.", 
-                                "Nailed it!"), 
+rubric_table <- tibble(Evaluation = c("Not submitted.", 
+                                "Turned in but low effort, ignoring many directions.",
+                                "Decent effort, followed directions with some minor issues.",
+                                "Submitted"), 
                  Points = 0:3)
 
 rubric <- rubric_table |>  
@@ -19,9 +19,9 @@ rubric <- rubric_table |>
   tab_style(style = cell_fill(color = "#e15759"),
             locations = cells_body(rows = Points == 0)) |> 
   tab_style(style = cell_fill(color = "#f28e2c"),
-            locations = cells_body(rows = Points == 1)) |> 
+            locations = cells_body(rows = Points == 1)) |>
   tab_style(style = cell_fill(color = "#76b7b2"),
-            locations = cells_body(rows = Points == 2)) |> 
+            locations = cells_body(rows = Points == 2)) |>
   tab_style(style = cell_fill(color = "#4e79a7"),
             locations = cells_body(rows = Points == 3)) |> 
   # Change label font style
