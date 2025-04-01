@@ -94,7 +94,7 @@ By the end of this course you should feel confident approaching any data you enc
 
 ## Logistics: General
 
-**Lecture:** Tuesdays 4:30-6:20pm, Thomson Hall Room 125
+**Lecture:** Tuesdays 4:30-6:20pm, Thomson Hall Room 325
 
 **Office Hours:** Wednesdays 4-6pm, Savery Hall Room 117 (CSSCR Lab)
 
@@ -378,8 +378,8 @@ Since the lectures for this class were created using Quarto, there are numerous 
 2. If you hover over any chunk of `R` code embedded in the slides you will see a clipboard which you can click to copy the code. You can then paste it in your own Quarto document or `R` script to run it in your session of RStudio. 
 3. To get a PDF version of these slides click *File* > *Print* from your internet browser, select *Save as PDF* as the Destination or Printer, and make sure the Layout is set to *Landscape*. (Note: the *PDF Export Mode* in *Tools* actually cuts off content which is why I'm not recommending it)
 4. Clicking on the paintbrush in the bottom left-hand corner allows you to draw directly on the slides, in a very Microsoft Paint kind of way. See if it's useful but I make no promises!
-6. Type **?** at any time to see all the available key-board shortcuts. 
-7. Some pages are scrollable.
+5. Type **?** at any time to see all the available key-board shortcuts. 
+6. Some pages are scrollable.
 :::
 
 
