@@ -6,7 +6,6 @@ execute:
   fig-format: "svg"
 format: 
   revealjs:
-    highlight-style: a11y-dark
     reference-location: margin
     theme: lecture_styles.scss
     controls: true
@@ -20,7 +19,6 @@ format:
     history: false
     progress: true
     link-external-icon: true
-    code-annotations: hover
 ---
 
 ```{r}
