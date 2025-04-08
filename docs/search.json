@@ -1152,7 +1152,7 @@
     "href": "Lectures/CSSS508_Lecture2.html#ggplot-templates",
     "title": "CSSS 508",
     "section": "ggplot Templates",
-    "text": "ggplot Templates\n\n\nAll layers have:\nan initializing ggplot call and at least one geom function.\n\n\nsame data & aestheticssame data, diff aestheticsdiff data & aesthetics\n\n\n\nggplot(data = [dataset], \n       mapping = aes(x = [x-variable], y = [y-variable])) +\n  geom_xxx() +\n  other options\n\n\n\n\nggplot(data = [dataset], \n       mapping = aes(x = [x-variable], y = [y-variable])) +\n  geom_xxx() +\n  geom_yyy(mapping = aes(x = [x-variable], y = [y-variable])) +\n  other options\n\n\n\n\nggplot() +\n  geom_xxx(data = [dataset1],\n           mapping = aes(x = [x-variable], y = [y-variable])) +\n  geom_yyy(data = [dataset2],\n           mapping = aes(x = [x-variable], y = [y-variable])) +\n  other options",
+    "text": "ggplot Templates\n\n\nAll layers have:\nan initializing ggplot call and at least one geom function.\n\n\nsame data & aestheticssame data, diff aestheticsdiff data & aesthetics\n\n\n\nggplot(data = my_dataset, \n       mapping = aes(x = my_x_variable, y = my_y_variable)) +\n  geom_xxx() +\n  other options\n\n\n\n\nggplot(data = my_dataset, \n       mapping = aes(x = my_x_variable, y = my_y_variable)) +\n  geom_xxx() +\n  geom_yyy(mapping = aes(x = my_x_variable, y = my_y_variable)) +\n  other options\n\n\n\n\nggplot() +\n  geom_xxx(data = my_dataset,\n           mapping = aes(x = my_x_variable, y = my_y_variable)) +\n  geom_yyy(data = [dataset2],\n           mapping = aes(x = my_x_variable, y = my_y_variable)) +\n  other options",
     "crumbs": [
       "Lectures",
       "Lecture 2: Data Visualization"

@@ -400,8 +400,8 @@ an initializing `ggplot` call and at least one `geom` function.
 
 ```{r}
 #| eval: false
-ggplot(data = [dataset], 
-       mapping = aes(x = [x-variable], y = [y-variable])) +
+ggplot(data = my_dataset, 
+       mapping = aes(x = my_x_variable, y = my_y_variable)) +
   geom_xxx() +
   other options
 ```
@@ -410,10 +410,10 @@ ggplot(data = [dataset],
 
 ```{r}
 #| eval: false
-ggplot(data = [dataset], 
-       mapping = aes(x = [x-variable], y = [y-variable])) +
+ggplot(data = my_dataset, 
+       mapping = aes(x = my_x_variable, y = my_y_variable)) +
   geom_xxx() +
-  geom_yyy(mapping = aes(x = [x-variable], y = [y-variable])) +
+  geom_yyy(mapping = aes(x = my_x_variable, y = my_y_variable)) +
   other options
 ```
 
@@ -422,10 +422,10 @@ ggplot(data = [dataset],
 ```{r}
 #| eval: false
 ggplot() +
-  geom_xxx(data = [dataset1],
-           mapping = aes(x = [x-variable], y = [y-variable])) +
+  geom_xxx(data = my_dataset,
+           mapping = aes(x = my_x_variable, y = my_y_variable)) +
   geom_yyy(data = [dataset2],
-           mapping = aes(x = [x-variable], y = [y-variable])) +
+           mapping = aes(x = my_x_variable, y = my_y_variable)) +
   other options
 ```
 
