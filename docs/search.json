@@ -14,128 +14,6 @@
     "text": "Figure 1 further explores the impact of temperature on ozone level.\n\n\nCode\nlibrary(ggplot2)\nggplot(airquality, aes(Temp, Ozone)) + \n  geom_point() + \n  geom_smooth(method = \"loess\")\n\n\n\n\n\n\n\n\nFigure 1: Temperature and ozone level."
   },
   {
-    "objectID": "Lectures/lectures.html",
-    "href": "Lectures/lectures.html",
-    "title": "Lecture schedule",
-    "section": "",
-    "text": "Please note that this schedule is subject to change.\n\n\n\nLecture\nDate\nTopic\nRecommended Readings\n\n\n\n\n1\n01 Apr 2025\nIntroduction to R, R Studio, and Quarto\nR for Data Science: Introduction, Ch 28 Quarto\n\n\n2\n08 Apr 2025\nData Visualization and Debugging\n\n\n\n3\n15 Apr 2025\nData Manipulation\n\n\n\n4\n22 Apr 2025\nSummary Statistics\n\n\n\n5\n29 Apr 2025\nImporting and Exporting Data\n\n\n\n6\n06 May 2025\nCleaning and Joining Data\n\n\n\n7\n13 May 2025\nData Structures and Types; Regression in R\n\n\n\n8\n20 May 2025\nWorking with Text Data/Objects in R\n\n\n\n9\n27 May 2025\nIteration and Writing Functions\n\n\n\n10\n03 Jun 2025\nNext Steps",
-    "crumbs": [
-      "Lectures",
-      "Lecture schedule"
-    ]
-  },
-  {
-    "objectID": "Homework/CSSS508_HW1_Example.html",
-    "href": "Homework/CSSS508_HW1_Example.html",
-    "title": "CSSS508 Homework 1 Example",
-    "section": "",
-    "text": "I’m interested in exploring a dataset from base R called iris. From its documentation I see that it is data about 50 flowers from each of 3 species of iris and their respective measurements of sepal length, sepal width, petal length, and petal width.\nI first want to take a look at a preview of the dataset by making a nice table.\n\n\n\n\n\n\n\n\n\nSepal.Length\nSepal.Width\nPetal.Length\nPetal.Width\nSpecies\n\n\n\n\n1\n5.1\n3.5\n1.4\n0.2\nsetosa\n\n\n2\n4.9\n3.0\n1.4\n0.2\nsetosa\n\n\n3\n4.7\n3.2\n1.3\n0.2\nsetosa\n\n\n4\n4.6\n3.1\n1.5\n0.2\nsetosa\n\n\n5\n5.0\n3.6\n1.4\n0.2\nsetosa\n\n\n6..145\n\n\n\n\n\n\n\n146\n6.7\n3.0\n5.2\n2.3\nvirginica\n\n\n147\n6.3\n2.5\n5.0\n1.9\nvirginica\n\n\n148\n6.5\n3.0\n5.2\n2.0\nvirginica\n\n\n149\n6.2\n3.4\n5.4\n2.3\nvirginica\n\n\n150\n5.9\n3.0\n5.1\n1.8\nvirginica\n\n\n\n\n\n\n\nThe mean petal length is 3.76 but its median petal length is 4.35. It’s range is 5.9 which additionally suggests a certain degree of spread.\nIt might be useful to look at the distribution to gain a better sense of the variation of this variable.\n\n\n\n\n\n\n\n\n\nThere seems to be a cluster of much smaller petals and then another cluster of average to bigger petals. I wonder how this varies by species…?\n\n\n\n\n\n\n\n\n\nWe can see from this plot that the overall mean and median of petal length is quite misleading! Only the verisicolor species of iris is close to those values while setosa is much mush smaller and virginica is a bit bigger.\nIs there a similar thing happening for sepal length and width? Let’s look at some basic descriptives of the dataset.\n\n\n\n\n\n\n\n\nSepal.Length\nSepal.Width\nPetal.Length\nPetal.Width\nSpecies\n\n\n\n\nMin. :4.300\nMin. :2.000\nMin. :1.000\nMin. :0.100\nsetosa :50\n\n\n1st Qu.:5.100\n1st Qu.:2.800\n1st Qu.:1.600\n1st Qu.:0.300\nversicolor:50\n\n\nMedian :5.800\nMedian :3.000\nMedian :4.350\nMedian :1.300\nvirginica :50\n\n\nMean :5.843\nMean :3.057\nMean :3.758\nMean :1.199\nNA\n\n\n3rd Qu.:6.400\n3rd Qu.:3.300\n3rd Qu.:5.100\n3rd Qu.:1.800\nNA\n\n\nMax. :7.900\nMax. :4.400\nMax. :6.900\nMax. :2.500\nNA\n\n\n\n\n\n\n\nIt’s interesting to note with the summary function that for numerical data it’ll calculate the classic 5 statistics used to construct a boxplot plus the mean but for a categorical variable like iris$Species it returns the frequency of each value of the variable.\nThe distribution of sepal length looks wider than sepal width, similar to how it was for those measurements of the petals. Let’s see how sepal length and width relate to one another graphically.\n\n\n\n\n\n\n\n\n\nThere are still clusters by each species type but for verisicolor and virginica there’s much more overlap. Overall, there’s tighter clustering by species for the petal length and width than there is for the sepal length and width."
-  },
-  {
-    "objectID": "Homework/homework.html",
-    "href": "Homework/homework.html",
-    "title": "Overview",
-    "section": "",
-    "text": "This page contains general instructions for assignments and peer reviews. For specific instructions and templates for individual assignments, click on that assignment listed on the left.\nAll assignments should be created using Quarto and uploaded to Canvas. Your document should be pleasant for a peer to look at and follow all instructions. Use sections for organization, label figures/tables, and use code chunks.\nThis is a one-credit pass/fail course intended to help you learn R. The focus is on learning and practice, not on points. Assignments and peer reviews will be graded for completion, but the points are not the point: they are key opportunities to practice R/RStudio/Quarto and to learn from each other. Feel free to work together, discussion questions on Ed Discussion, trade ideas and tips.",
-    "crumbs": [
-      "Homework",
-      "Overview"
-    ]
-  },
-  {
-    "objectID": "Homework/homework.html#peer-review",
-    "href": "Homework/homework.html#peer-review",
-    "title": "Overview",
-    "section": "Peer Review",
-    "text": "Peer Review\nYou are required to examine and provide feedback on a peer’s homework submission each week. Reading and evaluating others’ code gives you the chance to see how other people approached the problems and share how you do things differently. Please give constructive, polite, and insightful comments that encourage your classmate and help them learn from you. Try to mention each of the following: one or more things they did well, one or more tips you have to improve their work, and one or more things you learned from reading their work.",
-    "crumbs": [
-      "Homework",
-      "Overview"
-    ]
-  },
-  {
-    "objectID": "Homework/homework.html#a-note-about-rendering-your-html-documents",
-    "href": "Homework/homework.html#a-note-about-rendering-your-html-documents",
-    "title": "Overview",
-    "section": "A Note About Rendering Your HTML documents",
-    "text": "A Note About Rendering Your HTML documents\nYou need to include embed-resources: true in your YAML header in order for your HTML documents to include any plot output when you upload them to Canvas. It should look something like this:\n\nYou can read more about this option here but basically, whenever you render a .qmd file to HTML, all output created goes into a separate, associated folder, which is referenced when displaying the page in your web browser. However, when you upload the HTML file separately from that folder (e.g. to Canvas or through email), it doesn’t have the specific output images to reference, so they won’t appear. When you specify in your YAML header that you want to embed resources, you’re explicitly adding the output created by your code to the HTML file so that a separate output folder is longer created and you can send your HTML file with all its output as one entity.",
-    "crumbs": [
-      "Homework",
-      "Overview"
-    ]
-  },
-  {
-    "objectID": "Homework/homework.html#assignment-due-dates",
-    "href": "Homework/homework.html#assignment-due-dates",
-    "title": "Overview",
-    "section": "Assignment Due Dates",
-    "text": "Assignment Due Dates\n\n\n\n\n\n\n\n\n#\nHomework Due\nPeer Review Due\n\n\n\n\n1\n08 April\n13 April\n\n\n2\n15 April\n20 April\n\n\n3\n22 April\n27 April\n\n\n4\n29 April\n03 May\n\n\n5\n06 May\n11 May\n\n\n6\n13 May\n18 May\n\n\n7\n20 May\n25 May\n\n\n8\n27 May\n01 June\n\n\n9\n03 June\n08 June",
-    "crumbs": [
-      "Homework",
-      "Overview"
-    ]
-  },
-  {
-    "objectID": "Homework/homework1.html",
-    "href": "Homework/homework1.html",
-    "title": "Homework 1",
-    "section": "",
-    "text": "Instructions\nWrite up a .qmd file showing some exploratory analyses of the Swiss fertility data. Upload both the .qmd file and the .html file to Canvas. You must upload BOTH for credit.\nMix in-line R calculations, R output, and plots with text describing the relationships you see. Include at least one plot and one table using the gt package. You are encouraged to include more! You must use in-line R calculations/references at least once (e.g. functions like nrow(), mean(), sd(), cor(), median(), min()) and may not hard-code any numbers referenced in your text.\nYour document should be pleasant for a peer to look at, with some organization using sections or lists, and all plots labeled clearly. Make sure to update headers, text, etc. to reflect this Homework 1 assignment. Use chunk options echo and output to limit the code/output you show in the .html. Discussion of specific values should be summarized in sentences in your text—not as printed code and output—and rounded so as not to be absurdly precise (e.g. round x with round(x, 2)).\n\n\nTemplate\nrendered html file • raw qmd file\n\n\nExample\nrendered html file • raw qmd file",
-    "crumbs": [
-      "Homework",
-      "Homework 1"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "CSSS 508: Intro to R for Social Scientists",
-    "section": "",
-    "text": "Jess Kunke (she/they)\n\n\n\nTuesdays 4:30-6:20pm\nThomson Hall Room 325\n\n\n\nWednesdays 4-6pm\nSavery Hall Room 117 (CSSCR Lab)\nFor further course details, please see the syllabus.\nThank you Vic Sass for the fantastic website design!"
-  },
-  {
-    "objectID": "index.html#welcome",
-    "href": "index.html#welcome",
-    "title": "CSSS 508: Intro to R for Social Scientists",
-    "section": "",
-    "text": "Jess Kunke (she/they)\n\n\n\nTuesdays 4:30-6:20pm\nThomson Hall Room 325\n\n\n\nWednesdays 4-6pm\nSavery Hall Room 117 (CSSCR Lab)\nFor further course details, please see the syllabus.\nThank you Vic Sass for the fantastic website design!"
-  },
-  {
-    "objectID": "Homework/homework1_fall.html",
-    "href": "Homework/homework1_fall.html",
-    "title": "Homework 1",
-    "section": "",
-    "text": "Instructions\nWrite up a .qmd file showing some exploratory analyses of the Swiss fertility data. Upload both the .qmd file and the .html file to Canvas. You must upload BOTH for credit.\nMix inline R calculations, R output, and plots with text describing the relationships you see. Include at least two plots and at least one instance of inline R code (e.g. functions like nrow(), mean(), sd(), cor(), median(), min()). You are encouraged to include more! You may not hard-code any numbers referenced in your text.\nYour document should be pleasant for a peer to look at, with some organization using sections or lists, and all plots labeled clearly. Use chunk options echo and output to limit the code/output you show in the .html. Discussion of specific values should be summarized in sentences in your text—not as printed code and output—and rounded so as not to be absurdly precise (e.g. round x with round(x, 2)).\n\n\nTemplate\nrendered html file • raw qmd file\n\n\nExample\nrendered html file • raw qmd file"
-  },
-  {
-    "objectID": "Homework/CSSS508_HW1_Template.html",
-    "href": "Homework/CSSS508_HW1_Template.html",
-    "title": "Homework 1",
-    "section": "",
-    "text": "This basic R markdown file has some text, inline code, and code chunks!"
-  },
-  {
-    "objectID": "Homework/CSSS508_HW1_Template.html#code-chunks",
-    "href": "Homework/CSSS508_HW1_Template.html#code-chunks",
-    "title": "Homework 1",
-    "section": "Code Chunks",
-    "text": "Code Chunks\n\nset.seed(1)\nnorm &lt;- rnorm(100)\nhist(x = norm, \n     xlab = \"X Axis Name\", \n     ylab = \"Count\", \n     main = \"Histogram of 100 observations from a Standard Normal\")\n\n\n\n\n\n\n\n\nUnless you include the chunk option #| echo: false, your code chunk will be displayed in your final document."
-  },
-  {
-    "objectID": "Homework/CSSS508_HW1_Template.html#text-and-inline-text",
-    "href": "Homework/CSSS508_HW1_Template.html#text-and-inline-text",
-    "title": "Homework 1",
-    "section": "Text and Inline Text",
-    "text": "Text and Inline Text\nThe sample mean of the data plotted above (rounded to 3 decimal points) is 0.109 and the variance is 0.807.\nWhat’s the relationship between standard deviation and variance?\n\\[ \\text{Standard Deviation}(X) = \\sqrt{\\text{Variance}(X)} \\]\nThe standard deviation of the data plotted above is 0.898."
-  },
-  {
-    "objectID": "syllabus.html",
-    "href": "syllabus.html",
-    "title": "Syllabus",
-    "section": "",
-    "text": "Welcome! I look forward to working with you this quarter.\nThis syllabus is subject to change. All changes will be announced in class and via email announcements from Ed Discussion.\n\nOverview\nThis course is intended to give students a foundational understanding of programming in the statistical language R. This knowledge is intended to be broadly useful wherever you encounter data in your education and career.\nThis course has no prerequisites; we do not assume you have any prior programming experience with R or any other language. We will also cover almost no statistics, but this course should help prepare you for CSSS, STAT, or other departments’ methods courses so that you can focus on the methods they cover more than the coding itself. Additionally, the basic concepts you learn will be applicable to other programming languages and research in general, such as logic and algorithmic thinking.\n\n\nLearning objectives\nBy the end of the course, students will be able to…\n\nDevelop more confidence in their programming skills and their understanding of computation more broadly\nBe familiar with the RStudio application and the syntax of the R language\nOrganize and document coding projects for reproducibility and efficient workflow\nRead in data from a file and explore the data\nManipulate and reformat data for quality control, summary statistics, and other purposes\nCombine multiple data sets from different sources and of different types\nCreate beautiful, clear, and informative data visualizations\nCombine text, code, and output into reports using Quarto\nGain confidence troubleshooting, debugging, and learning how to do new things in R\n\n\n\nInstalling R, RStudio, Quarto\nIf you do not have both R and RStudio on your computer, or if it has been over a year or so since you updated them, please follow these two-part instructions to install/update them. (If you have concerns about updating your current versions for research compatibility or other reasons, please feel free to email me first to see how best to proceed.)\nFirst, download and install R for your particular operating system by going to this website and following these instructions.\nThen, download RStudio here by clicking the blue button at the top if you have macOS 10.15+ (64-bit) or clicking the appropriate link below that for your operating system.\nIf you just downloaded or already had a recent version of RStudio, Quarto comes with it and you don’t need to do anything further to install it but you can check out this intro to Quarto. I highly recommend having an updated version of R and RStudio. If for some reason you need to download Quarto directly, you can do so here.\n\n\nStructure\nThis course consists of a two-hour hands-on lecture and an optional two-hour hands-on office hour.\nIn person or remote? This course is intended to be primarily in person, but I recognize that life happens, so I will plan to hold lectures in a hybrid fashion in case you need to join remotely sometimes. This way we can also post lecture recordings in case you want to review something from class.\n\nLectures\nFor a schedule of lecture topics, please see the Lectures page. Note that the course will not meet during final exam week.\nPlease bring a laptop to class each week so that you can follow along with examples, practice problems, and live coding in class. If you do not have a laptop you can bring to class and are not sure how to borrow one, please let me know in advance.\n\n\nOffice hours\nOffice hours are optional and are a great space for asking questions, getting more practice, working on homework, and continuing discussions from class.\n\n\n\nResources\nThis course has no required text. I will guide you through content during lecture, and the lecture notes will all be here on this website. There are also many helpful resources available for free online if you would like further references along the way or after this class ends. In particular, if you’d like an extra reference, you can check out R for Data Science by Hadley Wickham, Mine Çetinkaya-Rundel, & Garrett Grolemund.\n\n\nClass communication\n\nCourse content (lecture notes) and homework instructions will be posted here on the course website.\nSubmit your assignments and peer reviews through Canvas.\nI will send out homework clarifications, schedule changes, and other important information through Ed Discussion announcements which will send you an email.\nPlease use Ed Discussion to post your questions to peers and answer others’ questions! I will also keep an eye on the discussions and reply as needed.\nFor administrative emails, please send them through Ed Discussion as a private thread, which will send only to me.\nPlease make good use of my office hours to address your questions, work through homework, and get extra practice with the material.\nWhen asking questions, please provide the code you ran and the error you gave, be specific and concrete, and try to provide a minimal reproducible example. This helps me and your fellow students give you the most helpful feedback!\n\n\n\nAnonymous feedback\nThroughout the course, I welcome your feedback through this short anonymous feedback survey on what’s working for you about the class environment or format, what’s not, and any suggestions or ideas you have.\n\n\nGrading\nThis course is graded as credit/no credit. To pass you need to receive at least 60% of the available points. There will be 9 graded homework assignments, assigned weekly for the first 9 weeks of instruction. There are 4 points possible for each week that features a homework.\n\nHomework (75%; 3 points): These must be submitted as both .html and .qmd documents; we will go over how to create these. I will grade these assignments for completion (3 points if submitted, 0 otherwise) and peers will provide feedback on your work through peer review assignments. These homework assignments are designed first and foremost to develop skills rather than “prove” you have learned concepts. I encourage you to communicate and work together, so long as you write and explain your code yourself and do not copy work.\nPeer Review (25%; 1 point): Each week an assignment is due, students will be randomly assigned to provide constructive feedback on another student’s submission. Reading others’ code is an important skill and you will write better code knowing others will see it. These reviews will be due 5 days after homework is due. Each peer review is worth 1 point and will be graded for completion.\nSchedule: Homework assignments will be due before class each Tuesday and peer reviews will be due 5 days later, by end-of-day on Sundays. You can see a list of due dates on the Homework page.\nLate assignments: No late assignments will be accepted. The reason for this is to ensure you are getting feedback at regular intervals and staying on track. The grading is lenient, so submit whatever you have by each deadline, and your grade will be fine if you miss submitting an assignment or two due to illness or emergencies.\n\n\n\nClassroom Environment\nI’m committed to fostering a friendly and inclusive classroom environment in which all students have an equal opportunity to learn and succeed. Learning is a collaborative and creative process, and my aim is to create an environment in which you all feel comfortable asking questions of me and each other. Treat your peers and yourself with empathy and respect as you all approach this topic from a range of backgrounds and experiences (in programming and in life).\n\nNames & Pronouns: Everyone deserves to be addressed respectfully and correctly. You are welcome to send me your preferred name and correct gender pronouns at any time.\nGetting Help: If at any point during the quarter you find yourself struggling to keep up, please let me know! I am here to help. A great place to start this process is by chatting before or after class, attending office hours, and/or reaching out on Ed Discussion. As much as possible, I encourage you to use my office hours.\nDiversity: Diverse backgrounds, embodiments, and experiences are essential to the critical thinking endeavor at the heart of university education. Therefore, I expect you to follow the UW Student Conduct Code in your interactions with your colleagues and me in this course by respecting the many social and cultural differences among us, which may include, but are not limited to: age, cultural background, disability, ethnicity, family status, gender identity and presentation, body size/shape, citizenship and immigration status, national origin, race, religious and political beliefs, sex, sexual orientation, socioeconomic status, and veteran status.\nAccessibility & Accommodations: Your experience in this class is important to me. If you have already established accommodations with Disability Resources for Students (DRS), please communicate your approved accommodations to me at your earliest convenience so we can discuss your needs in this course. If you have not yet established services through DRS, but have a temporary health condition or permanent disability that requires accommodations (conditions include but not limited to; mental health, attention-related, learning, vision, hearing, physical or health impacts), you are welcome to contact DRS at 206-543-8924, uwdrs@uw.edu, or through their website. DRS offers resources and coordinates reasonable accommodations for students with disabilities and/or temporary health conditions. Reasonable accommodations are established through an interactive process between you, me (your instructor), and DRS. It is the policy and practice of the University of Washington to create inclusive and accessible learning environments consistent with federal and state law.\nAcademic Integrity: Academic integrity is essential to this course and to your learning. In this course, violations of the academic integrity policy include but are not limited to: copying from a peer, copying from an online resource, or using resources from a previous iteration of the course. That said, I hope you will collaborate with peers on assignments, and use Internet resources when questions arise to help solve issues. The key is that you ultimately submit your own work. Anything found in violation of this policy will be automatically given a score of 0 with no exceptions. If the situation merits, it will also be reported to the UW Student Conduct Office, at which point it is out of my hands. If you have any questions about this policy, please do not hesitate to reach out and ask.\nReligious Accommodations: Washington state law requires that UW develop a policy for accommodation of student absences or significant hardship due to reasons of faith or conscience, or for organized religious activities. The UW’s policy, including more information about how to request an accommodation, is available at Religious Accommodations Policy. Accommodations must be requested within the first two weeks of this course using the Religious Accommodations Request form."
-  },
-  {
     "objectID": "Lectures/CSSS508_Lecture1.html#title-slide",
     "href": "Lectures/CSSS508_Lecture1.html#title-slide",
     "title": "CSSS 508",
@@ -948,5 +826,729 @@
       "Lectures",
       "Lecture 1: Getting started"
     ]
+  },
+  {
+    "objectID": "syllabus.html",
+    "href": "syllabus.html",
+    "title": "Syllabus",
+    "section": "",
+    "text": "Welcome! I look forward to working with you this quarter.\nThis syllabus is subject to change. All changes will be announced in class and via email announcements from Ed Discussion.\n\nOverview\nThis course is intended to give students a foundational understanding of programming in the statistical language R. This knowledge is intended to be broadly useful wherever you encounter data in your education and career.\nThis course has no prerequisites; we do not assume you have any prior programming experience with R or any other language. We will also cover almost no statistics, but this course should help prepare you for CSSS, STAT, or other departments’ methods courses so that you can focus on the methods they cover more than the coding itself. Additionally, the basic concepts you learn will be applicable to other programming languages and research in general, such as logic and algorithmic thinking.\n\n\nLearning objectives\nBy the end of the course, students will be able to…\n\nDevelop more confidence in their programming skills and their understanding of computation more broadly\nBe familiar with the RStudio application and the syntax of the R language\nOrganize and document coding projects for reproducibility and efficient workflow\nRead in data from a file and explore the data\nManipulate and reformat data for quality control, summary statistics, and other purposes\nCombine multiple data sets from different sources and of different types\nCreate beautiful, clear, and informative data visualizations\nCombine text, code, and output into reports using Quarto\nGain confidence troubleshooting, debugging, and learning how to do new things in R\n\n\n\nInstalling R, RStudio, Quarto\nIf you do not have both R and RStudio on your computer, or if it has been over a year or so since you updated them, please follow these two-part instructions to install/update them. (If you have concerns about updating your current versions for research compatibility or other reasons, please feel free to email me first to see how best to proceed.)\nFirst, download and install R for your particular operating system by going to this website and following these instructions.\nThen, download RStudio here by clicking the blue button at the top if you have macOS 10.15+ (64-bit) or clicking the appropriate link below that for your operating system.\nIf you just downloaded or already had a recent version of RStudio, Quarto comes with it and you don’t need to do anything further to install it but you can check out this intro to Quarto. I highly recommend having an updated version of R and RStudio. If for some reason you need to download Quarto directly, you can do so here.\n\n\nStructure\nThis course consists of a two-hour hands-on lecture and an optional two-hour hands-on office hour.\nIn person or remote? This course is intended to be primarily in person, but I recognize that life happens, so I will plan to hold lectures in a hybrid fashion in case you need to join remotely sometimes. This way we can also post lecture recordings in case you want to review something from class.\n\nLectures\nFor a schedule of lecture topics, please see the Lectures page. Note that the course will not meet during final exam week.\nPlease bring a laptop to class each week so that you can follow along with examples, practice problems, and live coding in class. If you do not have a laptop you can bring to class and are not sure how to borrow one, please let me know in advance.\n\n\nOffice hours\nOffice hours are optional and are a great space for asking questions, getting more practice, working on homework, and continuing discussions from class.\n\n\n\nResources\nThis course has no required text. I will guide you through content during lecture, and the lecture notes will all be here on this website. There are also many helpful resources available for free online if you would like further references along the way or after this class ends. In particular, if you’d like an extra reference, you can check out R for Data Science by Hadley Wickham, Mine Çetinkaya-Rundel, & Garrett Grolemund.\n\n\nClass communication\n\nCourse content (lecture notes) and homework instructions will be posted here on the course website.\nSubmit your assignments and peer reviews through Canvas.\nI will send out homework clarifications, schedule changes, and other important information through Ed Discussion announcements which will send you an email.\nPlease use Ed Discussion to post your questions to peers and answer others’ questions! I will also keep an eye on the discussions and reply as needed.\nFor administrative emails, please send them through Ed Discussion as a private thread, which will send only to me.\nPlease make good use of my office hours to address your questions, work through homework, and get extra practice with the material.\nWhen asking questions, please provide the code you ran and the error you gave, be specific and concrete, and try to provide a minimal reproducible example. This helps me and your fellow students give you the most helpful feedback!\n\n\n\nAnonymous feedback\nThroughout the course, I welcome your feedback through this short anonymous feedback survey on what’s working for you about the class environment or format, what’s not, and any suggestions or ideas you have.\n\n\nGrading\nThis course is graded as credit/no credit. To pass you need to receive at least 60% of the available points. There will be 9 graded homework assignments, assigned weekly for the first 9 weeks of instruction. There are 4 points possible for each week that features a homework.\n\nHomework (75%; 3 points): These must be submitted as both .html and .qmd documents; we will go over how to create these. I will grade these assignments for completion (3 points if submitted, 0 otherwise) and peers will provide feedback on your work through peer review assignments. These homework assignments are designed first and foremost to develop skills rather than “prove” you have learned concepts. I encourage you to communicate and work together, so long as you write and explain your code yourself and do not copy work.\nPeer Review (25%; 1 point): Each week an assignment is due, students will be randomly assigned to provide constructive feedback on another student’s submission. Reading others’ code is an important skill and you will write better code knowing others will see it. These reviews will be due 5 days after homework is due. Each peer review is worth 1 point and will be graded for completion.\nSchedule: Homework assignments will be due before class each Tuesday and peer reviews will be due 5 days later, by end-of-day on Sundays. You can see a list of due dates on the Homework page.\nLate assignments: No late assignments will be accepted. The reason for this is to ensure you are getting feedback at regular intervals and staying on track. The grading is lenient, so submit whatever you have by each deadline, and your grade will be fine if you miss submitting an assignment or two due to illness or emergencies.\n\n\n\nClassroom Environment\nI’m committed to fostering a friendly and inclusive classroom environment in which all students have an equal opportunity to learn and succeed. Learning is a collaborative and creative process, and my aim is to create an environment in which you all feel comfortable asking questions of me and each other. Treat your peers and yourself with empathy and respect as you all approach this topic from a range of backgrounds and experiences (in programming and in life).\n\nNames & Pronouns: Everyone deserves to be addressed respectfully and correctly. You are welcome to send me your preferred name and correct gender pronouns at any time.\nGetting Help: If at any point during the quarter you find yourself struggling to keep up, please let me know! I am here to help. A great place to start this process is by chatting before or after class, attending office hours, and/or reaching out on Ed Discussion. As much as possible, I encourage you to use my office hours.\nDiversity: Diverse backgrounds, embodiments, and experiences are essential to the critical thinking endeavor at the heart of university education. Therefore, I expect you to follow the UW Student Conduct Code in your interactions with your colleagues and me in this course by respecting the many social and cultural differences among us, which may include, but are not limited to: age, cultural background, disability, ethnicity, family status, gender identity and presentation, body size/shape, citizenship and immigration status, national origin, race, religious and political beliefs, sex, sexual orientation, socioeconomic status, and veteran status.\nAccessibility & Accommodations: Your experience in this class is important to me. If you have already established accommodations with Disability Resources for Students (DRS), please communicate your approved accommodations to me at your earliest convenience so we can discuss your needs in this course. If you have not yet established services through DRS, but have a temporary health condition or permanent disability that requires accommodations (conditions include but not limited to; mental health, attention-related, learning, vision, hearing, physical or health impacts), you are welcome to contact DRS at 206-543-8924, uwdrs@uw.edu, or through their website. DRS offers resources and coordinates reasonable accommodations for students with disabilities and/or temporary health conditions. Reasonable accommodations are established through an interactive process between you, me (your instructor), and DRS. It is the policy and practice of the University of Washington to create inclusive and accessible learning environments consistent with federal and state law.\nAcademic Integrity: Academic integrity is essential to this course and to your learning. In this course, violations of the academic integrity policy include but are not limited to: copying from a peer, copying from an online resource, or using resources from a previous iteration of the course. That said, I hope you will collaborate with peers on assignments, and use Internet resources when questions arise to help solve issues. The key is that you ultimately submit your own work. Anything found in violation of this policy will be automatically given a score of 0 with no exceptions. If the situation merits, it will also be reported to the UW Student Conduct Office, at which point it is out of my hands. If you have any questions about this policy, please do not hesitate to reach out and ask.\nReligious Accommodations: Washington state law requires that UW develop a policy for accommodation of student absences or significant hardship due to reasons of faith or conscience, or for organized religious activities. The UW’s policy, including more information about how to request an accommodation, is available at Religious Accommodations Policy. Accommodations must be requested within the first two weeks of this course using the Religious Accommodations Request form."
+  },
+  {
+    "objectID": "Homework/CSSS508_HW1_Template.html",
+    "href": "Homework/CSSS508_HW1_Template.html",
+    "title": "Homework 1",
+    "section": "",
+    "text": "This basic R markdown file has some text, inline code, and code chunks!"
+  },
+  {
+    "objectID": "Homework/CSSS508_HW1_Template.html#code-chunks",
+    "href": "Homework/CSSS508_HW1_Template.html#code-chunks",
+    "title": "Homework 1",
+    "section": "Code Chunks",
+    "text": "Code Chunks\n\nset.seed(1)\nnorm &lt;- rnorm(100)\nhist(x = norm, \n     xlab = \"X Axis Name\", \n     ylab = \"Count\", \n     main = \"Histogram of 100 observations from a Standard Normal\")\n\n\n\n\n\n\n\n\nUnless you include the chunk option #| echo: false, your code chunk will be displayed in your final document."
+  },
+  {
+    "objectID": "Homework/CSSS508_HW1_Template.html#text-and-inline-text",
+    "href": "Homework/CSSS508_HW1_Template.html#text-and-inline-text",
+    "title": "Homework 1",
+    "section": "Text and Inline Text",
+    "text": "Text and Inline Text\nThe sample mean of the data plotted above (rounded to 3 decimal points) is 0.109 and the variance is 0.807.\nWhat’s the relationship between standard deviation and variance?\n\\[ \\text{Standard Deviation}(X) = \\sqrt{\\text{Variance}(X)} \\]\nThe standard deviation of the data plotted above is 0.898."
+  },
+  {
+    "objectID": "Homework/homework1_fall.html",
+    "href": "Homework/homework1_fall.html",
+    "title": "Homework 1",
+    "section": "",
+    "text": "Instructions\nWrite up a .qmd file showing some exploratory analyses of the Swiss fertility data. Upload both the .qmd file and the .html file to Canvas. You must upload BOTH for credit.\nMix inline R calculations, R output, and plots with text describing the relationships you see. Include at least two plots and at least one instance of inline R code (e.g. functions like nrow(), mean(), sd(), cor(), median(), min()). You are encouraged to include more! You may not hard-code any numbers referenced in your text.\nYour document should be pleasant for a peer to look at, with some organization using sections or lists, and all plots labeled clearly. Use chunk options echo and output to limit the code/output you show in the .html. Discussion of specific values should be summarized in sentences in your text—not as printed code and output—and rounded so as not to be absurdly precise (e.g. round x with round(x, 2)).\n\n\nTemplate\nrendered html file • raw qmd file\n\n\nExample\nrendered html file • raw qmd file"
+  },
+  {
+    "objectID": "Homework/homework2.html",
+    "href": "Homework/homework2.html",
+    "title": "Homework 2",
+    "section": "",
+    "text": "In this homework, you’ll pose a question regarding the Gapminder dataset and investigate it graphically. Rather than using the gapminder package like we did in lecture, you’ll want to use the dslabs package1, which has a larger subset of the Gapminder data (i.e. more observations and variables).\n\nAt the beginning of your document, write down a research question that is based on the Gapminder dataset (e.g., “How does population change over time in different countries?”)\nCreate 3-6 plots to answer/investigate your research question. Consider histograms (geom_histogram()), scatterplots (geom_point()), or lineplots (geom_line()).\nBe sure all titles, axes, and legends are clearly labelled (no raw variable names).\nInclude at least one plot with facet_wrap() or facet_grid().\nYou can use other geoms like bar charts, box plots, add meaningful vertical or horizontal lines, etc. You may find this data visualization cheat sheet helpful.\n\nYour document should be pleasant for a peer to look at, with some organization. You must write up your observations in words as well as showing the graphs. Upload both the .qmd file and the .html file to Canvas.\nOptional: If you’d like to compare several specific countries, you can adapt the following pseudo_code below to create a subset of the data with as many countries as you like. Replace \"country1\" et al. with the country name as it appears in the dataset. Use unique(gapminder$country) to see a complete list of all the countries available.:\n\nsubset &lt;- gapminder |&gt; \n  filter(country %in% c(\"county1\", \"country2\", \"country3\"))"
+  },
+  {
+    "objectID": "Homework/homework2.html#footnotes",
+    "href": "Homework/homework2.html#footnotes",
+    "title": "Homework 2",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nRemember to install the package in your console first (not in your qmd file) and then load it with the library() function.↩︎"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "CSSS 508: Intro to R for Social Scientists",
+    "section": "",
+    "text": "Jess Kunke (she/they)\n\n\n\nTuesdays 4:30-6:20pm\nThomson Hall Room 325\n\n\n\nWednesdays 4-6pm\nSavery Hall Room 117 (CSSCR Lab)\nFor further course details, please see the syllabus.\nThank you Vic Sass for the fantastic website design!"
+  },
+  {
+    "objectID": "index.html#welcome",
+    "href": "index.html#welcome",
+    "title": "CSSS 508: Intro to R for Social Scientists",
+    "section": "",
+    "text": "Jess Kunke (she/they)\n\n\n\nTuesdays 4:30-6:20pm\nThomson Hall Room 325\n\n\n\nWednesdays 4-6pm\nSavery Hall Room 117 (CSSCR Lab)\nFor further course details, please see the syllabus.\nThank you Vic Sass for the fantastic website design!"
+  },
+  {
+    "objectID": "Homework/homework1.html",
+    "href": "Homework/homework1.html",
+    "title": "Homework 1",
+    "section": "",
+    "text": "Instructions\nWrite up a .qmd file showing some exploratory analyses of the Swiss fertility data. Upload both the .qmd file and the .html file to Canvas. You must upload BOTH for credit.\nMix in-line R calculations, R output, and plots with text describing the relationships you see. Include at least one plot and one table using the gt package. You are encouraged to include more! You must use in-line R calculations/references at least once (e.g. functions like nrow(), mean(), sd(), cor(), median(), min()) and may not hard-code any numbers referenced in your text.\nYour document should be pleasant for a peer to look at, with some organization using sections or lists, and all plots labeled clearly. Make sure to update headers, text, etc. to reflect this Homework 1 assignment. Use chunk options echo and output to limit the code/output you show in the .html. Discussion of specific values should be summarized in sentences in your text—not as printed code and output—and rounded so as not to be absurdly precise (e.g. round x with round(x, 2)).\n\n\nTemplate\nrendered html file • raw qmd file\n\n\nExample\nrendered html file • raw qmd file",
+    "crumbs": [
+      "Homework",
+      "Homework 1"
+    ]
+  },
+  {
+    "objectID": "Homework/homework.html",
+    "href": "Homework/homework.html",
+    "title": "Overview",
+    "section": "",
+    "text": "This page contains general instructions for assignments and peer reviews. For specific instructions and templates for individual assignments, click on that assignment listed on the left.\nAll assignments should be created using Quarto and uploaded to Canvas. Your document should be pleasant for a peer to look at and follow all instructions. Use sections for organization, label figures/tables, and use code chunks.\nThis is a one-credit pass/fail course intended to help you learn R. The focus is on learning and practice, not on points. Assignments and peer reviews will be graded for completion, but the points are not the point: they are key opportunities to practice R/RStudio/Quarto and to learn from each other. Feel free to work together, discussion questions on Ed Discussion, trade ideas and tips.",
+    "crumbs": [
+      "Homework",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "Homework/homework.html#peer-review",
+    "href": "Homework/homework.html#peer-review",
+    "title": "Overview",
+    "section": "Peer Review",
+    "text": "Peer Review\nYou are required to examine and provide feedback on a peer’s homework submission each week. Reading and evaluating others’ code gives you the chance to see how other people approached the problems and share how you do things differently. Please give constructive, polite, and insightful comments that encourage your classmate and help them learn from you. Try to mention each of the following: one or more things they did well, one or more tips you have to improve their work, and one or more things you learned from reading their work.",
+    "crumbs": [
+      "Homework",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "Homework/homework.html#a-note-about-rendering-your-html-documents",
+    "href": "Homework/homework.html#a-note-about-rendering-your-html-documents",
+    "title": "Overview",
+    "section": "A Note About Rendering Your HTML documents",
+    "text": "A Note About Rendering Your HTML documents\nYou need to include embed-resources: true in your YAML header in order for your HTML documents to include any plot output when you upload them to Canvas. It should look something like this:\n\nYou can read more about this option here but basically, whenever you render a .qmd file to HTML, all output created goes into a separate, associated folder, which is referenced when displaying the page in your web browser. However, when you upload the HTML file separately from that folder (e.g. to Canvas or through email), it doesn’t have the specific output images to reference, so they won’t appear. When you specify in your YAML header that you want to embed resources, you’re explicitly adding the output created by your code to the HTML file so that a separate output folder is longer created and you can send your HTML file with all its output as one entity.",
+    "crumbs": [
+      "Homework",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "Homework/homework.html#assignment-due-dates",
+    "href": "Homework/homework.html#assignment-due-dates",
+    "title": "Overview",
+    "section": "Assignment Due Dates",
+    "text": "Assignment Due Dates\n\n\n\n\n\n\n\n\n#\nHomework Due\nPeer Review Due\n\n\n\n\n1\n08 April\n13 April\n\n\n2\n15 April\n20 April\n\n\n3\n22 April\n27 April\n\n\n4\n29 April\n03 May\n\n\n5\n06 May\n11 May\n\n\n6\n13 May\n18 May\n\n\n7\n20 May\n25 May\n\n\n8\n27 May\n01 June\n\n\n9\n03 June\n08 June",
+    "crumbs": [
+      "Homework",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "Homework/CSSS508_HW1_Example.html",
+    "href": "Homework/CSSS508_HW1_Example.html",
+    "title": "CSSS508 Homework 1 Example",
+    "section": "",
+    "text": "I’m interested in exploring a dataset from base R called iris. From its documentation I see that it is data about 50 flowers from each of 3 species of iris and their respective measurements of sepal length, sepal width, petal length, and petal width.\nI first want to take a look at a preview of the dataset by making a nice table.\n\n\n\n\n\n\n\n\n\nSepal.Length\nSepal.Width\nPetal.Length\nPetal.Width\nSpecies\n\n\n\n\n1\n5.1\n3.5\n1.4\n0.2\nsetosa\n\n\n2\n4.9\n3.0\n1.4\n0.2\nsetosa\n\n\n3\n4.7\n3.2\n1.3\n0.2\nsetosa\n\n\n4\n4.6\n3.1\n1.5\n0.2\nsetosa\n\n\n5\n5.0\n3.6\n1.4\n0.2\nsetosa\n\n\n6..145\n\n\n\n\n\n\n\n146\n6.7\n3.0\n5.2\n2.3\nvirginica\n\n\n147\n6.3\n2.5\n5.0\n1.9\nvirginica\n\n\n148\n6.5\n3.0\n5.2\n2.0\nvirginica\n\n\n149\n6.2\n3.4\n5.4\n2.3\nvirginica\n\n\n150\n5.9\n3.0\n5.1\n1.8\nvirginica\n\n\n\n\n\n\n\nThe mean petal length is 3.76 but its median petal length is 4.35. It’s range is 5.9 which additionally suggests a certain degree of spread.\nIt might be useful to look at the distribution to gain a better sense of the variation of this variable.\n\n\n\n\n\n\n\n\n\nThere seems to be a cluster of much smaller petals and then another cluster of average to bigger petals. I wonder how this varies by species…?\n\n\n\n\n\n\n\n\n\nWe can see from this plot that the overall mean and median of petal length is quite misleading! Only the verisicolor species of iris is close to those values while setosa is much mush smaller and virginica is a bit bigger.\nIs there a similar thing happening for sepal length and width? Let’s look at some basic descriptives of the dataset.\n\n\n\n\n\n\n\n\nSepal.Length\nSepal.Width\nPetal.Length\nPetal.Width\nSpecies\n\n\n\n\nMin. :4.300\nMin. :2.000\nMin. :1.000\nMin. :0.100\nsetosa :50\n\n\n1st Qu.:5.100\n1st Qu.:2.800\n1st Qu.:1.600\n1st Qu.:0.300\nversicolor:50\n\n\nMedian :5.800\nMedian :3.000\nMedian :4.350\nMedian :1.300\nvirginica :50\n\n\nMean :5.843\nMean :3.057\nMean :3.758\nMean :1.199\nNA\n\n\n3rd Qu.:6.400\n3rd Qu.:3.300\n3rd Qu.:5.100\n3rd Qu.:1.800\nNA\n\n\nMax. :7.900\nMax. :4.400\nMax. :6.900\nMax. :2.500\nNA\n\n\n\n\n\n\n\nIt’s interesting to note with the summary function that for numerical data it’ll calculate the classic 5 statistics used to construct a boxplot plus the mean but for a categorical variable like iris$Species it returns the frequency of each value of the variable.\nThe distribution of sepal length looks wider than sepal width, similar to how it was for those measurements of the petals. Let’s see how sepal length and width relate to one another graphically.\n\n\n\n\n\n\n\n\n\nThere are still clusters by each species type but for verisicolor and virginica there’s much more overlap. Overall, there’s tighter clustering by species for the petal length and width than there is for the sepal length and width."
+  },
+  {
+    "objectID": "Lectures/lectures.html",
+    "href": "Lectures/lectures.html",
+    "title": "Lecture schedule",
+    "section": "",
+    "text": "Please note that this schedule is subject to change.\n\n\n\nLecture\nDate\nTopic\nRecommended Readings\n\n\n\n\n1\n01 Apr 2025\nIntroduction to R, R Studio, and Quarto\nR for Data Science: Introduction, Ch 28 (Quarto)\n\n\n2\n08 Apr 2025\nData Visualization and Debugging\nR for Data Science: Chapters 1, 9-11; ggplot cheatsheet\n\n\n3\n15 Apr 2025\nWorkflow and Reproducibility\nR for Data Science: Chapters 2, 4, 6, 8 (workflow), 27\n\n\n4\n22 Apr 2025\nManipulating and Summarizing Data\nR for Data Science: Chapters 3, 12, 19\n\n\n5\n29 Apr 2025\nImporting, Exporting, and Cleaning Data\n\n\n\n6\n06 May 2025\nData Structures & Types\n\n\n\n7\n13 May 2025\nWorking with Text Data\n\n\n\n8\n20 May 2025\nWriting Functions\n\n\n\n9\n27 May 2025\nIteration\n\n\n\n10\n03 Jun 2025\nNext Steps",
+    "crumbs": [
+      "Lectures",
+      "Lecture schedule"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#title-slide",
+    "href": "Lectures/CSSS508_Lecture2.html#title-slide",
+    "title": "CSSS 508",
+    "section": "",
+    "text": "Visualizing Data\nCS&SS 508 • Lecture 2\nJess Kunke (slides adapted from Victoria Sass)"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#file-types",
+    "href": "Lectures/CSSS508_Lecture2.html#file-types",
+    "title": "CSSS 508",
+    "section": "File Types",
+    "text": "File Types\nWe mainly work with three types of files in this class:\n\n\n.qmd1: These are markdown syntax files, where you write code and plain or formatted text to make documents.\n.R: These are R syntax files, where you write code to process and analyze data without making an output document2.\n.html (or .pdf, .docx, etc.): These are the output documents created when you Render a quarto markdown document.\n\n\n\nMake sure you understand the difference between the uses of these file types! Please ask for clarification if needed!\n\nQuarto builds on a decade of developments with R Markdown documents. .Rmd files operate very similarly to Quarto documents but there are minor differences that you can read more about here.You can use the source() function to run a .R script file inside a .qmd or .R file. Using this you can break a large project up into multiple files but still run it all at once!"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#packages",
+    "href": "Lectures/CSSS508_Lecture2.html#packages",
+    "title": "CSSS 508",
+    "section": "Packages",
+    "text": "Packages\nLast week we discussed Base R and the fact that what makes R extremely powerful and flexible is the large number of diverse user-created packages.\n\n\n\n\nWhat are packages again?\n\n\nRecall that packages are simply collections of functions and tools others have already created, that will make your life easier!\n\n\n\n\n\n\n\n\nThe package 2-step\n\n\nRemember that to install a new package you use install.packages(\"package_name\") in the console. You only need to do this once per machine (unless you want to update to a newer version of a package).\nTo load a package into your current session of R you use library(package_name), preferably at the beginning of your R script or Quarto document. Every time you open RStudio it’s a new session and you’ll have to call library() on the packages you want to use."
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#packages-1",
+    "href": "Lectures/CSSS508_Lecture2.html#packages-1",
+    "title": "CSSS 508",
+    "section": "Packages",
+    "text": "Packages\nThe Packages tab in the bottom-right pane of RStudio lists your installed packages."
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#the-tidyverse",
+    "href": "Lectures/CSSS508_Lecture2.html#the-tidyverse",
+    "title": "CSSS 508",
+    "section": "The tidyverse",
+    "text": "The tidyverse\nThe tidyverse refers to two things:\n\n\na specific package in R that loads several core packages within the tidyverse.\n\na specific design philosophy, grammar, and focus on “tidy” data structures developed by Hadley Wickham1 and his team at RStudio (now named Posit).\n\n\nYou can read the official manifesto here."
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#the-tidyverse-package",
+    "href": "Lectures/CSSS508_Lecture2.html#the-tidyverse-package",
+    "title": "CSSS 508",
+    "section": "The tidyverse package",
+    "text": "The tidyverse package\n\n\nThe core packages within the tidyverse include:\n\n\nggplot2 (visualizations)\ndplyr (data manipulation)\ntidyr (data reshaping)\nreadr (data import/export)\npurrr (iteration)\ntibble (modern dataframe)\nstringr (text data)\nforcats (factors)"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#the-tidyverse-philosophy",
+    "href": "Lectures/CSSS508_Lecture2.html#the-tidyverse-philosophy",
+    "title": "CSSS 508",
+    "section": "The tidyverse philosophy",
+    "text": "The tidyverse philosophy\n\n\nThe principles underlying the tidyverse are:\n\n\nReuse existing data structures.\nCompose simple functions with the pipe.\nEmbrace functional programming.\nDesign for humans."
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#gapminder-data",
+    "href": "Lectures/CSSS508_Lecture2.html#gapminder-data",
+    "title": "CSSS 508",
+    "section": "Gapminder Data",
+    "text": "Gapminder Data\nWe’ll be working with data from Hans Rosling’s Gapminder project. An excerpt of these data can be accessed through an R package called gapminder1. Check the packages tab to see if gapminder appears (unchecked) in your computer’s list of downloaded packages.\n\nIf it doesn’t, run install.packages(\"gapminder\") in the console.\n\n\nNow, load the gapminder package as well as the tidyverse package:\n\nlibrary(gapminder)\n1library(tidyverse)\n\n\n1\n\nEvery time you library (i.e. load) tidyverse it will tell you which individual packages it is loading, as well as all function conflicts it has with other packages loaded in the current session. This is useful information but you can suppress seeing/printing this output by adding the message: false chunk option to your code chunk.\n\n\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\n\nCleaned and assembled by Jenny Bryan at UBC."
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#check-out-gapminder",
+    "href": "Lectures/CSSS508_Lecture2.html#check-out-gapminder",
+    "title": "CSSS 508",
+    "section": "Check Out Gapminder",
+    "text": "Check Out Gapminder\nThe data frame we will work with is called gapminder, available once you have loaded the package. Let’s see its structure:\n\nstr(gapminder)\n\ntibble [1,704 × 6] (S3: tbl_df/tbl/data.frame)\n $ country  : Factor w/ 142 levels \"Afghanistan\",..: 1 1 1 1 1 1 1 1 1 1 ...\n $ continent: Factor w/ 5 levels \"Africa\",\"Americas\",..: 3 3 3 3 3 3 3 3 3 3 ...\n $ year     : int [1:1704] 1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...\n $ lifeExp  : num [1:1704] 28.8 30.3 32 34 36.1 ...\n $ pop      : int [1:1704] 8425333 9240934 10267083 11537966 13079460 14880372 12881816 13867957 16317921 22227415 ...\n $ gdpPercap: num [1:1704] 779 821 853 836 740 ...\n\n\n\n\nWhat’s Notable Here?\n\n\nFactor variables country and continent\n\nFactors are categorical data with an underlying numeric representation\nWe’ll spend a lot of time on factors later!\n\nMany observations: \\(n=1704\\) rows\nFor each observation, a few variables: \\(p=6\\) columns\nA nested/hierarchical structure: year in country in continent\n\nThese are panel data!"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#base-r-plot",
+    "href": "Lectures/CSSS508_Lecture2.html#base-r-plot",
+    "title": "CSSS 508",
+    "section": "Base R plot",
+    "text": "Base R plot\n\n\n\nChina &lt;- gapminder |&gt; \n  filter(country == \"China\")\nplot(lifeExp ~ year, \n     data = China, \n     xlab = \"Year\", \n     ylab = \"Life expectancy\",\n     main = \"Life expectancy in China\", \n     col = \"red\", \n     pch = 16)\n\n\nThis plot is made with one function and many arguments.\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote: Don’t worry about the code used to create the object China. We’ll explore data manipulation in a couple weeks!"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#fancier-ggplot",
+    "href": "Lectures/CSSS508_Lecture2.html#fancier-ggplot",
+    "title": "CSSS 508",
+    "section": "Fancier: ggplot",
+    "text": "Fancier: ggplot\n\n\n\nggplot(data = China, \n       mapping = aes(x = year, y = lifeExp)) +\n  geom_point(color = \"red\", size = 3) +\n  labs(title = \"Life expectancy in China\", \n       x = \"Year\", \n       y = \"Life expectancy\") +\n  theme_minimal(base_size = 18)\n\n\nThis ggplot is made with many functions and fewer arguments in each."
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#ggplot2",
+    "href": "Lectures/CSSS508_Lecture2.html#ggplot2",
+    "title": "CSSS 508",
+    "section": "ggplot2",
+    "text": "ggplot2\nThe ggplot2 package provides an alternative toolbox for plotting.\n\nThe core idea underlying this package is the layered grammar of graphics: i.e. that we can break up elements of a plot into pieces and combine them.\n\n\nggplots take a bit more work to create than Base R plots, but are usually:\n\nprettier\nmore professional\nmuch more customizable"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#layered-grammar-of-graphics",
+    "href": "Lectures/CSSS508_Lecture2.html#layered-grammar-of-graphics",
+    "title": "CSSS 508",
+    "section": "Layered grammar of graphics",
+    "text": "Layered grammar of graphics\n\n\n\n\n\n\n\nThis is based on Leland Wilkinson’s book The Grammar of Graphics and extended by Hadley Wickham in his paper “A layered grammar of graphics”."
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#structure-of-a-ggplot",
+    "href": "Lectures/CSSS508_Lecture2.html#structure-of-a-ggplot",
+    "title": "CSSS 508",
+    "section": "Structure of a ggplot",
+    "text": "Structure of a ggplot\nggplot graphics objects consist of two primary components:\n\n\nLayers, the components of a graph.\n\nWe add layers to a ggplot object using +.\nThis includes adding lines, shapes, and text to a plot.\n\n\n\n\n\nAesthetics, which determine how the layers appear.\n\nWe set aesthetics using arguments (e.g. color = \"red\") inside layer functions.\nThis includes modifying locations, colors, and sizes of the layers.\n\n\n\n\n\nAesthetic Vignette\n\n\nLearn more about all possible aesthetic mappings here."
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#layers",
+    "href": "Lectures/CSSS508_Lecture2.html#layers",
+    "title": "CSSS 508",
+    "section": "Layers",
+    "text": "Layers\nLayers are the components of the graph, such as:\n\n\nggplot(): initializes basic plotting object, specifies input data\ngeom_point(): layer of scatterplot points\ngeom_line(): layer of lines\ngeom_histogram(): layer of a histogram\nlabs (or to specify individually: ggtitle(), xlab(), ylab()): layers of labels\nfacet_wrap(): layer creating multiple plot panels\ntheme_bw(): layer replacing default gray background with black-and-white\n\n\n\nLayers are separated by a + sign. For clarity, I usually put each layer on a new line.\n\n\n\nSyntax Warning\n\n\nBe sure to end each line with the +. The code will not run if a new line begins with a +."
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#aesthetics",
+    "href": "Lectures/CSSS508_Lecture2.html#aesthetics",
+    "title": "CSSS 508",
+    "section": "Aesthetics",
+    "text": "Aesthetics\nAesthetics control the appearance of the layers:\n\nx, y: \\(x\\) and \\(y\\) coordinate values to use\ncolor: set color of elements based on some data value\ngroup: describe which points are conceptually grouped together for the plot (often used with lines)\nsize: set size of points/lines based on some data value (greater than 0)\nalpha: set transparency based on some data value (between 0 and 1)\n\n\n\n\nMapping data inside aes() vs. creating plot-wise settings outside aes()\n\n\nWhen aesthetic arguments are called within aes() they specify a variable of the data and therefore map said value of the data by that aesthetic. Called outside aes(), these are only settings that can be given a specific value but will not display a dimension of the data."
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#ggplot-templates",
+    "href": "Lectures/CSSS508_Lecture2.html#ggplot-templates",
+    "title": "CSSS 508",
+    "section": "ggplot Templates",
+    "text": "ggplot Templates\n\n\nAll layers have:\nan initializing ggplot call and at least one geom function.\n\n\nsame data & aestheticssame data, diff aestheticsdiff data & aesthetics\n\n\n\nggplot(data = [dataset], \n       mapping = aes(x = [x-variable], y = [y-variable])) +\n  geom_xxx() +\n  other options\n\n\n\n\nggplot(data = [dataset], \n       mapping = aes(x = [x-variable], y = [y-variable])) +\n  geom_xxx() +\n  geom_yyy(mapping = aes(x = [x-variable], y = [y-variable])) +\n  other options\n\n\n\n\nggplot() +\n  geom_xxx(data = [dataset1],\n           mapping = aes(x = [x-variable], y = [y-variable])) +\n  geom_yyy(data = [dataset2],\n           mapping = aes(x = [x-variable], y = [y-variable])) +\n  other options"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#axis-labels-points-no-background",
+    "href": "Lectures/CSSS508_Lecture2.html#axis-labels-points-no-background",
+    "title": "CSSS 508",
+    "section": "Axis Labels, Points, No Background",
+    "text": "Axis Labels, Points, No Background\nBase ggplot\n\n\n\nggplot(data = China,  \n       aes(x = year, y = lifeExp)) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\nInitialize the plot with ggplot() and x and y aesthetics mapped to variables. These aesthetics will be accessible to any future layers since they’re in the primary layer."
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#axis-labels-points-no-background-1",
+    "href": "Lectures/CSSS508_Lecture2.html#axis-labels-points-no-background-1",
+    "title": "CSSS 508",
+    "section": "Axis Labels, Points, No Background",
+    "text": "Axis Labels, Points, No Background\nScatterplot\n\n\n\nggplot(data = China, \n       aes(x = year, y = lifeExp)) +\n  geom_point()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAdd a scatterplot layer."
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#axis-labels-points-no-background-2",
+    "href": "Lectures/CSSS508_Lecture2.html#axis-labels-points-no-background-2",
+    "title": "CSSS 508",
+    "section": "Axis Labels, Points, No Background",
+    "text": "Axis Labels, Points, No Background\nPoint Color and Size\n\n\n\nggplot(data = China, \n       aes(x = year, y = lifeExp)) +\n  geom_point(color = \"red\", size = 3)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSet aesthetics to make the points larger and red. Notice that these “aesthetics” are not inside the aes call the way x and y are on line 2. These are therefore global settings rather than mapping aesthetics."
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#axis-labels-points-no-background-3",
+    "href": "Lectures/CSSS508_Lecture2.html#axis-labels-points-no-background-3",
+    "title": "CSSS 508",
+    "section": "Axis Labels, Points, No Background",
+    "text": "Axis Labels, Points, No Background\nX-Axis Label\n\n\n\nggplot(data = China, \n       aes(x = year, y = lifeExp)) +\n  geom_point(color = \"red\", size = 3) +\n  labs(x = \"Year\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAdd a layer to capitalize the x-axis label."
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#axis-labels-points-no-background-4",
+    "href": "Lectures/CSSS508_Lecture2.html#axis-labels-points-no-background-4",
+    "title": "CSSS 508",
+    "section": "Axis Labels, Points, No Background",
+    "text": "Axis Labels, Points, No Background\nY-Axis Label\n\n\n\nggplot(data = China, \n       aes(x = year, y = lifeExp)) +\n  geom_point(color = \"red\", size = 3) +\n  labs(x = \"Year\", \n       y = \"Life expectancy\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAdd a layer to clean up the y-axis label."
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#axis-labels-points-no-background-5",
+    "href": "Lectures/CSSS508_Lecture2.html#axis-labels-points-no-background-5",
+    "title": "CSSS 508",
+    "section": "Axis Labels, Points, No Background",
+    "text": "Axis Labels, Points, No Background\nTitle\n\n\n\nggplot(data = China, \n       aes(x = year, y = lifeExp)) +\n  geom_point(color = \"red\", size = 3) +\n  labs(x = \"Year\",\n       y = \"Life expectancy\",\n       title = \"Life expectancy in China\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAdd a title layer."
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#axis-labels-points-no-background-6",
+    "href": "Lectures/CSSS508_Lecture2.html#axis-labels-points-no-background-6",
+    "title": "CSSS 508",
+    "section": "Axis Labels, Points, No Background",
+    "text": "Axis Labels, Points, No Background\nTheme\n\n\n\nggplot(data = China, \n       aes(x = year, y = lifeExp)) +\n  geom_point(color = \"red\", size = 3) +\n  labs(x = \"Year\",\n       y = \"Life expectancy\",\n       title = \"Life expectancy in China\") +\n  theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPick a nicer theme with a new layer."
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#axis-labels-points-no-background-7",
+    "href": "Lectures/CSSS508_Lecture2.html#axis-labels-points-no-background-7",
+    "title": "CSSS 508",
+    "section": "Axis Labels, Points, No Background",
+    "text": "Axis Labels, Points, No Background\nText Size\n\n\n\nggplot(data = China, \n       aes(x = year, y = lifeExp)) +\n  geom_point(color = \"red\", size = 3) +\n  labs(x = \"Year\",\n       y = \"Life expectancy\",\n       title = \"Life expectancy in China\") +\n  theme_minimal(base_size = 18) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIncrease the base text size."
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#plotting-all-countries",
+    "href": "Lectures/CSSS508_Lecture2.html#plotting-all-countries",
+    "title": "CSSS 508",
+    "section": "Plotting All Countries",
+    "text": "Plotting All Countries\nWe have a plot we like for China…\n\n… but what if we want all the countries?"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#plotting-all-countries-1",
+    "href": "Lectures/CSSS508_Lecture2.html#plotting-all-countries-1",
+    "title": "CSSS 508",
+    "section": "Plotting All Countries",
+    "text": "Plotting All Countries\nA Mess!\n\n\n\nggplot(data = gapminder,\n       aes(x = year, y = lifeExp)) +\n  geom_point(color = \"red\", size = 3) +\n  labs(x = \"Year\",\n       y = \"Life expectancy\",\n       title = \"Life expectancy over time\") + \n  theme_minimal(base_size = 18) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWe can’t tell countries apart! Maybe we could follow lines?"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#plotting-all-countries-2",
+    "href": "Lectures/CSSS508_Lecture2.html#plotting-all-countries-2",
+    "title": "CSSS 508",
+    "section": "Plotting All Countries",
+    "text": "Plotting All Countries\nLines\n\n\n\nggplot(data = gapminder, \n       aes(x = year, y = lifeExp)) +\n  geom_line(color = \"red\", size = 3) + \n  labs(x = \"Year\",\n       y = \"Life expectancy\",\n       title = \"Life expectancy over time\") + \n  theme_minimal(base_size = 18) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\nggplot2 doesn’t know how to connect the lines!"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#plotting-all-countries-3",
+    "href": "Lectures/CSSS508_Lecture2.html#plotting-all-countries-3",
+    "title": "CSSS 508",
+    "section": "Plotting All Countries",
+    "text": "Plotting All Countries\nGrouping\n\n\n\nggplot(data = gapminder, \n       aes(x = year, y = lifeExp, \n           group = country)) +\n  geom_line(color = \"red\", size = 3) +\n  labs(x = \"Year\",\n       y = \"Life expectancy\",\n       title = \"Life expectancy over time\") + \n  theme_minimal(base_size = 18) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThat looks more reasonable… but the lines are too thick!"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#plotting-all-countries-4",
+    "href": "Lectures/CSSS508_Lecture2.html#plotting-all-countries-4",
+    "title": "CSSS 508",
+    "section": "Plotting All Countries",
+    "text": "Plotting All Countries\nSize\n\n\n\nggplot(data = gapminder, \n       aes(x = year, y = lifeExp, \n           group = country)) +\n  geom_line(color = \"red\") +\n  labs(x = \"Year\",\n       y = \"Life expectancy\",\n       title = \"Life expectancy over time\") + \n  theme_minimal(base_size = 18) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMuch better… but what if we highlight regional differences?"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#plotting-all-countries-5",
+    "href": "Lectures/CSSS508_Lecture2.html#plotting-all-countries-5",
+    "title": "CSSS 508",
+    "section": "Plotting All Countries",
+    "text": "Plotting All Countries\nColor\n\n\n\nggplot(data = gapminder, \n       aes(x = year, y = lifeExp, \n           group = country, \n           color = continent)) +\n  geom_line() +\n  labs(x = \"Year\",\n       y = \"Life expectancy\",\n       title = \"Life expectancy over time\") + \n  theme_minimal(base_size = 18) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPatterns are obvious… but it might be even more impactful if we separate continents completely."
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#plotting-all-countries-6",
+    "href": "Lectures/CSSS508_Lecture2.html#plotting-all-countries-6",
+    "title": "CSSS 508",
+    "section": "Plotting All Countries",
+    "text": "Plotting All Countries\nFacets\n\n\n\nggplot(data = gapminder, \n       aes(x = year, y = lifeExp, \n           group = country, \n           color = continent)) +\n  geom_line() +\n  labs(x = \"Year\",\n       y = \"Life expectancy\",\n       title = \"Life expectancy over time\") + \n  theme_minimal(base_size = 18) +\n  facet_wrap(vars(continent))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNow the text is too big!"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#plotting-all-countries-7",
+    "href": "Lectures/CSSS508_Lecture2.html#plotting-all-countries-7",
+    "title": "CSSS 508",
+    "section": "Plotting All Countries",
+    "text": "Plotting All Countries\nText Size\n\n\n\nggplot(data = gapminder, \n       aes(x = year, y = lifeExp, \n           group = country, \n           color = continent)) +\n  geom_line() +\n  labs(x = \"Year\",\n       y = \"Life expectancy\",\n       title = \"Life expectancy over time\") + \n  theme_minimal() +\n  facet_wrap(vars(continent))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBetter. Do we even need the legend anymore?"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#plotting-all-countries-8",
+    "href": "Lectures/CSSS508_Lecture2.html#plotting-all-countries-8",
+    "title": "CSSS 508",
+    "section": "Plotting All Countries",
+    "text": "Plotting All Countries\nNo Legend\n\n\n\nggplot(data = gapminder, \n       aes(x = year, y = lifeExp, \n           group = country, \n           color = continent)) +\n  geom_line() +\n  labs(x = \"Year\",\n       y = \"Life expectancy\",\n       title = \"Life expectancy over time\") + \n  theme_minimal() +\n  facet_wrap(vars(continent)) + \n  theme(legend.position = \"none\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLooking pretty good!"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#make-a-histogram",
+    "href": "Lectures/CSSS508_Lecture2.html#make-a-histogram",
+    "title": "CSSS 508",
+    "section": "Make a histogram",
+    "text": "Make a histogram\nIn pairs, create a histogram of life expectancy observations in the complete Gapminder dataset.\n\nSet the base layer by specifying the data as gapminder and the x variable as lifeExp\nAdd a second layer to create a histogram using the function geom_histogram()\nCustomize your plot with nice axis labels and a title.\nAdd the color “salmon” to the entire plot (hint: use the fill argument, not color).\nChange this fill setting to an aesthetic and map continent onto it.\nChange the geom to geom_freqpoly. What happened and how might you fix it?\nAdd facets for continent (create only 1 column).\nAdd one of the built-in themes from ggplot2.\nRemove the legend from the plot."
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#solution-1.-set-base-layer",
+    "href": "Lectures/CSSS508_Lecture2.html#solution-1.-set-base-layer",
+    "title": "CSSS 508",
+    "section": "Solution: 1. Set Base Layer",
+    "text": "Solution: 1. Set Base Layer\n\nggplot(gapminder, aes(x = lifeExp))"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#solution-2.-add-histogram-layer",
+    "href": "Lectures/CSSS508_Lecture2.html#solution-2.-add-histogram-layer",
+    "title": "CSSS 508",
+    "section": "Solution: 2. Add Histogram Layer",
+    "text": "Solution: 2. Add Histogram Layer\n\nggplot(gapminder, aes(x = lifeExp)) +\n  geom_histogram(bins = 30)\n\n\n\n\n\n\n\n\n\n\nSetting the bins aesthetic tells ggplot how many values to bin by (lower is more fine-grained, higher is less descriptive)."
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#solution-3.-add-label-layers",
+    "href": "Lectures/CSSS508_Lecture2.html#solution-3.-add-label-layers",
+    "title": "CSSS 508",
+    "section": "Solution: 3. Add Label Layers",
+    "text": "Solution: 3. Add Label Layers\n\nggplot(gapminder, aes(x = lifeExp)) +\n  geom_histogram(bins = 30) +\n  xlab(\"Life Expectancy\") +\n  ylab(\"Count\") +\n  ggtitle(\"Histogram of Life Expectancy in Gapminder Data\")"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#solution-4.-add-fill-setting",
+    "href": "Lectures/CSSS508_Lecture2.html#solution-4.-add-fill-setting",
+    "title": "CSSS 508",
+    "section": "Solution: 4. Add fill setting",
+    "text": "Solution: 4. Add fill setting\n\nggplot(gapminder, aes(x = lifeExp)) +\n  geom_histogram(bins = 30, fill = \"salmon\") +\n  xlab(\"Life Expectancy\") +\n  ylab(\"Count\") +\n  ggtitle(\"Histogram of Life Expectancy in Gapminder Data\")"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#solution-5.-add-fill-aesthetic",
+    "href": "Lectures/CSSS508_Lecture2.html#solution-5.-add-fill-aesthetic",
+    "title": "CSSS 508",
+    "section": "Solution: 5. Add fill aesthetic",
+    "text": "Solution: 5. Add fill aesthetic\n\nggplot(gapminder, aes(x = lifeExp, fill = continent)) +\n  geom_histogram(bins = 30) +\n  xlab(\"Life Expectancy\") +\n  ylab(\"Count\") +\n  ggtitle(\"Histogram of Life Expectancy in Gapminder Data\")"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#solution-6.-change-geometry",
+    "href": "Lectures/CSSS508_Lecture2.html#solution-6.-change-geometry",
+    "title": "CSSS 508",
+    "section": "Solution: 6. Change geometry",
+    "text": "Solution: 6. Change geometry\n\nggplot(gapminder, aes(x = lifeExp, fill = continent)) +\n  geom_freqpoly(bins = 30) +\n  xlab(\"Life Expectancy\") +\n  ylab(\"Count\") +\n  ggtitle(\"Histogram of Life Expectancy in Gapminder Data\")"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#solution-6.-change-geometry-1",
+    "href": "Lectures/CSSS508_Lecture2.html#solution-6.-change-geometry-1",
+    "title": "CSSS 508",
+    "section": "Solution: 6. Change geometry",
+    "text": "Solution: 6. Change geometry\n\nggplot(gapminder, aes(x = lifeExp, color = continent)) +\n  geom_freqpoly(bins = 30) +\n  xlab(\"Life Expectancy\") +\n  ylab(\"Count\") +\n  ggtitle(\"Histogram of Life Expectancy in Gapminder Data\")"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#solution-7.-add-facets",
+    "href": "Lectures/CSSS508_Lecture2.html#solution-7.-add-facets",
+    "title": "CSSS 508",
+    "section": "Solution: 7. Add facets",
+    "text": "Solution: 7. Add facets\n\nggplot(gapminder, aes(x = lifeExp, color = continent)) +\n  geom_freqpoly(bins = 30) +\n  facet_wrap(vars(continent), ncol = 1) +\n  xlab(\"Life Expectancy\") +\n  ylab(\"Count\") +\n  ggtitle(\"Histogram of Life Expectancy in Gapminder Data\")"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#solution-8.-add-nicer-theme",
+    "href": "Lectures/CSSS508_Lecture2.html#solution-8.-add-nicer-theme",
+    "title": "CSSS 508",
+    "section": "Solution: 8. Add nicer theme",
+    "text": "Solution: 8. Add nicer theme\n\nggplot(gapminder, aes(x = lifeExp, color = continent)) +\n  geom_freqpoly(bins = 30) +\n  facet_wrap(vars(continent), ncol = 1) +\n  xlab(\"Life Expectancy\") +\n  ylab(\"Count\") +\n  ggtitle(\"Histogram of Life Expectancy in Gapminder Data\") +\n  theme_minimal()"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#solution-9.-remove-legend",
+    "href": "Lectures/CSSS508_Lecture2.html#solution-9.-remove-legend",
+    "title": "CSSS 508",
+    "section": "Solution: 9. Remove legend",
+    "text": "Solution: 9. Remove legend\n\nggplot(gapminder, aes(x = lifeExp, color = continent)) +\n  geom_freqpoly(bins = 30) +\n  facet_wrap(vars(continent), ncol = 1) +\n  xlab(\"Life Expectancy\") +\n  ylab(\"Count\") +\n  ggtitle(\"Histogram of Life Expectancy in Gapminder Data\") + \n  theme_minimal() + \n  theme(legend.position = \"none\")"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#further-customization",
+    "href": "Lectures/CSSS508_Lecture2.html#further-customization",
+    "title": "CSSS 508",
+    "section": "Further customization",
+    "text": "Further customization\nNext, we’ll discuss:\n\nStoring, modifying, and saving ggplots\nAdvanced axis changes (scales, text, ticks)\nLegend changes (scales, colors, locations)\nUsing multiple geoms\nAdding annotation for emphasis"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#storing-plots",
+    "href": "Lectures/CSSS508_Lecture2.html#storing-plots",
+    "title": "CSSS 508",
+    "section": "Storing Plots",
+    "text": "Storing Plots\nWe can assign a ggplot object to a name:\n\nlifeExp_by_year &lt;- \n  ggplot(data = gapminder, \n       aes(x = year, y = lifeExp, \n           group = country, \n           color = continent)) +\n  geom_line() +\n  labs(x = \"Year\",\n       y = \"Life expectancy\",\n       title = \"Life expectancy over time\") + \n  theme_minimal() + \n  facet_wrap(vars(continent)) +\n  theme(legend.position = \"none\")\n\nAfterwards, you can display or modify ggplots…"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#showing-a-stored-graph",
+    "href": "Lectures/CSSS508_Lecture2.html#showing-a-stored-graph",
+    "title": "CSSS 508",
+    "section": "Showing a Stored Graph",
+    "text": "Showing a Stored Graph\n\nlifeExp_by_year"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#overriding-previous-specifications",
+    "href": "Lectures/CSSS508_Lecture2.html#overriding-previous-specifications",
+    "title": "CSSS 508",
+    "section": "Overriding previous specifications",
+    "text": "Overriding previous specifications\n\nlifeExp_by_year + \n  facet_grid(cols = vars(continent))"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#adding-more-layers",
+    "href": "Lectures/CSSS508_Lecture2.html#adding-more-layers",
+    "title": "CSSS 508",
+    "section": "Adding More Layers",
+    "text": "Adding More Layers\n\nlifeExp_by_year +\n  facet_grid(cols = vars(continent)) + \n    theme(legend.position = \"bottom\")"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#saving-ggplot-plots",
+    "href": "Lectures/CSSS508_Lecture2.html#saving-ggplot-plots",
+    "title": "CSSS 508",
+    "section": "Saving ggplot Plots",
+    "text": "Saving ggplot Plots\nIf you want to save a ggplot, use ggsave():\n\nggsave(filename = \"I_saved_a_file.pdf\", \n       plot = lifeExp_by_year,\n       height = 3, width = 5, units = \"in\")\n\nIf you didn’t manually set font sizes, these will usually come out at a reasonable size given the dimensions of your output file."
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#changing-the-axes",
+    "href": "Lectures/CSSS508_Lecture2.html#changing-the-axes",
+    "title": "CSSS 508",
+    "section": "Changing the Axes",
+    "text": "Changing the Axes\nWe can modify the axes in a variety of ways, such as:\n\nChange the \\(x\\) or \\(y\\) range using xlim() or ylim() layers\nChange to a logarithmic or square-root scale on either axis: scale_x_log10(), scale_y_sqrt()\nChange where the major/minor breaks are: scale_x_continuous(breaks =, minor_breaks = )"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#axis-changes",
+    "href": "Lectures/CSSS508_Lecture2.html#axis-changes",
+    "title": "CSSS 508",
+    "section": "Axis Changes",
+    "text": "Axis Changes\n\nggplot(data = China, aes(x = year, y = gdpPercap)) +\n    geom_line() +\n    scale_y_log10(breaks = c(1000, 2000, 3000, 4000, 5000)) + \n    xlim(1940, 2010) + ggtitle(\"Chinese GDP per capita\")"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#precise-legend-position",
+    "href": "Lectures/CSSS508_Lecture2.html#precise-legend-position",
+    "title": "CSSS 508",
+    "section": "Precise Legend Position",
+    "text": "Precise Legend Position\n\nlifeExp_by_year +\n  theme(legend.position = c(0.8, 0.2)) \n\n\nInstead of coordinates, you could also use “top”, “bottom”, “left”, or “right”."
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#scales-for-color-shape-etc.",
+    "href": "Lectures/CSSS508_Lecture2.html#scales-for-color-shape-etc.",
+    "title": "CSSS 508",
+    "section": "Scales for Color, Shape, etc.",
+    "text": "Scales for Color, Shape, etc.\nScales are layers that control how the mapped aesthetics appear.\nYou can modify these with a scale_[aesthetic]_[option]() layer:\n\n\n[aesthetic] is x, y, color, shape, linetype, alpha, size, fill, etc.\n[option] is something like manual, continuous, binned or discrete (depending on nature of the variable).\n\n\n\nExamples:\n\nscale_alpha_ordinal(): scales alpha transparency for ordinal categorical variable\nscale_x_log10(): maps a log10 transformation of the x-axis variable\nscale_color_manual(): allows manual specification of color aesthetic"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#legend-name-and-manual-colors",
+    "href": "Lectures/CSSS508_Lecture2.html#legend-name-and-manual-colors",
+    "title": "CSSS 508",
+    "section": "Legend Name and Manual Colors",
+    "text": "Legend Name and Manual Colors\n\nlifeExp_by_year +\n  theme(legend.position = c(0.8, 0.2)) +\n  scale_color_manual(\n    name = \"Which continent are\\nwe looking at?\", # \\n adds a line break \n    values = c(\"Africa\" = \"#4e79a7\", \"Americas\" = \"#f28e2c\", \n               \"Asia\" = \"#e15759\", \"Europe\" = \"#76b7b2\", \"Oceania\" = \"#59a14f\"))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\nThis scale argument knows to “map” onto continent because it is specified as the aesthetic for color in our original ggplot object."
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#fixed-versus-free-scales",
+    "href": "Lectures/CSSS508_Lecture2.html#fixed-versus-free-scales",
+    "title": "CSSS 508",
+    "section": "Fixed versus Free Scales",
+    "text": "Fixed versus Free Scales\n\nUntransformedFixedFree xFree yFree x & y\n\n\n\n\nCode\ngapminder_sub &lt;- gapminder |&gt; \n  filter(year %in% c(1952, 1982, 2002)) # create subset with only 3 years\n  \nscales_plot &lt;- ggplot(data = gapminder_sub, \n       aes(x = lifeExp, y = gdpPercap, fill = continent)) + \n  geom_jitter(alpha = 0.5, # alpha of points halfway transparent\n              pch = 21, # shape is a circle with fill\n              size = 3, # increase size\n              color = \"black\") + # outline of circle is black \n  scale_fill_viridis_d(option = \"D\") + # circle is filled by colors perceptable for various forms of color-blindness\n  facet_grid(rows = vars(year), # facet by years in the row\n             cols = vars(continent)) + # facet by continent in the columns\n  ggthemes::theme_tufte(base_size = 20) # increase base text size\nscales_plot\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nscales_plot + scale_y_log10(breaks = c(250, 1000, 10000, 50000, 115000)) # transform the y axis to the logarithm to gain better visualization\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nscales_plot + scale_y_log10(breaks = c(250, 1000, 10000, 50000, 115000)) +\n  facet_grid(rows = vars(year), \n             cols = vars(continent), \n             scales = \"free_x\") # make the x axis vary by data \n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nscales_plot + scale_y_log10(breaks = c(250, 1000, 10000, 50000, 115000)) +\n  facet_grid(rows = vars(year), \n             cols = vars(continent), \n             scales = \"free_y\") # make the y axis vary by data \n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nscales_plot + scale_y_log10(breaks = c(250, 1000, 10000, 50000, 115000)) +\n  facet_grid(rows = vars(year), \n             cols = vars(continent), \n             scales = \"free\") # make both axes vary by data"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#using-multiple-geoms",
+    "href": "Lectures/CSSS508_Lecture2.html#using-multiple-geoms",
+    "title": "CSSS 508",
+    "section": "Using multiple geoms",
+    "text": "Using multiple geoms\n\nggplot(gapminder, aes(x = continent, y = lifeExp)) +\n  geom_boxplot(outlier.colour = \"maroon\")"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#using-multiple-geoms-1",
+    "href": "Lectures/CSSS508_Lecture2.html#using-multiple-geoms-1",
+    "title": "CSSS 508",
+    "section": "Using multiple geoms",
+    "text": "Using multiple geoms\n\nggplot(gapminder, aes(x = continent, y = lifeExp)) +\n  geom_boxplot(outlier.colour = \"maroon\") +\n  geom_point(alpha = 0.25)"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#using-multiple-geoms-2",
+    "href": "Lectures/CSSS508_Lecture2.html#using-multiple-geoms-2",
+    "title": "CSSS 508",
+    "section": "Using multiple geoms",
+    "text": "Using multiple geoms\n\nggplot(gapminder, aes(x = continent, y = lifeExp)) +\n  geom_boxplot(outlier.colour = \"maroon\") +\n  geom_jitter(alpha = 0.25)"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#using-multiple-geoms-3",
+    "href": "Lectures/CSSS508_Lecture2.html#using-multiple-geoms-3",
+    "title": "CSSS 508",
+    "section": "Using multiple geoms",
+    "text": "Using multiple geoms\n\nggplot(gapminder, aes(x = continent, y = lifeExp)) +\n  geom_boxplot(outlier.colour = \"maroon\") +\n  geom_jitter(position = position_jitter(width = 0.1, height = 0), alpha = 0.25)"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#annotating-specific-datapoints-for-emphasis",
+    "href": "Lectures/CSSS508_Lecture2.html#annotating-specific-datapoints-for-emphasis",
+    "title": "CSSS 508",
+    "section": "Annotating specific datapoints for emphasis",
+    "text": "Annotating specific datapoints for emphasis\n\nBasic annotationOffset annotationCode: outliersCode: no outliers\n\n\n\n\nCode\nggplot(gapminder, aes(x = continent, y = lifeExp)) +\n  geom_boxplot(outlier.colour = \"maroon\", outlier.size = 3) +\n  geom_jitter(data = no_outliers, position = position_jitter(width = 0.1, height = 0), alpha = 0.25, size = 3) + \n  geom_text(data = outliers, aes(label = country), color = \"maroon\", size = 8) + \n  theme_minimal(base_size = 18)\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nlibrary(ggrepel)\nggplot(gapminder, aes(x = continent, y = lifeExp)) +\n  geom_boxplot(outlier.colour = \"maroon\", outlier.size = 3) +\n  geom_jitter(data = no_outliers, position = position_jitter(width = 0.1, height = 0), alpha = 0.25, size = 3) + \n  geom_label_repel(data = outliers, aes(label = country), color = \"maroon\", alpha = 0.7, size = 8, max.overlaps = 13) + \n  theme_minimal(base_size = 18)\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\noutliers &lt;- gapminder |&gt; \n  group_by(continent) |&gt; \n  mutate(outlier = case_when(quantile(lifeExp, probs = 0.25) - (IQR(lifeExp) * 1.5) &gt; lifeExp ~ \"outlier\", # anything lower than the 1st quartile - 1.5*IQR \n                             quantile(lifeExp, probs = 0.75) + (IQR(lifeExp) * 1.5) &lt; lifeExp ~ \"outlier\", # anything higher than the 3rd quartile + 1.5*IQR\n                             .default = NA)) |&gt; \n  filter(!is.na(outlier)) |&gt; # remove non-outliers\n  ungroup() |&gt; group_by(country) |&gt; # regroup by country\n  filter(lifeExp == min(lifeExp)) # filter just the min for each country\n\noutliers\n\n\n# A tibble: 13 × 7\n# Groups:   country [13]\n   country                continent  year lifeExp      pop gdpPercap outlier\n   &lt;fct&gt;                  &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt; &lt;chr&gt;  \n 1 Albania                Europe     1952    55.2  1282697     1601. outlier\n 2 Bosnia and Herzegovina Europe     1952    53.8  2791000      974. outlier\n 3 Bulgaria               Europe     1952    59.6  7274900     2444. outlier\n 4 Haiti                  Americas   1952    37.6  3201488     1840. outlier\n 5 Libya                  Africa     2002    72.7  5368585     9535. outlier\n 6 Mauritius              Africa     2007    72.8  1250882    10957. outlier\n 7 Montenegro             Europe     1952    59.2   413834     2648. outlier\n 8 Portugal               Europe     1952    59.8  8526050     3068. outlier\n 9 Reunion                Africa     1992    73.6   622191     6101. outlier\n10 Rwanda                 Africa     1992    23.6  7290203      737. outlier\n11 Serbia                 Europe     1952    58.0  6860147     3581. outlier\n12 Tunisia                Africa     2002    73.0  9770575     5723. outlier\n13 Turkey                 Europe     1952    43.6 22235677     1969. outlier\n\n\n\n\n\n\nCode\nno_outliers &lt;- gapminder |&gt; \n  group_by(continent) |&gt; \n  mutate(outlier = case_when(quantile(lifeExp, probs = 0.25) - (IQR(lifeExp) * 1.5) &gt; lifeExp ~ \"outlier\",\n                             quantile(lifeExp, probs = 0.75) + (IQR(lifeExp) * 1.5) &lt; lifeExp ~ \"outlier\", \n                             .default = NA)) |&gt; \n  filter(is.na(outlier)) # remove outliers\n\nno_outliers\n\n\n# A tibble: 1,679 × 7\n# Groups:   continent [5]\n   country     continent  year lifeExp      pop gdpPercap outlier\n   &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt; &lt;chr&gt;  \n 1 Afghanistan Asia       1952    28.8  8425333      779. &lt;NA&gt;   \n 2 Afghanistan Asia       1957    30.3  9240934      821. &lt;NA&gt;   \n 3 Afghanistan Asia       1962    32.0 10267083      853. &lt;NA&gt;   \n 4 Afghanistan Asia       1967    34.0 11537966      836. &lt;NA&gt;   \n 5 Afghanistan Asia       1972    36.1 13079460      740. &lt;NA&gt;   \n 6 Afghanistan Asia       1977    38.4 14880372      786. &lt;NA&gt;   \n 7 Afghanistan Asia       1982    39.9 12881816      978. &lt;NA&gt;   \n 8 Afghanistan Asia       1987    40.8 13867957      852. &lt;NA&gt;   \n 9 Afghanistan Asia       1992    41.7 16317921      649. &lt;NA&gt;   \n10 Afghanistan Asia       1997    41.8 22227415      635. &lt;NA&gt;   \n# ℹ 1,669 more rows"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#end-result",
+    "href": "Lectures/CSSS508_Lecture2.html#end-result",
+    "title": "CSSS 508",
+    "section": "End Result",
+    "text": "End Result\nWe’re going to slowly build up a really detailed plot now!"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#base-ggplot-1",
+    "href": "Lectures/CSSS508_Lecture2.html#base-ggplot-1",
+    "title": "CSSS 508",
+    "section": "Base ggplot",
+    "text": "Base ggplot\n\nCodePlot\n\n\n\nggplot(data = gapminder, \n       aes(x = year, y = lifeExp, group = country)) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhat might be a good geom layer for this data?"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#lines-1",
+    "href": "Lectures/CSSS508_Lecture2.html#lines-1",
+    "title": "CSSS 508",
+    "section": "Lines",
+    "text": "Lines\n\nCodePlot\n\n\n\nggplot(data = gapminder, \n       aes(x = year, y = lifeExp, group = country)) +\n  geom_line() \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet’s also add a continent-specific average so we can visualize country-deviations from the regional average."
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#continent-average",
+    "href": "Lectures/CSSS508_Lecture2.html#continent-average",
+    "title": "CSSS 508",
+    "section": "Continent Average",
+    "text": "Continent Average\n\nCodePlot\n\n\n\nggplot(data = gapminder, \n       aes(x = year, y = lifeExp, group = country)) +\n  geom_line() +\n  geom_line(stat = \"smooth\", \n            method = \"loess\", \n            aes(group = continent)) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nA loess curve is something like a moving average."
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#facets-1",
+    "href": "Lectures/CSSS508_Lecture2.html#facets-1",
+    "title": "CSSS 508",
+    "section": "Facets",
+    "text": "Facets\n\nCodePlot\n\n\n\nggplot(data = gapminder, \n       aes(x = year, y = lifeExp, group = country)) +\n  geom_line() +\n  geom_line(stat = \"smooth\", \n            method = \"loess\", \n            aes(group = continent)) +\n  facet_wrap(~ continent, \n             nrow = 2)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFacets allow us to gain a clearer understanding of the regional patterns. We want to differentiate the continent-average line from the country-specific lines though so let’s change it’s color."
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#color-scale",
+    "href": "Lectures/CSSS508_Lecture2.html#color-scale",
+    "title": "CSSS 508",
+    "section": "Color Scale",
+    "text": "Color Scale\n\nCodePlot\n\n\n\nggplot(data = gapminder, \n       aes(x = year, y = lifeExp, group = country)) +\n  geom_line() +\n  geom_line(stat = \"smooth\", \n            method = \"loess\", \n            aes(group = continent)) +\n  facet_wrap(~ continent, \n             nrow = 2) +\n  scale_color_manual(name = \"Life Exp. for:\", \n                     values = c(\"Country\" = \"black\", \"Continent\" = \"blue\"))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHmm, can’t quite see the blue line yet. Let’s make it bigger?"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#size-scale",
+    "href": "Lectures/CSSS508_Lecture2.html#size-scale",
+    "title": "CSSS 508",
+    "section": "Size Scale",
+    "text": "Size Scale\n\nCodePlot\n\n\n\nggplot(data = gapminder, \n       aes(x = year, y = lifeExp, group = country)) +\n  geom_line() +\n  geom_line(stat = \"smooth\", \n            method = \"loess\", \n            aes(group = continent)) +\n  facet_wrap(~ continent, \n             nrow = 2) +\n  scale_color_manual(name = \"Life Exp. for:\", \n                     values = c(\"Country\" = \"black\", \"Continent\" = \"blue\")) +\n  scale_size_manual(name = \"Life Exp. for:\", \n                    values = c(\"Country\" = 0.25, \"Continent\" = 3))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIt doesn’t look like our color and size scales are actually mapping onto our variables. Why is that?"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#mapping-color-size",
+    "href": "Lectures/CSSS508_Lecture2.html#mapping-color-size",
+    "title": "CSSS 508",
+    "section": "Mapping Color & Size",
+    "text": "Mapping Color & Size\n\nCodePlot\n\n\n\nggplot(data = gapminder, \n       aes(x = year, y = lifeExp, group = country)) +\n  geom_line(aes(color = \"Country\", size = \"Country\")) +\n  geom_line(stat = \"smooth\", method = \"loess\", \n            aes(group = continent, color = \"Continent\", size = \"Continent\")) +\n  facet_wrap(~ continent, \n             nrow = 2) +\n  scale_color_manual(name = \"Life Exp. for:\", \n                     values = c(\"Country\" = \"black\", \"Continent\" = \"blue\")) +\n  scale_size_manual(name = \"Life Exp. for:\", \n                    values = c(\"Country\" = 0.25, \"Continent\" = 3))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHuzzah! Let’s change the transparency on these lines a touch so we can see all our data more easily."
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#alpha-transparency",
+    "href": "Lectures/CSSS508_Lecture2.html#alpha-transparency",
+    "title": "CSSS 508",
+    "section": "Alpha (Transparency)",
+    "text": "Alpha (Transparency)\n\nCodePlot\n\n\n\nggplot(data = gapminder, \n       aes(x = year, y = lifeExp, group = country)) +\n  geom_line(alpha = 0.5, \n            aes(color = \"Country\", size = \"Country\")) +\n  geom_line(stat = \"smooth\", method = \"loess\", \n            aes(group = continent, color = \"Continent\", size = \"Continent\"), \n            alpha = 0.5) +\n  facet_wrap(~ continent, \n             nrow = 2) +\n  scale_color_manual(name = \"Life Exp. for:\", \n                     values = c(\"Country\" = \"black\", \"Continent\" = \"blue\")) +\n  scale_size_manual(name = \"Life Exp. for:\", \n                    values = c(\"Country\" = 0.25, \"Continent\" = 3))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNow we’re getting somewhere! We can also add useful labels and clean up the theme."
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#theme-and-labels",
+    "href": "Lectures/CSSS508_Lecture2.html#theme-and-labels",
+    "title": "CSSS 508",
+    "section": "Theme and Labels",
+    "text": "Theme and Labels\n\nCodePlot\n\n\n\nggplot(data = gapminder, \n       aes(x = year, y = lifeExp, group = country)) +\n  geom_line() +\n  geom_line(stat = \"smooth\", \n            method = \"loess\", \n            aes(group = continent)) +\n  facet_wrap(~ continent, \n             nrow = 2) +\n  scale_color_manual(name = \"Life Exp. for:\", \n                     values = c(\"Country\" = \"black\", \"Continent\" = \"blue\")) +\n  scale_size_manual(name = \"Life Exp. for:\", \n                    values = c(\"Country\" = 0.25, \"Continent\" = 3)) +\n  theme_minimal(base_size = 14) + \n  labs(y = \"Years\", \n       x = \"\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhat’s our plot showing? We should be explicit about that."
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#title-and-subtitle",
+    "href": "Lectures/CSSS508_Lecture2.html#title-and-subtitle",
+    "title": "CSSS 508",
+    "section": "Title and Subtitle",
+    "text": "Title and Subtitle\n\nCodePlot\n\n\n\nggplot(data = gapminder, \n       aes(x = year, y = lifeExp, group = country)) +\n  geom_line() +\n  geom_line(stat = \"smooth\", \n            method = \"loess\", \n            aes(group = continent)) +\n  facet_wrap(~ continent, \n             nrow = 2) +\n  scale_color_manual(name = \"Life Exp. for:\", \n                     values = c(\"Country\" = \"black\", \"Continent\" = \"blue\")) +\n  scale_size_manual(name = \"Life Exp. for:\", \n                    values = c(\"Country\" = 0.25, \"Continent\" = 3)) +\n  theme_minimal(base_size = 14) + \n  labs(y = \"Years\", \n       x = \"\", \n       title = \"Life Expectancy, 1952-2007\", \n       subtitle = \"By continent and country\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe x-axis feels a little busy right now…"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#angled-tick-values",
+    "href": "Lectures/CSSS508_Lecture2.html#angled-tick-values",
+    "title": "CSSS 508",
+    "section": "Angled Tick Values",
+    "text": "Angled Tick Values\n\nCodePlot\n\n\n\nggplot(data = gapminder, \n       aes(x = year, y = lifeExp, group = country)) +\n  geom_line() +\n  geom_line(stat = \"smooth\", \n            method = \"loess\", \n            aes(group = continent)) +\n  facet_wrap(~ continent, \n             nrow = 2) +\n  scale_color_manual(name = \"Life Exp. for:\", \n                     values = c(\"Country\" = \"black\", \"Continent\" = \"blue\")) +\n  scale_size_manual(name = \"Life Exp. for:\", \n                    values = c(\"Country\" = 0.25, \"Continent\" = 3)) +\n  theme_minimal(base_size = 14) + \n  labs(y = \"Years\", \n       x = \"\", \n       title = \"Life Expectancy, 1952-2007\", \n       subtitle = \"By continent and country\") +\n  theme(axis.text.x = element_text(angle = 45)) \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote: Fewer values might be better than angled labels! Finally, let’s move our legend so it isn’t wasting space."
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#legend-position",
+    "href": "Lectures/CSSS508_Lecture2.html#legend-position",
+    "title": "CSSS 508",
+    "section": "Legend Position",
+    "text": "Legend Position\n\nCodePlot\n\n\n\nggplot(data = gapminder, \n       aes(x = year, y = lifeExp, group = country)) +\n  geom_line() +\n  geom_line(stat = \"smooth\", \n            method = \"loess\", \n            aes(group = continent)) +\n  facet_wrap(~ continent, \n             nrow = 2) +\n  scale_color_manual(name = \"Life Exp. for:\", \n                     values = c(\"Country\" = \"black\", \"Continent\" = \"blue\")) +\n  scale_size_manual(name = \"Life Exp. for:\", \n                    values = c(\"Country\" = 0.25, \"Continent\" = 3)) +\n  theme_minimal(base_size = 14) + \n  labs(y = \"Years\", \n       x = \"\", \n       title = \"Life Expectancy, 1952-2007\", \n       subtitle = \"By continent and country\") +\n  theme(legend.position = c(0.82, 0.15), \n        axis.text.x = element_text(angle = 45))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nVoilà!"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#tidyverse-extended-universe",
+    "href": "Lectures/CSSS508_Lecture2.html#tidyverse-extended-universe",
+    "title": "CSSS 508",
+    "section": "tidyverse extended universe",
+    "text": "tidyverse extended universe\nggplot2 can obviously do a lot on its own. But because R allows for anyone and everyone to expand the functionality of what already exists, numerous extensions1 to ggplot2 have been created.\n\nWe’ve already seen one example with ggrepel. But let’s look at a few others…\n\nThe full list can be found here."
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#geomtextpath",
+    "href": "Lectures/CSSS508_Lecture2.html#geomtextpath",
+    "title": "CSSS 508",
+    "section": "geomtextpath",
+    "text": "geomtextpath\nIf you want your labels to follow along the path of your plot (and maintain proper angles and spacing) try using geomtextpath.\n\n\nCode\n# install.packages(\"geomtextpath\") &lt;- run in console first\nlibrary(geomtextpath)\ngapminder |&gt; \n  filter(country %in% c(\"Cuba\", \"Haiti\", \"Dominican Republic\")) |&gt; # restricting data to 3 regionally-specific countries\n  ggplot(aes(x = year, \n             y = lifeExp, \n             color = country, \n             label = country)) + # specify label with text to appear\n  geom_textpath() + # adding textpath geom to put labels within lines\n  theme(legend.position = \"none\") # removing legend"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#ggridges",
+    "href": "Lectures/CSSS508_Lecture2.html#ggridges",
+    "title": "CSSS 508",
+    "section": "ggridges",
+    "text": "ggridges\nWe can visualize the differing distributions of a continuous variable by levels of a categorical variable with ggridges!\n\n\nCode\n# install.packages(\"ggridges\") &lt;- run in console first\nlibrary(ggridges)\nggplot(gapminder, \n       aes(x = lifeExp, \n           y = continent, \n           fill = continent, \n           color = continent)) +\n  geom_density_ridges(alpha = 0.5, \n                      show.legend = FALSE) # add ridges, make all a bit transparent, remove legend"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#correlation-matricies",
+    "href": "Lectures/CSSS508_Lecture2.html#correlation-matricies",
+    "title": "CSSS 508",
+    "section": "Correlation Matricies",
+    "text": "Correlation Matricies\nMake visually appealing & informative correlation plots in GGally or ggcorrplot.\n\nGGallyggcorrplotBonus: ggpairs() from GGally\n\n\n\n\nCode\n# install.packages(\"GGally\") &lt;- run in console first\nlibrary(GGally)\n\nggcorr(swiss, \n       geom = \"circle\", \n       min_size = 25, # specify minimum size of shape \n       max_size = 25, # specify maximum size of shape \n       label = TRUE, # label circles with correlation coefficient\n       label_alpha = TRUE, # less strong correlations have lower alpha\n       label_round = 2, # round correlations coefficients to 2 decimal points\n       legend.position = c(0.15, 0.6), \n       legend.size = 12)\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\n# install.packages(\"ggcorrplot\") &lt;- run in console first\nlibrary(ggcorrplot)\n\n# compute correlation matrix\ncorr &lt;- round(cor(swiss), 1)\n# computer matrix of correlation p-values\np_mat &lt;- cor_pmat(swiss)\n\nggcorrplot(corr,\n           hc.order = TRUE, # use hierarchical clustering to group like-correlations together\n           type = \"lower\", # only show lower half of correlation matrix\n           p.mat = p_mat, # give corresponding p-values for correlation matrix\n           insig = \"pch\", # add default shape (an X) to correlations that are insignificant\n           outline.color = \"black\", # outline cells in white\n           ggtheme = ggthemes::theme_tufte(), # using a specific theme I like from ggthemes package \n           colors = c(\"#4e79a7\", \"white\", \"#e15759\")) + # specify custom colors \n  theme(legend.position = c(0.15, 0.67))\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nggpairs(swiss, \n        lower = list(continuous = wrap(\"smooth\", # specify a smoothing line added to scatterplots\n                                       alpha = 0.5, \n                                       size=0.2))) + \n  ggthemes::theme_tufte() # add nice theme from ggthemes"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#patchwork",
+    "href": "Lectures/CSSS508_Lecture2.html#patchwork",
+    "title": "CSSS 508",
+    "section": "patchwork",
+    "text": "patchwork\nCombine separate plots into the same graphic using patchwork.\n\n\nCode\n# install.packages(\"patchwork\") &lt;- run in console first\nlibrary(patchwork)\n\n# Create first plot object\nplot_lifeExp &lt;- ggplot(gapminder, \n                       aes(x = lifeExp, y = continent, fill = continent, color = continent)) +\n  geom_density_ridges(alpha = 0.5, show.legend = FALSE)\n\n# Create second plot object\nplot_boxplot &lt;- ggplot(gapminder, \n                       aes(x = continent, y = lifeExp, color = continent), \n                       alpha = 0.5) +\n  geom_boxplot(outlier.colour = \"black\", varwidth = TRUE) + # change outlier color and make width of boxes relative to N\n  coord_flip() + # flip the coordinates (x & y) to align with first plot\n  geom_jitter(position = position_jitter(width = 0.1, height = 0), # add datapoints to boxplot\n              alpha = 0.25) + \n  geom_label_repel(data = outliers, # mapping new dataset with the outliers\n                   aes(label = country), \n                   color = \"black\", \n                   alpha = 0.7, \n                   max.overlaps = 13) +\n  theme(axis.text.y = element_blank(), # remove y axis text \n        axis.ticks.y = element_blank(), # remove y axis ticks \n        axis.title.y = element_blank(), # remove y axis title \n        legend.position = \"none\")\n\nplot_lifeExp + plot_boxplot # simply add two objects together to place side by side"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#themes-in-ggplot2",
+    "href": "Lectures/CSSS508_Lecture2.html#themes-in-ggplot2",
+    "title": "CSSS 508",
+    "section": "themes in ggplot2",
+    "text": "themes in ggplot2\nThere are several built-in themes within ggplot2.\n\nbwlightclassiclinedrawdarkminimalgrayvoid\n\n\n\n\nCode\nplot_lifeExp + theme_bw() # reusing plot_lifeExp from previous slide and changing theme\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nplot_lifeExp + theme_light()\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nplot_lifeExp + theme_classic()\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nplot_lifeExp + theme_linedraw()\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nplot_lifeExp + theme_dark()\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nplot_lifeExp + theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nplot_lifeExp + theme_gray()\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nplot_lifeExp + theme_void()"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#ggthemes",
+    "href": "Lectures/CSSS508_Lecture2.html#ggthemes",
+    "title": "CSSS 508",
+    "section": "ggthemes",
+    "text": "ggthemes\n\nexceleconomistfewfivethirtyeightgdocsstatatuftewsj\n\n\n\n\nCode\nlibrary(ggthemes)\nplot_lifeExp + theme_excel()\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nplot_lifeExp + theme_economist()\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nplot_lifeExp + theme_few()\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nplot_lifeExp + theme_fivethirtyeight()\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nplot_lifeExp + theme_gdocs()\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nplot_lifeExp + theme_stata()\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nplot_lifeExp + theme_tufte()\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nplot_lifeExp + theme_wsj()"
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#other-theme-packages-and-making-your-own",
+    "href": "Lectures/CSSS508_Lecture2.html#other-theme-packages-and-making-your-own",
+    "title": "CSSS 508",
+    "section": "Other theme packages and making your own!",
+    "text": "Other theme packages and making your own!\nThese are just a handful of all the ready-made theme options available out there. Some other packages that might be useful/fun to check out:\n\n\nhrbrthemes - provides typography-centric themes and theme components for ggplot2\nurbnthemes a set of tools for creating Urban Institute-themed plots and maps in R\nbbplot - provides helpful functions for creating and exporting graphics made in ggplot in the style used by the BBC News data team\nggpomological - A ggplot2 theme based on the USDA Pomological Watercolor Collection\n\n\n\nYou are also able to design your own theme using the theme() function and really getting into the weeds with how to specify all the non-data ink in your plot. Once you come up with a theme you like you can save it as an object (i.e. my_theme) and add it to any ggplot you create to maintain your own unique and consistent style."
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture2.html#summary-1",
+    "href": "Lectures/CSSS508_Lecture2.html#summary-1",
+    "title": "CSSS 508",
+    "section": "Summary",
+    "text": "Summary\nggplot2 can do a LOT! I don’t expect you to memorize all these tools, and neither should you! With time and practice, you’ll start to remember the key tools.\n\n\n\nWhen in doubt, Google it! (i.e. “R ggplot ‘whatever issue you need help with’”)\nThere are lots of great resources out there:\n\nThe ggplot2 reference page\nThe Cookbook for R website\nThe RStudio ggplot Cheatsheets.\nKieran Healy’s book Data Visualization: A Practical Introduction (right) is targeted at social scientists without technical backgrounds and uses the same tools we’ll be learning in this class."
   }
 ]

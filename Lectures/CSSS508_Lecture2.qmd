@@ -1,0 +1,2561 @@
+---
+execute: 
+  echo: true
+  message: false
+  warning: false
+  fig-format: "svg"
+format: 
+  revealjs:
+    highlight-style: a11y-dark
+    reference-location: margin
+    theme: lecture_styles.scss
+    controls: true
+    slide-number: true
+    code-link: true
+    chalkboard: true
+    incremental: false 
+    smaller: true
+    preview-links: true
+    code-line-numbers: true
+    history: false
+    progress: true
+    link-external-icon: true
+    code-annotations: hover
+---
+
+```{r}
+#| echo = FALSE
+require(downlit)
+require(xml2)
+```
+
+## {#title-slide data-menu-title="Visualizing Data" background="#1e4655" background-image="../../images/csss-logo.png" background-position="center top 5%" background-size="50%"}
+
+[Visualizing Data]{.custom-title}
+
+[CS&SS 508 • Lecture 2]{.custom-subtitle}
+
+[Jess Kunke (slides adapted from Victoria Sass)]{.custom-subtitle3}
+
+
+# Roadmap{.section-title background-color="#99a486"}
+
+---
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+<br>
+
+### Last time, we learned:
+
+* R and RStudio
+* Quarto headers, syntax, and chunks
+* Basics of functions, objects, and vectors
+* Base `R` and packages
+:::
+
+::: {.column width="50%"}
+
+<br> 
+
+::: {.fragment}
+### Today, we will cover:
+
+* Introducing the `tidyverse`!
+* Basics of `ggplot2`
+* Advanced features of `ggplot2`
+* `ggplot2` extensions
+:::
+
+:::
+
+::::
+
+## File Types
+
+We mainly work with three types of files in this class:
+
+:::{.incremental}
+* `.qmd`^[Quarto builds on a decade of developments with R Markdown documents. .Rmd files operate **very** similarly to Quarto documents but there are minor differences that you can read more about [here](https://quarto.org/docs/computations/r.html#:~:text=Another%20difference%20between%20R%20Markdown,than%20relying%20on%20external%20packages).]: These are **markdown** *syntax* files, where you write code and plain or formatted text to *make documents*.
+* `.R`: These are **R** *syntax* files, where you write code to process and analyze data *without making an output document*^[You can use the `source()` function to run a `.R` script file inside a `.qmd` or `.R` file. Using this you can break a large project up into multiple files but still run it all at once!].
+* `.html` (or `.pdf`, `.docx`, etc.): These are the output documents created when you *Render* a quarto markdown document.
+:::
+
+. . . 
+
+Make sure you understand the difference between the uses of these file types! Please ask for clarification if needed!
+
+# Introducing the `tidyverse` {.section-title background-color="#99a486"}
+
+## Packages
+
+Last week we discussed Base `R` and the fact that what makes `R` extremely powerful and flexible is the large number of diverse user-created packages. 
+
+. . . 
+
+::: {.callout-note icon=false}
+## What are packages again?
+Recall that packages are simply **collections of functions and tools** others have already created, that will make your life easier!
+:::
+
+. . . 
+
+::: {.callout-caution icon=false}
+## The package 2-step
+Remember that to **install** a new package you use `install.packages("package_name")` in the **console**. You only need to do this once per machine (unless you want to update to a newer version of a package). 
+
+To **load** a package into your current session of `R` you use `library(package_name)`, preferably at the beginning of your `R` script or Quarto document. Every time you open RStudio it's a new session and you'll have to call `library()` on the packages you want to use.
+:::
+
+## Packages
+
+
+The `Packages` tab in the bottom-right pane of RStudio lists your installed packages.
+
+![](images/package_tab.png){fig-align="center"}
+
+## The `tidyverse`
+
+The `tidyverse` refers to two things: 
+
+:::{.incremental}
+1. a specific package in `R` that loads several core packages within the `tidyverse`.  
+2. a specific design philosophy, grammar, and focus on "tidy" data structures developed by Hadley Wickham^[You can read the official manifesto [here](https://tidyverse.tidyverse.org/articles/manifesto.html).] and his team at RStudio (now named Posit). 
+:::
+
+## The `tidyverse` package
+
+:::: {.columns}
+::: {.column width="50%"}
+The core packages within the `tidyverse` include:
+
+:::{.incremental}
+* `ggplot2` (visualizations)
+* `dplyr` (data manipulation)
+* `tidyr` (data reshaping)
+* `readr` (data import/export)
+* `purrr` (iteration)
+* `tibble` (modern dataframe)
+* `stringr` (text data)
+* `forcats` (factors)
+:::
+
+:::
+::: {.column width="50%"}
+
+<br>
+
+![](images/tidyverse.png)
+:::
+::::
+
+## The `tidyverse` philosophy
+
+:::: {.columns}
+::: {.column width="50%"}
+The principles underlying the tidyverse are: 
+
+:::{.incremental}
+1. Reuse existing data structures.
+2. Compose simple functions with the pipe.
+3. Embrace functional programming.
+4. Design for humans.
+:::
+
+:::
+::: {.column width="50%"}
+![](images/extended_tidyverse.jpeg)
+:::
+::::
+
+## {data-menu-title="Research process" background-image="images/research_process.png" background-position="center" background-size="90%"}
+
+## {data-menu-title="Research process - visualization" background-image="images/research_process_visualize.png" background-position="center" background-size="90%"}
+
+## {data-menu-title="Research process - communication" background-image="images/research_process_communicate.png" background-position="center" background-size="90%"}
+
+
+## Gapminder Data 
+
+We'll be working with data from Hans Rosling's [Gapminder](http://www.gapminder.org) project. An excerpt of these data can be accessed through an R package called `gapminder`^[Cleaned and assembled by Jenny Bryan at UBC.]. Check the packages tab to see if `gapminder` appears (unchecked) in your computer's list of downloaded packages. 
+
+. . . 
+
+If it doesn't, run `install.packages("gapminder")` in the console. 
+
+. . . 
+
+Now, load the `gapminder` package as well as the `tidyverse` package:
+```{r}
+#| message: true
+library(gapminder)
+library(tidyverse) # <1>
+```
+1. Every time you `library` (i.e. load) `tidyverse` it will tell you which individual packages it is loading, as well as all function conflicts it has with other packages loaded in the current session. This is useful information but you can suppress seeing/printing this output by adding the `message: false` chunk option to your code chunk. 
+
+## Check Out Gapminder {.scrollable} 
+
+The data frame we will work with is called `gapminder`, available once you have loaded the package. Let's see its structure:
+
+```{r}
+str(gapminder)
+```
+
+. . . 
+
+<br>
+
+#### What's Notable Here?
+
+::: {.incremental}
+* **Factor** variables `country` and `continent`
+  * Factors are categorical data with an underlying numeric representation
+  * We'll spend a lot of time on factors later!
+* Many observations: $n=`r nrow(gapminder)`$ rows
+* For each observation, a few variables: $p=`r ncol(gapminder)`$ columns
+* A nested/hierarchical structure: `year` in `country` in `continent`
+  * These are panel data!
+:::
+
+## Base `R` plot
+
+:::: {.columns}
+::: {.column width="50%"}
+```{r}
+#| eval=FALSE
+China <- gapminder |> 
+  filter(country == "China")
+plot(lifeExp ~ year, 
+     data = China, 
+     xlab = "Year", 
+     ylab = "Life expectancy",
+     main = "Life expectancy in China", 
+     col = "red", 
+     pch = 16)
+```
+
+<br>
+
+This plot is made with *one function* and *many arguments.*
+
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-width: 6
+#| fig-height: 6
+China <- subset(gapminder,gapminder$country == "China")
+plot(lifeExp ~ year, data = China, xlab = "Year", ylab = "Life expectancy",
+     main = "Life expectancy in China", col = "red", pch = 16)
+```
+:::
+::::
+
+::: aside
+Note: Don't worry about the code used to create the object `China`. We'll explore data manipulation in a couple weeks!
+:::
+
+## Fancier: `ggplot`
+
+:::: {.columns}
+::: {.column width="50%"}
+```{r}
+#| eval: false
+ggplot(data = China, 
+       mapping = aes(x = year, y = lifeExp)) +
+  geom_point(color = "red", size = 3) +
+  labs(title = "Life expectancy in China", 
+       x = "Year", 
+       y = "Life expectancy") +
+  theme_minimal(base_size = 18)
+```
+
+<br>
+
+This `ggplot` is made with *many functions* and *fewer arguments* in each.
+:::
+::: {.column width="50%"}
+```{r}
+#| warning: false
+#| message: false 
+#| echo: false
+#| fig-width: 6
+#| fig-height: 6
+ggplot(data = China, 
+       mapping = aes(x = year, y = lifeExp)) +
+  geom_point(color = "red", size = 3) +
+  labs(title = "Life expectancy in China", 
+       x = "Year", 
+       y = "Life expectancy") +
+  theme_minimal(base_size = 18)
+
+
+```
+:::
+::::
+
+# {data-menu-title="`ggplot`" background-image="images/ggplot2.png" background-size="contain" background-position="center" .section-title background-color="#1e4655"}
+
+## `ggplot2`
+
+The `ggplot2` package provides an alternative toolbox for plotting.
+
+. . . 
+
+The core idea underlying this package is the [**layered grammar of graphics**](https://vita.had.co.nz/papers/layered-grammar.pdf): i.e. that we can break up elements of a plot into pieces and combine them.
+
+. . . 
+
+`ggplot`s take a *bit* more work to create than Base `R` plots, but are usually: 
+
+* prettier
+* more professional
+* **much** more customizable
+
+## Layered grammar of graphics {.scrollable} 
+
+
+![](images/gglayers.png){fig-align="center"}
+
+::: aside
+This is based on Leland Wilkinson's book [*The Grammar of Graphics*](https://orbiscascade-washington.primo.exlibrisgroup.com/permalink/01ALLIANCE_UW/1juclfo/alma99145336560001452) and extended by Hadley Wickham in his paper ["A layered grammar of graphics"](https://vita.had.co.nz/papers/layered-grammar.html). 
+:::
+
+## Structure of a ggplot
+
+`ggplot` graphics objects consist of two primary components:
+
+. . . 
+
+1. **Layers**, the components of a graph.
+
+   * We *add* layers to a `ggplot` object using `+`.
+   * This includes adding lines, shapes, and text to a plot.
+
+. . . 
+
+2. **Aesthetics**, which determine how the layers appear.
+
+   * We *set* aesthetics using *arguments* (e.g. `color = "red"`) inside layer functions.
+   * This includes modifying locations, colors, and sizes of the layers.
+
+::: {.callout-tip icon=false}
+## Aesthetic Vignette
+Learn more about all possible aesthetic mappings [here](https://ggplot2.tidyverse.org/articles/ggplot2-specs.html). 
+:::
+
+## Layers
+
+**Layers** are the components of the graph, such as:
+
+::: {.incremental}
+* `ggplot()`: initializes basic plotting object, specifies input data
+* `geom_point()`: layer of scatterplot points
+* `geom_line()`: layer of lines
+* `geom_histogram()`: layer of a histogram
+* `labs` (or to specify individually: `ggtitle()`, `xlab()`, `ylab()`): layers of labels
+* `facet_wrap()`: layer creating multiple plot panels
+* `theme_bw()`: layer replacing default gray background with black-and-white
+:::
+
+. . . 
+
+Layers are separated by a `+` sign. For clarity, I usually put each layer on a new line.
+
+::: {.callout-important icon=false}
+## Syntax Warning
+Be sure to **end** each line with the `+`. The code will not run if a new line *begins* with a `+`. 
+:::
+
+## Aesthetics
+
+**Aesthetics** control the appearance of the layers:
+
+* `x`, `y`: $x$ and $y$ coordinate values to use
+* `color`: set color of elements based on some data value
+* `group`: describe which points are conceptually grouped together for the plot (often used with lines)
+* `size`: set size of points/lines based on some data value (greater than 0)
+* `alpha`: set transparency based on some data value (between 0 and 1)
+
+::: {.callout-warning icon=false}
+## Mapping data inside `aes()` vs. creating plot-wise settings outside `aes()`
+When aesthetic arguments are called within `aes()` they specify a variable of the data and therefore map said value of the data by that aesthetic. Called outside `aes()`, these are only settings that can be given a specific value but will not display a dimension of the data. 
+:::
+
+## `ggplot` Templates
+
+<br>
+
+. . . 
+
+#### All layers have:
+
+an initializing `ggplot` call and at least one `geom` function.
+
+<br>
+
+::: {.panel-tabset}
+
+### same data & aesthetics
+
+```{r}
+#| eval: false
+ggplot(data = [dataset], 
+       mapping = aes(x = [x-variable], y = [y-variable])) +
+  geom_xxx() +
+  other options
+```
+
+### same data, diff aesthetics 
+
+```{r}
+#| eval: false
+ggplot(data = [dataset], 
+       mapping = aes(x = [x-variable], y = [y-variable])) +
+  geom_xxx() +
+  geom_yyy(mapping = aes(x = [x-variable], y = [y-variable])) +
+  other options
+```
+
+### diff data & aesthetics
+
+```{r}
+#| eval: false
+ggplot() +
+  geom_xxx(data = [dataset1],
+           mapping = aes(x = [x-variable], y = [y-variable])) +
+  geom_yyy(data = [dataset2],
+           mapping = aes(x = [x-variable], y = [y-variable])) +
+  other options
+```
+
+:::
+
+# Example: Basic Jargon in Action!{.section-title background-color="#99a486"}
+
+## Axis Labels, Points, No Background{auto-animate="true"}
+
+### Base `ggplot`
+
+:::: {.columns}
+:::{.column width="50%"}
+```{r}
+#| eval: FALSE
+#| code-line-numbers: "1-2"
+ggplot(data = China,  
+       aes(x = year, y = lifeExp)) 
+```
+:::
+
+:::{.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 6
+#| fig-width: 6
+ggplot(data = China,  
+       aes(x = year, y = lifeExp)) 
+```
+:::
+::::
+
+::: aside
+Initialize the plot with `ggplot()` and `x` and `y` aesthetics **mapped** to variables. These aesthetics will be accessible to any future layers since they're in the primary layer.
+:::
+
+## Axis Labels, Points, No Background{auto-animate="true"}
+
+### Scatterplot
+
+:::: {.columns}
+:::{.column width="50%"}
+```{r}
+#| eval: false
+#| code-line-numbers: "3"
+ggplot(data = China, 
+       aes(x = year, y = lifeExp)) +
+  geom_point()
+```
+:::
+:::{.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 6
+#| fig-width: 6
+ggplot(data = China, 
+       aes(x = year, y = lifeExp)) +
+  geom_point() 
+```
+:::
+::::
+
+::: aside
+Add a scatterplot **layer**.
+:::
+
+## Axis Labels, Points, No Background{auto-animate="true"}
+
+### Point Color and Size
+
+:::: {.columns}
+:::{.column width="50%"}
+```{r}
+#| eval: false
+#| code-line-numbers: "3"
+ggplot(data = China, 
+       aes(x = year, y = lifeExp)) +
+  geom_point(color = "red", size = 3)
+```
+:::
+:::{.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 6
+#| fig-width: 6
+ggplot(data = China, 
+       aes(x = year, y = lifeExp)) +
+  geom_point(color = "red", size = 3) 
+```
+:::
+::::
+
+::: aside 
+**Set** aesthetics to make the points larger and red. Notice that these "aesthetics" are not inside the `aes` call the way `x` and `y` are on line 2. These are therefore global settings rather than mapping aesthetics. 
+:::
+
+## Axis Labels, Points, No Background{auto-animate="true"}
+
+### X-Axis Label
+
+:::: {.columns}
+:::{.column width="50%"}
+```{r}
+#| eval: false
+#| code-line-numbers: "4"
+ggplot(data = China, 
+       aes(x = year, y = lifeExp)) +
+  geom_point(color = "red", size = 3) +
+  labs(x = "Year")
+```
+:::
+:::{.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 6
+#| fig-width: 6
+ggplot(data = China, 
+       aes(x = year, y = lifeExp)) +
+  geom_point(color = "red", size = 3) +
+  labs(x = "Year")
+```
+:::
+::::
+  
+::: aside
+Add a layer to capitalize the x-axis label.
+:::
+
+
+## Axis Labels, Points, No Background{auto-animate="true"}
+
+### Y-Axis Label
+
+:::: {.columns}
+:::{.column width="50%"}
+```{r}
+#| eval: false
+#| code-line-numbers: "5"
+ggplot(data = China, 
+       aes(x = year, y = lifeExp)) +
+  geom_point(color = "red", size = 3) +
+  labs(x = "Year", 
+       y = "Life expectancy")
+```
+:::
+:::{.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 6
+#| fig-width: 6
+ggplot(data = China, 
+       aes(x = year, y = lifeExp)) +
+  geom_point(color = "red", size = 3) +
+  labs(x = "Year", 
+       y = "Life expectancy")
+```
+:::
+::::
+  
+::: aside
+Add a layer to clean up the y-axis label.
+:::
+
+## Axis Labels, Points, No Background{auto-animate="true"}
+
+### Title
+
+:::: {.columns}
+:::{.column width="50%"}
+```{r}
+#| eval: false
+#| code-line-numbers: "6" 
+ggplot(data = China, 
+       aes(x = year, y = lifeExp)) +
+  geom_point(color = "red", size = 3) +
+  labs(x = "Year",
+       y = "Life expectancy",
+       title = "Life expectancy in China")
+```
+:::
+:::{.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 6
+#| fig-width: 6
+ggplot(data = China, 
+       aes(x = year, y = lifeExp)) +
+  geom_point(color = "red", size = 3) +
+  labs(x = "Year",
+       y = "Life expectancy",
+       title = "Life expectancy in China")
+```
+:::
+::::
+  
+::: aside
+Add a title layer.
+:::
+
+## Axis Labels, Points, No Background{auto-animate="true"}
+
+### Theme
+
+:::: {.columns}
+:::{.column width="50%"}
+```{r}
+#| eval: false
+#| code-line-numbers: "7" 
+ggplot(data = China, 
+       aes(x = year, y = lifeExp)) +
+  geom_point(color = "red", size = 3) +
+  labs(x = "Year",
+       y = "Life expectancy",
+       title = "Life expectancy in China") +
+  theme_minimal()
+```
+:::
+:::{.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 6
+#| fig-width: 6
+ggplot(data = China, 
+       aes(x = year, y = lifeExp)) +
+  geom_point(color = "red", size = 3) +
+  labs(x = "Year",
+       y = "Life expectancy",
+       title = "Life expectancy in China") +
+  theme_minimal()
+```
+:::
+::::
+  
+::: aside
+Pick a nicer theme with a new layer.
+:::
+
+## Axis Labels, Points, No Background{auto-animate="true"}
+
+### Text Size
+
+:::: {.columns}
+:::{.column width="50%"}
+```{r}
+#| eval: false
+#| code-line-numbers: "7"
+ggplot(data = China, 
+       aes(x = year, y = lifeExp)) +
+  geom_point(color = "red", size = 3) +
+  labs(x = "Year",
+       y = "Life expectancy",
+       title = "Life expectancy in China") +
+  theme_minimal(base_size = 18) 
+```
+:::
+:::{.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 6
+#| fig-width: 6
+ggplot(data = China, 
+       aes(x = year, y = lifeExp)) +
+  geom_point(color = "red", size = 3) +
+  labs(x = "Year",
+       y = "Life expectancy",
+       title = "Life expectancy in China") +
+  theme_minimal(base_size = 18) 
+```
+:::
+::::
+
+::: aside
+Increase the base text size.
+:::
+
+## Plotting All Countries
+
+We have a plot we like for China... 
+
+. . . 
+
+... but what if we want *all the countries*?
+
+## Plotting All Countries{auto-animate="true"}
+
+### A Mess!
+
+:::: {.columns}
+:::{.column width="50%"}
+```{r}
+#| eval: false
+#| code-line-numbers: "|1|3" 
+ggplot(data = gapminder,
+       aes(x = year, y = lifeExp)) +
+  geom_point(color = "red", size = 3) +
+  labs(x = "Year",
+       y = "Life expectancy",
+       title = "Life expectancy over time") + 
+  theme_minimal(base_size = 18) 
+```
+:::
+:::{.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 6
+#| fig-width: 6
+ggplot(data = gapminder, 
+       aes(x = year, y = lifeExp)) +
+  geom_point(color = "red", size = 3) +
+  labs(x = "Year",
+       y = "Life expectancy",
+       title = "Life expectancy over time") + 
+  theme_minimal(base_size = 18) 
+```
+:::
+::::
+
+::: aside
+We can't tell countries apart! Maybe we could follow *lines*?
+:::
+
+## Plotting All Countries{auto-animate="true"}
+
+### Lines
+
+:::: {.columns}
+:::{.column width="50%"}
+```{r}
+#| eval: false
+#| code-line-numbers: "3"
+ggplot(data = gapminder, 
+       aes(x = year, y = lifeExp)) +
+  geom_line(color = "red", size = 3) + 
+  labs(x = "Year",
+       y = "Life expectancy",
+       title = "Life expectancy over time") + 
+  theme_minimal(base_size = 18) 
+```
+:::
+:::{.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 6
+#| fig-width: 6
+ggplot(data = gapminder, 
+       aes(x = year, y = lifeExp)) +
+  geom_line(color = "red", size = 3) + 
+  labs(x = "Year",
+       y = "Life expectancy",
+       title = "Life expectancy over time") + 
+  theme_minimal(base_size = 18) 
+```
+:::
+::::
+
+::: aside
+`ggplot2` doesn't know how to connect the lines!
+:::
+
+## Plotting All Countries{auto-animate="true"}
+
+### Grouping
+
+:::: {.columns}
+:::{.column width="50%"}
+```{r}
+#| eval: false
+#| code-line-numbers: "3" 
+ggplot(data = gapminder, 
+       aes(x = year, y = lifeExp, 
+           group = country)) +
+  geom_line(color = "red", size = 3) +
+  labs(x = "Year",
+       y = "Life expectancy",
+       title = "Life expectancy over time") + 
+  theme_minimal(base_size = 18) 
+```
+:::
+:::{.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 6
+#| fig-width: 6
+ggplot(data = gapminder, 
+       aes(x = year, y = lifeExp, 
+           group = country)) +
+  geom_line(color = "red", size = 3) +
+  labs(x = "Year",
+       y = "Life expectancy",
+       title = "Life expectancy over time") + 
+  theme_minimal(base_size = 18) 
+```
+:::
+::::
+  
+::: aside
+That looks more reasonable... but the lines are too thick!
+:::
+
+## Plotting All Countries{auto-animate="true"}
+
+### Size
+
+:::: {.columns}
+:::{.column width="50%"}
+```{r}
+#| eval: false
+#| code-line-numbers: "4" 
+ggplot(data = gapminder, 
+       aes(x = year, y = lifeExp, 
+           group = country)) +
+  geom_line(color = "red") +
+  labs(x = "Year",
+       y = "Life expectancy",
+       title = "Life expectancy over time") + 
+  theme_minimal(base_size = 18) 
+```
+:::
+:::{.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 6
+#| fig-width: 6
+ggplot(data = gapminder, 
+       aes(x = year, y = lifeExp, 
+           group = country)) +
+  geom_line(color = "red") +
+  labs(x = "Year",
+       y = "Life expectancy",
+       title = "Life expectancy over time") + 
+  theme_minimal(base_size = 18) 
+```
+:::
+::::
+
+::: aside
+Much better... but what if we highlight regional differences?
+:::
+
+## Plotting All Countries{auto-animate="true"}
+
+### Color
+
+:::: {.columns}
+:::{.column width="50%"}
+```{r}
+#| eval: false
+#| code-line-numbers: "4-5" 
+ggplot(data = gapminder, 
+       aes(x = year, y = lifeExp, 
+           group = country, 
+           color = continent)) +
+  geom_line() +
+  labs(x = "Year",
+       y = "Life expectancy",
+       title = "Life expectancy over time") + 
+  theme_minimal(base_size = 18) 
+```
+:::
+:::{.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 6
+#| fig-width: 6
+ggplot(data = gapminder, 
+       aes(x = year, y = lifeExp, 
+           group = country, 
+           color = continent)) +
+  geom_line() +
+  labs(x = "Year",
+       y = "Life expectancy",
+       title = "Life expectancy over time") + 
+  theme_minimal(base_size = 18) 
+```
+:::
+::::
+
+::: aside
+Patterns are obvious... but it might be even more impactful if we separate continents completely.
+:::
+
+## Plotting All Countries{auto-animate="true"}
+
+### Facets
+
+:::: {.columns}
+:::{.column width="50%"}
+```{r}
+#| eval: false
+#| code-line-numbers: "10" 
+ggplot(data = gapminder, 
+       aes(x = year, y = lifeExp, 
+           group = country, 
+           color = continent)) +
+  geom_line() +
+  labs(x = "Year",
+       y = "Life expectancy",
+       title = "Life expectancy over time") + 
+  theme_minimal(base_size = 18) +
+  facet_wrap(vars(continent))
+```
+:::
+:::{.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 6
+#| fig-width: 6
+ggplot(data = gapminder, 
+       aes(x = year, y = lifeExp, 
+           group = country, 
+           color = continent)) +
+  geom_line() +
+  labs(x = "Year",
+       y = "Life expectancy",
+       title = "Life expectancy over time") + 
+  theme_minimal(base_size = 18) +
+  facet_wrap(vars(continent))
+```
+:::
+::::
+
+::: aside
+Now the text is too big!
+:::
+
+## Plotting All Countries{auto-animate="true"}
+
+### Text Size
+
+:::: {.columns}
+:::{.column width="50%"}
+```{r}
+#| eval: false
+#| code-line-numbers: "9" 
+ggplot(data = gapminder, 
+       aes(x = year, y = lifeExp, 
+           group = country, 
+           color = continent)) +
+  geom_line() +
+  labs(x = "Year",
+       y = "Life expectancy",
+       title = "Life expectancy over time") + 
+  theme_minimal() +
+  facet_wrap(vars(continent))
+```
+:::
+:::{.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 6
+#| fig-width: 6
+ggplot(data = gapminder, 
+       aes(x = year, y = lifeExp, 
+           group = country, 
+           color = continent)) +
+  geom_line() +
+  labs(x = "Year",
+       y = "Life expectancy",
+       title = "Life expectancy over time") + 
+  theme_minimal() +
+  facet_wrap(vars(continent))
+```
+:::
+::::
+
+::: aside
+Better. Do we even need the legend anymore?
+:::
+
+## Plotting All Countries{auto-animate="true"}
+
+### No Legend
+
+:::: {.columns}
+:::{.column width="50%"}
+```{r}
+#| eval: false
+#| code-line-numbers: "11" 
+ggplot(data = gapminder, 
+       aes(x = year, y = lifeExp, 
+           group = country, 
+           color = continent)) +
+  geom_line() +
+  labs(x = "Year",
+       y = "Life expectancy",
+       title = "Life expectancy over time") + 
+  theme_minimal() +
+  facet_wrap(vars(continent)) + 
+  theme(legend.position = "none")
+```
+:::
+:::{.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 6
+#| fig-width: 6
+ggplot(data = gapminder, 
+       aes(x = year, y = lifeExp, 
+           group = country, 
+           color = continent)) +
+  geom_line() +
+  labs(x = "Year",
+       y = "Life expectancy",
+       title = "Life expectancy over time") + 
+  theme_minimal() +
+  facet_wrap(vars(continent)) + 
+  theme(legend.position = "none")
+```
+:::
+::::
+
+::: aside
+Looking pretty good!
+:::
+
+# Lab 2 {.section-title background-color="#99a486"}
+
+## Make a histogram
+
+In pairs, create a histogram of life expectancy observations in the complete Gapminder dataset.
+
+1. Set the base layer by specifying the data as `gapminder` and the x variable as `lifeExp`
+
+2. Add a second layer to create a histogram using the function `geom_histogram()`
+
+3. Customize your plot with nice axis labels and a title. 
+
+4. Add the color "salmon" to the entire plot (hint: use the `fill` argument, not `color`). 
+
+5. Change this fill setting to an aesthetic and map continent onto it. 
+
+6. Change the `geom` to `geom_freqpoly`. What happened and how might you fix it?
+
+7. Add facets for `continent` (create only 1 column).
+
+8. Add one of the [built-in themes](https://ggplot2.tidyverse.org/reference/ggtheme.html) from `ggplot2`.
+
+9. Remove the legend from the plot. 
+
+## Solution: 1. Set Base Layer {auto-animate="true"} 
+
+```{r}
+#| eval: true
+#| fig-align: center
+#| fig-width: 10
+#| fig-height: 5
+#| code-line-numbers: "1"
+ggplot(gapminder, aes(x = lifeExp))
+```
+
+## Solution: 2. Add Histogram Layer {auto-animate="true"} 
+
+```{r}
+#| eval: true
+#| fig-align: center
+#| fig-width: 10
+#| fig-height: 5
+#| code-line-numbers: "2"
+ggplot(gapminder, aes(x = lifeExp)) +
+  geom_histogram(bins = 30)
+```
+
+::: aside
+Setting the `bins` aesthetic tells ggplot how many values to bin by (lower is more fine-grained, higher is less descriptive).
+:::
+
+## Solution: 3. Add Label Layers {auto-animate="true"} 
+
+```{r}
+#| eval: true
+#| fig-align: center
+#| fig-width: 10
+#| fig-height: 5
+#| code-line-numbers: "3-5"
+ggplot(gapminder, aes(x = lifeExp)) +
+  geom_histogram(bins = 30) +
+  xlab("Life Expectancy") +
+  ylab("Count") +
+  ggtitle("Histogram of Life Expectancy in Gapminder Data")
+```
+
+## Solution: 4. Add fill setting {auto-animate="true"}
+
+```{r}
+#| eval: true
+#| fig-align: center
+#| fig-width: 10
+#| fig-height: 5
+#| code-line-numbers: "2"
+ggplot(gapminder, aes(x = lifeExp)) +
+  geom_histogram(bins = 30, fill = "salmon") +
+  xlab("Life Expectancy") +
+  ylab("Count") +
+  ggtitle("Histogram of Life Expectancy in Gapminder Data")
+```
+
+## Solution: 5. Add fill aesthetic {auto-animate="true"}
+
+```{r}
+#| eval: true
+#| fig-align: center
+#| fig-width: 10
+#| fig-height: 5
+#| code-line-numbers: "1"
+ggplot(gapminder, aes(x = lifeExp, fill = continent)) +
+  geom_histogram(bins = 30) +
+  xlab("Life Expectancy") +
+  ylab("Count") +
+  ggtitle("Histogram of Life Expectancy in Gapminder Data")
+```
+
+## Solution: 6. Change geometry {auto-animate="true"}
+
+```{r}
+#| eval: true
+#| fig-align: center
+#| fig-width: 10
+#| fig-height: 5
+#| code-line-numbers: "2"
+ggplot(gapminder, aes(x = lifeExp, fill = continent)) +
+  geom_freqpoly(bins = 30) +
+  xlab("Life Expectancy") +
+  ylab("Count") +
+  ggtitle("Histogram of Life Expectancy in Gapminder Data")
+```
+
+## Solution: 6. Change geometry {auto-animate="true"}
+
+```{r}
+#| eval: true
+#| fig-align: center
+#| fig-width: 10
+#| fig-height: 5
+#| code-line-numbers: "2|1"
+ggplot(gapminder, aes(x = lifeExp, color = continent)) +
+  geom_freqpoly(bins = 30) +
+  xlab("Life Expectancy") +
+  ylab("Count") +
+  ggtitle("Histogram of Life Expectancy in Gapminder Data")
+```
+
+## Solution: 7. Add facets {auto-animate="true"} 
+
+```{r}
+#| eval: true
+#| fig-align: center
+#| fig-width: 10
+#| fig-height: 5
+#| code-line-numbers: "3"
+ggplot(gapminder, aes(x = lifeExp, color = continent)) +
+  geom_freqpoly(bins = 30) +
+  facet_wrap(vars(continent), ncol = 1) +
+  xlab("Life Expectancy") +
+  ylab("Count") +
+  ggtitle("Histogram of Life Expectancy in Gapminder Data")
+```
+
+## Solution: 8. Add nicer theme {auto-animate="true"} 
+
+```{r}
+#| eval: true
+#| fig-align: center
+#| fig-width: 10
+#| fig-height: 5
+#| code-line-numbers: "7"
+ggplot(gapminder, aes(x = lifeExp, color = continent)) +
+  geom_freqpoly(bins = 30) +
+  facet_wrap(vars(continent), ncol = 1) +
+  xlab("Life Expectancy") +
+  ylab("Count") +
+  ggtitle("Histogram of Life Expectancy in Gapminder Data") +
+  theme_minimal() 
+```
+
+## Solution: 9. Remove legend {auto-animate="true"} 
+
+```{r}
+#| eval: true
+#| fig-align: center
+#| fig-width: 10
+#| fig-height: 5
+#| code-line-numbers: "8"
+ggplot(gapminder, aes(x = lifeExp, color = continent)) +
+  geom_freqpoly(bins = 30) +
+  facet_wrap(vars(continent), ncol = 1) +
+  xlab("Life Expectancy") +
+  ylab("Count") +
+  ggtitle("Histogram of Life Expectancy in Gapminder Data") + 
+  theme_minimal() + 
+  theme(legend.position = "none") 
+  
+```
+
+# Break!{.section-title background-color="#1e4655"}
+
+# Advanced ggplot tools{.section-title background-color="#99a486"}
+
+## Further customization
+
+Next, we'll discuss:
+
+* Storing, modifying, and saving ggplots
+
+* Advanced axis changes (scales, text, ticks)
+
+* Legend changes (scales, colors, locations)
+
+* Using multiple `geoms`
+
+* Adding annotation for emphasis
+
+
+## Storing Plots
+
+We can assign a `ggplot` object to a name:
+
+```{r}
+lifeExp_by_year <- 
+  ggplot(data = gapminder, 
+       aes(x = year, y = lifeExp, 
+           group = country, 
+           color = continent)) +
+  geom_line() +
+  labs(x = "Year",
+       y = "Life expectancy",
+       title = "Life expectancy over time") + 
+  theme_minimal() + 
+  facet_wrap(vars(continent)) +
+  theme(legend.position = "none")
+```
+
+Afterwards, you can display or modify `ggplot`s...
+
+## Showing a Stored Graph
+
+```{r}
+#| fig-width: 10
+#| fig-height: 6
+lifeExp_by_year
+```
+
+## Overriding previous specifications
+```{r}
+#| fig-width: 12
+#| fig-height: 3
+#| code-line-numbers: "2"
+lifeExp_by_year + 
+  facet_grid(cols = vars(continent)) 
+```
+
+## Adding More Layers
+
+```{r}
+#| fig-height: 3.5
+#| fig-width: 12
+#| code-line-numbers: "3"
+lifeExp_by_year +
+  facet_grid(cols = vars(continent)) + 
+    theme(legend.position = "bottom")
+```
+
+## Saving `ggplot` Plots
+
+If you want to save a ggplot, use `ggsave()`:
+
+```{r}
+#| eval: false
+ggsave(filename = "I_saved_a_file.pdf", 
+       plot = lifeExp_by_year,
+       height = 3, width = 5, units = "in")
+```
+
+If you didn't manually set font sizes, these will usually come out at a reasonable size given the dimensions of your output file.
+
+## Changing the Axes
+
+We can modify the axes in a variety of ways, such as:
+
+* Change the $x$ or $y$ range using `xlim()` or `ylim()` layers
+
+* Change to a logarithmic or square-root scale on either axis: `scale_x_log10()`, `scale_y_sqrt()`
+
+* Change where the major/minor breaks are: `scale_x_continuous(breaks =, minor_breaks = )`
+
+## Axis Changes
+
+```{r}
+#| fig-height: 6
+#| fig-width: 10
+#| fig-align: center
+#| code-line-numbers: "3"
+ggplot(data = China, aes(x = year, y = gdpPercap)) +
+    geom_line() +
+    scale_y_log10(breaks = c(1000, 2000, 3000, 4000, 5000)) + 
+    xlim(1940, 2010) + ggtitle("Chinese GDP per capita")
+```
+
+## Precise Legend Position
+```{r}
+#| fig-height: 6
+#| fig-width: 10
+#| fig-align: center 
+lifeExp_by_year +
+  theme(legend.position = c(0.8, 0.2)) 
+```
+
+Instead of coordinates, you could also use "top", "bottom", "left", or "right".
+
+## Scales for Color, Shape, etc.
+
+**Scales** are layers that control how the mapped aesthetics appear. 
+
+You can modify these with a `scale_[aesthetic]_[option]()` layer:
+
+:::{.incremental}
+* `[aesthetic]` is `x`, `y`, `color`, `shape`, `linetype`, `alpha`, `size`, `fill`, etc.
+* `[option]` is something like `manual`, `continuous`, `binned` or `discrete` (depending on nature of the variable).
+:::
+
+. . . 
+
+**Examples:**
+
+* `scale_alpha_ordinal()`: scales alpha transparency for ordinal categorical variable 
+* `scale_x_log10()`: maps a log10 transformation of the x-axis variable
+* `scale_color_manual()`: allows manual specification of color aesthetic
+
+## Legend Name and Manual Colors
+
+```{r}
+#| fig-height: 6
+#| fig-width: 10
+#| fig-align: center
+#| code-line-numbers: "3-6"
+#| eval: false
+lifeExp_by_year +
+  theme(legend.position = c(0.8, 0.2)) +
+  scale_color_manual(
+    name = "Which continent are\nwe looking at?", # \n adds a line break 
+    values = c("Africa" = "#4e79a7", "Americas" = "#f28e2c", 
+               "Asia" = "#e15759", "Europe" = "#76b7b2", "Oceania" = "#59a14f"))
+```
+
+:::: {.columns}
+
+::: {.column width="70%"}
+```{r}
+#| fig-height: 6
+#| fig-width: 10
+#| fig-align: center
+#| eval: true
+#| echo: false
+lifeExp_by_year +
+  theme(legend.position = c(0.8, 0.2)) +
+  scale_color_manual(
+    name = "Which continent are\nwe looking at?", # \n adds a line break 
+    values = c("Africa" = "#4e79a7", "Americas" = "#f28e2c", 
+               "Asia" = "#e15759", "Europe" = "#76b7b2", "Oceania" = "#59a14f"))
+```
+:::
+
+::: {.column width="30%"}
+
+<br>
+
+<br>
+
+::: {.callout-note icon=false}
+## Note
+This scale argument knows to "map" onto `continent` because it is specified as the aesthetic for color in our original ggplot object.
+:::
+:::
+
+::::
+
+## Fixed versus Free Scales {.scrollable} 
+
+::: {.panel-tabset}
+
+### Untransformed
+
+```{r}
+#| fig-align: center
+#| code-fold: true
+#| fig-width: 16
+#| fig-height: 8
+gapminder_sub <- gapminder |> 
+  filter(year %in% c(1952, 1982, 2002)) # create subset with only 3 years
+  
+scales_plot <- ggplot(data = gapminder_sub, 
+       aes(x = lifeExp, y = gdpPercap, fill = continent)) + 
+  geom_jitter(alpha = 0.5, # alpha of points halfway transparent
+              pch = 21, # shape is a circle with fill
+              size = 3, # increase size
+              color = "black") + # outline of circle is black 
+  scale_fill_viridis_d(option = "D") + # circle is filled by colors perceptable for various forms of color-blindness
+  facet_grid(rows = vars(year), # facet by years in the row
+             cols = vars(continent)) + # facet by continent in the columns
+  ggthemes::theme_tufte(base_size = 20) # increase base text size
+scales_plot
+```
+
+### Fixed 
+
+```{r}
+#| fig-align: center
+#| code-fold: true
+#| fig-width: 16
+#| fig-height: 8
+scales_plot + scale_y_log10(breaks = c(250, 1000, 10000, 50000, 115000)) # transform the y axis to the logarithm to gain better visualization
+```
+
+### Free x
+
+```{r}
+#| code-fold: true
+#| fig-align: center
+#| fig-width: 16
+#| fig-height: 8
+scales_plot + scale_y_log10(breaks = c(250, 1000, 10000, 50000, 115000)) +
+  facet_grid(rows = vars(year), 
+             cols = vars(continent), 
+             scales = "free_x") # make the x axis vary by data 
+```
+
+### Free y
+
+```{r}
+#| code-fold: true
+#| fig-align: center
+#| fig-width: 16
+#| fig-height: 8
+scales_plot + scale_y_log10(breaks = c(250, 1000, 10000, 50000, 115000)) +
+  facet_grid(rows = vars(year), 
+             cols = vars(continent), 
+             scales = "free_y") # make the y axis vary by data 
+```
+
+### Free x & y
+
+```{r}
+#| code-fold: true
+#| fig-align: center
+#| fig-width: 16
+#| fig-height: 8
+scales_plot + scale_y_log10(breaks = c(250, 1000, 10000, 50000, 115000)) +
+  facet_grid(rows = vars(year), 
+             cols = vars(continent), 
+             scales = "free") # make both axes vary by data 
+```
+
+:::
+
+## Using multiple `geoms` {auto-animate="true"}
+
+```{r}
+#| fig-align: center
+#| code-line-numbers: "|2"
+ggplot(gapminder, aes(x = continent, y = lifeExp)) +
+  geom_boxplot(outlier.colour = "maroon")
+```
+
+## Using multiple `geoms` {auto-animate="true"}
+
+```{r}
+#| fig-align: center
+#| code-line-numbers: "3"
+ggplot(gapminder, aes(x = continent, y = lifeExp)) +
+  geom_boxplot(outlier.colour = "maroon") +
+  geom_point(alpha = 0.25)
+```
+
+## Using multiple `geoms` {auto-animate="true"}
+
+```{r}
+#| fig-align: center
+#| code-line-numbers: "3"
+ggplot(gapminder, aes(x = continent, y = lifeExp)) +
+  geom_boxplot(outlier.colour = "maroon") +
+  geom_jitter(alpha = 0.25)
+```
+
+## Using multiple `geoms` {auto-animate="true"}
+
+```{r}
+#| fig-align: center
+#| code-line-numbers: "3"
+ggplot(gapminder, aes(x = continent, y = lifeExp)) +
+  geom_boxplot(outlier.colour = "maroon") +
+  geom_jitter(position = position_jitter(width = 0.1, height = 0), alpha = 0.25)
+```
+
+## Annotating specific datapoints for emphasis
+
+```{r}
+#| echo: false
+outliers <- gapminder |> 
+  group_by(continent) |> 
+  mutate(outlier = case_when(quantile(lifeExp, probs = 0.25) - (IQR(lifeExp) * 1.5) > lifeExp ~ "outlier", # anything lower than the 1st quartile - 1.5*IQR 
+                             quantile(lifeExp, probs = 0.75) + (IQR(lifeExp) * 1.5) < lifeExp ~ "outlier", # anything higher than the 3rd quartile + 1.5*IQR
+                             .default = NA)) |> 
+  filter(!is.na(outlier)) |> # remove non-outliers
+  ungroup() |> group_by(country) |> # regroup by country
+  filter(lifeExp == min(lifeExp)) # filter just the min for each country
+
+no_outliers <- gapminder |> 
+  group_by(continent) |> 
+  mutate(outlier = case_when(quantile(lifeExp, probs = 0.25) - (IQR(lifeExp) * 1.5) > lifeExp ~ "outlier",
+                             quantile(lifeExp, probs = 0.75) + (IQR(lifeExp) * 1.5) < lifeExp ~ "outlier", 
+                             .default = NA)) |> 
+  filter(is.na(outlier)) # remove outliers
+```
+
+::: {.panel-tabset}
+
+### Basic annotation
+
+```{r}
+#| warning: false
+#| fig-align: center
+#| code-line-numbers: "|4"
+#| code-fold: true
+#| fig-width: 16
+#| fig-height: 8
+ggplot(gapminder, aes(x = continent, y = lifeExp)) +
+  geom_boxplot(outlier.colour = "maroon", outlier.size = 3) +
+  geom_jitter(data = no_outliers, position = position_jitter(width = 0.1, height = 0), alpha = 0.25, size = 3) + 
+  geom_text(data = outliers, aes(label = country), color = "maroon", size = 8) + 
+  theme_minimal(base_size = 18)
+```
+
+### Offset annotation
+
+```{r}
+#| warning: false
+#| fig-align: center
+#| code-line-numbers: "|1,5"
+#| code-fold: true
+#| fig-width: 16
+#| fig-height: 8
+library(ggrepel)
+ggplot(gapminder, aes(x = continent, y = lifeExp)) +
+  geom_boxplot(outlier.colour = "maroon", outlier.size = 3) +
+  geom_jitter(data = no_outliers, position = position_jitter(width = 0.1, height = 0), alpha = 0.25, size = 3) + 
+  geom_label_repel(data = outliers, aes(label = country), color = "maroon", alpha = 0.7, size = 8, max.overlaps = 13) + 
+  theme_minimal(base_size = 18)
+```
+
+### Code: outliers
+
+```{r}
+#| code-fold: true
+outliers <- gapminder |> 
+  group_by(continent) |> 
+  mutate(outlier = case_when(quantile(lifeExp, probs = 0.25) - (IQR(lifeExp) * 1.5) > lifeExp ~ "outlier", # anything lower than the 1st quartile - 1.5*IQR 
+                             quantile(lifeExp, probs = 0.75) + (IQR(lifeExp) * 1.5) < lifeExp ~ "outlier", # anything higher than the 3rd quartile + 1.5*IQR
+                             .default = NA)) |> 
+  filter(!is.na(outlier)) |> # remove non-outliers
+  ungroup() |> group_by(country) |> # regroup by country
+  filter(lifeExp == min(lifeExp)) # filter just the min for each country
+
+outliers
+```
+
+### Code: no outliers
+```{r}
+#| code-fold: true
+no_outliers <- gapminder |> 
+  group_by(continent) |> 
+  mutate(outlier = case_when(quantile(lifeExp, probs = 0.25) - (IQR(lifeExp) * 1.5) > lifeExp ~ "outlier",
+                             quantile(lifeExp, probs = 0.75) + (IQR(lifeExp) * 1.5) < lifeExp ~ "outlier", 
+                             .default = NA)) |> 
+  filter(is.na(outlier)) # remove outliers
+
+no_outliers
+```
+
+:::
+
+# Bonus: Advanced Example!{.section-title background-color="#99a486"}
+
+## End Result
+
+We're going to *slowly* build up a *really detailed plot* now!
+
+```{r}
+#| echo: false
+#| fig-height: 6
+#| fig-width: 10
+ggplot(data = gapminder, aes(x = year, y = lifeExp, group = country)) +
+  geom_line(alpha = 0.5, aes(color = "Country", size = "Country")) +
+  geom_line(stat = "smooth", method = "loess", 
+            aes(group = continent, color = "Continent", size = "Continent"), alpha = 0.5) +
+  facet_wrap(~ continent, nrow = 2) +
+  scale_color_manual(name = "Life Exp. for:", values = c("Country" = "black", "Continent" = "blue")) +
+  scale_size_manual(name = "Life Exp. for:", values = c("Country" = 0.25, "Continent" = 3)) +
+  theme_minimal(base_size = 14) + ylab("Years") + xlab("") + 
+  ggtitle("Life Expectancy, 1952-2007", subtitle = "By continent and country") +
+  theme(legend.position=c(0.82, 0.15), axis.text.x = element_text(angle = 45))
+```
+
+## Base `ggplot`
+
+::: {.panel-tabset}
+
+### Code
+
+```{r}
+#| eval: false
+ggplot(data = gapminder, 
+       aes(x = year, y = lifeExp, group = country)) 
+```
+
+### Plot
+
+```{r}
+#| echo: false
+#| eval: true
+#| fig-height: 6
+#| fig-width: 10
+#| fig-align: center
+ggplot(data = gapminder, 
+       aes(x = year, y = lifeExp, group = country)) 
+```
+:::
+
+::: aside
+What might be a good `geom` layer for this data?
+:::
+
+## Lines 
+
+::: {.panel-tabset}
+
+### Code
+
+```{r}
+#| eval: false
+#| code-line-numbers: "3"
+ggplot(data = gapminder, 
+       aes(x = year, y = lifeExp, group = country)) +
+  geom_line() 
+```
+
+### Plot
+
+```{r}
+#| echo: false
+#| eval: true
+#| fig-height: 6
+#| fig-width: 10
+#| fig-align: center
+ggplot(data = gapminder, 
+       aes(x = year, y = lifeExp, group = country)) +
+  geom_line() 
+```
+
+::: aside
+Let's also add a continent-specific average so we can visualize country-deviations from the regional average. 
+:::
+
+:::
+
+## Continent Average 
+
+::: {.panel-tabset}
+
+### Code
+
+```{r}
+#| eval: false
+#| code-line-numbers: "4-6"
+ggplot(data = gapminder, 
+       aes(x = year, y = lifeExp, group = country)) +
+  geom_line() +
+  geom_line(stat = "smooth", 
+            method = "loess", 
+            aes(group = continent)) 
+```
+
+### Plot
+
+```{r}
+#| echo: false
+#| eval: true
+#| fig-height: 6
+#| fig-width: 10
+#| fig-align: center
+ggplot(data = gapminder, 
+       aes(x = year, y = lifeExp, group = country)) +
+  geom_line() +
+  geom_line(stat = "smooth", 
+            method = "loess", 
+            aes(group = continent)) 
+```
+:::
+
+::: aside
+A [*loess* curve](https://en.wikipedia.org/wiki/Local_regression) is something like a moving average.
+:::
+
+## Facets 
+
+::: {.panel-tabset}
+
+### Code
+
+```{r}
+#| eval: false
+#| code-line-numbers: "7-8"
+ggplot(data = gapminder, 
+       aes(x = year, y = lifeExp, group = country)) +
+  geom_line() +
+  geom_line(stat = "smooth", 
+            method = "loess", 
+            aes(group = continent)) +
+  facet_wrap(~ continent, 
+             nrow = 2)
+```
+
+### Plot
+
+```{r}
+#| echo: false
+#| eval: true
+#| fig-height: 6
+#| fig-width: 10
+#| fig-align: center
+ggplot(data = gapminder, 
+       aes(x = year, y = lifeExp, group = country)) +
+  geom_line() +
+  geom_line(stat = "smooth", 
+            method = "loess", 
+            aes(group = continent)) +
+  facet_wrap(~ continent, nrow = 2)
+```
+:::
+
+::: aside
+Facets allow us to gain a clearer understanding of the regional patterns. We want to differentiate the continent-average line from the country-specific lines though so let's change it's color. 
+:::
+
+## Color Scale
+
+::: {.panel-tabset}
+
+### Code
+
+```{r}
+#| eval: false
+#| code-line-numbers: "9-10"
+ggplot(data = gapminder, 
+       aes(x = year, y = lifeExp, group = country)) +
+  geom_line() +
+  geom_line(stat = "smooth", 
+            method = "loess", 
+            aes(group = continent)) +
+  facet_wrap(~ continent, 
+             nrow = 2) +
+  scale_color_manual(name = "Life Exp. for:", 
+                     values = c("Country" = "black", "Continent" = "blue"))
+```
+
+### Plot
+
+```{r}
+#| echo: false
+#| eval: true
+#| fig-height: 6
+#| fig-width: 10
+#| fig-align: center
+ggplot(data = gapminder, 
+       aes(x = year, y = lifeExp, group = country)) +
+  geom_line() +
+  geom_line(stat = "smooth", 
+            method = "loess", 
+            aes(group = continent)) +
+  facet_wrap(~ continent, nrow = 2) +
+  scale_color_manual(name = "Life Exp. for:", 
+                     values = c("Country" = "black", "Continent" = "blue"))
+```
+
+::: aside
+Hmm, can't quite see the blue line yet. Let's make it bigger?
+:::
+
+:::
+
+## Size Scale
+
+::: {.panel-tabset}
+
+### Code
+
+```{r}
+#| eval: false
+#| code-line-numbers: "11-12"
+ggplot(data = gapminder, 
+       aes(x = year, y = lifeExp, group = country)) +
+  geom_line() +
+  geom_line(stat = "smooth", 
+            method = "loess", 
+            aes(group = continent)) +
+  facet_wrap(~ continent, 
+             nrow = 2) +
+  scale_color_manual(name = "Life Exp. for:", 
+                     values = c("Country" = "black", "Continent" = "blue")) +
+  scale_size_manual(name = "Life Exp. for:", 
+                    values = c("Country" = 0.25, "Continent" = 3))
+```
+
+### Plot
+
+```{r}
+#| echo: false
+#| eval: true
+#| fig-height: 6
+#| fig-width: 10
+#| fig-align: center
+ggplot(data = gapminder, 
+       aes(x = year, y = lifeExp, group = country)) +
+  geom_line() +
+  geom_line(stat = "smooth", 
+            method = "loess", 
+            aes(group = continent)) +
+  facet_wrap(~ continent, 
+             nrow = 2) +
+  scale_color_manual(name = "Life Exp. for:", 
+                     values = c("Country" = "black", "Continent" = "blue")) +
+  scale_size_manual(name = "Life Exp. for:", 
+                    values = c("Country" = 0.25, "Continent" = 3))
+```
+:::
+
+::: aside
+It doesn't look like our color and size scales are actually mapping onto our variables. Why is that?
+:::
+
+## Mapping Color & Size
+
+::: {.panel-tabset}
+
+### Code
+
+```{r}
+#| eval: false
+#| code-line-numbers: "3,5"
+ggplot(data = gapminder, 
+       aes(x = year, y = lifeExp, group = country)) +
+  geom_line(aes(color = "Country", size = "Country")) +
+  geom_line(stat = "smooth", method = "loess", 
+            aes(group = continent, color = "Continent", size = "Continent")) +
+  facet_wrap(~ continent, 
+             nrow = 2) +
+  scale_color_manual(name = "Life Exp. for:", 
+                     values = c("Country" = "black", "Continent" = "blue")) +
+  scale_size_manual(name = "Life Exp. for:", 
+                    values = c("Country" = 0.25, "Continent" = 3))
+```
+
+### Plot
+
+```{r}
+#| echo: false
+#| eval: true
+#| fig-height: 6
+#| fig-width: 10
+#| fig-align: center
+ggplot(data = gapminder, 
+       aes(x = year, y = lifeExp, group = country)) +
+  geom_line(aes(color = "Country", size = "Country")) +
+  geom_line(stat = "smooth", method = "loess", 
+            aes(group = continent, color = "Continent", size = "Continent")) +
+  facet_wrap(~ continent, 
+             nrow = 2) +
+  scale_color_manual(name = "Life Exp. for:", 
+                     values = c("Country" = "black", "Continent" = "blue")) +
+  scale_size_manual(name = "Life Exp. for:", 
+                    values = c("Country" = 0.25, "Continent" = 3))
+```
+:::
+
+::: aside
+Huzzah! Let's change the transparency on these lines a touch so we can see all our data more easily. 
+:::
+
+## Alpha (Transparency)
+
+::: {.panel-tabset}
+
+### Code
+
+```{r}
+#| eval: false
+#| code-line-numbers: "3,7"
+ggplot(data = gapminder, 
+       aes(x = year, y = lifeExp, group = country)) +
+  geom_line(alpha = 0.5, 
+            aes(color = "Country", size = "Country")) +
+  geom_line(stat = "smooth", method = "loess", 
+            aes(group = continent, color = "Continent", size = "Continent"), 
+            alpha = 0.5) +
+  facet_wrap(~ continent, 
+             nrow = 2) +
+  scale_color_manual(name = "Life Exp. for:", 
+                     values = c("Country" = "black", "Continent" = "blue")) +
+  scale_size_manual(name = "Life Exp. for:", 
+                    values = c("Country" = 0.25, "Continent" = 3))
+```
+
+### Plot
+
+```{r}
+#| echo: false
+#| eval: true
+#| fig-height: 6
+#| fig-width: 10
+#| fig-align: center
+ggplot(data = gapminder, 
+       aes(x = year, y = lifeExp, group = country)) +
+  geom_line(alpha = 0.5, 
+            aes(color = "Country", size = "Country")) +
+  geom_line(stat = "smooth", 
+            method = "loess", 
+            aes(group = continent, color = "Continent", size = "Continent"), 
+            alpha = 0.5) +
+  facet_wrap(~ continent, 
+             nrow = 2) +
+  scale_color_manual(name = "Life Exp. for:", 
+                     values = c("Country" = "black", "Continent" = "blue")) +
+  scale_size_manual(name = "Life Exp. for:", 
+                    values = c("Country" = 0.25, "Continent" = 3))
+```
+:::
+
+::: aside
+Now we're getting somewhere! We can also add useful labels and clean up the theme. 
+:::
+
+## Theme and Labels
+
+::: {.panel-tabset}
+
+### Code
+
+```{r}
+#| eval: false
+#| code-line-numbers: "13-15"
+ggplot(data = gapminder, 
+       aes(x = year, y = lifeExp, group = country)) +
+  geom_line() +
+  geom_line(stat = "smooth", 
+            method = "loess", 
+            aes(group = continent)) +
+  facet_wrap(~ continent, 
+             nrow = 2) +
+  scale_color_manual(name = "Life Exp. for:", 
+                     values = c("Country" = "black", "Continent" = "blue")) +
+  scale_size_manual(name = "Life Exp. for:", 
+                    values = c("Country" = 0.25, "Continent" = 3)) +
+  theme_minimal(base_size = 14) + 
+  labs(y = "Years", 
+       x = "")
+```
+
+### Plot
+
+```{r}
+#| echo: false
+#| eval: true
+#| fig-height: 6
+#| fig-width: 10
+#| fig-align: center
+ggplot(data = gapminder, 
+       aes(x = year, y = lifeExp, group = country)) +
+  geom_line(alpha = 0.5, 
+            aes(color = "Country", size = "Country")) +
+  geom_line(stat = "smooth", 
+            method = "loess", 
+            aes(group = continent, color = "Continent", size = "Continent"), 
+            alpha = 0.5) +
+  facet_wrap(~ continent, 
+             nrow = 2) +
+  scale_color_manual(name = "Life Exp. for:", 
+                     values = c("Country" = "black", "Continent" = "blue")) +
+  scale_size_manual(name = "Life Exp. for:", 
+                    values = c("Country" = 0.25, "Continent" = 3)) +
+  theme_minimal(base_size = 14) + 
+  labs(y = "Years", 
+       x = "")
+```
+:::
+
+::: aside
+What's our plot showing? We should be explicit about that. 
+:::
+
+## Title and Subtitle
+
+::: {.panel-tabset}
+
+### Code
+
+```{r}
+#| eval: false
+#| code-line-numbers: "16-17"
+ggplot(data = gapminder, 
+       aes(x = year, y = lifeExp, group = country)) +
+  geom_line() +
+  geom_line(stat = "smooth", 
+            method = "loess", 
+            aes(group = continent)) +
+  facet_wrap(~ continent, 
+             nrow = 2) +
+  scale_color_manual(name = "Life Exp. for:", 
+                     values = c("Country" = "black", "Continent" = "blue")) +
+  scale_size_manual(name = "Life Exp. for:", 
+                    values = c("Country" = 0.25, "Continent" = 3)) +
+  theme_minimal(base_size = 14) + 
+  labs(y = "Years", 
+       x = "", 
+       title = "Life Expectancy, 1952-2007", 
+       subtitle = "By continent and country")
+```
+
+### Plot
+
+```{r}
+#| echo: false
+#| eval: true
+#| fig-height: 6
+#| fig-width: 10
+#| fig-align: center
+ggplot(data = gapminder, 
+       aes(x = year, y = lifeExp, group = country)) +
+  geom_line(alpha = 0.5, 
+            aes(color = "Country", size = "Country")) +
+  geom_line(stat = "smooth", 
+            method = "loess", 
+            aes(group = continent, color = "Continent", size = "Continent"), 
+            alpha = 0.5) +
+  facet_wrap(~ continent, 
+             nrow = 2) +
+  scale_color_manual(name = "Life Exp. for:", 
+                     values = c("Country" = "black", "Continent" = "blue")) +
+  scale_size_manual(name = "Life Exp. for:", 
+                    values = c("Country" = 0.25, "Continent" = 3)) +
+  theme_minimal(base_size = 14) + 
+  labs(y = "Years", 
+       x = "", 
+       title = "Life Expectancy, 1952-2007", 
+       subtitle = "By continent and country")
+```
+:::
+
+::: aside
+The x-axis feels a little busy right now...
+:::
+
+## Angled Tick Values
+
+::: {.panel-tabset}
+
+### Code
+
+```{r}
+#| eval: false
+#| code-line-numbers: "18"
+ggplot(data = gapminder, 
+       aes(x = year, y = lifeExp, group = country)) +
+  geom_line() +
+  geom_line(stat = "smooth", 
+            method = "loess", 
+            aes(group = continent)) +
+  facet_wrap(~ continent, 
+             nrow = 2) +
+  scale_color_manual(name = "Life Exp. for:", 
+                     values = c("Country" = "black", "Continent" = "blue")) +
+  scale_size_manual(name = "Life Exp. for:", 
+                    values = c("Country" = 0.25, "Continent" = 3)) +
+  theme_minimal(base_size = 14) + 
+  labs(y = "Years", 
+       x = "", 
+       title = "Life Expectancy, 1952-2007", 
+       subtitle = "By continent and country") +
+  theme(axis.text.x = element_text(angle = 45)) 
+```
+
+### Plot
+
+```{r}
+#| echo: false
+#| eval: true
+#| fig-height: 6
+#| fig-width: 10
+#| fig-align: center
+ggplot(data = gapminder, 
+       aes(x = year, y = lifeExp, group = country)) +
+  geom_line(alpha = 0.5, 
+            aes(color = "Country", size = "Country")) +
+  geom_line(stat = "smooth", 
+            method = "loess", 
+            aes(group = continent, color = "Continent", size = "Continent"), 
+            alpha = 0.5) +
+  facet_wrap(~ continent, 
+             nrow = 2) +
+  scale_color_manual(name = "Life Exp. for:", 
+                     values = c("Country" = "black", "Continent" = "blue")) +
+  scale_size_manual(name = "Life Exp. for:", 
+                    values = c("Country" = 0.25, "Continent" = 3)) +
+  theme_minimal(base_size = 14) + 
+  labs(y = "Years", 
+       x = "", 
+       title = "Life Expectancy, 1952-2007", 
+       subtitle = "By continent and country") +
+  theme(axis.text.x = element_text(angle = 45)) 
+```
+:::
+
+. . . 
+
+:::aside
+Note: Fewer values might be better than angled labels! Finally, let's move our legend so it isn't wasting space. 
+:::
+
+## Legend Position
+
+::: {.panel-tabset}
+
+### Code
+
+```{r}
+#| eval: false
+#| code-line-numbers: "18"
+ggplot(data = gapminder, 
+       aes(x = year, y = lifeExp, group = country)) +
+  geom_line() +
+  geom_line(stat = "smooth", 
+            method = "loess", 
+            aes(group = continent)) +
+  facet_wrap(~ continent, 
+             nrow = 2) +
+  scale_color_manual(name = "Life Exp. for:", 
+                     values = c("Country" = "black", "Continent" = "blue")) +
+  scale_size_manual(name = "Life Exp. for:", 
+                    values = c("Country" = 0.25, "Continent" = 3)) +
+  theme_minimal(base_size = 14) + 
+  labs(y = "Years", 
+       x = "", 
+       title = "Life Expectancy, 1952-2007", 
+       subtitle = "By continent and country") +
+  theme(legend.position = c(0.82, 0.15), 
+        axis.text.x = element_text(angle = 45))
+```
+
+### Plot
+
+```{r}
+#| echo: false
+#| eval: true
+#| fig-height: 6
+#| fig-width: 10
+#| fig-align: center
+ggplot(data = gapminder, 
+       aes(x = year, y = lifeExp, group = country)) +
+  geom_line(alpha = 0.5, 
+            aes(color = "Country", size = "Country")) +
+  geom_line(stat = "smooth", 
+            method = "loess", 
+            aes(group = continent, color = "Continent", size = "Continent"), 
+            alpha = 0.5) +
+  facet_wrap(~ continent, 
+             nrow = 2) +
+  scale_color_manual(name = "Life Exp. for:", 
+                     values = c("Country" = "black", "Continent" = "blue")) +
+  scale_size_manual(name = "Life Exp. for:", 
+                    values = c("Country" = 0.25, "Continent" = 3)) +
+  theme_minimal(base_size = 14) + 
+  labs(y = "Years", 
+       x = "", 
+       title = "Life Expectancy, 1952-2007", 
+       subtitle = "By continent and country") +
+  theme(legend.position=c(0.82, 0.15), 
+        axis.text.x = element_text(angle = 45))
+```
+:::
+
+::: aside
+Voilà!
+:::
+
+# `ggplot` Extensions!{.section-title background-color="#99a486"}
+
+## `tidyverse` extended universe
+
+`ggplot2` can obviously do a lot on its own. But because `R` allows for anyone and everyone to expand the functionality of what already exists, numerous extensions^[The full list can be found [here](https://exts.ggplot2.tidyverse.org/gallery/).] to `ggplot2` have been created. 
+
+. . . 
+
+We've already seen one example with `ggrepel`. But let's look at a few others...
+
+## `geomtextpath` {.scrollable} 
+
+If you want your labels to follow along the path of your plot (and maintain proper angles and spacing) try using [`geomtextpath`](https://allancameron.github.io/geomtextpath/index.html).
+
+```{r}
+#| code-fold: true
+#| fig-align: center
+# install.packages("geomtextpath") <- run in console first
+library(geomtextpath)
+gapminder |> 
+  filter(country %in% c("Cuba", "Haiti", "Dominican Republic")) |> # restricting data to 3 regionally-specific countries
+  ggplot(aes(x = year, 
+             y = lifeExp, 
+             color = country, 
+             label = country)) + # specify label with text to appear
+  geom_textpath() + # adding textpath geom to put labels within lines
+  theme(legend.position = "none") # removing legend
+```
+
+## `ggridges` {.scrollable} 
+
+We can visualize the differing distributions of a continuous variable by levels of a categorical variable with [ggridges](https://wilkelab.org/ggridges/)!
+
+```{r}
+#| code-fold: true
+#| fig-align: center
+# install.packages("ggridges") <- run in console first
+library(ggridges)
+ggplot(gapminder, 
+       aes(x = lifeExp, 
+           y = continent, 
+           fill = continent, 
+           color = continent)) +
+  geom_density_ridges(alpha = 0.5, 
+                      show.legend = FALSE) # add ridges, make all a bit transparent, remove legend
+```
+
+## Correlation Matricies {.scrollable} 
+
+Make visually appealing & informative correlation plots in [`GGally`]() or [`ggcorrplot`](). 
+
+::: {.panel-tabset}
+
+### `GGally`
+
+```{r}
+#| code-fold: true
+#| fig-align: center
+#| fig-width: 6
+#| fig-height: 6
+# install.packages("GGally") <- run in console first
+library(GGally)
+
+ggcorr(swiss, 
+       geom = "circle", 
+       min_size = 25, # specify minimum size of shape 
+       max_size = 25, # specify maximum size of shape 
+       label = TRUE, # label circles with correlation coefficient
+       label_alpha = TRUE, # less strong correlations have lower alpha
+       label_round = 2, # round correlations coefficients to 2 decimal points
+       legend.position = c(0.15, 0.6), 
+       legend.size = 12)
+```
+
+### `ggcorrplot`
+
+```{r}
+#| code-fold: true
+#| fig-align: center
+#| #| fig-width: 6
+#| fig-height: 6
+# install.packages("ggcorrplot") <- run in console first
+library(ggcorrplot)
+
+# compute correlation matrix
+corr <- round(cor(swiss), 1)
+# computer matrix of correlation p-values
+p_mat <- cor_pmat(swiss)
+
+ggcorrplot(corr,
+           hc.order = TRUE, # use hierarchical clustering to group like-correlations together
+           type = "lower", # only show lower half of correlation matrix
+           p.mat = p_mat, # give corresponding p-values for correlation matrix
+           insig = "pch", # add default shape (an X) to correlations that are insignificant
+           outline.color = "black", # outline cells in white
+           ggtheme = ggthemes::theme_tufte(), # using a specific theme I like from ggthemes package 
+           colors = c("#4e79a7", "white", "#e15759")) + # specify custom colors 
+  theme(legend.position = c(0.15, 0.67))
+
+```
+
+### Bonus: `ggpairs()` from `GGally`
+
+```{r}
+#| code-fold: true
+#| fig-align: center
+ggpairs(swiss, 
+        lower = list(continuous = wrap("smooth", # specify a smoothing line added to scatterplots
+                                       alpha = 0.5, 
+                                       size=0.2))) + 
+  ggthemes::theme_tufte() # add nice theme from ggthemes
+```
+
+
+:::
+
+## `patchwork` {.scrollable} 
+
+Combine separate plots into the same graphic using [`patchwork`]().
+
+```{r}
+#| code-fold: true
+#| fig-align: center
+# install.packages("patchwork") <- run in console first
+library(patchwork)
+
+# Create first plot object
+plot_lifeExp <- ggplot(gapminder, 
+                       aes(x = lifeExp, y = continent, fill = continent, color = continent)) +
+  geom_density_ridges(alpha = 0.5, show.legend = FALSE)
+
+# Create second plot object
+plot_boxplot <- ggplot(gapminder, 
+                       aes(x = continent, y = lifeExp, color = continent), 
+                       alpha = 0.5) +
+  geom_boxplot(outlier.colour = "black", varwidth = TRUE) + # change outlier color and make width of boxes relative to N
+  coord_flip() + # flip the coordinates (x & y) to align with first plot
+  geom_jitter(position = position_jitter(width = 0.1, height = 0), # add datapoints to boxplot
+              alpha = 0.25) + 
+  geom_label_repel(data = outliers, # mapping new dataset with the outliers
+                   aes(label = country), 
+                   color = "black", 
+                   alpha = 0.7, 
+                   max.overlaps = 13) +
+  theme(axis.text.y = element_blank(), # remove y axis text 
+        axis.ticks.y = element_blank(), # remove y axis ticks 
+        axis.title.y = element_blank(), # remove y axis title 
+        legend.position = "none")
+
+plot_lifeExp + plot_boxplot # simply add two objects together to place side by side
+```
+
+
+## themes in `ggplot2` {.scrollable} 
+
+There are several built-in themes within `ggplot2`. 
+
+::: {.panel-tabset}
+
+### bw
+
+```{r}
+#| code-fold: true
+#| fig-align: center
+plot_lifeExp + theme_bw() # reusing plot_lifeExp from previous slide and changing theme
+```
+
+### light
+
+```{r}
+#| code-fold: true
+#| fig-align: center
+plot_lifeExp + theme_light()
+```
+
+### classic
+
+```{r}
+#| code-fold: true
+#| fig-align: center
+plot_lifeExp + theme_classic()
+```
+
+### linedraw
+
+```{r}
+#| code-fold: true
+#| fig-align: center
+plot_lifeExp + theme_linedraw()
+```
+
+### dark
+
+```{r}
+#| code-fold: true
+#| fig-align: center
+plot_lifeExp + theme_dark()
+```
+
+### minimal
+
+```{r}
+#| code-fold: true
+#| fig-align: center
+plot_lifeExp + theme_minimal()
+```
+
+### gray
+
+```{r}
+#| code-fold: true
+#| fig-align: center
+plot_lifeExp + theme_gray()
+```
+
+### void
+
+```{r}
+#| code-fold: true
+#| fig-align: center
+plot_lifeExp + theme_void()
+```
+
+:::
+
+## [`ggthemes`](https://jrnold.github.io/ggthemes/) {.scrollable} 
+
+::: {.panel-tabset}
+
+### excel
+
+```{r}
+#| code-fold: true
+#| fig-align: center
+library(ggthemes)
+plot_lifeExp + theme_excel()
+```
+
+### economist
+
+```{r}
+#| code-fold: true
+#| fig-align: center
+plot_lifeExp + theme_economist()
+```
+
+### few
+
+```{r}
+#| code-fold: true
+#| fig-align: center
+plot_lifeExp + theme_few()
+```
+
+### fivethirtyeight
+
+```{r}
+#| code-fold: true
+#| fig-align: center
+plot_lifeExp + theme_fivethirtyeight()
+```
+
+### gdocs
+
+```{r}
+#| code-fold: true
+#| fig-align: center
+plot_lifeExp + theme_gdocs()
+```
+
+### stata
+
+```{r}
+#| code-fold: true
+#| fig-align: center
+plot_lifeExp + theme_stata()
+```
+
+### tufte
+
+```{r}
+#| code-fold: true
+#| fig-align: center
+plot_lifeExp + theme_tufte()
+```
+
+### wsj
+
+```{r}
+#| code-fold: true
+#| fig-align: center
+plot_lifeExp + theme_wsj()
+```
+
+:::
+
+## Other theme packages and making your own!
+
+These are just a handful of all the ready-made theme options available out there. Some other packages that might be useful/fun to check out: 
+
+:::{.incremental}
+* [`hrbrthemes`](https://hrbrmstr.github.io/hrbrthemes/index.html) - *provides typography-centric themes and theme components for ggplot2*
+* [`urbnthemes`](https://urbaninstitute.github.io/urbnthemes/index.html) *a set of tools for creating Urban Institute-themed plots and maps in R*
+* [`bbplot`](https://github.com/bbc/bbplot/) - *provides helpful functions for creating and exporting graphics made in ggplot in the style used by the BBC News data team*
+* [`ggpomological`](https://www.garrickadenbuie.com/project/ggpomological/) - *A ggplot2 theme based on the USDA Pomological Watercolor Collection*
+:::
+
+. . . 
+
+You are also able to design your own theme using the `theme()` function and really [getting into the weeds](https://ggplot2.tidyverse.org/reference/theme.html) with how to specify all the non-data ink in your plot. Once you come up with a theme you like you can save it as an object (i.e. `my_theme`)  and add it to any `ggplot` you create to maintain your own unique and consistent style. 
+
+
+# Summary{.section-title background-color="#99a486"}
+
+## Summary
+
+`ggplot2` can do a LOT! I don't expect you to memorize all these tools, and neither should you! With time and practice, you'll start to remember the key tools.
+
+::::{.columns}
+:::{.column width="55%"}
+* When in doubt, Google it! (i.e. "*R ggplot 'whatever issue you need help with'*")
+
+* There are lots of great resources out there:
+  
+  + The [ggplot2 reference page](https://ggplot2.tidyverse.org/reference/index.html)
+
+  + The [Cookbook for R website](http://www.cookbook-r.com/)
+  
+  + The [RStudio ggplot Cheatsheets](https://rstudio.github.io/cheatsheets/data-visualization.pdf).
+  
+  + Kieran Healy's book [Data Visualization: A Practical Introduction](https://socviz.co/) (right) is targeted at social scientists without technical backgrounds and uses the same tools we'll be learning in this class.
+:::
+:::{.column width="45%"}
+![](images/dataviz_kieranhealy.jpeg)
+:::
+::::
+
+# Homework{.section-title background-color="#1e4655"}
+
+## {data-menu-title="Homework 2" background-iframe="https://jpierkunke.github.io/CSSS508-Spring2025/Homework/homework2.html" background-interactive=TRUE}

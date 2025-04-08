@@ -6,13 +6,13 @@ title: "Lecture schedule"
 
 | Lecture | Date        | Topic                                            | Recommended Readings      |
 |:-------:|-------------|--------------------------------------------------|---------------------------|
-|    1    | 01 Apr 2025 | Introduction to R, R Studio, and Quarto          | R for Data Science: [Introduction](https://r4ds.hadley.nz/intro.html), [Ch 28 Quarto](https://r4ds.hadley.nz/quarto.html) |
-|    2    | 08 Apr 2025 | Data Visualization and Debugging                 | |
-|    3    | 15 Apr 2025 | Data Manipulation                                | |
-|    4    | 22 Apr 2025 | Summary Statistics                               | |
-|    5    | 29 Apr 2025 | Importing and Exporting Data                     | |
-|    6    | 06 May 2025 | Cleaning and Joining Data                        | |
-|    7    | 13 May 2025 | Data Structures and Types; Regression in R       | |
-|    8    | 20 May 2025 | Working with Text Data/Objects in R              | |
-|    9    | 27 May 2025 | Iteration and Writing Functions                  | |
+|    1    | 01 Apr 2025 | Introduction to R, R Studio, and Quarto          | R for Data Science: [Introduction](https://r4ds.hadley.nz/intro.html), [Ch 28 (Quarto)](https://r4ds.hadley.nz/quarto.html) |
+|    2    | 08 Apr 2025 | Data Visualization and Debugging                 | R for Data Science: Chapters [1](https://r4ds.hadley.nz/data-visualize), [9-11](https://r4ds.hadley.nz/visualize.html); [ggplot cheatsheet](https://rstudio.github.io/cheatsheets/data-visualization.pdf)|
+|    3    | 15 Apr 2025 | Workflow and Reproducibility                     | R for Data Science: Chapters [2, 4, 6, 8 (workflow)](https://r4ds.hadley.nz/workflow-basics), [27](https://r4ds.hadley.nz/base-R.html)|
+|    4    | 22 Apr 2025 | Manipulating and Summarizing Data                | R for Data Science: Chapters [3](https://r4ds.hadley.nz/data-transform.html), [12](https://r4ds.hadley.nz/logicals.html), [19](https://r4ds.hadley.nz/joins.html)|
+|    5    | 29 Apr 2025 | Importing, Exporting, and Cleaning Data          | |
+|    6    | 06 May 2025 | Data Structures & Types                          | |
+|    7    | 13 May 2025 | Working with Text Data                           | |
+|    8    | 20 May 2025 | Writing Functions                                | |
+|    9    | 27 May 2025 | Iteration                                        | |
 |   10    | 03 Jun 2025 | Next Steps                                       | |
