@@ -1702,7 +1702,7 @@
     "href": "Lectures/CSSS508_Lecture2.html#facets-1",
     "title": "CSSS 508",
     "section": "Facets",
-    "text": "Facets\n\nCodePlot\n\n\n\nggplot(data = gapminder, \n       aes(x = year, y = lifeExp, group = country)) +\n  geom_line() +\n  geom_line(stat = \"smooth\", \n            method = \"loess\", \n            aes(group = continent)) +\n  facet_wrap(~ continent, \n             nrow = 2)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFacets allow us to gain a clearer understanding of the regional patterns. We want to differentiate the continent-average line from the country-specific lines though so let’s change it’s color.",
+    "text": "Facets\n\nCodePlot\n\n\n\nggplot(data = gapminder, \n       aes(x = year, y = lifeExp, group = country)) +\n  geom_line() +\n  geom_line(stat = \"smooth\", \n            method = \"loess\", \n            aes(group = continent)) +\n  facet_wrap(~ continent, \n             nrow = 2)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFacets allow us to gain a clearer understanding of the regional patterns. We want to differentiate the continent-average line from the country-specific lines though so let’s change its color.",
     "crumbs": [
       "Lectures",
       "Lecture 2: Data Visualization"

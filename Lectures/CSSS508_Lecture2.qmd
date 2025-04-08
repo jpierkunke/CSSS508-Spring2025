@@ -1765,7 +1765,7 @@ ggplot(data = gapminder,
 :::
 
 ::: aside
-Facets allow us to gain a clearer understanding of the regional patterns. We want to differentiate the continent-average line from the country-specific lines though so let's change it's color. 
+Facets allow us to gain a clearer understanding of the regional patterns. We want to differentiate the continent-average line from the country-specific lines though so let's change its color. 
 :::
 
 ## Color Scale
