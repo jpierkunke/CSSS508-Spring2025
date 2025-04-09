@@ -208,8 +208,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="instructions" class="level3">
-<h3 class="anchored" data-anchor-id="instructions">Instructions</h3>
+<section id="instructions-general-reminders" class="level3">
+<h3 class="anchored" data-anchor-id="instructions-general-reminders">Instructions: General reminders</h3>
+<p>For this and all assignments you submit on Canvas: Don’t forget to include <code>embed-resources: true</code> in your YAML header. This way your HTML document will include any plots you made when you upload the document to Canvas. Adding this line to your YAML header should look something like this:</p>
+<p><img src="images/quarto_embed.png" class="img-fluid" style="width:2in"></p>
+<p>When you go to submit on Canvas, submit the .html and .qmd files that are already on your computer. When you render a Quarto (.qmd) file to HTML format and it opens a page in your browser, it looks like a webpage but it’s actually a file on your computer that has the extension .html. Instead of trying to print the HTML file from your browser, submit the .html and .qmd files already on your computer. Here’s a screenshot from an example in class today (Lecture 2): when I rendered the file testQuarto.qmd, it created a file called testQuarto.html in the same folder.</p>
+<p><img src="images/local_html_file.png" class="img-fluid" style="width:4in"></p>
+</section>
+<section id="instructions-for-homework-2-specifically" class="level3">
+<h3 class="anchored" data-anchor-id="instructions-for-homework-2-specifically">Instructions for Homework 2 specifically</h3>
 <p>In this homework, you’ll pose a question regarding the Gapminder dataset and investigate it graphically. Rather than using the <code>gapminder</code> package like we did in lecture, you’ll want to use the <a href="https://cran.r-project.org/web/packages/dslabs/dslabs.pdf"><code>dslabs</code></a> package<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, which has a larger subset of the Gapminder data (i.e.&nbsp;more observations and variables).</p>
 <ul>
 <li>At the beginning of your document, write down a research question that is based on the Gapminder dataset (e.g., “How does population change over time in different countries?”)</li>

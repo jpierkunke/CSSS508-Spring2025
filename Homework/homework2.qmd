@@ -8,7 +8,17 @@ highlight-style: a11y-dark
 library(gapminder)
 ```
 
-### Instructions
+### Instructions: General reminders
+
+For this and all assignments you submit on Canvas: Don't forget to include `embed-resources: true` in your YAML header.  This way your HTML document will include any plots you made when you upload the document to Canvas. Adding this line to your YAML header should look something like this:
+
+![](images/quarto_embed.png){width=2in}
+
+When you go to submit on Canvas, submit the .html and .qmd files that are already on your computer. When you render a Quarto (.qmd) file to HTML format and it opens a page in your browser, it looks like a webpage but it's actually a file on your computer that has the extension .html. Instead of trying to print the HTML file from your browser, submit the .html and .qmd files already on your computer. Here's a screenshot from an example in class today (Lecture 2): when I rendered the file testQuarto.qmd, it created a file called testQuarto.html in the same folder.
+
+![](images/local_html_file.png){width=4in}
+
+### Instructions for Homework 2 specifically
 
 In this homework, you'll pose a question regarding the Gapminder dataset and investigate it graphically. Rather than using the `gapminder` package like we did in lecture, you'll want to use the [`dslabs`](https://cran.r-project.org/web/packages/dslabs/dslabs.pdf) package^[Remember to install the package in your console first (not in your qmd file) and then load it with the library() function.], which has a larger subset of the Gapminder data (i.e. more observations and variables).
 
