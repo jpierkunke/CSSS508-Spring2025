@@ -35,6 +35,8 @@ website:
           text: "Lecture 1: Getting started"
         - file: Lectures/CSSS508_Lecture2.qmd
           text: "Lecture 2: Data Visualization"
+        - file: Lectures/CSSS508_Lecture3.qmd
+          text: "Lecture 3: Workflow"
         # - file: Lectures/lec3_data_manip_tidyverse.qmd
         #   text: "Lecture 3: Data manipulation with tidyverse"
         # - file: Lectures/lec4_debugging_review.qmd
@@ -59,8 +61,8 @@ website:
           text: "Homework 1"
         - file: Homework/homework2.qmd
           text: "Homework 2"
-        # - file: Homework/homework3.qmd
-        #   text: "Homework 3"
+        - file: Homework/homework3.qmd
+          text: "Homework 3"
         # - file: Homework/homework4.qmd
         #   text: "Homework 4"
         # - file: Homework/homework4_followup.qmd

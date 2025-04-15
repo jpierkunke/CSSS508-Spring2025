@@ -14,6 +14,810 @@
     "text": "Figure 1 further explores the impact of temperature on ozone level.\n\n\nCode\nlibrary(ggplot2)\nggplot(airquality, aes(Temp, Ozone)) + \n  geom_point() + \n  geom_smooth(method = \"loess\")\n\n\n\n\n\n\n\n\nFigure 1: Temperature and ozone level."
   },
   {
+    "objectID": "Lectures/CSSS508_Lecture3.html#title-slide",
+    "href": "Lectures/CSSS508_Lecture3.html#title-slide",
+    "title": "CSSS 508",
+    "section": "",
+    "text": "Workflow & Reproducibility\nCS&SS 508 • Lecture 3\nJess Kunke (slides adapted from Victoria Sass)",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#key-takeaways",
+    "href": "Lectures/CSSS508_Lecture3.html#key-takeaways",
+    "title": "CSSS 508",
+    "section": "Key takeaways",
+    "text": "Key takeaways\n\nHow you write code and how you organize your files affect how easy/hard it is to get your code working and understand it when you look back at it in 6 months\nThere’s no one right way, but there are better and worse ways\nBe kind to Future You and to others who read/use your code\nLearn along the way! You know enough, and you will never know it all",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#general-coding-vocab",
+    "href": "Lectures/CSSS508_Lecture3.html#general-coding-vocab",
+    "title": "CSSS 508",
+    "section": "General coding vocab",
+    "text": "General coding vocab\n\n\nR (coding language) vs Quarto (combines formatted text, code, outputs into documents) vs RStudio (application or IDE for viewing, editing and running R and Quarto files)\n\nMarkup language formats text in a structured way\n\nexamples: (confusingly) Markdown, YAML or HTML\nR Markdown and Quarto use markup languages to format the documents they make\nWhen you type text, headers, outlines, and the YAML header in a Quarto document, that’s all markup language\n\n\n\nPackage: code and/or data bundled together\n\nInstalling vs loading\nexamples: gapminder, dslabs, tidyverse (actually a suite of packages that allows you to load those packages all at once)\n\n\n\nFunction: takes inputs/arguments (inside parentheses), does something, and produces outputs\n\ninstructions/recipes/tools\nlooks like myfunction(argument1, argument2)\n\nexamples: mean(gapminder$fertility, na.rm = TRUE), sum(1:5), library(\"tidyverse\"), getwd()\n\n\n\n\nObject: named data/values in R\n\n“things” or data\nexamples: the code x = 1:5 creates an object called x with five elements; gapminder is a data.frame object in the gapminder package\n\n\n\nComment: any code after a comment character (# in R) on a given line is ignored by R\n\nUseful for commenting out code temporarily that you don’t want to run right now but you might want later\nUseful for writing notes/explanations to yourself and others",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#rstudio-vocab",
+    "href": "Lectures/CSSS508_Lecture3.html#rstudio-vocab",
+    "title": "CSSS 508",
+    "section": "RStudio Vocab",
+    "text": "RStudio Vocab\n\n\nConsole: where code is run in your RStudio window\n\nplace to interactively run code\nwhen you run code from a .R script or .qmd file, it might appear here (depends on settings)\n\ncommand-line interface with the command prompt &gt; to tell you it’s ready to receive code\na + tells you R is expecting more code before it runs what you typed (probably you forgot a parenthesis or entered incomplete code)\n\n\n\nEnvironment refers to two things:\n\nEnvironment panel where your objects show up\nA “session” or “instance” (a copy) of R with any packages, objects etc. that you’ve created or loaded since you opened that session\nThe console and environment and other RStudio panels reflect your working environment, the interactive session you’re working in\nWhen you render a .qmd document, it opens a fresh blank R session/environment in the background and runs your .qmd code there (this is why you need to load packages and data within the .qmd file, not just within RStudio, before you render the qwmd file)\n\n\n\nSource (recommended) vs Visual mode in RStudio",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#quarto-vocab",
+    "href": "Lectures/CSSS508_Lecture3.html#quarto-vocab",
+    "title": "CSSS 508",
+    "section": "Quarto Vocab",
+    "text": "Quarto Vocab\n\n\nCode chunks: sections of a Quarto document that will be interpreted as code when the document is rendered\n\nChunk options: YAML settings at the start of a code chunk that determine something about how the chunk runs or appears in the final rendered document\n\nInline R code: R code surrounded by backticks and nestled directly into the text of a Quarto document; it is interpreted (and run) as code instead of text when the document is rendered and replaced with its output value.\n\nOther vocabulary you’d like to review?",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#why-talk-about-style",
+    "href": "Lectures/CSSS508_Lecture3.html#why-talk-about-style",
+    "title": "CSSS 508",
+    "section": "Why talk about style?",
+    "text": "Why talk about style?\nThere are honestly no hard, fast rules about what is the correct code. You can produce all styles of code that will run and get you your desired results.\nHowever, style is like grammar. Using consistent and readable style makes it easier and faster…\n\nFor you to write and read your own code\nFor other people to read your code\nFor you and other people to troubleshoot problems with your code\n\nYou can read more about the specific style we’re using in this class here.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#an-example-lab-3.1",
+    "href": "Lectures/CSSS508_Lecture3.html#an-example-lab-3.1",
+    "title": "CSSS 508",
+    "section": "An example (Lab 3.1)",
+    "text": "An example (Lab 3.1)\nHere are two versions of the same code. Discuss with a partner: What are the differences? Which is easier to read, and why specifically? How could you further improve the code?\n\n\nVersion 1\nVersion 2\n\n\n\n\nlibrary(gapminder)\nlibrary(tidyverse)\n\nstr(gapminder)\n\nChina &lt;- filter(gapminder, country == \"China\")\n\nggplot(data = China, \n       aes(x = year, y = lifeExp)) +\n  geom_point(color = \"red\", size = 3) +\n  labs(x = \"Year\",\n       y = \"Life expectancy\",\n       title = \"Life expectancy in China\") +\n  theme_minimal(base_size = 18)\n\n\n\n\nlibrary(gapminder)\n\n\nlibrary( tidyverse )\nstr(gapminder )\ndat&lt;-filter(gapminder,country==\"China\")\nggplot(data=dat, \n    aes(x = year, y =lifeExp)) +    geom_point(color=\"red\",size=3) +\n\n  labs(x = \"Year\" , y= \"Life expectancy\", title = \"Life expectancy in China\" ) + theme_minimal(base_size = 18)",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#naming-objects",
+    "href": "Lectures/CSSS508_Lecture3.html#naming-objects",
+    "title": "CSSS 508",
+    "section": "Naming Objects",
+    "text": "Naming Objects\nIt’s good practice to name objects (and oftentimes variables) using only lowercase letters, numbers, and _ (to separate words).\n\nRemember to give them descriptive names, even if that means they’re longer.\n\n\nIf you have many related variables, try and be consistent with your naming convention.\n\nA common prefix is preferable to a common suffix due to RStudio’s autocomplete feature.\n\n\n# Code goal: \nshort_flights &lt;- flights |&gt; \n  filter(air_time &lt; 60)\n\n# Code foul: \nSHORTFLIGHTS &lt;- flights |&gt; \n  filter(air_time &lt; 60)",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#spacing",
+    "href": "Lectures/CSSS508_Lecture3.html#spacing",
+    "title": "CSSS 508",
+    "section": "Spacing",
+    "text": "Spacing\nFor readability you’ll want to put spaces around all mathematical operators1 (i.e. +, -, ==, &lt;, etc.) as well as the assignment operator (&lt;-).\n\n# Code goals: \nz &lt;- (a + b)^2 / d\nmean(x, na.rm = TRUE)\n\n# Code foul: \nz&lt;-( a+b ) ^ 2/d\nmean (x ,na.rm=TRUE)\n\n\nTo make code easier to skim quickly it’s alright to add extra space for better alignment.\n\nflights |&gt; \n  mutate(\n    speed      = distance / air_time,\n    dep_hour   = dep_time %/% 100,\n    dep_minute = dep_time %%  100\n  )\n\n\nexcept for ^",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#pipes",
+    "href": "Lectures/CSSS508_Lecture3.html#pipes",
+    "title": "CSSS 508",
+    "section": "Pipes",
+    "text": "Pipes\nAs you begin to use more functions, sequentially, it can start to get unclear what’s happening when, and to what.\n\nmedian(sqrt(log(mean(gapminder$pop))))\n\n\nWith nested functions, like those above, you need to read the order of operations inside out, which is a bit awkward. It becomes even more confusing the more function calls you have, especially when they have multiple arguments each.\n\n\nEnter the pipe1: |&gt;\nPipes read “left to right” which is much more intuitive!\n\ngapminder$pop |&gt; mean() |&gt; log() |&gt; sqrt() |&gt; median()\n\n\n\nThe above code takes what’s on the left-hand side of |&gt; and gives it as the first unnamed argument to the first function (mean()).\nThe result of that function call is then “piped” to the first unnamed argument of the second function (log())…\n\n\n\nA component of programming which allows us to break a problem into a number of steps, each of which is straightforward and easy to understand.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#pipes-1",
+    "href": "Lectures/CSSS508_Lecture3.html#pipes-1",
+    "title": "CSSS 508",
+    "section": "Pipes",
+    "text": "Pipes\nAs you can see, pipes allow us to “chain” many function calls together easily.\n\nThe so-called “native pipe” (i.e. built into base R) is relatively new. Before this, the pipe was a function from the magrittr package that looks like this: %&gt;%.\n\n\nThis latter version continues to work but has a different functionality than the new, native pipe.\n\n\nMost importantly, while both the magrittr pipe and the native pipe take the LHS (left-hand side) and “pipe” it to the RHS (right-hand side), they operate differently when it comes to explicitly specifying which argument of the RHS to pipe the LHS into.\n\n\n\na &lt;- c(\"Z\", NA, \"C\", \"G\", \"A\")\n# magrittr pipe\na %&gt;% gsub('A', '-', x = .)\n\n# native pipe\na |&gt; gsub('A','-', x = _) # _ is the placeholder for |&gt; \na |&gt; gsub(pattern = 'A', replacement = '-') # leaving the \"piped\" argument as the only unnamed argument also works \na |&gt; (\\(placeholder) gsub('A', '-', x = placeholder))() # using an anonymous function call allows you to be explicit while specifying your own placeholder\n\n\n\n\nYou can read more about the differences between |&gt; and %&gt;% here and anonymous functions here. Code above comes from responses to this stackoverflow post.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#pipes-2",
+    "href": "Lectures/CSSS508_Lecture3.html#pipes-2",
+    "title": "CSSS 508",
+    "section": "Pipes",
+    "text": "Pipes\nSome good syntax practices:\n\n\nYou should always put a space before |&gt; and it should usually be the last thing on a line.\n\nNew functions should be on a new line, indented 2 spaces (RStudio will automatically do this for you if you hit return after a pipe)\nNamed arguments within a function should also get their own line\n\n\n\n# code goals\nflights |&gt;  \n  group_by(tailnum) |&gt; \n  summarize(\n    delay = mean(arr_delay, na.rm = TRUE),\n    n = n()\n  )\n\n# code fouls\nflights |&gt; group_by(tailnum) |&gt; \n  summarize(delay = mean(arr_delay, na.rm = TRUE), n = n())",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#selecting-the-native-pipe",
+    "href": "Lectures/CSSS508_Lecture3.html#selecting-the-native-pipe",
+    "title": "CSSS 508",
+    "section": "Selecting the native pipe",
+    "text": "Selecting the native pipe\nThe |&gt; is recommended over %&gt;% simply because it’s much simpler to use and it’s always available (%&gt;% relied on the magrittr package which was a dependency of tidyverse packages).\n\nYou’ll need to specify to R that you want to enable its usage by going to Tools &gt; Global Options &gt; Code. Within the “Editing” Tab there is an option to “Use native pipe operator, |&gt;”. Check it!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nKeyboard Shortcut\n\n\nTo insert a pipe (with spaces) quickly: Ctrl+Shift+M (Windows & Linux OS) Shift+Command+M (Mac)",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#other-formatting-options",
+    "href": "Lectures/CSSS508_Lecture3.html#other-formatting-options",
+    "title": "CSSS 508",
+    "section": "Other Formatting Options",
+    "text": "Other Formatting Options\n\n\n\nThere are some other useful formatting options I’d suggest setting globally and others you can specify to your preferences.\n\nSuggested:\n\nHighlight Function Calls\nEnable preview of colors\n\nRainbow parentheses",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#other-formatting-options-1",
+    "href": "Lectures/CSSS508_Lecture3.html#other-formatting-options-1",
+    "title": "CSSS 508",
+    "section": "Other Formatting Options",
+    "text": "Other Formatting Options\n\n\n\nThere are some other useful formatting options I’d suggest setting globally and others you can specify to your preferences.\n\nSuggested:\n\nHighlight Function Calls\nEnable preview of colors\n\nRainbow parentheses",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#other-formatting-options-2",
+    "href": "Lectures/CSSS508_Lecture3.html#other-formatting-options-2",
+    "title": "CSSS 508",
+    "section": "Other Formatting Options",
+    "text": "Other Formatting Options\n\n\n\nThere are some other useful formatting options I’d suggest setting globally and others you can specify to your preferences.\n\nSuggested:\n\nHighlight Function Calls\nEnable preview of colors\nRainbow parentheses",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#other-formatting-options-3",
+    "href": "Lectures/CSSS508_Lecture3.html#other-formatting-options-3",
+    "title": "CSSS 508",
+    "section": "Other Formatting Options",
+    "text": "Other Formatting Options\n\n\n\nThere are some other useful formatting options I’d suggest setting globally and others you can specify to your preferences.\n\nSuggested:\n\nHighlight Function Calls\nEnable preview of colors\nRainbow parentheses",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#other-formatting-options-4",
+    "href": "Lectures/CSSS508_Lecture3.html#other-formatting-options-4",
+    "title": "CSSS 508",
+    "section": "Other Formatting Options",
+    "text": "Other Formatting Options\n\n\n\nThere are some other useful formatting options I’d suggest setting globally and others you can specify to your preferences.\n\nUp to you:\n\nCode highlight style",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#other-formatting-options-5",
+    "href": "Lectures/CSSS508_Lecture3.html#other-formatting-options-5",
+    "title": "CSSS 508",
+    "section": "Other Formatting Options",
+    "text": "Other Formatting Options\n\n\n\nThere are some other useful formatting options I’d suggest setting globally and others you can specify to your preferences.\n\nUp to you:\n\nPane layout",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#other-formatting-options-6",
+    "href": "Lectures/CSSS508_Lecture3.html#other-formatting-options-6",
+    "title": "CSSS 508",
+    "section": "Other Formatting Options",
+    "text": "Other Formatting Options\n\n\n\nThere are some other useful formatting options I’d suggest setting globally and others you can specify to your preferences.\n\nUp to you:\n\nMarkdown options\n\nOutput preview\nInline output",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#styling-existing-code",
+    "href": "Lectures/CSSS508_Lecture3.html#styling-existing-code",
+    "title": "CSSS 508",
+    "section": "Styling existing code",
+    "text": "Styling existing code\nImagine you’ve inherited a bunch of code from someone else and NOTHING is styled in the tidyverse way you’ve become accustomed. Or, you’ve dabbled in R before and you have some old code that is all over the place, with respect to styling.\n\nThanks to Lorenz Walthert there’s a package for that! Using the styler package you can automatically apply the tidyverse style guide standards to various filetypes (.R, .qmd, .Rmd, etc.) or even entire projects.\n\n\nHave a style or variation of the tidyverse style that you prefer? You can specify that in the package as well. Use the keyboard shortcut Cmd/Ctl + Shift + P and search for “styler” to see all the options available.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#r-scripts",
+    "href": "Lectures/CSSS508_Lecture3.html#r-scripts",
+    "title": "CSSS 508",
+    "section": ".R scripts",
+    "text": ".R scripts\nWe’ve been working with Quarto documents but you’ll sometimes simply want to use an R script, which is basically an entire file that is just a code chunk.\n\n\n\nWhy would you prefer an .R file over a .qmd file?\nWhen might you use a .qmd file?\n\n\n\n\nYou just need to run code, without the need for accompanying text output and plots in the same document. Examples include:\n\nReading in and cleaning/manipulating your data before analysis\nWriting functions you’ll use throughout your project\nGetting descriptive statistics/making descriptive plots of data\nRunning models and generating tables/plots of their results\n\n\n\n\n\n\nHomework assignments (like for this class) that require you to show code, describe your process for arriving at your solution, and include any results (i.e. tables, statistics, visualizations)\nAcademic articles\nPresentations for class, conferences, talks, etc.\nTheses/dissertations\nInteractive visualizations (i.e. widgets)\nBuilding your own website",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#file-naming",
+    "href": "Lectures/CSSS508_Lecture3.html#file-naming",
+    "title": "CSSS 508",
+    "section": "File naming",
+    "text": "File naming\nFile names should:\n\n\nbe machine readable: avoid spaces, symbols, and special characters. Don’t rely on case sensitivity to distinguish files.\nbe human readable: use file names to describe what’s in the file.\nplay well with default ordering: start file names with numbers so that alphabetical sorting puts them in the order they get used.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#organization-and-portability",
+    "href": "Lectures/CSSS508_Lecture3.html#organization-and-portability",
+    "title": "CSSS 508",
+    "section": "Organization and Portability",
+    "text": "Organization and Portability\nOrganizing research projects is something you either do accidentally — and badly — or purposefully with some upfront labor.\n\nUniform organization makes switching between or revisiting projects easier.\n\n\n\n\nGood Example directory\nBad Example directory\n\n\n\n\n\nproject/\n   readme.md\n   data/\n     derived/\n       data_processed.RData\n     raw/\n       data_core.csv\n       data_supplementary.csv\n   docs/\n     paper_asa.qmd\n     paper_journal.qmd\n   syntax/\n     01-functions.R\n     02-cleaning.R\n     03_merging.R\n     04-exploratory.R\n     05-models.R\n     06-visualizations.R\n   visuals/ \n     descriptive.png\n     heatmap.png\n     predicted_probabilities.png\n\n\n\nThere is a clear hierarchy\n\nWritten content is in docs\n\nCode is in syntax\n\nData is in data\n\nVisualizations are in visuals\n\nThe readme.md describes the project\n\n\nNaming is uniform\n\nAll lower case\nWords separated by underscores\n\n\nNames are self-descriptive\nNumbering scripts makes it clear in which order they should be run.\n\n\n\n\n\n\n\nalternative model.R\ncode for exploratory analysis.r\nfinalreport.qmd\nFinalReport.qmd\nfig 1.png\nFigure_02.png\nmodel_first_try.R\nrun-first.r\ntemp.txt\n\n\n\nOrdering of the files is unclear\nInconsistent naming is confusing (which final report is THE final report?)\nNon-descriptive naming means more work for you in trying to decipher its contents",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#working-directory",
+    "href": "Lectures/CSSS508_Lecture3.html#working-directory",
+    "title": "CSSS 508",
+    "section": "Working directory",
+    "text": "Working directory\nYour working directory is where R will look for any files that you ask it to load and where it’ll put anything you ask it to save. It is literally just a folder somewhere on your computer or the remote server/cloud you’re working within.\n\nYou can ask R what your current working directory is by running getwd() (get working directory).\n\n\n\ngetwd()\n\n\n\n[1] \"/Users/jessicakunke/Documents/UW/UW_Year5_Q3_Spring2025/CSSS508-Spring2025/Lectures\"\n\n\nYou can see above that this lecture was created in a “Lectures” folder within a folder for this class, which is in a folder for this quarter, and so on.\n\n\nWhile you can technically set your working directory using setwd() (set working directory) and giving R a filepath, in the name of reproducible research DO NOT DO THIS! I strongly advise an alternative: RStudio Projects.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#projects",
+    "href": "Lectures/CSSS508_Lecture3.html#projects",
+    "title": "CSSS 508",
+    "section": "Projects",
+    "text": "Projects\nA “project” is RStudio’s built-in organizational support system which keeps all the files associated with a given project (i.e. data, R scripts, figures, results) together in one directory.\n\nCreating a new project quite basically creates a new folder in a place that you specify. But it also does a few of other extremely useful things:\n\n\nCreates a .Rproj file which tracks your command history and all the files in your project folder.\nContains all the files needed to reproduce your work\n\ni.e. you can send a project folder to someone and they will be able to run it on their local machine\n\n\nFacilitates version control with built-in git/GitHub connection (more on this later in the course)",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#creating-an-rstudio-project",
+    "href": "Lectures/CSSS508_Lecture3.html#creating-an-rstudio-project",
+    "title": "CSSS 508",
+    "section": "Creating an RStudio Project",
+    "text": "Creating an RStudio Project\n\n\n\n\n\n\n\nYou can create a project by clicking\n\n\nFile &gt; New Project…\n\n\n    in the upper-left corner of RStudio\nthe dropdown menu in the upper-right corner of RStudio and selecting New Project…",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#workflow-versus-product",
+    "href": "Lectures/CSSS508_Lecture3.html#workflow-versus-product",
+    "title": "CSSS 508",
+    "section": "Workflow versus Product",
+    "text": "Workflow versus Product\nTo summarize Jenny Bryan, one should separate workflow (i.e. your personal tastes and habits) from product (i.e. the logic and output that is the essence of your project).\n\n\n\n\nWorkflow\n\nThe software you use to write your code (e.g. R/RStudio)\nThe location you store a project\nThe specific computer you use\nThe code you ran earlier or typed into your console\n\n\nProduct\n\nThe raw data\nThe code that operates on your raw data\nThe packages you use\nThe output files or documents\n\n\n\n\nEach data analysis (or course using R) should be organized as a project.\n\nProjects should NOT modify anything outside of the project nor need to be modified by someone else (or future you) to run.\nProjects should be independent of your workflow.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#portability",
+    "href": "Lectures/CSSS508_Lecture3.html#portability",
+    "title": "CSSS 508",
+    "section": "Portability",
+    "text": "Portability\nFor research to be reproducible, it must also be portable. Portable software operates independently of workflow.\n\n\nDo NOT:\nDo:\n\n\n\n\nUse setwd().\nUse absolute paths except for fixed, immovable sources (secure data).\n\nread_csv(\"C:/my_project/data/my_data.csv\")\n\n\nUse install.packages() anywhere but in your console.\nUse rm(list=ls()) anywhere but in your console.\n\n\n\n\n\n\n\n\n\nUse RStudio projects (or the here package) to set directories.\nUse relative paths to load and save files:\n\nread_csv(\"./data/my_data.csv\")\n\n\nLoad all required packages using library().\nClear your workspace when closing RStudio.\n\nSet Tools &gt; Global Options… &gt; Save workspace… to Never",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#psa-setwd-and-rmlistls",
+    "href": "Lectures/CSSS508_Lecture3.html#psa-setwd-and-rmlistls",
+    "title": "CSSS 508",
+    "section": "PSA: setwd() and rm(list=ls())\n",
+    "text": "PSA: setwd() and rm(list=ls())\n\n\n\n\n\n\n\n\n\nsetwd()\n\n\nSetting your working directory using setwd() makes it impossible for your project to be replicated by anyone but you, and only on the exact same computer on which it was created.\n\n\n\n\n\n\n\n\n\n\n\n\nrm(list=ls())\n\n\nMake sure not to expect rm(list=ls()) to give you a fresh R session. It may feel that way when all the objects in your global environment disappear but there are a host of dependencies (i.e. loaded packages, options set to non-defaults, the working directory) that have not changed. Your script will still be vulnerable to those settings unless you start a fresh R session.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#file-paths",
+    "href": "Lectures/CSSS508_Lecture3.html#file-paths",
+    "title": "CSSS 508",
+    "section": "File paths",
+    "text": "File paths\nA file path specifies the location of a file in a computer’s file system structure. They can be used to locate files and web resources. Some important things to note:\n\n\nFor file systems, each level in the hierarchy is a directory\n\nFor URLs, each level in the hierarchy is a page.\n\n\nA path is a string of characters which specifies a unique location in a directory or page hierarchy.\nDifferent sections of the path are separated by a path separator, such as a forward slash (/).\n\nThese different sections represent the separate directories or pages in the hierarchy.\n\n\nIn Unix-based operating systems, such as Linux or macOS, the path separator is a forward slash (/).\n\nIn Windows, the path separator is a back slash (\\).\nURLs follow a standard format that always uses a forward slash (/) as the path separator regardless of the operating system.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#absolute-versus-relative-paths",
+    "href": "Lectures/CSSS508_Lecture3.html#absolute-versus-relative-paths",
+    "title": "CSSS 508",
+    "section": "Absolute Versus Relative Paths",
+    "text": "Absolute Versus Relative Paths\n\n\nAbsolute\nRelative\n\n\n\nSpecifies the location of a file from the root directory in the file system structure. They are also called “full file paths” or “full paths.”\n\n\"/Users/victoriasass/Desktop/GitHub/CSSS508/Lectures/Lecture3/CSSS508_Lecture3.qmd\"\n\n\n\nIn Linux, the ~ is commonly used to represent a user’s home directory, i.e.:\n\n\"~/Desktop/GitHub/CSSS508/Lectures/Lecture3/CSSS508_Lecture3.qmd\"\n\n\n\n\nSpecifies the location of a file in the same folder or on the same server. In other words, a relative file path specifies a location of a file that is relative to the current directory.\n\n\"./CSSS508_Lecture3.qmd\"` or `\"CSSS508_Lecture3.qmd\"\n\n\n\nRelative file paths use a dot notation at the start of the path, followed by a path separator and the location of the file.\n\nA single dot (.) indicates the current directory (as shown above)\nA double dot (..) indicates the parent directory.\n\n\n\nFor example, if I wanted to reference the syllabus (which is in the main project folder CSSS508) from my current folder Lecture3 I would write:\n\n\"../../syllabus.qmd\"",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#paths-and-projects",
+    "href": "Lectures/CSSS508_Lecture3.html#paths-and-projects",
+    "title": "CSSS 508",
+    "section": "Paths and Projects",
+    "text": "Paths and Projects\nWhen you work in an RStudio Project your working directory is the project folder.\n\nIf you are working on a R script or qmd file in a subfolder of this project, the working directory of that file will be its subfolder (not the project folder.\n\n\nKeep this in mind when you’re writing code and testing it interactively! Your current working directory will be the project folder when running code interactively even if you’re writing code for a qmd that has a subfolder as the working directory.\n\n\n\nThis is only relevant when using file paths (obviously). The most common uses of file paths in an R script or qmd is to read in or write data, and to save plots and tables.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#divide-and-conquer",
+    "href": "Lectures/CSSS508_Lecture3.html#divide-and-conquer",
+    "title": "CSSS 508",
+    "section": "Divide and Conquer",
+    "text": "Divide and Conquer\nOften you do not want to include all code for a project in one .qmd file:\n\nThe code takes too long to knit.\nThe file is so long it is difficult to read.\n\n\nThere are two ways to deal with this:\n\n\nUse separate .R scripts or .qmd files which save results from complicated parts of a project, then load these results in the main .qmd file.\n\nThis is good for loading and cleaning large data.\nAlso for running slow models.\n\n\n\n\n\n\n\nUse source() to run external .R scripts when the .qmd renders\n\nThis can be used to run large files that aren’t impractically slow.\nAlso good for loading project-specific functions.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#the-way-of-many-files",
+    "href": "Lectures/CSSS508_Lecture3.html#the-way-of-many-files",
+    "title": "CSSS 508",
+    "section": "The Way of Many Files",
+    "text": "The Way of Many Files\nI find it beneficial to break projects into many files:\n\nScripts with specialized functions.\nScripts to load and clean each set of variables.\nScripts to run each set of models and make tables and plots.\nA main .qmd that runs some or all of these to reproduce the entire project.\n\n\nSplitting up a project carries benefits:\n\nOnce a portion of the project is done and in its own file, it is out of your way.\n\nIf you need to make changes, you don’t need to search through huge files.\nEntire sections of the project can be added or removed quickly (e.g. converted to an appendix of an article)\nIt is the only way to build a proper pipeline for a project.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#pipelines",
+    "href": "Lectures/CSSS508_Lecture3.html#pipelines",
+    "title": "CSSS 508",
+    "section": "Pipelines",
+    "text": "Pipelines\nProfessional researchers and teams design projects as a pipeline.\n\nA pipeline is a series of consecutive processing elements (scripts and functions in R).\n\n\nEach stage of a pipeline…\n\nHas clearly defined inputs and outputs\nDoes not modify its inputs.\nProduces the exact same output every time it is re-run.\n\n\n\nThis means…\n\nWhen you modify one stage, you only need to rerun subsequent stages.\nDifferent people can work on each stage.\nProblems are isolated within stages.\nYou can depict your project as a directed graph of dependencies.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#example-pipeline",
+    "href": "Lectures/CSSS508_Lecture3.html#example-pipeline",
+    "title": "CSSS 508",
+    "section": "Example Pipeline",
+    "text": "Example Pipeline\nEvery stage (oval) has an unambiguous input and output. Everything that precedes a given stage is a dependency — something required to run it.\n\n\n\nNote: targets is a great package for managing R research pipelines.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#section",
+    "href": "Lectures/CSSS508_Lecture3.html#section",
+    "title": "CSSS 508",
+    "section": "",
+    "text": "If you haven’t already, go to Tools &gt; Global Options and adjust your settings (i.e. General, Code &gt; Editing, and Code &gt; Display) to those recommended in the lecture and any others that you’d like to change (i.e. Appearance, Pane Layout, or R Markdown)\nRestyle the following pipelines following the guidelines discussed in lecture:\n\n\nflights|&gt;filter(dest==\"IAH\")|&gt;group_by(year,month,day)|&gt;summarize(n=n(),\ndelay=mean(arr_delay,na.rm=TRUE))|&gt;filter(n&gt;10)\n\nflights|&gt;filter(carrier==\"UA\",dest%in%c(\"IAH\",\"HOU\"),sched_dep_time&gt;\n0900,sched_arr_time&lt;2000)|&gt;group_by(flight)|&gt;summarize(delay=mean(\narr_delay,na.rm=TRUE),cancelled=sum(is.na(arr_delay)),n=n())|&gt;filter(n&gt;10)\n\n\nPress Option + Shift + K / Alt + Shift + K. What happens? How can you get to the same place using the menus?\nTweak each of the following R commands so that they run correctly:\n\n\nlibary(todyverse)\n\nggplot(dTA = mpg) + \n  geom_point(maping = aes(x = displ y = hwy)) +\n  geom_smooth(method = \"lm)\n\n\nWhat might be a good way to organize your homework assignments for this class?",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#solution-1.-adjust-settings",
+    "href": "Lectures/CSSS508_Lecture3.html#solution-1.-adjust-settings",
+    "title": "CSSS 508",
+    "section": "Solution: 1. Adjust settings",
+    "text": "Solution: 1. Adjust settings\n\nClear .RData, Never save",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#solution-1.-adjust-settings-1",
+    "href": "Lectures/CSSS508_Lecture3.html#solution-1.-adjust-settings-1",
+    "title": "CSSS 508",
+    "section": "Solution: 1. Adjust settings",
+    "text": "Solution: 1. Adjust settings\n\nNative pipe",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#solution-1.-adjust-settings-2",
+    "href": "Lectures/CSSS508_Lecture3.html#solution-1.-adjust-settings-2",
+    "title": "CSSS 508",
+    "section": "Solution: 1. Adjust settings",
+    "text": "Solution: 1. Adjust settings\n\nHighlight function calls; preview colors; rainbow parentheses",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#solution-1.-adjust-settings-3",
+    "href": "Lectures/CSSS508_Lecture3.html#solution-1.-adjust-settings-3",
+    "title": "CSSS 508",
+    "section": "Solution: 1. Adjust settings",
+    "text": "Solution: 1. Adjust settings\n\nCode appearance",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#solution-1.-adjust-settings-4",
+    "href": "Lectures/CSSS508_Lecture3.html#solution-1.-adjust-settings-4",
+    "title": "CSSS 508",
+    "section": "Solution: 1. Adjust settings",
+    "text": "Solution: 1. Adjust settings\n\nPane Layout",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#solution-1.-adjust-settings-5",
+    "href": "Lectures/CSSS508_Lecture3.html#solution-1.-adjust-settings-5",
+    "title": "CSSS 508",
+    "section": "Solution: 1. Adjust settings",
+    "text": "Solution: 1. Adjust settings\n\nMarkdown Preferences",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#solution-2.-readable-code-style",
+    "href": "Lectures/CSSS508_Lecture3.html#solution-2.-readable-code-style",
+    "title": "CSSS 508",
+    "section": "Solution: 2. Readable code style",
+    "text": "Solution: 2. Readable code style\n\n\nflights|&gt;filter(dest==\"IAH\")|&gt;group_by(year,month,day)|&gt;summarize(n=n(),\ndelay=mean(arr_delay,na.rm=TRUE))|&gt;filter(n&gt;10)\n\nflights|&gt;filter(carrier==\"UA\",dest%in%c(\"IAH\",\"HOU\"),sched_dep_time&gt;\n0900,sched_arr_time&lt;2000)|&gt;group_by(flight)|&gt;summarize(delay=mean(\narr_delay,na.rm=TRUE),cancelled=sum(is.na(arr_delay)),n=n())|&gt;filter(n&gt;10)\n\n\n\n\nflights |&gt; \n  filter(dest == \"IAH\") |&gt; \n  group_by(year, month, day) |&gt; \n  summarize(\n    n = n(),\n    delay = mean(arr_delay, na.rm = TRUE)\n    ) |&gt; \n  filter(n &gt; 10)\n\nflights |&gt; \n  filter(carrier == \"UA\", dest %in% c(\"IAH\", \"HOU\"), \n         sched_dep_time &gt; 0900, sched_arr_time &lt; 2000) |&gt;\n  group_by(flight) |&gt; \n  summarize(\n    delay = mean(arr_delay, na.rm = TRUE), \n    cancelled = sum(is.na(arr_delay)), \n    n = n() \n    ) |&gt; \n  filter(n &gt; 10)",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#solution-3.-option-shift-k-alt-shift-k",
+    "href": "Lectures/CSSS508_Lecture3.html#solution-3.-option-shift-k-alt-shift-k",
+    "title": "CSSS 508",
+    "section": "Solution: 3. Option + Shift + K / Alt + Shift + K\n",
+    "text": "Solution: 3. Option + Shift + K / Alt + Shift + K\n\n\n\n\n\n\n\nYou can find the same quick reference pop-up by clicking Tools &gt; Keyboard Shortcuts Help.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#solution-4.-keyboard-shortcut",
+    "href": "Lectures/CSSS508_Lecture3.html#solution-4.-keyboard-shortcut",
+    "title": "CSSS 508",
+    "section": "Solution: 4. Keyboard shortcut",
+    "text": "Solution: 4. Keyboard shortcut\n\n\nlibary(todyverse)\n\nggplot(dTA = mpg) + \n  geom_point(maping = aes(x = displ y = hwy)) +\n  geom_smooth(method = \"lm)\n\n\n\n\nlibary(tidyverse)\n\nggplot(data = mpg, \n       mapping = aes(x = displ, y = hwy)) + \n  geom_point() +\n  geom_smooth(method = \"lm\")",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#solution-5.-organizing-a-class",
+    "href": "Lectures/CSSS508_Lecture3.html#solution-5.-organizing-a-class",
+    "title": "CSSS 508",
+    "section": "Solution: 5. Organizing a class",
+    "text": "Solution: 5. Organizing a class\n\n\n\n\n\nCreate a folder for this class on a computer/system that gets backed up regularly\nEither the class itself is an RStudio project or each homework assignment subfolder is a separate project\nEverything within each homework assignment project gets saved into that specific folder (or a subfolder of that folder)\nAnything required for each homework assignment (e.g. downloaded data) is saved into its project-specific folder\n\n\n\n\n\nCSSS508/\n   Homeworks/\n     HW1/\n       homework1.qmd\n       homework1.html\n     HW2/\n       homework2.qmd\n       homework2.html\n     HW3/\n       homework3.qmd\n       homework3.html\n     HW4/\n       homework4.qmd\n       homework4.html\n       data.csv\n     HW5/\n       homework5.qmd\n       homework5.html\n         data/\n           data_raw.csv\n           data_processed.Rdata\n     HW6/\n     HW7/\n     HW8/\n     HW9/",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#why-reproducibility",
+    "href": "Lectures/CSSS508_Lecture3.html#why-reproducibility",
+    "title": "CSSS 508",
+    "section": "Why Reproducibility?",
+    "text": "Why Reproducibility?\nReproducibility is not replication.\n\n\nReplication is running a new study to show if and how results of a prior study hold.\n\nReproducibility is about rerunning the same study and getting the same results.\n\n\nReproducible studies can still be wrong… and in fact reproducibility makes proving a study wrong much easier.\n\n\nReproducibility means:\n\nTransparent research practices.\nMinimal barriers to verifying your results.\n\n\n\nAny study that isn’t reproducible can only be trusted on faith.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#reproducibility-definitions",
+    "href": "Lectures/CSSS508_Lecture3.html#reproducibility-definitions",
+    "title": "CSSS 508",
+    "section": "Reproducibility Definitions",
+    "text": "Reproducibility Definitions\nReproducibility comes in three forms (Stodden 2014):\n\n\n\nEmpirical: Repeatability in data collection.\n\nStatistical: Verification with alternate methods of inference.\n\nComputational: Reproducibility in cleaning, organizing, and presenting data and results.\n\n\n\nR is particularly well suited to enabling computational reproducibility1.\n\n\nThey will not fix flawed research design, nor offer a remedy for improper application of statistical methods.\nThose are the difficult, non-automatable things you want skills in.\n\n Python is equally well suited. Julia is an option as well.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#computational-reproducibility",
+    "href": "Lectures/CSSS508_Lecture3.html#computational-reproducibility",
+    "title": "CSSS 508",
+    "section": "Computational Reproducibility",
+    "text": "Computational Reproducibility\nElements of computational reproducibility:\n\n\nShared data\n\nResearchers need your original data to verify and replicate your work.\n\n\n\n\n\n\nShared code\n\nYour code must be shared to make decisions transparent.\n\n\n\n\n\n\nDocumentation\n\nThe operation of code should be either self-documenting or have written descriptions to make its use clear.\n\n\n\n\n\n\nVersion Control1\n\nDocuments the research process.\nPrevents losing work and facilitates sharing.\n\n\n\n\nWe’ll come back to this on the last week of class.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#levels-of-reproducibility",
+    "href": "Lectures/CSSS508_Lecture3.html#levels-of-reproducibility",
+    "title": "CSSS 508",
+    "section": "Levels of Reproducibility",
+    "text": "Levels of Reproducibility\nFor academic papers, degrees of reproducibility vary:\n\n\n“Read the article”\nShared data with documentation\nShared data and all code\nInteractive document\nResearch compendium\nDocker compendium: Self-contained ecosystem\n\n\n\n\nWe’ll briefly discuss research compendiums, such as Docker, during the last lecture of class as well.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#interactive-documents",
+    "href": "Lectures/CSSS508_Lecture3.html#interactive-documents",
+    "title": "CSSS 508",
+    "section": "Interactive Documents",
+    "text": "Interactive Documents\nInteractive documents — like Quarto docs — combine code and text together into a self-contained document.\n\nLoad and process data\nRun models\nGenerate tables and plots in-line with text\nIn-text values automatically filled in\n\n\nInteractive documents allow a reader to examine your computational methods within the document itself; in effect, they are self-documenting.\n\n\nBy re-running the code, they reproduce your results on demand.\n\n\nCommon Platforms:\n\n\nR: Quarto\n\nPython: Jupyter Notebooks",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#selecting-from-vectors-with",
+    "href": "Lectures/CSSS508_Lecture3.html#selecting-from-vectors-with",
+    "title": "CSSS 508",
+    "section": "Selecting from vectors with [\n",
+    "text": "Selecting from vectors with [\n\n\n\nGiven a vector of values:\n\nx &lt;- c(a = \"one\", \n       b = NA, \n       c = \"two\", \n       d = \"three\", \n       e = \"four\", \n       f = NA, \n       g = NA, \n       h = \"five\")\n\n\nYou can select from the vector\n\n\n# with positive integers\nx[c(3, 1, 5)]\n\n\n\n     c      a      e \n \"two\"  \"one\" \"four\" \n\n\n\n\n\n# even repeated values\nx[c(3, 1, 1, 5, 3)]\n\n\n\n     c      a      a      e      c \n \"two\"  \"one\"  \"one\" \"four\"  \"two\" \n\n\n\n\n\n# with negative integers\nx[c(-2, -6, -7)]\n\n\n\n      a       c       d       e       h \n  \"one\"   \"two\" \"three\"  \"four\"  \"five\" \n\n\n\n\n\n# with a logical vector\nx[!is.na(x)]\n\n\n\n      a       c       d       e       h \n  \"one\"   \"two\" \"three\"  \"four\"  \"five\" \n\n\n\n\n\n# or with a named vector\nx[c(\"c\", \"h\")]\n\n\n\n     c      h \n \"two\" \"five\"",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#selecting-from-dataframes-with",
+    "href": "Lectures/CSSS508_Lecture3.html#selecting-from-dataframes-with",
+    "title": "CSSS 508",
+    "section": "Selecting from dataframes with [\n",
+    "text": "Selecting from dataframes with [\n\nYou can select rows and columns from dataframes with df[rows, cols].\n\n\n\ndf &lt;- tibble(\n  x = 1:3, \n  y = c(\"a\", \"e\", \"f\"), \n  z = runif(3) # defaults: min = 0, max = 1\n)\n\ndf\n\n\n\n# A tibble: 3 × 3\n      x y         z\n  &lt;int&gt; &lt;chr&gt; &lt;dbl&gt;\n1     1 a     0.238\n2     2 e     0.744\n3     3 f     0.909\n\n\n\n\n\n# Select first row and second column\ndf[1, 2]\n\n\n\n# A tibble: 1 × 1\n  y    \n  &lt;chr&gt;\n1 a    \n\n\n\n\n\n# Select all rows and columns x and y\ndf[, c(\"x\" , \"y\")]\n\n\n\n# A tibble: 3 × 2\n      x y    \n  &lt;int&gt; &lt;chr&gt;\n1     1 a    \n2     2 e    \n3     3 f    \n\n\n\n\n\n# Select rows where `x` is greater than 1 and all columns\ndf[df$x &gt; 1, ]\n\n\n\n# A tibble: 2 × 3\n      x y         z\n  &lt;int&gt; &lt;chr&gt; &lt;dbl&gt;\n1     2 e     0.744\n2     3 f     0.909",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#data.frame-vs.-tibble",
+    "href": "Lectures/CSSS508_Lecture3.html#data.frame-vs.-tibble",
+    "title": "CSSS 508",
+    "section": "\ndata.frame() vs. tibble()\n",
+    "text": "data.frame() vs. tibble()\n\nTibbles are the tidyverse version of a base R dataframe. Usually you can use them interchangably without issue but they have slightly different behavior that’s important to know about when indexing in this way.\n\nIf df is a data.frame, then df[, cols] will return a vector if col selects a single column and a data frame if it selects more than one column.\n\ndf1 &lt;- data.frame(x = 1:3)\ndf1[, \"x\"]\n\n\n\n[1] 1 2 3\n\n\n\n\nIf df is a tibble, then [ will always return a tibble.\n\ndf2 &lt;- tibble(x = 1:3)\ndf2[, \"x\"]\n\n\n\n# A tibble: 3 × 1\n      x\n  &lt;int&gt;\n1     1\n2     2\n3     3\n\n\n\n\nOne way to avoid this ambiguity with data.frames is to explicitly specify drop = FALSE:\n\ndf1[, \"x\" , drop = FALSE]\n\n\n\n  x\n1 1\n2 2\n3 3",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#selecting-from-dataframes-with-and",
+    "href": "Lectures/CSSS508_Lecture3.html#selecting-from-dataframes-with-and",
+    "title": "CSSS 508",
+    "section": "Selecting from dataframes with [[ and $\n",
+    "text": "Selecting from dataframes with [[ and $\n\n[, which selects many elements, is paired with [[ and $, which extract a single element.\n\n\n\ntb &lt;- tibble(\n  x = 1:4,\n  y = c(10, 4, 1, 21)\n)\n\ntb\n\n\n\n# A tibble: 4 × 2\n      x     y\n  &lt;int&gt; &lt;dbl&gt;\n1     1    10\n2     2     4\n3     3     1\n4     4    21\n\n\n\n\n[[ can access by position or by name:\n\n# by position\ntb[[1]]\n\n\n\n[1] 1 2 3 4\n\n\n\n\n\n# by name\ntb[[\"x\"]]\n\n\n\n[1] 1 2 3 4\n\n\n\n\n$ is specialized for access by name:\n\ntb$x\n\n\n\n[1] 1 2 3 4\n\n\n\n\nThey can also be used to create new columns.\n\ntb$z &lt;- tb$x + tb$y\ntb\n\n\n\n# A tibble: 4 × 3\n      x     y     z\n  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;\n1     1    10    11\n2     2     4     6\n3     3     1     4\n4     4    21    25",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/CSSS508_Lecture3.html#getting-help",
+    "href": "Lectures/CSSS508_Lecture3.html#getting-help",
+    "title": "CSSS 508",
+    "section": "Getting Help",
+    "text": "Getting Help\nOne of the most difficult things as a beginner in R (or any language tbh) is not always knowing what to ask to solve your issue. Being in this class is a great first step! Some other useful tools:\n\n\n\nGoogle\n\nAdding R to your query is basic but useful and often overlooked. Including the package name, if you’re using one, is another. Finally, what is it you want to do? For example “R dplyr create new variable based on value of another.”\nCopy and pasting error messages is also helpful!\n\n\n\nStackOverflow\n\nMany of your Google queries will take you here anyways so you might try going directly to the source! Filter by R and make sure to include a reprex so people can actually understand what your issue is.\n\n\n\nReprex\n\nShort for minimal reproducible example this is a version of your code that someone could copy and run on their own machine, making it possible for them to help you troubleshoot your problem.\nYou want to strip away everything not pertinent to the issue you’re having so that it’s simple and straightforward.\nYou can use the reprex package for assistance with this!1\n\n\n\n\nPutting in the work up front\n\nIt’s cliché, but investing in your learning right now will pay off down the road.\nLearning how to do something, why R works in a certain way, and developing practices that keep you organized will make you more efficient and help prevent minor and major frustrations going forward.\n\n\n\n\ndput() is also a useful function for quickly creating a snippet of your data to share with others to illustrate your issue.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 3: Workflow"
+    ]
+  },
+  {
+    "objectID": "Lectures/lectures.html",
+    "href": "Lectures/lectures.html",
+    "title": "Lecture schedule",
+    "section": "",
+    "text": "Please note that this schedule is subject to change.\n\n\n\nLecture\nDate\nTopic\nRecommended Readings\n\n\n\n\n1\n01 Apr 2025\nIntroduction to R, R Studio, and Quarto\nR for Data Science: Introduction, Ch 28 (Quarto)\n\n\n2\n08 Apr 2025\nData Visualization and Debugging\nR for Data Science: Chapters 1, 9-11; ggplot cheatsheet\n\n\n3\n15 Apr 2025\nWorkflow and Reproducibility\nR for Data Science: Chapters 2, 4, 6, 8 (workflow), 27\n\n\n4\n22 Apr 2025\nManipulating and Summarizing Data\nR for Data Science: Chapters 3, 12, 19\n\n\n5\n29 Apr 2025\nImporting, Exporting, and Cleaning Data\n\n\n\n6\n06 May 2025\nData Structures & Types\n\n\n\n7\n13 May 2025\nWorking with Text Data\n\n\n\n8\n20 May 2025\nWriting Functions\n\n\n\n9\n27 May 2025\nIteration\n\n\n\n10\n03 Jun 2025\nNext Steps",
+    "crumbs": [
+      "Lectures",
+      "Lecture schedule"
+    ]
+  },
+  {
+    "objectID": "Homework/CSSS508_HW1_Example.html",
+    "href": "Homework/CSSS508_HW1_Example.html",
+    "title": "CSSS508 Homework 1 Example",
+    "section": "",
+    "text": "I’m interested in exploring a dataset from base R called iris. From its documentation I see that it is data about 50 flowers from each of 3 species of iris and their respective measurements of sepal length, sepal width, petal length, and petal width.\nI first want to take a look at a preview of the dataset by making a nice table.\n\n\n\n\n\n\n\n\n\nSepal.Length\nSepal.Width\nPetal.Length\nPetal.Width\nSpecies\n\n\n\n\n1\n5.1\n3.5\n1.4\n0.2\nsetosa\n\n\n2\n4.9\n3.0\n1.4\n0.2\nsetosa\n\n\n3\n4.7\n3.2\n1.3\n0.2\nsetosa\n\n\n4\n4.6\n3.1\n1.5\n0.2\nsetosa\n\n\n5\n5.0\n3.6\n1.4\n0.2\nsetosa\n\n\n6..145\n\n\n\n\n\n\n\n146\n6.7\n3.0\n5.2\n2.3\nvirginica\n\n\n147\n6.3\n2.5\n5.0\n1.9\nvirginica\n\n\n148\n6.5\n3.0\n5.2\n2.0\nvirginica\n\n\n149\n6.2\n3.4\n5.4\n2.3\nvirginica\n\n\n150\n5.9\n3.0\n5.1\n1.8\nvirginica\n\n\n\n\n\n\n\nThe mean petal length is 3.76 but its median petal length is 4.35. It’s range is 5.9 which additionally suggests a certain degree of spread.\nIt might be useful to look at the distribution to gain a better sense of the variation of this variable.\n\n\n\n\n\n\n\n\n\nThere seems to be a cluster of much smaller petals and then another cluster of average to bigger petals. I wonder how this varies by species…?\n\n\n\n\n\n\n\n\n\nWe can see from this plot that the overall mean and median of petal length is quite misleading! Only the verisicolor species of iris is close to those values while setosa is much mush smaller and virginica is a bit bigger.\nIs there a similar thing happening for sepal length and width? Let’s look at some basic descriptives of the dataset.\n\n\n\n\n\n\n\n\nSepal.Length\nSepal.Width\nPetal.Length\nPetal.Width\nSpecies\n\n\n\n\nMin. :4.300\nMin. :2.000\nMin. :1.000\nMin. :0.100\nsetosa :50\n\n\n1st Qu.:5.100\n1st Qu.:2.800\n1st Qu.:1.600\n1st Qu.:0.300\nversicolor:50\n\n\nMedian :5.800\nMedian :3.000\nMedian :4.350\nMedian :1.300\nvirginica :50\n\n\nMean :5.843\nMean :3.057\nMean :3.758\nMean :1.199\nNA\n\n\n3rd Qu.:6.400\n3rd Qu.:3.300\n3rd Qu.:5.100\n3rd Qu.:1.800\nNA\n\n\nMax. :7.900\nMax. :4.400\nMax. :6.900\nMax. :2.500\nNA\n\n\n\n\n\n\n\nIt’s interesting to note with the summary function that for numerical data it’ll calculate the classic 5 statistics used to construct a boxplot plus the mean but for a categorical variable like iris$Species it returns the frequency of each value of the variable.\nThe distribution of sepal length looks wider than sepal width, similar to how it was for those measurements of the petals. Let’s see how sepal length and width relate to one another graphically.\n\n\n\n\n\n\n\n\n\nThere are still clusters by each species type but for verisicolor and virginica there’s much more overlap. Overall, there’s tighter clustering by species for the petal length and width than there is for the sepal length and width."
+  },
+  {
+    "objectID": "Homework/homework.html",
+    "href": "Homework/homework.html",
+    "title": "Overview",
+    "section": "",
+    "text": "This page contains general instructions for assignments and peer reviews. For specific instructions and templates for individual assignments, click on that assignment listed on the left.\nAll assignments should be created using Quarto and uploaded to Canvas. Your document should be pleasant for a peer to look at and follow all instructions. Use sections for organization, label figures/tables, and use code chunks.\nThis is a one-credit pass/fail course intended to help you learn R. The focus is on learning and practice, not on points. Assignments and peer reviews will be graded for completion, but the points are not the point: they are key opportunities to practice R/RStudio/Quarto and to learn from each other. Feel free to work together, discussion questions on Ed Discussion, trade ideas and tips.",
+    "crumbs": [
+      "Homework",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "Homework/homework.html#peer-review",
+    "href": "Homework/homework.html#peer-review",
+    "title": "Overview",
+    "section": "Peer Review",
+    "text": "Peer Review\nYou are required to examine and provide feedback on a peer’s homework submission each week. Reading and evaluating others’ code gives you the chance to see how other people approached the problems and share how you do things differently. Please give constructive, polite, and insightful comments that encourage your classmate and help them learn from you. Try to mention each of the following: one or more things they did well, one or more tips you have to improve their work, and one or more things you learned from reading their work.",
+    "crumbs": [
+      "Homework",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "Homework/homework.html#a-note-about-rendering-your-html-documents",
+    "href": "Homework/homework.html#a-note-about-rendering-your-html-documents",
+    "title": "Overview",
+    "section": "A Note About Rendering Your HTML documents",
+    "text": "A Note About Rendering Your HTML documents\nYou need to include embed-resources: true in your YAML header in order for your HTML documents to include any plot output when you upload them to Canvas. It should look something like this:\n\nYou can read more about this option here but basically, whenever you render a .qmd file to HTML, all output created goes into a separate, associated folder, which is referenced when displaying the page in your web browser. However, when you upload the HTML file separately from that folder (e.g. to Canvas or through email), it doesn’t have the specific output images to reference, so they won’t appear. When you specify in your YAML header that you want to embed resources, you’re explicitly adding the output created by your code to the HTML file so that a separate output folder is longer created and you can send your HTML file with all its output as one entity.",
+    "crumbs": [
+      "Homework",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "Homework/homework.html#assignment-due-dates",
+    "href": "Homework/homework.html#assignment-due-dates",
+    "title": "Overview",
+    "section": "Assignment Due Dates",
+    "text": "Assignment Due Dates\n\n\n\n\n\n\n\n\n#\nHomework Due\nPeer Review Due\n\n\n\n\n1\n08 April\n13 April\n\n\n2\n15 April\n20 April\n\n\n3\n22 April\n27 April\n\n\n4\n29 April\n03 May\n\n\n5\n06 May\n11 May\n\n\n6\n13 May\n18 May\n\n\n7\n20 May\n25 May\n\n\n8\n27 May\n01 June\n\n\n9\n03 June\n08 June",
+    "crumbs": [
+      "Homework",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "Homework/homework1.html",
+    "href": "Homework/homework1.html",
+    "title": "Homework 1",
+    "section": "",
+    "text": "Instructions\nWrite up a .qmd file showing some exploratory analyses of the Swiss fertility data. Upload both the .qmd file and the .html file to Canvas. You must upload BOTH for credit.\nMix in-line R calculations, R output, and plots with text describing the relationships you see. Include at least one plot and one table using the gt package. You are encouraged to include more! You must use in-line R calculations/references at least once (e.g. functions like nrow(), mean(), sd(), cor(), median(), min()) and may not hard-code any numbers referenced in your text.\nYour document should be pleasant for a peer to look at, with some organization using sections or lists, and all plots labeled clearly. Make sure to update headers, text, etc. to reflect this Homework 1 assignment. Use chunk options echo and output to limit the code/output you show in the .html. Discussion of specific values should be summarized in sentences in your text—not as printed code and output—and rounded so as not to be absurdly precise (e.g. round x with round(x, 2)).\n\n\nTemplate\nrendered html file • raw qmd file\n\n\nExample\nrendered html file • raw qmd file",
+    "crumbs": [
+      "Homework",
+      "Homework 1"
+    ]
+  },
+  {
+    "objectID": "Homework/homework2.html",
+    "href": "Homework/homework2.html",
+    "title": "Homework 2",
+    "section": "",
+    "text": "For this and all assignments you submit on Canvas: Don’t forget to include embed-resources: true in your YAML header. This way your HTML document will include any plots you made when you upload the document to Canvas. Adding this line to your YAML header should look something like this:\n\nWhen you go to submit on Canvas, submit the .html and .qmd files that are already on your computer. When you render a Quarto (.qmd) file to HTML format and it opens a page in your browser, it looks like a webpage but it’s actually a file on your computer that has the extension .html. Instead of trying to print the HTML file from your browser, submit the .html and .qmd files already on your computer. Here’s a screenshot from an example in class today (Lecture 2): when I rendered the file testQuarto.qmd, it created a file called testQuarto.html in the same folder.",
+    "crumbs": [
+      "Homework",
+      "Homework 2"
+    ]
+  },
+  {
+    "objectID": "Homework/homework2.html#footnotes",
+    "href": "Homework/homework2.html#footnotes",
+    "title": "Homework 2",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nRemember to install the package in your console first (not in your qmd file) and then load it with the library() function.↩︎",
+    "crumbs": [
+      "Homework",
+      "Homework 2"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "CSSS 508: Intro to R for Social Scientists",
+    "section": "",
+    "text": "Jess Kunke (she/they)\n\n\n\nTuesdays 4:30-6:20pm\nThomson Hall Room 325\n\n\n\nThursdays 1-3pm in Savery Hall Room 121\nFridays 3-4pm on Zoom by request (email me through Canvas for a particular Friday)\nFor further course details, please see the syllabus.\nThank you Vic Sass for the fantastic website design!"
+  },
+  {
+    "objectID": "index.html#welcome",
+    "href": "index.html#welcome",
+    "title": "CSSS 508: Intro to R for Social Scientists",
+    "section": "",
+    "text": "Jess Kunke (she/they)\n\n\n\nTuesdays 4:30-6:20pm\nThomson Hall Room 325\n\n\n\nThursdays 1-3pm in Savery Hall Room 121\nFridays 3-4pm on Zoom by request (email me through Canvas for a particular Friday)\nFor further course details, please see the syllabus.\nThank you Vic Sass for the fantastic website design!"
+  },
+  {
+    "objectID": "Homework/homework3.html",
+    "href": "Homework/homework3.html",
+    "title": "Homework 3",
+    "section": "",
+    "text": "For this assignment, include all code and relevant output in your rendered html document1.",
+    "crumbs": [
+      "Homework",
+      "Homework 3"
+    ]
+  },
+  {
+    "objectID": "Homework/homework3.html#footnotes",
+    "href": "Homework/homework3.html#footnotes",
+    "title": "Homework 3",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nYou can set the echo: true (and other) code chunk option(s) globally (will set it as the document default) by specifying it in your YAML header like so:\n\n---\ntitle: \"My Document\"\nexecute:\n  echo: true\n---\n\n↩︎\nYou’ll notice that the upper-right hand corner of your RStudio IDE now displays the name of that new project. This is your current working directory. Whatever files you create will have a working directory of the folder/subfolder of the project they’re saved within.↩︎\nYou can embed output-looking text like this example by using a code chunk without the {r} (just three backticks above and below) like so:\n```\nCSSS 508\n  Homework1/\n  ...etc...\n```\n↩︎",
+    "crumbs": [
+      "Homework",
+      "Homework 3"
+    ]
+  },
+  {
+    "objectID": "Homework/homework1_fall.html",
+    "href": "Homework/homework1_fall.html",
+    "title": "Homework 1",
+    "section": "",
+    "text": "Instructions\nWrite up a .qmd file showing some exploratory analyses of the Swiss fertility data. Upload both the .qmd file and the .html file to Canvas. You must upload BOTH for credit.\nMix inline R calculations, R output, and plots with text describing the relationships you see. Include at least two plots and at least one instance of inline R code (e.g. functions like nrow(), mean(), sd(), cor(), median(), min()). You are encouraged to include more! You may not hard-code any numbers referenced in your text.\nYour document should be pleasant for a peer to look at, with some organization using sections or lists, and all plots labeled clearly. Use chunk options echo and output to limit the code/output you show in the .html. Discussion of specific values should be summarized in sentences in your text—not as printed code and output—and rounded so as not to be absurdly precise (e.g. round x with round(x, 2)).\n\n\nTemplate\nrendered html file • raw qmd file\n\n\nExample\nrendered html file • raw qmd file"
+  },
+  {
+    "objectID": "Homework/CSSS508_HW1_Template.html",
+    "href": "Homework/CSSS508_HW1_Template.html",
+    "title": "Homework 1",
+    "section": "",
+    "text": "This basic R markdown file has some text, inline code, and code chunks!"
+  },
+  {
+    "objectID": "Homework/CSSS508_HW1_Template.html#code-chunks",
+    "href": "Homework/CSSS508_HW1_Template.html#code-chunks",
+    "title": "Homework 1",
+    "section": "Code Chunks",
+    "text": "Code Chunks\n\nset.seed(1)\nnorm &lt;- rnorm(100)\nhist(x = norm, \n     xlab = \"X Axis Name\", \n     ylab = \"Count\", \n     main = \"Histogram of 100 observations from a Standard Normal\")\n\n\n\n\n\n\n\n\nUnless you include the chunk option #| echo: false, your code chunk will be displayed in your final document."
+  },
+  {
+    "objectID": "Homework/CSSS508_HW1_Template.html#text-and-inline-text",
+    "href": "Homework/CSSS508_HW1_Template.html#text-and-inline-text",
+    "title": "Homework 1",
+    "section": "Text and Inline Text",
+    "text": "Text and Inline Text\nThe sample mean of the data plotted above (rounded to 3 decimal points) is 0.109 and the variance is 0.807.\nWhat’s the relationship between standard deviation and variance?\n\\[ \\text{Standard Deviation}(X) = \\sqrt{\\text{Variance}(X)} \\]\nThe standard deviation of the data plotted above is 0.898."
+  },
+  {
+    "objectID": "syllabus.html",
+    "href": "syllabus.html",
+    "title": "Syllabus",
+    "section": "",
+    "text": "Welcome! I look forward to working with you this quarter.\nThis syllabus is subject to change. All changes will be announced in class and via email announcements from Ed Discussion.\n\nOverview\nThis course is intended to give students a foundational understanding of programming in the statistical language R. This knowledge is intended to be broadly useful wherever you encounter data in your education and career.\nThis course has no prerequisites; we do not assume you have any prior programming experience with R or any other language. We will also cover almost no statistics, but this course should help prepare you for CSSS, STAT, or other departments’ methods courses so that you can focus on the methods they cover more than the coding itself. Additionally, the basic concepts you learn will be applicable to other programming languages and research in general, such as logic and algorithmic thinking.\n\n\nLearning objectives\nBy the end of the course, students will be able to…\n\nDevelop more confidence in their programming skills and their understanding of computation more broadly\nBe familiar with the RStudio application and the syntax of the R language\nOrganize and document coding projects for reproducibility and efficient workflow\nRead in data from a file and explore the data\nManipulate and reformat data for quality control, summary statistics, and other purposes\nCombine multiple data sets from different sources and of different types\nCreate beautiful, clear, and informative data visualizations\nCombine text, code, and output into reports using Quarto\nGain confidence troubleshooting, debugging, and learning how to do new things in R\n\n\n\nInstalling R, RStudio, Quarto\nIf you do not have both R and RStudio on your computer, or if it has been over a year or so since you updated them, please follow these two-part instructions to install/update them. (If you have concerns about updating your current versions for research compatibility or other reasons, please feel free to email me first to see how best to proceed.)\nFirst, download and install R for your particular operating system by going to this website and following these instructions.\nThen, download RStudio here by clicking the blue button at the top if you have macOS 10.15+ (64-bit) or clicking the appropriate link below that for your operating system.\nIf you just downloaded or already had a recent version of RStudio, Quarto comes with it and you don’t need to do anything further to install it but you can check out this intro to Quarto. I highly recommend having an updated version of R and RStudio. If for some reason you need to download Quarto directly, you can do so here.\n\n\nStructure\nThis course consists of a two-hour hands-on lecture and an optional two-hour hands-on office hour.\nIn person or remote? This course is intended to be primarily in person, but I recognize that life happens, so I will plan to hold lectures in a hybrid fashion in case you need to join remotely sometimes. This way we can also post lecture recordings in case you want to review something from class.\n\nLectures\nFor a schedule of lecture topics, please see the Lectures page. Note that the course will not meet during final exam week.\nPlease bring a laptop to class each week so that you can follow along with examples, practice problems, and live coding in class. If you do not have a laptop you can bring to class and are not sure how to borrow one, please let me know in advance.\n\n\nOffice hours\nOffice hours are optional and are a great space for asking questions, getting more practice, working on homework, and continuing discussions from class.\n\n\n\nResources\nThis course has no required text. I will guide you through content during lecture, and the lecture notes will all be here on this website. There are also many helpful resources available for free online if you would like further references along the way or after this class ends. In particular, if you’d like an extra reference, you can check out R for Data Science by Hadley Wickham, Mine Çetinkaya-Rundel, & Garrett Grolemund.\n\n\nClass communication\n\nCourse content (lecture notes) and homework instructions will be posted here on the course website.\nSubmit your assignments and peer reviews through Canvas.\nI will send out homework clarifications, schedule changes, and other important information through Ed Discussion announcements which will send you an email.\nPlease use Ed Discussion to post your questions to peers and answer others’ questions! I will also keep an eye on the discussions and reply as needed.\nFor administrative emails, please send them through Ed Discussion as a private thread, which will send only to me.\nPlease make good use of my office hours to address your questions, work through homework, and get extra practice with the material.\nWhen asking questions, please provide the code you ran and the error you gave, be specific and concrete, and try to provide a minimal reproducible example. This helps me and your fellow students give you the most helpful feedback!\n\n\n\nAnonymous feedback\nThroughout the course, I welcome your feedback through this short anonymous feedback survey on what’s working for you about the class environment or format, what’s not, and any suggestions or ideas you have.\n\n\nGrading\nThis course is graded as credit/no credit. To pass you need to receive at least 60% of the available points. There will be 9 graded homework assignments, assigned weekly for the first 9 weeks of instruction. There are 4 points possible for each week that features a homework.\n\nHomework (75%; 3 points): These must be submitted as both .html and .qmd documents; we will go over how to create these. I will grade these assignments for completion (3 points if submitted, 0 otherwise) and peers will provide feedback on your work through peer review assignments. These homework assignments are designed first and foremost to develop skills rather than “prove” you have learned concepts. I encourage you to communicate and work together, so long as you write and explain your code yourself and do not copy work.\nPeer Review (25%; 1 point): Each week an assignment is due, students will be randomly assigned to provide constructive feedback on another student’s submission. Reading others’ code is an important skill and you will write better code knowing others will see it. These reviews will be due 5 days after homework is due. Each peer review is worth 1 point and will be graded for completion.\nSchedule: Homework assignments will be due before class each Tuesday and peer reviews will be due 5 days later, by end-of-day on Sundays. You can see a list of due dates on the Homework page.\nLate assignments: No late assignments will be accepted. The reason for this is to ensure you are getting feedback at regular intervals and staying on track. The grading is lenient, so submit whatever you have by each deadline, and your grade will be fine if you miss submitting an assignment or two due to illness or emergencies.\n\n\n\nClassroom Environment\nI’m committed to fostering a friendly and inclusive classroom environment in which all students have an equal opportunity to learn and succeed. Learning is a collaborative and creative process, and my aim is to create an environment in which you all feel comfortable asking questions of me and each other. Treat your peers and yourself with empathy and respect as you all approach this topic from a range of backgrounds and experiences (in programming and in life).\n\nNames & Pronouns: Everyone deserves to be addressed respectfully and correctly. You are welcome to send me your preferred name and correct gender pronouns at any time.\nGetting Help: If at any point during the quarter you find yourself struggling to keep up, please let me know! I am here to help. A great place to start this process is by chatting before or after class, attending office hours, and/or reaching out on Ed Discussion. As much as possible, I encourage you to use my office hours.\nDiversity: Diverse backgrounds, embodiments, and experiences are essential to the critical thinking endeavor at the heart of university education. Therefore, I expect you to follow the UW Student Conduct Code in your interactions with your colleagues and me in this course by respecting the many social and cultural differences among us, which may include, but are not limited to: age, cultural background, disability, ethnicity, family status, gender identity and presentation, body size/shape, citizenship and immigration status, national origin, race, religious and political beliefs, sex, sexual orientation, socioeconomic status, and veteran status.\nAccessibility & Accommodations: Your experience in this class is important to me. If you have already established accommodations with Disability Resources for Students (DRS), please communicate your approved accommodations to me at your earliest convenience so we can discuss your needs in this course. If you have not yet established services through DRS, but have a temporary health condition or permanent disability that requires accommodations (conditions include but not limited to; mental health, attention-related, learning, vision, hearing, physical or health impacts), you are welcome to contact DRS at 206-543-8924, uwdrs@uw.edu, or through their website. DRS offers resources and coordinates reasonable accommodations for students with disabilities and/or temporary health conditions. Reasonable accommodations are established through an interactive process between you, me (your instructor), and DRS. It is the policy and practice of the University of Washington to create inclusive and accessible learning environments consistent with federal and state law.\nAcademic Integrity: Academic integrity is essential to this course and to your learning. In this course, violations of the academic integrity policy include but are not limited to: copying from a peer, copying from an online resource, or using resources from a previous iteration of the course. That said, I hope you will collaborate with peers on assignments, and use Internet resources when questions arise to help solve issues. The key is that you ultimately submit your own work. Anything found in violation of this policy will be automatically given a score of 0 with no exceptions. If the situation merits, it will also be reported to the UW Student Conduct Office, at which point it is out of my hands. If you have any questions about this policy, please do not hesitate to reach out and ask.\nReligious Accommodations: Washington state law requires that UW develop a policy for accommodation of student absences or significant hardship due to reasons of faith or conscience, or for organized religious activities. The UW’s policy, including more information about how to request an accommodation, is available at Religious Accommodations Policy. Accommodations must be requested within the first two weeks of this course using the Religious Accommodations Request form."
+  },
+  {
     "objectID": "Lectures/CSSS508_Lecture1.html#title-slide",
     "href": "Lectures/CSSS508_Lecture1.html#title-slide",
     "title": "CSSS 508",
@@ -825,150 +1629,6 @@
     "crumbs": [
       "Lectures",
       "Lecture 1: Getting started"
-    ]
-  },
-  {
-    "objectID": "syllabus.html",
-    "href": "syllabus.html",
-    "title": "Syllabus",
-    "section": "",
-    "text": "Welcome! I look forward to working with you this quarter.\nThis syllabus is subject to change. All changes will be announced in class and via email announcements from Ed Discussion.\n\nOverview\nThis course is intended to give students a foundational understanding of programming in the statistical language R. This knowledge is intended to be broadly useful wherever you encounter data in your education and career.\nThis course has no prerequisites; we do not assume you have any prior programming experience with R or any other language. We will also cover almost no statistics, but this course should help prepare you for CSSS, STAT, or other departments’ methods courses so that you can focus on the methods they cover more than the coding itself. Additionally, the basic concepts you learn will be applicable to other programming languages and research in general, such as logic and algorithmic thinking.\n\n\nLearning objectives\nBy the end of the course, students will be able to…\n\nDevelop more confidence in their programming skills and their understanding of computation more broadly\nBe familiar with the RStudio application and the syntax of the R language\nOrganize and document coding projects for reproducibility and efficient workflow\nRead in data from a file and explore the data\nManipulate and reformat data for quality control, summary statistics, and other purposes\nCombine multiple data sets from different sources and of different types\nCreate beautiful, clear, and informative data visualizations\nCombine text, code, and output into reports using Quarto\nGain confidence troubleshooting, debugging, and learning how to do new things in R\n\n\n\nInstalling R, RStudio, Quarto\nIf you do not have both R and RStudio on your computer, or if it has been over a year or so since you updated them, please follow these two-part instructions to install/update them. (If you have concerns about updating your current versions for research compatibility or other reasons, please feel free to email me first to see how best to proceed.)\nFirst, download and install R for your particular operating system by going to this website and following these instructions.\nThen, download RStudio here by clicking the blue button at the top if you have macOS 10.15+ (64-bit) or clicking the appropriate link below that for your operating system.\nIf you just downloaded or already had a recent version of RStudio, Quarto comes with it and you don’t need to do anything further to install it but you can check out this intro to Quarto. I highly recommend having an updated version of R and RStudio. If for some reason you need to download Quarto directly, you can do so here.\n\n\nStructure\nThis course consists of a two-hour hands-on lecture and an optional two-hour hands-on office hour.\nIn person or remote? This course is intended to be primarily in person, but I recognize that life happens, so I will plan to hold lectures in a hybrid fashion in case you need to join remotely sometimes. This way we can also post lecture recordings in case you want to review something from class.\n\nLectures\nFor a schedule of lecture topics, please see the Lectures page. Note that the course will not meet during final exam week.\nPlease bring a laptop to class each week so that you can follow along with examples, practice problems, and live coding in class. If you do not have a laptop you can bring to class and are not sure how to borrow one, please let me know in advance.\n\n\nOffice hours\nOffice hours are optional and are a great space for asking questions, getting more practice, working on homework, and continuing discussions from class.\n\n\n\nResources\nThis course has no required text. I will guide you through content during lecture, and the lecture notes will all be here on this website. There are also many helpful resources available for free online if you would like further references along the way or after this class ends. In particular, if you’d like an extra reference, you can check out R for Data Science by Hadley Wickham, Mine Çetinkaya-Rundel, & Garrett Grolemund.\n\n\nClass communication\n\nCourse content (lecture notes) and homework instructions will be posted here on the course website.\nSubmit your assignments and peer reviews through Canvas.\nI will send out homework clarifications, schedule changes, and other important information through Ed Discussion announcements which will send you an email.\nPlease use Ed Discussion to post your questions to peers and answer others’ questions! I will also keep an eye on the discussions and reply as needed.\nFor administrative emails, please send them through Ed Discussion as a private thread, which will send only to me.\nPlease make good use of my office hours to address your questions, work through homework, and get extra practice with the material.\nWhen asking questions, please provide the code you ran and the error you gave, be specific and concrete, and try to provide a minimal reproducible example. This helps me and your fellow students give you the most helpful feedback!\n\n\n\nAnonymous feedback\nThroughout the course, I welcome your feedback through this short anonymous feedback survey on what’s working for you about the class environment or format, what’s not, and any suggestions or ideas you have.\n\n\nGrading\nThis course is graded as credit/no credit. To pass you need to receive at least 60% of the available points. There will be 9 graded homework assignments, assigned weekly for the first 9 weeks of instruction. There are 4 points possible for each week that features a homework.\n\nHomework (75%; 3 points): These must be submitted as both .html and .qmd documents; we will go over how to create these. I will grade these assignments for completion (3 points if submitted, 0 otherwise) and peers will provide feedback on your work through peer review assignments. These homework assignments are designed first and foremost to develop skills rather than “prove” you have learned concepts. I encourage you to communicate and work together, so long as you write and explain your code yourself and do not copy work.\nPeer Review (25%; 1 point): Each week an assignment is due, students will be randomly assigned to provide constructive feedback on another student’s submission. Reading others’ code is an important skill and you will write better code knowing others will see it. These reviews will be due 5 days after homework is due. Each peer review is worth 1 point and will be graded for completion.\nSchedule: Homework assignments will be due before class each Tuesday and peer reviews will be due 5 days later, by end-of-day on Sundays. You can see a list of due dates on the Homework page.\nLate assignments: No late assignments will be accepted. The reason for this is to ensure you are getting feedback at regular intervals and staying on track. The grading is lenient, so submit whatever you have by each deadline, and your grade will be fine if you miss submitting an assignment or two due to illness or emergencies.\n\n\n\nClassroom Environment\nI’m committed to fostering a friendly and inclusive classroom environment in which all students have an equal opportunity to learn and succeed. Learning is a collaborative and creative process, and my aim is to create an environment in which you all feel comfortable asking questions of me and each other. Treat your peers and yourself with empathy and respect as you all approach this topic from a range of backgrounds and experiences (in programming and in life).\n\nNames & Pronouns: Everyone deserves to be addressed respectfully and correctly. You are welcome to send me your preferred name and correct gender pronouns at any time.\nGetting Help: If at any point during the quarter you find yourself struggling to keep up, please let me know! I am here to help. A great place to start this process is by chatting before or after class, attending office hours, and/or reaching out on Ed Discussion. As much as possible, I encourage you to use my office hours.\nDiversity: Diverse backgrounds, embodiments, and experiences are essential to the critical thinking endeavor at the heart of university education. Therefore, I expect you to follow the UW Student Conduct Code in your interactions with your colleagues and me in this course by respecting the many social and cultural differences among us, which may include, but are not limited to: age, cultural background, disability, ethnicity, family status, gender identity and presentation, body size/shape, citizenship and immigration status, national origin, race, religious and political beliefs, sex, sexual orientation, socioeconomic status, and veteran status.\nAccessibility & Accommodations: Your experience in this class is important to me. If you have already established accommodations with Disability Resources for Students (DRS), please communicate your approved accommodations to me at your earliest convenience so we can discuss your needs in this course. If you have not yet established services through DRS, but have a temporary health condition or permanent disability that requires accommodations (conditions include but not limited to; mental health, attention-related, learning, vision, hearing, physical or health impacts), you are welcome to contact DRS at 206-543-8924, uwdrs@uw.edu, or through their website. DRS offers resources and coordinates reasonable accommodations for students with disabilities and/or temporary health conditions. Reasonable accommodations are established through an interactive process between you, me (your instructor), and DRS. It is the policy and practice of the University of Washington to create inclusive and accessible learning environments consistent with federal and state law.\nAcademic Integrity: Academic integrity is essential to this course and to your learning. In this course, violations of the academic integrity policy include but are not limited to: copying from a peer, copying from an online resource, or using resources from a previous iteration of the course. That said, I hope you will collaborate with peers on assignments, and use Internet resources when questions arise to help solve issues. The key is that you ultimately submit your own work. Anything found in violation of this policy will be automatically given a score of 0 with no exceptions. If the situation merits, it will also be reported to the UW Student Conduct Office, at which point it is out of my hands. If you have any questions about this policy, please do not hesitate to reach out and ask.\nReligious Accommodations: Washington state law requires that UW develop a policy for accommodation of student absences or significant hardship due to reasons of faith or conscience, or for organized religious activities. The UW’s policy, including more information about how to request an accommodation, is available at Religious Accommodations Policy. Accommodations must be requested within the first two weeks of this course using the Religious Accommodations Request form."
-  },
-  {
-    "objectID": "Homework/CSSS508_HW1_Template.html",
-    "href": "Homework/CSSS508_HW1_Template.html",
-    "title": "Homework 1",
-    "section": "",
-    "text": "This basic R markdown file has some text, inline code, and code chunks!"
-  },
-  {
-    "objectID": "Homework/CSSS508_HW1_Template.html#code-chunks",
-    "href": "Homework/CSSS508_HW1_Template.html#code-chunks",
-    "title": "Homework 1",
-    "section": "Code Chunks",
-    "text": "Code Chunks\n\nset.seed(1)\nnorm &lt;- rnorm(100)\nhist(x = norm, \n     xlab = \"X Axis Name\", \n     ylab = \"Count\", \n     main = \"Histogram of 100 observations from a Standard Normal\")\n\n\n\n\n\n\n\n\nUnless you include the chunk option #| echo: false, your code chunk will be displayed in your final document."
-  },
-  {
-    "objectID": "Homework/CSSS508_HW1_Template.html#text-and-inline-text",
-    "href": "Homework/CSSS508_HW1_Template.html#text-and-inline-text",
-    "title": "Homework 1",
-    "section": "Text and Inline Text",
-    "text": "Text and Inline Text\nThe sample mean of the data plotted above (rounded to 3 decimal points) is 0.109 and the variance is 0.807.\nWhat’s the relationship between standard deviation and variance?\n\\[ \\text{Standard Deviation}(X) = \\sqrt{\\text{Variance}(X)} \\]\nThe standard deviation of the data plotted above is 0.898."
-  },
-  {
-    "objectID": "Homework/homework1_fall.html",
-    "href": "Homework/homework1_fall.html",
-    "title": "Homework 1",
-    "section": "",
-    "text": "Instructions\nWrite up a .qmd file showing some exploratory analyses of the Swiss fertility data. Upload both the .qmd file and the .html file to Canvas. You must upload BOTH for credit.\nMix inline R calculations, R output, and plots with text describing the relationships you see. Include at least two plots and at least one instance of inline R code (e.g. functions like nrow(), mean(), sd(), cor(), median(), min()). You are encouraged to include more! You may not hard-code any numbers referenced in your text.\nYour document should be pleasant for a peer to look at, with some organization using sections or lists, and all plots labeled clearly. Use chunk options echo and output to limit the code/output you show in the .html. Discussion of specific values should be summarized in sentences in your text—not as printed code and output—and rounded so as not to be absurdly precise (e.g. round x with round(x, 2)).\n\n\nTemplate\nrendered html file • raw qmd file\n\n\nExample\nrendered html file • raw qmd file"
-  },
-  {
-    "objectID": "Homework/homework2.html",
-    "href": "Homework/homework2.html",
-    "title": "Homework 2",
-    "section": "",
-    "text": "For this and all assignments you submit on Canvas: Don’t forget to include embed-resources: true in your YAML header. This way your HTML document will include any plots you made when you upload the document to Canvas. Adding this line to your YAML header should look something like this:\n\nWhen you go to submit on Canvas, submit the .html and .qmd files that are already on your computer. When you render a Quarto (.qmd) file to HTML format and it opens a page in your browser, it looks like a webpage but it’s actually a file on your computer that has the extension .html. Instead of trying to print the HTML file from your browser, submit the .html and .qmd files already on your computer. Here’s a screenshot from an example in class today (Lecture 2): when I rendered the file testQuarto.qmd, it created a file called testQuarto.html in the same folder.",
-    "crumbs": [
-      "Homework",
-      "Homework 2"
-    ]
-  },
-  {
-    "objectID": "Homework/homework2.html#footnotes",
-    "href": "Homework/homework2.html#footnotes",
-    "title": "Homework 2",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nRemember to install the package in your console first (not in your qmd file) and then load it with the library() function.↩︎",
-    "crumbs": [
-      "Homework",
-      "Homework 2"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "CSSS 508: Intro to R for Social Scientists",
-    "section": "",
-    "text": "Jess Kunke (she/they)\n\n\n\nTuesdays 4:30-6:20pm\nThomson Hall Room 325\n\n\n\nThursdays 1-3pm in Savery Hall Room 121\nFridays 3-4pm on Zoom by request (email me through Canvas for a particular Friday)\nFor further course details, please see the syllabus.\nThank you Vic Sass for the fantastic website design!"
-  },
-  {
-    "objectID": "index.html#welcome",
-    "href": "index.html#welcome",
-    "title": "CSSS 508: Intro to R for Social Scientists",
-    "section": "",
-    "text": "Jess Kunke (she/they)\n\n\n\nTuesdays 4:30-6:20pm\nThomson Hall Room 325\n\n\n\nThursdays 1-3pm in Savery Hall Room 121\nFridays 3-4pm on Zoom by request (email me through Canvas for a particular Friday)\nFor further course details, please see the syllabus.\nThank you Vic Sass for the fantastic website design!"
-  },
-  {
-    "objectID": "Homework/homework1.html",
-    "href": "Homework/homework1.html",
-    "title": "Homework 1",
-    "section": "",
-    "text": "Instructions\nWrite up a .qmd file showing some exploratory analyses of the Swiss fertility data. Upload both the .qmd file and the .html file to Canvas. You must upload BOTH for credit.\nMix in-line R calculations, R output, and plots with text describing the relationships you see. Include at least one plot and one table using the gt package. You are encouraged to include more! You must use in-line R calculations/references at least once (e.g. functions like nrow(), mean(), sd(), cor(), median(), min()) and may not hard-code any numbers referenced in your text.\nYour document should be pleasant for a peer to look at, with some organization using sections or lists, and all plots labeled clearly. Make sure to update headers, text, etc. to reflect this Homework 1 assignment. Use chunk options echo and output to limit the code/output you show in the .html. Discussion of specific values should be summarized in sentences in your text—not as printed code and output—and rounded so as not to be absurdly precise (e.g. round x with round(x, 2)).\n\n\nTemplate\nrendered html file • raw qmd file\n\n\nExample\nrendered html file • raw qmd file",
-    "crumbs": [
-      "Homework",
-      "Homework 1"
-    ]
-  },
-  {
-    "objectID": "Homework/homework.html",
-    "href": "Homework/homework.html",
-    "title": "Overview",
-    "section": "",
-    "text": "This page contains general instructions for assignments and peer reviews. For specific instructions and templates for individual assignments, click on that assignment listed on the left.\nAll assignments should be created using Quarto and uploaded to Canvas. Your document should be pleasant for a peer to look at and follow all instructions. Use sections for organization, label figures/tables, and use code chunks.\nThis is a one-credit pass/fail course intended to help you learn R. The focus is on learning and practice, not on points. Assignments and peer reviews will be graded for completion, but the points are not the point: they are key opportunities to practice R/RStudio/Quarto and to learn from each other. Feel free to work together, discussion questions on Ed Discussion, trade ideas and tips.",
-    "crumbs": [
-      "Homework",
-      "Overview"
-    ]
-  },
-  {
-    "objectID": "Homework/homework.html#peer-review",
-    "href": "Homework/homework.html#peer-review",
-    "title": "Overview",
-    "section": "Peer Review",
-    "text": "Peer Review\nYou are required to examine and provide feedback on a peer’s homework submission each week. Reading and evaluating others’ code gives you the chance to see how other people approached the problems and share how you do things differently. Please give constructive, polite, and insightful comments that encourage your classmate and help them learn from you. Try to mention each of the following: one or more things they did well, one or more tips you have to improve their work, and one or more things you learned from reading their work.",
-    "crumbs": [
-      "Homework",
-      "Overview"
-    ]
-  },
-  {
-    "objectID": "Homework/homework.html#a-note-about-rendering-your-html-documents",
-    "href": "Homework/homework.html#a-note-about-rendering-your-html-documents",
-    "title": "Overview",
-    "section": "A Note About Rendering Your HTML documents",
-    "text": "A Note About Rendering Your HTML documents\nYou need to include embed-resources: true in your YAML header in order for your HTML documents to include any plot output when you upload them to Canvas. It should look something like this:\n\nYou can read more about this option here but basically, whenever you render a .qmd file to HTML, all output created goes into a separate, associated folder, which is referenced when displaying the page in your web browser. However, when you upload the HTML file separately from that folder (e.g. to Canvas or through email), it doesn’t have the specific output images to reference, so they won’t appear. When you specify in your YAML header that you want to embed resources, you’re explicitly adding the output created by your code to the HTML file so that a separate output folder is longer created and you can send your HTML file with all its output as one entity.",
-    "crumbs": [
-      "Homework",
-      "Overview"
-    ]
-  },
-  {
-    "objectID": "Homework/homework.html#assignment-due-dates",
-    "href": "Homework/homework.html#assignment-due-dates",
-    "title": "Overview",
-    "section": "Assignment Due Dates",
-    "text": "Assignment Due Dates\n\n\n\n\n\n\n\n\n#\nHomework Due\nPeer Review Due\n\n\n\n\n1\n08 April\n13 April\n\n\n2\n15 April\n20 April\n\n\n3\n22 April\n27 April\n\n\n4\n29 April\n03 May\n\n\n5\n06 May\n11 May\n\n\n6\n13 May\n18 May\n\n\n7\n20 May\n25 May\n\n\n8\n27 May\n01 June\n\n\n9\n03 June\n08 June",
-    "crumbs": [
-      "Homework",
-      "Overview"
-    ]
-  },
-  {
-    "objectID": "Homework/CSSS508_HW1_Example.html",
-    "href": "Homework/CSSS508_HW1_Example.html",
-    "title": "CSSS508 Homework 1 Example",
-    "section": "",
-    "text": "I’m interested in exploring a dataset from base R called iris. From its documentation I see that it is data about 50 flowers from each of 3 species of iris and their respective measurements of sepal length, sepal width, petal length, and petal width.\nI first want to take a look at a preview of the dataset by making a nice table.\n\n\n\n\n\n\n\n\n\nSepal.Length\nSepal.Width\nPetal.Length\nPetal.Width\nSpecies\n\n\n\n\n1\n5.1\n3.5\n1.4\n0.2\nsetosa\n\n\n2\n4.9\n3.0\n1.4\n0.2\nsetosa\n\n\n3\n4.7\n3.2\n1.3\n0.2\nsetosa\n\n\n4\n4.6\n3.1\n1.5\n0.2\nsetosa\n\n\n5\n5.0\n3.6\n1.4\n0.2\nsetosa\n\n\n6..145\n\n\n\n\n\n\n\n146\n6.7\n3.0\n5.2\n2.3\nvirginica\n\n\n147\n6.3\n2.5\n5.0\n1.9\nvirginica\n\n\n148\n6.5\n3.0\n5.2\n2.0\nvirginica\n\n\n149\n6.2\n3.4\n5.4\n2.3\nvirginica\n\n\n150\n5.9\n3.0\n5.1\n1.8\nvirginica\n\n\n\n\n\n\n\nThe mean petal length is 3.76 but its median petal length is 4.35. It’s range is 5.9 which additionally suggests a certain degree of spread.\nIt might be useful to look at the distribution to gain a better sense of the variation of this variable.\n\n\n\n\n\n\n\n\n\nThere seems to be a cluster of much smaller petals and then another cluster of average to bigger petals. I wonder how this varies by species…?\n\n\n\n\n\n\n\n\n\nWe can see from this plot that the overall mean and median of petal length is quite misleading! Only the verisicolor species of iris is close to those values while setosa is much mush smaller and virginica is a bit bigger.\nIs there a similar thing happening for sepal length and width? Let’s look at some basic descriptives of the dataset.\n\n\n\n\n\n\n\n\nSepal.Length\nSepal.Width\nPetal.Length\nPetal.Width\nSpecies\n\n\n\n\nMin. :4.300\nMin. :2.000\nMin. :1.000\nMin. :0.100\nsetosa :50\n\n\n1st Qu.:5.100\n1st Qu.:2.800\n1st Qu.:1.600\n1st Qu.:0.300\nversicolor:50\n\n\nMedian :5.800\nMedian :3.000\nMedian :4.350\nMedian :1.300\nvirginica :50\n\n\nMean :5.843\nMean :3.057\nMean :3.758\nMean :1.199\nNA\n\n\n3rd Qu.:6.400\n3rd Qu.:3.300\n3rd Qu.:5.100\n3rd Qu.:1.800\nNA\n\n\nMax. :7.900\nMax. :4.400\nMax. :6.900\nMax. :2.500\nNA\n\n\n\n\n\n\n\nIt’s interesting to note with the summary function that for numerical data it’ll calculate the classic 5 statistics used to construct a boxplot plus the mean but for a categorical variable like iris$Species it returns the frequency of each value of the variable.\nThe distribution of sepal length looks wider than sepal width, similar to how it was for those measurements of the petals. Let’s see how sepal length and width relate to one another graphically.\n\n\n\n\n\n\n\n\n\nThere are still clusters by each species type but for verisicolor and virginica there’s much more overlap. Overall, there’s tighter clustering by species for the petal length and width than there is for the sepal length and width."
-  },
-  {
-    "objectID": "Lectures/lectures.html",
-    "href": "Lectures/lectures.html",
-    "title": "Lecture schedule",
-    "section": "",
-    "text": "Please note that this schedule is subject to change.\n\n\n\nLecture\nDate\nTopic\nRecommended Readings\n\n\n\n\n1\n01 Apr 2025\nIntroduction to R, R Studio, and Quarto\nR for Data Science: Introduction, Ch 28 (Quarto)\n\n\n2\n08 Apr 2025\nData Visualization and Debugging\nR for Data Science: Chapters 1, 9-11; ggplot cheatsheet\n\n\n3\n15 Apr 2025\nWorkflow and Reproducibility\nR for Data Science: Chapters 2, 4, 6, 8 (workflow), 27\n\n\n4\n22 Apr 2025\nManipulating and Summarizing Data\nR for Data Science: Chapters 3, 12, 19\n\n\n5\n29 Apr 2025\nImporting, Exporting, and Cleaning Data\n\n\n\n6\n06 May 2025\nData Structures & Types\n\n\n\n7\n13 May 2025\nWorking with Text Data\n\n\n\n8\n20 May 2025\nWriting Functions\n\n\n\n9\n27 May 2025\nIteration\n\n\n\n10\n03 Jun 2025\nNext Steps",
-    "crumbs": [
-      "Lectures",
-      "Lecture schedule"
     ]
   },
   {

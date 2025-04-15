@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Homework 2 – CSSS 508</title>
+<title>Homework 3 – CSSS 508</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -150,7 +150,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Homework/homework2.html">Homework 2</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Homework/homework3.html">Homework 3</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -176,13 +176,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Homework/homework2.html" class="sidebar-item-text sidebar-link active">
+  <a href="../Homework/homework2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Homework 2</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Homework/homework3.html" class="sidebar-item-text sidebar-link">
+  <a href="../Homework/homework3.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Homework 3</span></a>
   </div>
 </li>
@@ -197,7 +197,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Homework 2</h1>
+<h1 class="title">Homework 3</h1>
 </div>
 
 
@@ -214,29 +214,83 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="instructions-general-reminders" class="level3">
-<h3 class="anchored" data-anchor-id="instructions-general-reminders">Instructions: General reminders</h3>
-<p>For this and all assignments you submit on Canvas: Don’t forget to include <code>embed-resources: true</code> in your YAML header. This way your HTML document will include any plots you made when you upload the document to Canvas. Adding this line to your YAML header should look something like this:</p>
-<p><img src="images/quarto_embed.png" class="img-fluid" style="width:2in"></p>
-<p>When you go to submit on Canvas, submit the .html and .qmd files that are already on your computer. When you render a Quarto (.qmd) file to HTML format and it opens a page in your browser, it looks like a webpage but it’s actually a file on your computer that has the extension .html. Instead of trying to print the HTML file from your browser, submit the .html and .qmd files already on your computer. Here’s a screenshot from an example in class today (Lecture 2): when I rendered the file testQuarto.qmd, it created a file called testQuarto.html in the same folder.</p>
-<p><img src="images/local_html_file.png" class="img-fluid" style="width:4in"></p>
+<section id="instructions" class="level3">
+<h3 class="anchored" data-anchor-id="instructions">Instructions</h3>
+<p>For this assignment, <strong>include all code and relevant output in your rendered html document</strong><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
 </section>
-<section id="instructions-for-homework-2-specifically" class="level3">
-<h3 class="anchored" data-anchor-id="instructions-for-homework-2-specifically">Instructions for Homework 2 specifically</h3>
-<p>In this homework, you’ll pose a question regarding the Gapminder dataset and investigate it graphically. Rather than using the <code>gapminder</code> package like we did in lecture, you’ll want to use the <a href="https://cran.r-project.org/web/packages/dslabs/dslabs.pdf"><code>dslabs</code></a> package<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, which has a larger subset of the Gapminder data (i.e.&nbsp;more observations and variables).</p>
-<ul>
-<li>At the beginning of your document, write down a research question that is based on the Gapminder dataset (e.g., “How does population change over time in different countries?”)</li>
-<li>Create 3-6 plots to answer/investigate your research question. Consider histograms (<code>geom_histogram()</code>), scatterplots (<code>geom_point()</code>), or lineplots (<code>geom_line()</code>).</li>
-<li>Be sure all titles, axes, and legends are clearly labelled (no raw variable names).</li>
-<li>Include at least one plot with <code>facet_wrap()</code> or <code>facet_grid()</code>.</li>
-<li>You can use other <code>geoms</code> like bar charts, box plots, add meaningful vertical or horizontal lines, etc. You may find <a href="https://rstudio.github.io/cheatsheets/data-visualization.pdf"><strong>this data visualization cheat sheet</strong></a> helpful.</li>
-</ul>
-<p>Your document should be pleasant for a peer to look at, with some organization. You must write up your observations in words as well as showing the graphs. Upload both the <code>.qmd</code> file and the <code>.html</code> file to Canvas.</p>
-<p><em>Optional: If you’d like to compare several specific countries, you can adapt the following pseudo_code below to create a subset of the data with as many countries as you like. Replace <code>"country1"</code> et al.&nbsp;with the country name as it appears in the dataset. Use <code>unique(gapminder$country)</code> to see a complete list of all the countries available.:</em></p>
+<section id="exercises" class="level3">
+<h3 class="anchored" data-anchor-id="exercises">Exercises</h3>
+<ol type="1">
+<li>Organize your files for this class in a way that facilitates reproducible research. To be clear, there is no code to write up in this section, just text. Follow the style guidelines from lecture for filenames/folder names.
+<ol type="i">
+<li>You can do this any number of ways, such as:
+<ol type="a">
+<li>Creating a project for this class. If you already have a folder for this class, you can retroactively turn it into a project by selecting <em>File</em> &gt; <em>New Project…</em> &gt; <em>Existing Directory</em> and browsing to that folder.</li>
+<li>Creating a folder for this class and making weekly subfolders which are each, themselves, projects. You would need to retroactively make Week 1 and 2 folders projects by using the method above. For any new weekly folders you can directly create that directory by selecting <em>File</em> &gt; <em>New Project…</em> &gt; <em>New Directory</em>.</li>
+</ol></li>
+<li>Create your .qmd for this homework in an appropriate place within your new project<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</li>
+<li>When you’re done organizing the folder for this class, write out its current organizational structure (i.e.&nbsp;something similar to the solution to lab question 5<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> with the specific names for files and folders that <em>you</em> used). Write a one-sentence description of how you’ve organized your project/projects for this class.</li>
+</ol></li>
+</ol>
+<hr>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>subset <span class="ot">&lt;-</span> gapminder <span class="sc">|&gt;</span> </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"county1"</span>, <span class="st">"country2"</span>, <span class="st">"country3"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="dv">10</span>, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<ol start="2" type="1">
+<li>Create the vector above:
+<ol type="i">
+<li>Look at the help file for <code>rnorm</code> and in your own words describe what arguments it takes and what it produces.</li>
+<li>Which arguments are required and which are optional (if any)?</li>
+<li>What does the <code>r</code> in <code>rnorm</code> stand for?</li>
+<li>Using <code>[</code>, select every value of <code>x</code> except the last one. You can show just the code you used or both the code and what it prints out.</li>
+<li>Using <code>[</code>, select only values of <code>x</code> that are greater than 10. You can show just the code you used or both the code and what it prints out.</li>
+</ol></li>
+</ol>
+<hr>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> class)) <span class="sc">+</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> cty, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"mpg-plot.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="3" type="1">
+<li>Run the code above. You don’t have to include the plots or the code in your submission; you can run it in your RStudio console to see the results, then write up your answers to the following questions in the assignment you submit.
+<ol type="i">
+<li>Which of the two plots is saved as mpg-plot.png? Why?</li>
+<li>In the files tab of the lower-right pane of your RStudio, look at the project folder for this homework and re-write the current organizational structure for this class with any changes that have occurred (i.e.&nbsp;update your answer to question 1.iii.).</li>
+</ol></li>
+</ol>
+<hr>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">a =</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">2</span>), </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">b =</span> <span class="fu">c</span>(<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"strawberry"</span>, <span class="st">"peach"</span>, <span class="st">"mango"</span>), </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">c =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="cn">TRUE</span>, <span class="dv">3</span>), <span class="fu">rep</span>(<span class="cn">FALSE</span>, <span class="dv">2</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="4" type="1">
+<li>Create the tibble above.
+<ol type="i">
+<li>What does <code>seq</code> do in this example and what arguments does it take?</li>
+<li>What does <code>rep</code> do in this example and what arguments does it take?</li>
+<li>Index <code>y</code> using <code>[</code> to arrive at the results:</li>
+</ol></li>
+</ol>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>&gt; # A tibble: 2 × 1
+&gt;   b     
+&gt;   &lt;chr&gt; 
+&gt; 1 banana
+&gt; 2 mango</code></pre>
+</div>
+</div>
+<p><span>  </span> iv) Index <code>y</code> using <code>$</code> to arrive at the results:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>&gt; [1]  TRUE  TRUE  TRUE FALSE FALSE</code></pre>
+</div>
+</div>
+<p><span>  </span> v) What does <code>y[3:5, ]</code> produce? What does <code>:</code> do?</p>
 
 
 </section>
@@ -245,7 +299,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p>Remember to install the package in your console first (not in your qmd file) and then load it with the library() function.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>You can set the <code>echo: true</code> (and other) code chunk option(s) globally (will set it as the document default) by specifying it in your YAML header like so:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"My Document"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">execute</span><span class="kw">:</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">echo</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn2"><p>You’ll notice that the upper-right hand corner of your RStudio IDE now displays the name of that new project. This is your current working directory. Whatever files you create will have a working directory of the folder/subfolder of the project they’re saved within.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>You can embed output-looking text like this example by using a code chunk without the <code>{r}</code> (just three backticks above and below) like so:</p>
+<pre><code>```
+CSSS 508
+  Homework1/
+  ...etc...
+```</code></pre>
+<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
