@@ -80,7 +80,7 @@ require(tidyverse)
 * Be kind to Future You and to others who read/use your code
 * Learn along the way! You know enough, and you will never know it all
 
-# Vocab review
+# Vocab review{.section-title background-color="#99a486"}
 
 ## General coding vocab {.scrollable}
 
@@ -579,7 +579,7 @@ File names should:
 * play well with default ordering: start file names with numbers so that alphabetical sorting puts them in the order they get used.
 
 
-## Organization and Portability
+## Organization and Portability {.scrollable}
 
 Organizing research projects is something you either do accidentally — and badly — or purposefully with some upfront labor.
 
@@ -1520,3 +1520,4 @@ One of the most difficult things as a beginner in `R` (or any language tbh) is n
 # Homework{.section-title background-color="#1e4655"}
 
 ## {data-menu-title="Homework 3" background-iframe="https://jpierkunke.github.io/CSSS508-Spring2025/Homework/homework3.html" background-interactive=TRUE}
+
