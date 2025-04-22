@@ -34,25 +34,23 @@ website:
         - file: Lectures/CSSS508_Lecture1.qmd
           text: "Lecture 1: Getting started"
         - file: Lectures/CSSS508_Lecture2.qmd
-          text: "Lecture 2: Data Visualization"
+          text: "Lecture 2: Data viz"
         - file: Lectures/CSSS508_Lecture3.qmd
           text: "Lecture 3: Workflow"
-        # - file: Lectures/lec3_data_manip_tidyverse.qmd
-        #   text: "Lecture 3: Data manipulation with tidyverse"
-        # - file: Lectures/lec4_debugging_review.qmd
-        #   text: "Lecture 4: Debugging and review"
-        # - file: Lectures/lec5_data_viz.qmd
-        #   text: "Lecture 5: Data visualization"
-        # - file: Lectures/lec6_better_plots.qmd
-        #   text: "Lecture 6: Better plots"
-        # - file: Lectures/lec7_import_export_clean_join.qmd
-        #   text: "Lecture 7: Import, process, join and export data"
-        # - file: Lectures/lec8_text.qmd
-        #   text: "Lecture 8: Working with text in R"
-        # - file: Lectures/lec9_regression.qmd
-        #   text: "Lecture 9: Regression in R"
-        # - file: Lectures/lec10_advanced_topics.qmd
-        #   text: "Lecture 10: Iteration, writing functions, and beyond"
+        - file: Lectures/CSSS508_Lecture4.qmd
+          text: "Lecture 4: Data wrangling"
+        # - file: Lectures/CSSS508_Lecture5.qmd
+        #   text: "Lecture 5: Getting started"
+        # - file: Lectures/CSSS508_Lecture6.qmd
+        #   text: "Lecture 6: Data viz"
+        # - file: Lectures/CSSS508_Lecture7.qmd
+        #   text: "Lecture 7: Workflow"
+        # - file: Lectures/CSSS508_Lecture8.qmd
+        #   text: "Lecture 8: Data wrangling"
+        # - file: Lectures/CSSS508_Lecture9.qmd
+        #   text: "Lecture 9: Getting started"
+        # - file: Lectures/CSSS508_Lecture10.qmd
+        #   text: "Lecture 10: Data viz"
 
     - title: "Homework"
       contents: 
@@ -63,10 +61,8 @@ website:
           text: "Homework 2"
         - file: Homework/homework3.qmd
           text: "Homework 3"
-        # - file: Homework/homework4.qmd
-        #   text: "Homework 4"
-        # - file: Homework/homework4_followup.qmd
-        #   text: "HW4 follow-up: When does order matter?"
+        - file: Homework/homework4.qmd
+          text: "Homework 4"
         # - file: Homework/homework5.qmd
         #   text: "Homework 5"
         # - file: Homework/homework6.qmd
