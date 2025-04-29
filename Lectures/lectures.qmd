@@ -10,9 +10,9 @@ title: "Lecture schedule"
 |    2    | 08 Apr 2025 | Data Visualization and Debugging                 | R for Data Science: Chapters [1](https://r4ds.hadley.nz/data-visualize), [9-11](https://r4ds.hadley.nz/visualize.html); [ggplot cheatsheet](https://rstudio.github.io/cheatsheets/data-visualization.pdf)|
 |    3    | 15 Apr 2025 | Workflow and Reproducibility                     | R for Data Science: Chapters [2, 4, 6, 8 (workflow)](https://r4ds.hadley.nz/workflow-basics), [27](https://r4ds.hadley.nz/base-R.html)|
 |    4    | 22 Apr 2025 | Manipulating and Summarizing Data                | R for Data Science: Chapters [3](https://r4ds.hadley.nz/data-transform.html), [12](https://r4ds.hadley.nz/logicals.html), [19](https://r4ds.hadley.nz/joins.html)|
-|    5    | 29 Apr 2025 | Importing, Exporting, and Cleaning Data          | |
-|    6    | 06 May 2025 | Data Structures & Types                          | |
-|    7    | 13 May 2025 | Working with Text Data                           | |
-|    8    | 20 May 2025 | Writing Functions                                | |
-|    9    | 27 May 2025 | Iteration                                        | |
+|    5    | 29 Apr 2025 | Importing, Exporting, and Cleaning Data          | R for Data Science: Chapters [5](https://r4ds.hadley.nz/data-tidy), [7](https://r4ds.hadley.nz/data-import), [16](https://r4ds.hadley.nz/factors), [17](https://r4ds.hadley.nz/datetimes); [RStudio cheatsheets](https://rstudio.github.io/cheatsheets/) |
+|    6    | 06 May 2025 | Data Structures & Types                          | R for Data Science: Chapters [13](https://r4ds.hadley.nz/numbers), [18](https://r4ds.hadley.nz/missing-values)|
+|    7    | 13 May 2025 | Working with Text Data                           | R for Data Science: Chapters [14-15](https://r4ds.hadley.nz/strings)|
+|    8    | 20 May 2025 | Writing Functions                                | R for Data Science: Chapter [25](https://r4ds.hadley.nz/functions)|
+|    9    | 27 May 2025 | Iteration                                        | R for Data Science: Chapter [26](https://r4ds.hadley.nz/iteration)|
 |   10    | 03 Jun 2025 | Next Steps                                       | |

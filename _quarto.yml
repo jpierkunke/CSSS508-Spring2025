@@ -39,8 +39,8 @@ website:
           text: "Lecture 3: Workflow"
         - file: Lectures/CSSS508_Lecture4.qmd
           text: "Lecture 4: Data wrangling"
-        # - file: Lectures/CSSS508_Lecture5.qmd
-        #   text: "Lecture 5: Getting started"
+        - file: Lectures/CSSS508_Lecture5.qmd
+          text: "Lecture 5: Import, Tidy, Export"
         # - file: Lectures/CSSS508_Lecture6.qmd
         #   text: "Lecture 6: Data viz"
         # - file: Lectures/CSSS508_Lecture7.qmd
@@ -53,6 +53,7 @@ website:
         #   text: "Lecture 10: Data viz"
 
     - title: "Homework"
+      style: "docked"
       contents: 
         - Homework/homework.qmd
         - file: Homework/homework1.qmd
@@ -63,8 +64,8 @@ website:
           text: "Homework 3"
         - file: Homework/homework4.qmd
           text: "Homework 4"
-        # - file: Homework/homework5.qmd
-        #   text: "Homework 5"
+        - file: Homework/homework5.qmd
+          text: "Homework 5"
         # - file: Homework/homework6.qmd
         #   text: "Homework 6"
         # - file: Homework/homework7.qmd
