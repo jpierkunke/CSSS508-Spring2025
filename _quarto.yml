@@ -40,9 +40,9 @@ website:
         - file: Lectures/CSSS508_Lecture4.qmd
           text: "Lecture 4: Data wrangling"
         - file: Lectures/CSSS508_Lecture5.qmd
-          text: "Lecture 5: Import, Tidy, Export"
-        # - file: Lectures/CSSS508_Lecture6.qmd
-        #   text: "Lecture 6: Data viz"
+          text: "Lecture 5: Import, tidy, export"
+        - file: Lectures/CSSS508_Lecture6.qmd
+          text: "Lecture 6: Data structures and types"
         # - file: Lectures/CSSS508_Lecture7.qmd
         #   text: "Lecture 7: Workflow"
         # - file: Lectures/CSSS508_Lecture8.qmd
@@ -66,8 +66,8 @@ website:
           text: "Homework 4"
         - file: Homework/homework5.qmd
           text: "Homework 5"
-        # - file: Homework/homework6.qmd
-        #   text: "Homework 6"
+        - file: Homework/homework6.qmd
+          text: "Homework 6"
         # - file: Homework/homework7.qmd
         #   text: "Homework 7"
         # - file: Homework/homework8.qmd
