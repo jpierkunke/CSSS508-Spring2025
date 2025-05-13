@@ -165,7 +165,7 @@ restaurants <- restaurants |> mutate(Name = if_else(Name == "+MAS CAFE", "+MAS C
 save(restaurants, file = "Lectures/Lecture7/data/restaurants.Rdata")
 ```
 
-Note these data are *fairly large* in their native `.csv` format. The following code can be used to download the data directly from Vic's `Github` page as a smaller, `.Rdata` object:
+Note these data are *fairly large* in their native `.csv` format. The following code can be used to download the data directly from Vic's `Github` repo as a smaller, `.Rdata` object:
 
 ```{r}
 #| cache: true
@@ -262,7 +262,7 @@ restaurants |>
             .by = Name)
 ```
 
-11. Notice that when a variable has spaces in it's name (rather than being separated with an underscore in snake_case, for instance) you need to put backticks around it so `R` knows it is a singular object name.
+11. Notice that when a variable has spaces in its name (rather than being separated with an underscore in snake_case, for instance) you need to put backticks around it so `R` knows it is a singular object name.
 
 ## Example #4 with Restaurant Data {.scrollable}
 

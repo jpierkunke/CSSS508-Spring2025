@@ -573,7 +573,7 @@
 <section id="data-king-county-restaurant-inspections" class="slide level2 scrollable">
 <h2>Data: King County Restaurant Inspections!</h2>
 <p>Today we’ll study real data on <strong>food safety inspections in King County</strong>, collected from <a href="https://data.kingcounty.gov/Health/Food-Establishment-Inspection-Data/f29f-zza5">data.kingcounty.gov</a>.</p>
-<p>Note these data are <em>fairly large</em> in their native <code>.csv</code> format. The following code can be used to download the data directly from Vic’s <code>Github</code> page as a smaller, <code>.Rdata</code> object:</p>
+<p>Note these data are <em>fairly large</em> in their native <code>.csv</code> format. The following code can be used to download the data directly from Vic’s <code>Github</code> repo as a smaller, <code>.Rdata</code> object:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">load</span>(<span class="fu">url</span>(<span class="st">"https://github.com/vsass/CSSS508/raw/main/Lectures/Lecture7/data/restaurants.Rdata"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -748,7 +748,7 @@
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-11" data-target-annotation="11">11</dt>
 <dd>
-<span data-code-cell="annotated-cell-11" data-code-lines="2" data-code-annotation="11">Notice that when a variable has spaces in it’s name (rather than being separated with an underscore in snake_case, for instance) you need to put backticks around it so <code>R</code> knows it is a singular object name.</span>
+<span data-code-cell="annotated-cell-11" data-code-lines="2" data-code-annotation="11">Notice that when a variable has spaces in its name (rather than being separated with an underscore in snake_case, for instance) you need to put backticks around it so <code>R</code> knows it is a singular object name.</span>
 </dd>
 </dl>
 </div>
@@ -806,23 +806,23 @@
 <div class="fragment">
 <div class="cell">
 <div class="cell-output-display">
-<div id="bngbqkojym" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#bngbqkojym table {
+<div id="vbyabggkgr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#vbyabggkgr table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#bngbqkojym thead, #bngbqkojym tbody, #bngbqkojym tfoot, #bngbqkojym tr, #bngbqkojym td, #bngbqkojym th {
+#vbyabggkgr thead, #vbyabggkgr tbody, #vbyabggkgr tfoot, #vbyabggkgr tr, #vbyabggkgr td, #vbyabggkgr th {
   border-style: none;
 }
 
-#bngbqkojym p {
+#vbyabggkgr p {
   margin: 0;
   padding: 0;
 }
 
-#bngbqkojym .gt_table {
+#vbyabggkgr .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -848,12 +848,12 @@
   border-left-color: #D3D3D3;
 }
 
-#bngbqkojym .gt_caption {
+#vbyabggkgr .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#bngbqkojym .gt_title {
+#vbyabggkgr .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -865,7 +865,7 @@
   border-bottom-width: 0;
 }
 
-#bngbqkojym .gt_subtitle {
+#vbyabggkgr .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -877,7 +877,7 @@
   border-top-width: 0;
 }
 
-#bngbqkojym .gt_heading {
+#vbyabggkgr .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -889,13 +889,13 @@
   border-right-color: #D3D3D3;
 }
 
-#bngbqkojym .gt_bottom_border {
+#vbyabggkgr .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#bngbqkojym .gt_col_headings {
+#vbyabggkgr .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -910,7 +910,7 @@
   border-right-color: #D3D3D3;
 }
 
-#bngbqkojym .gt_col_heading {
+#vbyabggkgr .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -930,7 +930,7 @@
   overflow-x: hidden;
 }
 
-#bngbqkojym .gt_column_spanner_outer {
+#vbyabggkgr .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -942,15 +942,15 @@
   padding-right: 4px;
 }
 
-#bngbqkojym .gt_column_spanner_outer:first-child {
+#vbyabggkgr .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#bngbqkojym .gt_column_spanner_outer:last-child {
+#vbyabggkgr .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#bngbqkojym .gt_column_spanner {
+#vbyabggkgr .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -962,11 +962,11 @@
   width: 100%;
 }
 
-#bngbqkojym .gt_spanner_row {
+#vbyabggkgr .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#bngbqkojym .gt_group_heading {
+#vbyabggkgr .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -992,7 +992,7 @@
   text-align: left;
 }
 
-#bngbqkojym .gt_empty_group_heading {
+#vbyabggkgr .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1007,15 +1007,15 @@
   vertical-align: middle;
 }
 
-#bngbqkojym .gt_from_md > :first-child {
+#vbyabggkgr .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#bngbqkojym .gt_from_md > :last-child {
+#vbyabggkgr .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#bngbqkojym .gt_row {
+#vbyabggkgr .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1034,7 +1034,7 @@
   overflow-x: hidden;
 }
 
-#bngbqkojym .gt_stub {
+#vbyabggkgr .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1047,7 +1047,7 @@
   padding-right: 5px;
 }
 
-#bngbqkojym .gt_stub_row_group {
+#vbyabggkgr .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1061,15 +1061,15 @@
   vertical-align: top;
 }
 
-#bngbqkojym .gt_row_group_first td {
+#vbyabggkgr .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#bngbqkojym .gt_row_group_first th {
+#vbyabggkgr .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#bngbqkojym .gt_summary_row {
+#vbyabggkgr .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1079,16 +1079,16 @@
   padding-right: 5px;
 }
 
-#bngbqkojym .gt_first_summary_row {
+#vbyabggkgr .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#bngbqkojym .gt_first_summary_row.thick {
+#vbyabggkgr .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#bngbqkojym .gt_last_summary_row {
+#vbyabggkgr .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1098,7 +1098,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#bngbqkojym .gt_grand_summary_row {
+#vbyabggkgr .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1108,7 +1108,7 @@
   padding-right: 5px;
 }
 
-#bngbqkojym .gt_first_grand_summary_row {
+#vbyabggkgr .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1118,7 +1118,7 @@
   border-top-color: #D3D3D3;
 }
 
-#bngbqkojym .gt_last_grand_summary_row_top {
+#vbyabggkgr .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1128,11 +1128,11 @@
   border-bottom-color: #D3D3D3;
 }
 
-#bngbqkojym .gt_striped {
+#vbyabggkgr .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#bngbqkojym .gt_table_body {
+#vbyabggkgr .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1141,7 +1141,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#bngbqkojym .gt_footnotes {
+#vbyabggkgr .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1155,7 +1155,7 @@
   border-right-color: #D3D3D3;
 }
 
-#bngbqkojym .gt_footnote {
+#vbyabggkgr .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1164,7 +1164,7 @@
   padding-right: 5px;
 }
 
-#bngbqkojym .gt_sourcenotes {
+#vbyabggkgr .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1178,7 +1178,7 @@
   border-right-color: #D3D3D3;
 }
 
-#bngbqkojym .gt_sourcenote {
+#vbyabggkgr .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1186,72 +1186,72 @@
   padding-right: 5px;
 }
 
-#bngbqkojym .gt_left {
+#vbyabggkgr .gt_left {
   text-align: left;
 }
 
-#bngbqkojym .gt_center {
+#vbyabggkgr .gt_center {
   text-align: center;
 }
 
-#bngbqkojym .gt_right {
+#vbyabggkgr .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#bngbqkojym .gt_font_normal {
+#vbyabggkgr .gt_font_normal {
   font-weight: normal;
 }
 
-#bngbqkojym .gt_font_bold {
+#vbyabggkgr .gt_font_bold {
   font-weight: bold;
 }
 
-#bngbqkojym .gt_font_italic {
+#vbyabggkgr .gt_font_italic {
   font-style: italic;
 }
 
-#bngbqkojym .gt_super {
+#vbyabggkgr .gt_super {
   font-size: 65%;
 }
 
-#bngbqkojym .gt_footnote_marks {
+#vbyabggkgr .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#bngbqkojym .gt_asterisk {
+#vbyabggkgr .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#bngbqkojym .gt_indent_1 {
+#vbyabggkgr .gt_indent_1 {
   text-indent: 5px;
 }
 
-#bngbqkojym .gt_indent_2 {
+#vbyabggkgr .gt_indent_2 {
   text-indent: 10px;
 }
 
-#bngbqkojym .gt_indent_3 {
+#vbyabggkgr .gt_indent_3 {
   text-indent: 15px;
 }
 
-#bngbqkojym .gt_indent_4 {
+#vbyabggkgr .gt_indent_4 {
   text-indent: 20px;
 }
 
-#bngbqkojym .gt_indent_5 {
+#vbyabggkgr .gt_indent_5 {
   text-indent: 25px;
 }
 
-#bngbqkojym .katex-display {
+#vbyabggkgr .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#bngbqkojym div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#vbyabggkgr div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>

@@ -16,7 +16,7 @@ Answer each of the following questions. Be sure to display **all your code in th
     ---
     ```
 
-Use the following code to read in the King County restaurants data: 
+Use the following code to read in the King County restaurant data for this assignment: 
 
 ```{r}
 #| eval: false
