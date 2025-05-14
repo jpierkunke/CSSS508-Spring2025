@@ -1,0 +1,125 @@
+---
+title: "Homework 5 Key"
+code-annotations: hover
+code-fold: show
+execute: 
+  message: false
+  warning: false
+output: 
+  html_document:
+    highlight-style: a11y-dark
+---
+
+```{r}
+#| code-fold: true
+knitr::opts_chunk$set(comment = ">")
+library(tidyverse)
+library(ggrepel)
+library(ggthemes)
+```
+
+#### Answer 2
+
+Read in the data, clean up the names, and pivot it in a way so the first few rows look like this: 
+
+```{r}
+billboard <- read_csv("billboard_top100.csv") 
+billboard_tidy <- billboard |> 
+  pivot_longer(starts_with("wk"), 
+               names_to = "week", 
+               values_to = "rank", 
+               values_drop_na = TRUE, 
+               names_prefix = "wk", 
+               names_transform = list(week = as.integer)) |> 
+  janitor::clean_names() 
+billboard_tidy
+```
+
+#### Answer 3
+
+Create a variable named `date` that corresponds to the `week` based on the `date_entered`.
+
+```{r}
+billboard_tidy_date <- billboard_tidy |> 
+  mutate(date = if_else(week == 1, # <1>
+                       date_entered, # <1>
+                       date_entered + weeks(x = week - 1))) # <1>
+billboard_tidy_date
+```
+1. This `if_else` basically says, "if `week` is equal to 1 then assign the `date_entered` value to `date`. Otherwise, add the number of `week`s minus 1 to the `date_entered` value (i.e. for the second week you would want to add `2 - 1` or `1` week to the `date_entered` value). 
+
+#### Answer 4
+
+Create a dataset of the song(s) with the <span style="color:#e15759">**most weeks in the top 3 by month of 2000**</span>.
+
+```{r}
+billboard_top3_month <- billboard_tidy_date |> 
+  mutate(month = month(date), # <2>
+         year = year(date), # <3> 
+         top3 = if_else(rank <= 3 & year == 2000, 1, 0)) |> # <4>
+  mutate(peak_weeks = sum(top3), # <5>
+         .by = c(month, artist, track)) |> # <5> 
+  slice_max(peak_weeks, # <6>
+            by = month) |> # <6>
+  distinct(month, artist, track, peak_weeks) |> # <7>
+  arrange(month) # <8>
+billboard_top3_month
+```
+2. We need to be able to filter rows by month so we need to create a `month` variable from out `date` variable. 
+3. This dataset is about the 2000 top 100 but many of these songs charted before or after that year. Therefore, we will need a variable for year as well so we make sure we're finding the songs that charted in the months of 2000. 
+4. To create our `top3` indicator we provide the two conditions that the rank for that observation is less than or equal to 3 AND the year is 2000. If so, `top3` will be assigned a value of 1 and if not it will get a value of 0. 
+5. To filter for the most weeks in the top 3 we need to count how many weeks a song was in the top 3, grouped by month, song, and artist.
+6. Then, by month we can slice the song(s) with the most weeks in the top 3. 
+7. Now we just want the name of the artist, song, the month they were charting in the top 3 for the most weeks, and the number of weeks
+8. To see this in chronological order we want to arrange by the month
+
+#### Answer 5
+
+Pick one month of 2000 and visualize the **entire charting trajectory** of the songs that spent **at least 1 week** in the top 3 during that month.
+
+```{r}
+#| fig-align: center
+#| fig-width: 12
+#| fig-height: 6
+billboard_top3_month_viz <- billboard_tidy_date |> 
+  mutate(month = month(date),
+         year = year(date),
+         top3 = if_else(rank <= 3 & year == 2000, 1, 0)) |> 
+  mutate(month_peak = ifelse(top3 == 1, month, NA), # <9>
+         .by = c(month, artist, track)) |> 
+  filter(any(month_peak == 4), # <10>
+         .by = c(track, artist)) 
+
+date_order <- billboard_top3_month_viz |> 
+  filter(date == date("2000-05-06")) |> 
+  arrange(desc(rank))
+
+ggplot(billboard_top3_month_viz, aes(date, rank, group = track, color = artist)) + 
+  annotate(geom = "rect", xmin = ymd("2000-04-01"), xmax = ymd("2000-05-01"), ymin = 0, ymax = 85, # <11>
+           fill = "#59a14f", alpha = 0.25) + # <11>
+  geom_line(show.legend = TRUE) + # <12> 
+  geom_label_repel(data = billboard_top3_month_viz |> slice_max(date, by = track), # <13>
+                   aes(label = track), 
+                   show.legend = FALSE) + # <14>
+  scale_color_manual("Artist", values = c("#4e79a7","#f28e2c","#e15759","#76b7b2")) + # <15>
+  labs(title = "Billboard Top 100 Trajectory for Songs that Hit Top 3 During April 2000", 
+       x = "Date", 
+       y = "Rank", 
+       caption = "Note: April shaded in green") + 
+  theme_tufte(base_size = 14) + 
+  theme(legend.position = c(0.85, 0.85), # <16>
+        legend.title.align = 0.5, # <17>
+        legend.box.background = element_rect(colour = "black", fill = "#f6f7f9"), # <18>
+        plot.background = element_rect(fill = "#f6f7f9", color = "#f6f7f9")) # <19>
+```
+9. In order to visualize the entire trajectory, we need to have a variable that indicates when a song was charting in the top 3 
+10. This allows us to filter by each song whether any of the weeks charted in the top 3 for the month we're interested in. Without these two steps we could only filter for the weeks in which they were charting and therefore couldn't plot their entire ranking trajectory. 
+11. Shading the region for April for reference.
+12. Want the legend for the line to appear.
+13. Need to use a subset of the data otherwise each row will try to plot a label; I picked the last charting date for each song. 
+14. Wanted to remove the legend for the label (a lower-case "a").
+15. Specifying the colors I want to use for the 4 different lines. 
+16. Moving the legend to maximize plotting space. 
+17. Centering the legend title in the legend box.
+18. Putting a black border around the legend.
+19. Changing the plot color to the same color as the website. 

@@ -6,6 +6,10 @@ execute:
   warning: false
 ---
 
+### [Key](homework5_key.qmd)
+
+Click link above for example solutions to this assignment.
+
 ### Instructions
 
 Answer each of the following questions. Be sure to display **all your code in the rendered** version (use `echo: true` throughout). You can make this a global option for your whole document by putting it directly in the YAML of your qmd:
