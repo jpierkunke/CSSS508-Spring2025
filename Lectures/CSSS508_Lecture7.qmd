@@ -1302,5 +1302,5 @@ my_names <- nicknames |>
 
 # Homework{.section-title background-color="#1e4655"}
 
-## {data-menu-title="Homework 7" background-iframe="https://jpierkunke.github.io/CSSS508-Spring2025/Homework/homeworky.html" background-interactive=TRUE}
+## {data-menu-title="Homework 7" background-iframe="https://jpierkunke.github.io/CSSS508-Spring2025/Homework/homework7.html" background-interactive=TRUE}
 
