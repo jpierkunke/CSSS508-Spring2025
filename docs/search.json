@@ -1731,7 +1731,7 @@
     "href": "Lectures/CSSS508_Lecture6.html#summary-functions",
     "title": "CSSS 508",
     "section": "Summary Functions",
-    "text": "Summary Functions\n\nCentral Tendency\n\n20x &lt;- sample(1:500, size = 100, replace = TRUE)\nmean(x)\n\n\n20\n\nsample() takes a vector of data, and samples size elements from it, with replacement if replace equals TRUE.\n\n\n\n\n&gt; [1] 231.95\n\n\n\nmedian(x)\n\n&gt; [1] 204.5\n\n\n\n21quantile(x, .95)\n\n\n21\n\nA generalization of the median: quantile(x, 0.95) will find the value that’s greater than 95% of the values; quantile(x, 0.5) is equivalent to the median.\n\n\n\n\n&gt;   95% \n&gt; 478.7",
+    "text": "Summary Functions\n\nCentral Tendency\n\n20x &lt;- sample(1:500, size = 100, replace = TRUE)\nmean(x)\n\n\n20\n\nsample() takes a vector of data, and samples size elements from it, with replacement if replace equals TRUE.\n\n\n\n\n&gt; [1] 251.45\n\n\n\nmedian(x)\n\n&gt; [1] 262.5\n\n\n\n21quantile(x, .95)\n\n\n21\n\nA generalization of the median: quantile(x, 0.95) will find the value that’s greater than 95% of the values; quantile(x, 0.5) is equivalent to the median.\n\n\n\n\n&gt; 95% \n&gt; 474",
     "crumbs": [
       "Lectures",
       "Lecture 6: Data structures and types"
@@ -1742,7 +1742,7 @@
     "href": "Lectures/CSSS508_Lecture6.html#summary-functions-1",
     "title": "CSSS 508",
     "section": "Summary Functions",
-    "text": "Summary Functions\nMeasures of Spread/Variation\n\nmin(x)\n\n&gt; [1] 9\n\nmax(x)\n\n&gt; [1] 500\n\nrange(x)\n\n&gt; [1]   9 500\n\n\n\n22IQR(x)\n\n\n22\n\nEquivalent to quantile(x, 0.75) - quantile(x, 0.25) and gives you the range that contains the middle 50% of the data.\n\n\n\n\n&gt; [1] 244.25\n\n\n\n23var(x)\n\n\n23\n\n\\[s^2 = \\frac{\\sum(x_i-\\overline{x})^2}{n-1}\\]\n\n\n\n\n&gt; [1] 21843.77\n\n\n\n24sd(x)\n\n\n24\n\n\\[s = \\sqrt{\\frac{\\sum(x_i-\\overline{x})^2}{n-1}}\\]\n\n\n\n\n&gt; [1] 147.7964",
+    "text": "Summary Functions\nMeasures of Spread/Variation\n\nmin(x)\n\n&gt; [1] 7\n\nmax(x)\n\n&gt; [1] 495\n\nrange(x)\n\n&gt; [1]   7 495\n\n\n\n22IQR(x)\n\n\n22\n\nEquivalent to quantile(x, 0.75) - quantile(x, 0.25) and gives you the range that contains the middle 50% of the data.\n\n\n\n\n&gt; [1] 202\n\n\n\n23var(x)\n\n\n23\n\n\\[s^2 = \\frac{\\sum(x_i-\\overline{x})^2}{n-1}\\]\n\n\n\n\n&gt; [1] 17477.32\n\n\n\n24sd(x)\n\n\n24\n\n\\[s = \\sqrt{\\frac{\\sum(x_i-\\overline{x})^2}{n-1}}\\]\n\n\n\n\n&gt; [1] 132.2018",
     "crumbs": [
       "Lectures",
       "Lecture 6: Data structures and types"
@@ -1764,7 +1764,7 @@
     "href": "Lectures/CSSS508_Lecture6.html#summary-functions-2",
     "title": "CSSS 508",
     "section": "Summary Functions",
-    "text": "Summary Functions\nPositions\n\nfirst(x)\n\n&gt; [1] 103\n\nlast(x)\n\n&gt; [1] 402\n\nnth(x, n = 77)\n\n&gt; [1] 15\n\n\n\n\nThese are all really helpful but is there a good summary descriptive statistics function?",
+    "text": "Summary Functions\nPositions\n\nfirst(x)\n\n&gt; [1] 284\n\nlast(x)\n\n&gt; [1] 428\n\nnth(x, n = 77)\n\n&gt; [1] 292\n\n\n\n\nThese are all really helpful but is there a good summary descriptive statistics function?",
     "crumbs": [
       "Lectures",
       "Lecture 6: Data structures and types"
@@ -2897,7 +2897,7 @@
     "href": "Lectures/CSSS508_Lecture3.html#selecting-from-dataframes-with",
     "title": "CSSS 508",
     "section": "Selecting from dataframes with [\n",
-    "text": "Selecting from dataframes with [\n\nYou can select rows and columns from dataframes with df[rows, cols].\n\n\n\ndf &lt;- tibble(\n  x = 1:3, \n  y = c(\"a\", \"e\", \"f\"), \n  z = runif(3) # defaults: min = 0, max = 1\n)\n\ndf\n\n\n\n# A tibble: 3 × 3\n      x y         z\n  &lt;int&gt; &lt;chr&gt; &lt;dbl&gt;\n1     1 a     0.579\n2     2 e     0.543\n3     3 f     0.408\n\n\n\n\n\n# Select first row and second column\ndf[1, 2]\n\n\n\n# A tibble: 1 × 1\n  y    \n  &lt;chr&gt;\n1 a    \n\n\n\n\n\n# Select all rows and columns x and y\ndf[, c(\"x\" , \"y\")]\n\n\n\n# A tibble: 3 × 2\n      x y    \n  &lt;int&gt; &lt;chr&gt;\n1     1 a    \n2     2 e    \n3     3 f    \n\n\n\n\n\n# Select rows where `x` is greater than 1 and all columns\ndf[df$x &gt; 1, ]\n\n\n\n# A tibble: 2 × 3\n      x y         z\n  &lt;int&gt; &lt;chr&gt; &lt;dbl&gt;\n1     2 e     0.543\n2     3 f     0.408",
+    "text": "Selecting from dataframes with [\n\nYou can select rows and columns from dataframes with df[rows, cols].\n\n\n\ndf &lt;- tibble(\n  x = 1:3, \n  y = c(\"a\", \"e\", \"f\"), \n  z = runif(3) # defaults: min = 0, max = 1\n)\n\ndf\n\n\n\n# A tibble: 3 × 3\n      x y         z\n  &lt;int&gt; &lt;chr&gt; &lt;dbl&gt;\n1     1 a     0.347\n2     2 e     0.400\n3     3 f     0.793\n\n\n\n\n\n# Select first row and second column\ndf[1, 2]\n\n\n\n# A tibble: 1 × 1\n  y    \n  &lt;chr&gt;\n1 a    \n\n\n\n\n\n# Select all rows and columns x and y\ndf[, c(\"x\" , \"y\")]\n\n\n\n# A tibble: 3 × 2\n      x y    \n  &lt;int&gt; &lt;chr&gt;\n1     1 a    \n2     2 e    \n3     3 f    \n\n\n\n\n\n# Select rows where `x` is greater than 1 and all columns\ndf[df$x &gt; 1, ]\n\n\n\n# A tibble: 2 × 3\n      x y         z\n  &lt;int&gt; &lt;chr&gt; &lt;dbl&gt;\n1     2 e     0.400\n2     3 f     0.793",
     "crumbs": [
       "Lectures",
       "Lecture 3: Workflow"
@@ -3226,14 +3226,22 @@
     "href": "Homework/homework8.html",
     "title": "Homework 8",
     "section": "",
-    "text": "Answer each of the following questions. Be sure to display all your code in the rendered version (use echo: true throughout)."
+    "text": "Answer each of the following questions. Be sure to display all your code in the rendered version (use echo: true throughout).",
+    "crumbs": [
+      "Homework",
+      "Homework 8"
+    ]
   },
   {
     "objectID": "Homework/homework8.html#footnotes",
     "href": "Homework/homework8.html#footnotes",
     "title": "Homework 8",
     "section": "Footnotes",
-    "text": "Footnotes\n\n\nAssume mdy format for this vector.↩︎\nDepending upon how you want to solve this problem, the lubridate functions today() and time_length() could be useful here :)↩︎\nNote: group_by() doesn’t list what type of tidy evaluation it uses for its ... argument but you can find the answer in the introduction to this article.↩︎\ngeom_smooth() has a method and se argument that will be necessary to specify here.↩︎"
+    "text": "Footnotes\n\n\nAssume mdy format for this vector.↩︎\nDepending upon how you want to solve this problem, the lubridate functions today() and time_length() could be useful here :)↩︎\nNote: group_by() doesn’t list what type of tidy evaluation it uses for its ... argument but you can find the answer in the introduction to this article.↩︎\ngeom_smooth() has a method and se argument that will be necessary to specify here.↩︎",
+    "crumbs": [
+      "Homework",
+      "Homework 8"
+    ]
   },
   {
     "objectID": "syllabus.html",
@@ -3247,196 +3255,308 @@
     "href": "Lectures/CSSS508_Lecture8.html#title-slide",
     "title": "CSSS 508",
     "section": "",
-    "text": "Writing Functions\nCS&SS 508 • Lecture 8\nJess Kunke (slides adapted from Victoria Sass)"
+    "text": "Writing Functions\nCS&SS 508 • Lecture 8\nJess Kunke (slides adapted from Victoria Sass)",
+    "crumbs": [
+      "Lectures",
+      "Lecture 8: Writing functions"
+    ]
   },
   {
     "objectID": "Lectures/CSSS508_Lecture8.html#why-functions",
     "href": "Lectures/CSSS508_Lecture8.html#why-functions",
     "title": "CSSS 508",
     "section": "Why Functions?",
-    "text": "Why Functions?\n\nR and math are both full of functions!\n\n\nWe use functions to:\n\nCompute summary statistics (mean(), sd(), min())\nFit models to data (lm(Fertility ~ Agriculture, data = swiss))\nRead in data (read_csv())\nCreate visualizations (ggplot())\nAnd a lot more!!"
+    "text": "Why Functions?\n\nR and math are both full of functions!\n\n\nWe use functions to:\n\nCompute summary statistics (mean(), sd(), min())\nFit models to data (lm(Fertility ~ Agriculture, data = swiss))\nRead in data (read_csv())\nCreate visualizations (ggplot())\nAnd a lot more!!",
+    "crumbs": [
+      "Lectures",
+      "Lecture 8: Writing functions"
+    ]
   },
   {
     "objectID": "Lectures/CSSS508_Lecture8.html#examples-of-existing-functions",
     "href": "Lectures/CSSS508_Lecture8.html#examples-of-existing-functions",
     "title": "CSSS 508",
     "section": "Examples of Existing Functions",
-    "text": "Examples of Existing Functions\n\n\nmean():\n\nInput: a vector\nOutput: a single number\n\ndplyr::filter():\n\nInput: a data frame, logical conditions\nOutput: a data frame with rows removed using those conditions\n\nreadr::read_csv():\n\nInput: a file path, optionally variable names or types\nOutput: a data frame containing info read in from file\n\n\n\n\nEach function requires inputs, and returns outputs"
+    "text": "Examples of Existing Functions\n\n\nmean():\n\nInput: a vector\nOutput: a single number\n\ndplyr::filter():\n\nInput: a data frame, logical conditions\nOutput: a data frame with rows removed using those conditions\n\nreadr::read_csv():\n\nInput: a file path, optionally variable names or types\nOutput: a data frame containing info read in from file\n\n\n\n\nEach function requires inputs, and returns outputs",
+    "crumbs": [
+      "Lectures",
+      "Lecture 8: Writing functions"
+    ]
   },
   {
     "objectID": "Lectures/CSSS508_Lecture8.html#why-write-your-own-functions",
     "href": "Lectures/CSSS508_Lecture8.html#why-write-your-own-functions",
     "title": "CSSS 508",
     "section": "Why Write Your Own Functions?",
-    "text": "Why Write Your Own Functions?\n\n\nFunctions allow you to automate common tasks in a more powerful and general way than copy-and-pasting\nAs requirements change, you only need to update code in one place, instead of many.\nYou eliminate the chance of making incidental mistakes compared to when you copy and paste (i.e. updating a variable name in one place, but not in another).\nIt makes it easier to reuse work from project-to-project, increasing your productivity over time.\nIf well named, your function can make your overall code easier to understand."
+    "text": "Why Write Your Own Functions?\n\n\nFunctions allow you to automate common tasks in a more powerful and general way than copy-and-pasting\nAs requirements change, you only need to update code in one place, instead of many.\nYou eliminate the chance of making incidental mistakes compared to when you copy and paste (i.e. updating a variable name in one place, but not in another).\nIt makes it easier to reuse work from project-to-project, increasing your productivity over time.\nIf well named, your function can make your overall code easier to understand.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 8: Writing functions"
+    ]
   },
   {
     "objectID": "Lectures/CSSS508_Lecture8.html#plan-your-function-before-writing",
     "href": "Lectures/CSSS508_Lecture8.html#plan-your-function-before-writing",
     "title": "CSSS 508",
     "section": "Plan your Function before Writing",
-    "text": "Plan your Function before Writing\n\nBefore you can write effective code, you need to know exactly what you want:\n\n\nGoal: Do I want a single value? vector? one observation per person? per year?\nCurrent State: What do I currently have? data frame, vector? long or wide format?\nTranslate: How can I take what I have and turn it into my goal?\n\nSketch out the steps!\nBreak it down into little operations\n\n\n\n\nAs we become more advanced coders, this concept is key!!\nRemember: When you’re stuck, try searching your problem on Google!!"
+    "text": "Plan your Function before Writing\n\nBefore you can write effective code, you need to know exactly what you want:\n\n\nGoal: Do I want a single value? vector? one observation per person? per year?\nCurrent State: What do I currently have? data frame, vector? long or wide format?\nTranslate: How can I take what I have and turn it into my goal?\n\nSketch out the steps!\nBreak it down into little operations\n\n\n\n\nAs we become more advanced coders, this concept is key!!\nRemember: When you’re stuck, try searching your problem on Google!!",
+    "crumbs": [
+      "Lectures",
+      "Lecture 8: Writing functions"
+    ]
   },
   {
     "objectID": "Lectures/CSSS508_Lecture8.html#simple-motivating-example",
     "href": "Lectures/CSSS508_Lecture8.html#simple-motivating-example",
     "title": "CSSS 508",
     "section": "Simple, Motivating Example",
-    "text": "Simple, Motivating Example\n\n\n\ndf &lt;- tibble(\n  a = rnorm(5),\n  b = rnorm(5),\n  c = rnorm(5),\n  d = rnorm(5)\n  )\ndf\n\ndf |&gt; mutate(\n  a = (a - min(a, na.rm = TRUE)) / \n    (max(a, na.rm = TRUE) - min(a, na.rm = TRUE)),\n  b = (b - min(b, na.rm = TRUE)) / \n    (max(b, na.rm = TRUE) - min(a, na.rm = TRUE)),\n  c = (c - min(c, na.rm = TRUE)) / \n    (max(c, na.rm = TRUE) - min(c, na.rm = TRUE)),\n  d = (d - min(d, na.rm = TRUE)) / \n    (max(d, na.rm = TRUE) - min(d, na.rm = TRUE))\n  )\n\n\n\nWhat do you think this code does?\nAre there any typos?\nCould we write this more efficiently as a function?\n\n\n\n\n\n\n&gt; # A tibble: 5 × 4\n&gt;        a       b      c      d\n&gt;    &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;\n&gt; 1 -0.130 -0.398   0.347  0.368\n&gt; 2 -1.14   1.04   -0.433 -1.07 \n&gt; 3 -2.18  -1.06   -0.278 -1.10 \n&gt; 4  0.765 -0.0376  0.674 -0.185\n&gt; 5 -0.474  1.27    1.25   1.36\n\n\n\n\n\n\n&gt; # A tibble: 5 × 4\n&gt;       a     b      c      d\n&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;\n&gt; 1 0.696 0.520 0.462  0.597 \n&gt; 2 0.354 1.65  0      0.0147\n&gt; 3 0     0     0.0918 0     \n&gt; 4 1     0.805 0.656  0.372 \n&gt; 5 0.580 1.83  1      1"
+    "text": "Simple, Motivating Example\n\n\n\ndf &lt;- tibble(\n  a = rnorm(5),\n  b = rnorm(5),\n  c = rnorm(5),\n  d = rnorm(5)\n  )\ndf\n\ndf |&gt; mutate(\n  a = (a - min(a, na.rm = TRUE)) / \n    (max(a, na.rm = TRUE) - min(a, na.rm = TRUE)),\n  b = (b - min(b, na.rm = TRUE)) / \n    (max(b, na.rm = TRUE) - min(a, na.rm = TRUE)),\n  c = (c - min(c, na.rm = TRUE)) / \n    (max(c, na.rm = TRUE) - min(c, na.rm = TRUE)),\n  d = (d - min(d, na.rm = TRUE)) / \n    (max(d, na.rm = TRUE) - min(d, na.rm = TRUE))\n  )\n\n\n\nWhat do you think this code does?\nAre there any typos?\nCould we write this more efficiently as a function?\n\n\n\n\n\n\n&gt; # A tibble: 5 × 4\n&gt;        a       b      c      d\n&gt;    &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;\n&gt; 1 -0.130 -0.398   0.347  0.368\n&gt; 2 -1.14   1.04   -0.433 -1.07 \n&gt; 3 -2.18  -1.06   -0.278 -1.10 \n&gt; 4  0.765 -0.0376  0.674 -0.185\n&gt; 5 -0.474  1.27    1.25   1.36\n\n\n\n\n\n\n&gt; # A tibble: 5 × 4\n&gt;       a     b      c      d\n&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;\n&gt; 1 0.696 0.520 0.462  0.597 \n&gt; 2 0.354 1.65  0      0.0147\n&gt; 3 0     0     0.0918 0     \n&gt; 4 1     0.805 0.656  0.372 \n&gt; 5 0.580 1.83  1      1",
+    "crumbs": [
+      "Lectures",
+      "Lecture 8: Writing functions"
+    ]
   },
   {
     "objectID": "Lectures/CSSS508_Lecture8.html#writing-a-function",
     "href": "Lectures/CSSS508_Lecture8.html#writing-a-function",
     "title": "CSSS 508",
     "section": "Writing a Function",
-    "text": "Writing a Function\nTo write a function you need to first analyse your repeated code to figure what parts are constant and what parts vary.\n\n\nLet’s look at the contents of the mutate from the last slide again.\n\n\n\n(a - min(a, na.rm = TRUE)) / (max(a, na.rm = TRUE) - min(a, na.rm = TRUE))\n(b - min(b, na.rm = TRUE)) / (max(b, na.rm = TRUE) - min(b, na.rm = TRUE))\n(c - min(c, na.rm = TRUE)) / (max(c, na.rm = TRUE) - min(c, na.rm = TRUE))\n(d - min(d, na.rm = TRUE)) / (max(d, na.rm = TRUE) - min(d, na.rm = TRUE))  \n\n\n\nThere’s quite a bit of repetition here and only a few elements that change.\n\n\n\nWe can see how concise our code can be if we replace the varying part with 🟪:\n\n(🟪 - min(🟪, na.rm = TRUE)) / (max(🟪, na.rm = TRUE) - min(🟪, na.rm = TRUE))"
+    "text": "Writing a Function\nTo write a function you need to first analyse your repeated code to figure what parts are constant and what parts vary.\n\n\nLet’s look at the contents of the mutate from the last slide again.\n\n\n\n(a - min(a, na.rm = TRUE)) / (max(a, na.rm = TRUE) - min(a, na.rm = TRUE))\n(b - min(b, na.rm = TRUE)) / (max(b, na.rm = TRUE) - min(b, na.rm = TRUE))\n(c - min(c, na.rm = TRUE)) / (max(c, na.rm = TRUE) - min(c, na.rm = TRUE))\n(d - min(d, na.rm = TRUE)) / (max(d, na.rm = TRUE) - min(d, na.rm = TRUE))  \n\n\n\nThere’s quite a bit of repetition here and only a few elements that change.\n\n\n\nWe can see how concise our code can be if we replace the varying part with 🟪:\n\n(🟪 - min(🟪, na.rm = TRUE)) / (max(🟪, na.rm = TRUE) - min(🟪, na.rm = TRUE))",
+    "crumbs": [
+      "Lectures",
+      "Lecture 8: Writing functions"
+    ]
   },
   {
     "objectID": "Lectures/CSSS508_Lecture8.html#anatomy-of-a-function",
     "href": "Lectures/CSSS508_Lecture8.html#anatomy-of-a-function",
     "title": "CSSS 508",
     "section": "Anatomy of a Function",
-    "text": "Anatomy of a Function\nTo turn our code into a function we need three things:\n\n\nName: What you call the function so you can use it later. The more explanatory this is the easier your code will be to understand.\nArgument(s) (aka input(s), parameter(s)): What the user passes to the function that affects how it works. This is what varies across calls.\nBody: The code that’s repeated across all the calls.\n\n\n\nFunction Template\n\n1NAME &lt;- function(ARGUMENT1, ARGUMENT2 = DEFAULT){\n  BODY \n}\n\n\n1\n\nIn this example, ARGUMENT1, ARGUMENT2 values won’t exist outside of the function. ARGUMENT2 is an optional argument as it’s been given a default value to use if the user does not specify one.\n\n\n\n\n\n\nFor our current example, this would be:\n\n2rescale01 &lt;- function(x) {\n  (x - min(x, na.rm = TRUE)) / (max(x, na.rm = TRUE) - min(x, na.rm = TRUE))\n}\n\n\n2\n\nYou can name the placeholder value(s) whatever you want but x is the conventional name for a numeric vector so we’ll use x here."
+    "text": "Anatomy of a Function\nTo turn our code into a function we need three things:\n\n\nName: What you call the function so you can use it later. The more explanatory this is the easier your code will be to understand.\nArgument(s) (aka input(s), parameter(s)): What the user passes to the function that affects how it works. This is what varies across calls.\nBody: The code that’s repeated across all the calls.\n\n\n\nFunction Template\n\n1NAME &lt;- function(ARGUMENT1, ARGUMENT2 = DEFAULT){\n  BODY \n}\n\n\n1\n\nIn this example, ARGUMENT1, ARGUMENT2 values won’t exist outside of the function. ARGUMENT2 is an optional argument as it’s been given a default value to use if the user does not specify one.\n\n\n\n\n\n\nFor our current example, this would be:\n\n2rescale01 &lt;- function(x) {\n  (x - min(x, na.rm = TRUE)) / (max(x, na.rm = TRUE) - min(x, na.rm = TRUE))\n}\n\n\n2\n\nYou can name the placeholder value(s) whatever you want but x is the conventional name for a numeric vector so we’ll use x here.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 8: Writing functions"
+    ]
   },
   {
     "objectID": "Lectures/CSSS508_Lecture8.html#testing-your-function",
     "href": "Lectures/CSSS508_Lecture8.html#testing-your-function",
     "title": "CSSS 508",
     "section": "Testing Your Function",
-    "text": "Testing Your Function\nIt’s good practice to test a few simple inputs to make sure your function works as expected.\n\n\nrescale01(c(-10, 0, 10))\n\n&gt; [1] 0.0 0.5 1.0\n\nrescale01(c(1, 2, 3, NA, 5))\n\n&gt; [1] 0.00 0.25 0.50   NA 1.00\n\n\n\n\nNow we can rewrite our original code in a much simpler way!1\n\n\n\ndf |&gt; mutate(a = rescale01(a),\n             b = rescale01(b),\n             c = rescale01(c),\n             d = rescale01(d))\n\n&gt; # A tibble: 5 × 4\n&gt;       a     b      c      d\n&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;\n&gt; 1 0.696 0.284 0.462  0.597 \n&gt; 2 0.354 0.902 0      0.0147\n&gt; 3 0     0     0.0918 0     \n&gt; 4 1     0.439 0.656  0.372 \n&gt; 5 0.580 1     1      1\n\n\n\nWe’ll see how we can simplify this even further next week!"
+    "text": "Testing Your Function\nIt’s good practice to test a few simple inputs to make sure your function works as expected.\n\n\nrescale01(c(-10, 0, 10))\n\n&gt; [1] 0.0 0.5 1.0\n\nrescale01(c(1, 2, 3, NA, 5))\n\n&gt; [1] 0.00 0.25 0.50   NA 1.00\n\n\n\n\nNow we can rewrite our original code in a much simpler way!1\n\n\n\ndf |&gt; mutate(a = rescale01(a),\n             b = rescale01(b),\n             c = rescale01(c),\n             d = rescale01(d))\n\n&gt; # A tibble: 5 × 4\n&gt;       a     b      c      d\n&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;\n&gt; 1 0.696 0.284 0.462  0.597 \n&gt; 2 0.354 0.902 0      0.0147\n&gt; 3 0     0     0.0918 0     \n&gt; 4 1     0.439 0.656  0.372 \n&gt; 5 0.580 1     1      1\n\n\n\nWe’ll see how we can simplify this even further next week!",
+    "crumbs": [
+      "Lectures",
+      "Lecture 8: Writing functions"
+    ]
   },
   {
     "objectID": "Lectures/CSSS508_Lecture8.html#improving-your-function",
     "href": "Lectures/CSSS508_Lecture8.html#improving-your-function",
     "title": "CSSS 508",
     "section": "Improving Your Function",
-    "text": "Improving Your Function\nWriting a function is often an iterative process: you’ll write the core of the function and then notice the ways it can be made more efficient or that it needs to include additional syntax to handle a specific use-case.\n\n\n\n\nFor instance, you might observe that our function does some unnecessary computational repetition by evaluating min() twice and max() once when both can be computed once with range().\n\n\n\n\nrescale01 &lt;- function(x) {\n  rng &lt;- range(x, na.rm = TRUE)\n  (x - rng[1]) / (rng[2] - rng[1])\n}\n\n\n\n\n\nOr you might find out through trial and error that our function doesn’t handle infinite values well.\n\nx &lt;- c(1:10, Inf)\nrescale01(x)\n\n&gt;  [1]   0   0   0   0   0   0   0   0   0   0 NaN\n\n\n\n\nUpdating it to exclude infinite values makes it more general as it accounts for more use cases.\n\nrescale01 &lt;- function(x) {\n  rng &lt;- range(x, na.rm = TRUE, finite = TRUE)\n  (x - rng[1]) / (rng[2] - rng[1])\n}"
+    "text": "Improving Your Function\nWriting a function is often an iterative process: you’ll write the core of the function and then notice the ways it can be made more efficient or that it needs to include additional syntax to handle a specific use-case.\n\n\n\n\nFor instance, you might observe that our function does some unnecessary computational repetition by evaluating min() twice and max() once when both can be computed once with range().\n\n\n\n\nrescale01 &lt;- function(x) {\n  rng &lt;- range(x, na.rm = TRUE)\n  (x - rng[1]) / (rng[2] - rng[1])\n}\n\n\n\n\n\nOr you might find out through trial and error that our function doesn’t handle infinite values well.\n\nx &lt;- c(1:10, Inf)\nrescale01(x)\n\n&gt;  [1]   0   0   0   0   0   0   0   0   0   0 NaN\n\n\n\n\nUpdating it to exclude infinite values makes it more general as it accounts for more use cases.\n\nrescale01 &lt;- function(x) {\n  rng &lt;- range(x, na.rm = TRUE, finite = TRUE)\n  (x - rng[1]) / (rng[2] - rng[1])\n}",
+    "crumbs": [
+      "Lectures",
+      "Lecture 8: Writing functions"
+    ]
   },
   {
     "objectID": "Lectures/CSSS508_Lecture8.html#what-are-vector-functions",
     "href": "Lectures/CSSS508_Lecture8.html#what-are-vector-functions",
     "title": "CSSS 508",
     "section": "What are Vector Functions?",
-    "text": "What are Vector Functions?\nThe function we just created is a vector function!\n\nVector functions are simply functions that take one or more vectors as input and return a vector as output.\n\n\nThere are two types of vector functions: mutate functions and summary functions.\n\n\n\nMutate Functions\n\nReturn an output the same length as the input\nTherefore, these functions work well within mutate() and filter()\n\n\n\n\n\nSummary Functions\n\nReturn a single value\nTherefore well suited for use in summarize()"
+    "text": "What are Vector Functions?\nThe function we just created is a vector function!\n\nVector functions are simply functions that take one or more vectors as input and return a vector as output.\n\n\nThere are two types of vector functions: mutate functions and summary functions.\n\n\n\nMutate Functions\n\nReturn an output the same length as the input\nTherefore, these functions work well within mutate() and filter()\n\n\n\n\n\nSummary Functions\n\nReturn a single value\nTherefore well suited for use in summarize()",
+    "crumbs": [
+      "Lectures",
+      "Lecture 8: Writing functions"
+    ]
   },
   {
     "objectID": "Lectures/CSSS508_Lecture8.html#examples-of-mutate-functions",
     "href": "Lectures/CSSS508_Lecture8.html#examples-of-mutate-functions",
     "title": "CSSS 508",
     "section": "Examples of Mutate Functions",
-    "text": "Examples of Mutate Functions\n\n\nz_score &lt;- function(x) { \n1  (x - mean(x, na.rm = TRUE)) / sd(x, na.rm = TRUE)\n} \n\nages &lt;- c(25, 82, 73, 44, 5)\nz_score(ages)\n\n\n1\n\nRescales a vector to have a mean of zero and a standard deviation of one.\n\n\n\n\n&gt; [1] -0.64569500  1.12375765  0.84437039 -0.05587745 -1.26655559\n\n\n\n\n\nclamp &lt;- function(x, min, max) { \n2  case_when(\n    x &lt; min ~ min,\n    x &gt; max ~ max,\n    .default = x\n  ) \n} \n\nclamp(1:10, min = 3, max = 7)\n\n\n2\n\nEnsures all values of a vector lie in between a minimum or a maximum.\n\n\n\n\n&gt;  [1] 3 3 3 4 5 6 7 7 7 7\n\n\n\n\n\nfirst_upper &lt;- function(x) { \n3  str_sub(x, 1, 1) &lt;- str_to_upper(str_sub(x, 1, 1))\n  x\n} \n\nfirst_upper(\"hi there, how's your day going?\")\n\n\n3\n\nMake the first character upper case.\n\n\n\n\n&gt; [1] \"Hi there, how's your day going?\""
+    "text": "Examples of Mutate Functions\n\n\nz_score &lt;- function(x) { \n1  (x - mean(x, na.rm = TRUE)) / sd(x, na.rm = TRUE)\n} \n\nages &lt;- c(25, 82, 73, 44, 5)\nz_score(ages)\n\n\n1\n\nRescales a vector to have a mean of zero and a standard deviation of one.\n\n\n\n\n&gt; [1] -0.64569500  1.12375765  0.84437039 -0.05587745 -1.26655559\n\n\n\n\n\nclamp &lt;- function(x, min, max) { \n2  case_when(\n    x &lt; min ~ min,\n    x &gt; max ~ max,\n    .default = x\n  ) \n} \n\nclamp(1:10, min = 3, max = 7)\n\n\n2\n\nEnsures all values of a vector lie in between a minimum or a maximum.\n\n\n\n\n&gt;  [1] 3 3 3 4 5 6 7 7 7 7\n\n\n\n\n\nfirst_upper &lt;- function(x) { \n3  str_sub(x, 1, 1) &lt;- str_to_upper(str_sub(x, 1, 1))\n  x\n} \n\nfirst_upper(\"hi there, how's your day going?\")\n\n\n3\n\nMake the first character upper case.\n\n\n\n\n&gt; [1] \"Hi there, how's your day going?\"",
+    "crumbs": [
+      "Lectures",
+      "Lecture 8: Writing functions"
+    ]
   },
   {
     "objectID": "Lectures/CSSS508_Lecture8.html#examples-of-summarize-functions",
     "href": "Lectures/CSSS508_Lecture8.html#examples-of-summarize-functions",
     "title": "CSSS 508",
     "section": "Examples of Summarize Functions",
-    "text": "Examples of Summarize Functions\n\n\ncv &lt;- function(x, na.rm = FALSE) {\n4  sd(x, na.rm = na.rm) / mean(x, na.rm = na.rm)\n}\n\ncv(runif(100, min = 0, max = 50))\n\n\n4\n\nCalculation for the coefficient of variation, which divides the standard deviation by the mean.\n\n\n\n\n&gt; [1] 0.599857\n\n\n\n\n\nn_missing &lt;- function(x) {\n5  sum(is.na(x))\n} \n\n6var &lt;- sample(c(seq(1, 20, 1), NA, NA), size = 100, replace = TRUE)\nn_missing(var)\n\n\n5\n\nCalculates the number of missing values (Source).\n\n6\n\nCreating a random sample of 100 values with a mix of integers from 1 to 100 and NA values.\n\n\n\n\n&gt; [1] 8\n\n\n\n\n\nmape &lt;- function(actual, predicted) {\n7  sum(abs((actual - predicted) / actual)) / length(actual)\n}\n\nmodel1 &lt;- lm(dist ~ speed, data = cars)\n8mape(cars$dist, model1$fitted.values)\n\n\n7\n\nCalculates the mean absolute percentage error which measures the average magnitude of error produced by a model, or how far off predictions are on average.\n\n8\n\nThis tells us that the average absolute percentage difference between the predicted values and the actual values is ~ 38%.\n\n\n\n\n&gt; [1] 0.3836881"
+    "text": "Examples of Summarize Functions\n\n\ncv &lt;- function(x, na.rm = FALSE) {\n4  sd(x, na.rm = na.rm) / mean(x, na.rm = na.rm)\n}\n\ncv(runif(100, min = 0, max = 50))\n\n\n4\n\nCalculation for the coefficient of variation, which divides the standard deviation by the mean.\n\n\n\n\n&gt; [1] 0.599857\n\n\n\n\n\nn_missing &lt;- function(x) {\n5  sum(is.na(x))\n} \n\n6var &lt;- sample(c(seq(1, 20, 1), NA, NA), size = 100, replace = TRUE)\nn_missing(var)\n\n\n5\n\nCalculates the number of missing values (Source).\n\n6\n\nCreating a random sample of 100 values with a mix of integers from 1 to 100 and NA values.\n\n\n\n\n&gt; [1] 8\n\n\n\n\n\nmape &lt;- function(actual, predicted) {\n7  sum(abs((actual - predicted) / actual)) / length(actual)\n}\n\nmodel1 &lt;- lm(dist ~ speed, data = cars)\n8mape(cars$dist, model1$fitted.values)\n\n\n7\n\nCalculates the mean absolute percentage error which measures the average magnitude of error produced by a model, or how far off predictions are on average.\n\n8\n\nThis tells us that the average absolute percentage difference between the predicted values and the actual values is ~ 38%.\n\n\n\n\n&gt; [1] 0.3836881",
+    "crumbs": [
+      "Lectures",
+      "Lecture 8: Writing functions"
+    ]
   },
   {
     "objectID": "Lectures/CSSS508_Lecture8.html#what-are-data-frame-functions",
     "href": "Lectures/CSSS508_Lecture8.html#what-are-data-frame-functions",
     "title": "CSSS 508",
     "section": "What are Data Frame Functions?",
-    "text": "What are Data Frame Functions?\nVector functions are useful for pulling out code that’s repeated within a dplyr verb.\n\nBut if you are building a long pipeline that is used repeatedly you’ll want to write a dataframe function.\n\n\nData frame functions work like dplyr verbs: they take a data frame as the first argument, some extra arguments that say what to do with it, and return a data frame or a vector.\nExample\n\ngrouped_mean &lt;- function(df, group_var, mean_var) {\n  df |&gt; \n1    group_by(group_var) |&gt;\n    summarize(mean(mean_var))\n}\n\ndiamonds |&gt; grouped_mean(cut, carat)\n\n\n1\n\nThe goal of this function is to compute the mean of mean_var grouped by group_var.\n\n\n\n\n\n\n&gt; Error in `group_by()`:\n&gt; ! Must group by variables found in `.data`.\n&gt; ✖ Column `group_var` is not found.\n\n\n\n\nUh oh, what happened?"
+    "text": "What are Data Frame Functions?\nVector functions are useful for pulling out code that’s repeated within a dplyr verb.\n\nBut if you are building a long pipeline that is used repeatedly you’ll want to write a dataframe function.\n\n\nData frame functions work like dplyr verbs: they take a data frame as the first argument, some extra arguments that say what to do with it, and return a data frame or a vector.\nExample\n\ngrouped_mean &lt;- function(df, group_var, mean_var) {\n  df |&gt; \n1    group_by(group_var) |&gt;\n    summarize(mean(mean_var))\n}\n\ndiamonds |&gt; grouped_mean(cut, carat)\n\n\n1\n\nThe goal of this function is to compute the mean of mean_var grouped by group_var.\n\n\n\n\n\n\n&gt; Error in `group_by()`:\n&gt; ! Must group by variables found in `.data`.\n&gt; ✖ Column `group_var` is not found.\n\n\n\n\nUh oh, what happened?",
+    "crumbs": [
+      "Lectures",
+      "Lecture 8: Writing functions"
+    ]
   },
   {
     "objectID": "Lectures/CSSS508_Lecture8.html#tidy-evaluation",
     "href": "Lectures/CSSS508_Lecture8.html#tidy-evaluation",
     "title": "CSSS 508",
     "section": "Tidy Evaluation",
-    "text": "Tidy Evaluation\nTidy evaluation is what allows us to refer to the names of variables inside a data frame without any special treatment.\n\nThis is the reason we don’t have to use the $ operator and can just call the variables directly and tidyverse functions know what we’re referring to.\n\n\n\nBase Rtidyverse\n\n\n\ndiamonds[diamonds$cut == \"Ideal\" & diamonds$price &lt; 1000, ]\n\n\n\n\ndiamonds |&gt; filter(cut == \"Ideal\" & price &lt; 1000)\n\n\n\n\n\n\n\nMost of the time tidy evaluation does exactly what we want it to do.\n\n\nThe downside of tidy evaluation comes when we want to wrap up repeated tidyverse code into a function.\n\n\nHere we need some way to tell the functions within our function not to treat our argument names as the name of the variables, but instead look inside them for the variable we actually want to use."
+    "text": "Tidy Evaluation\nTidy evaluation is what allows us to refer to the names of variables inside a data frame without any special treatment.\n\nThis is the reason we don’t have to use the $ operator and can just call the variables directly and tidyverse functions know what we’re referring to.\n\n\n\nBase Rtidyverse\n\n\n\ndiamonds[diamonds$cut == \"Ideal\" & diamonds$price &lt; 1000, ]\n\n\n\n\ndiamonds |&gt; filter(cut == \"Ideal\" & price &lt; 1000)\n\n\n\n\n\n\n\nMost of the time tidy evaluation does exactly what we want it to do.\n\n\nThe downside of tidy evaluation comes when we want to wrap up repeated tidyverse code into a function.\n\n\nHere we need some way to tell the functions within our function not to treat our argument names as the name of the variables, but instead look inside them for the variable we actually want to use.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 8: Writing functions"
+    ]
   },
   {
     "objectID": "Lectures/CSSS508_Lecture8.html#embracing",
     "href": "Lectures/CSSS508_Lecture8.html#embracing",
     "title": "CSSS 508",
     "section": "Embracing",
-    "text": "Embracing\nThe tidy evaluation solution to this issue is called embracing, which means wrapping variable names in two sets of curly braces (i.e. var becomes { var }).\n\nEmbracing a variable tells dplyr to use the value stored inside the argument, not the argument as the literal variable name.\n\n\n\ngrouped_mean &lt;- function(df, group_var, mean_var) {\n  df |&gt; \n    group_by({{ group_var }}) |&gt; \n    summarize(mean({{ mean_var }}))\n}\n\ndiamonds |&gt; grouped_mean(cut, carat)\n\n\n\n&gt; # A tibble: 5 × 2\n&gt;   cut       `mean(carat)`\n&gt;   &lt;ord&gt;             &lt;dbl&gt;\n&gt; 1 Fair              1.05 \n&gt; 2 Good              0.849\n&gt; 3 Very Good         0.806\n&gt; 4 Premium           0.892\n&gt; 5 Ideal             0.703"
+    "text": "Embracing\nThe tidy evaluation solution to this issue is called embracing, which means wrapping variable names in two sets of curly braces (i.e. var becomes { var }).\n\nEmbracing a variable tells dplyr to use the value stored inside the argument, not the argument as the literal variable name.\n\n\n\ngrouped_mean &lt;- function(df, group_var, mean_var) {\n  df |&gt; \n    group_by({{ group_var }}) |&gt; \n    summarize(mean({{ mean_var }}))\n}\n\ndiamonds |&gt; grouped_mean(cut, carat)\n\n\n\n&gt; # A tibble: 5 × 2\n&gt;   cut       `mean(carat)`\n&gt;   &lt;ord&gt;             &lt;dbl&gt;\n&gt; 1 Fair              1.05 \n&gt; 2 Good              0.849\n&gt; 3 Very Good         0.806\n&gt; 4 Premium           0.892\n&gt; 5 Ideal             0.703",
+    "crumbs": [
+      "Lectures",
+      "Lecture 8: Writing functions"
+    ]
   },
   {
     "objectID": "Lectures/CSSS508_Lecture8.html#when-to-embrace",
     "href": "Lectures/CSSS508_Lecture8.html#when-to-embrace",
     "title": "CSSS 508",
     "section": "When to Embrace?",
-    "text": "When to Embrace?\nLook up the documentation of the function!\n\nThe two most common sub-types of tidy evaluation are data-masking1 and tidy-selection2.\n\n\n\n\n\n\nUsed in functions like arrange(), filter(), and summarize() that compute with variables.Used in functions like select(), relocate(), and rename() that select variables."
+    "text": "When to Embrace?\nLook up the documentation of the function!\n\nThe two most common sub-types of tidy evaluation are data-masking1 and tidy-selection2.\n\n\n\n\n\n\nUsed in functions like arrange(), filter(), and summarize() that compute with variables.Used in functions like select(), relocate(), and rename() that select variables.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 8: Writing functions"
+    ]
   },
   {
     "objectID": "Lectures/CSSS508_Lecture8.html#data-frame-function-examples",
     "href": "Lectures/CSSS508_Lecture8.html#data-frame-function-examples",
     "title": "CSSS 508",
     "section": "Data Frame Function Examples",
-    "text": "Data Frame Function Examples\n\nsummary6 &lt;- function(data, var) {\n2  data |&gt; summarize(\n    min = min({{ var }}, na.rm = TRUE),\n    mean = mean({{ var }}, na.rm = TRUE),\n    median = median({{ var }}, na.rm = TRUE),\n    max = max({{ var }}, na.rm = TRUE),\n    n = n(),\n    n_miss = sum(is.na({{ var }})),\n3    .groups = \"drop\"\n  )\n}\n\ndiamonds |&gt; summary6(carat)\n\n\n2\n\nThe goal of this function is to compute six common summary statistics for a specified variable of a dataset.\n\n3\n\nWhenever you wrap summarize() in a helper function it’s good practice to set .groups = \"drop\" to both avoid the message and leave the data in an ungrouped state.\n\n\n\n\n\n\n&gt; # A tibble: 1 × 6\n&gt;     min  mean median   max     n n_miss\n&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;  &lt;int&gt;\n&gt; 1   0.2 0.798    0.7  5.01 53940      0"
+    "text": "Data Frame Function Examples\n\nsummary6 &lt;- function(data, var) {\n2  data |&gt; summarize(\n    min = min({{ var }}, na.rm = TRUE),\n    mean = mean({{ var }}, na.rm = TRUE),\n    median = median({{ var }}, na.rm = TRUE),\n    max = max({{ var }}, na.rm = TRUE),\n    n = n(),\n    n_miss = sum(is.na({{ var }})),\n3    .groups = \"drop\"\n  )\n}\n\ndiamonds |&gt; summary6(carat)\n\n\n2\n\nThe goal of this function is to compute six common summary statistics for a specified variable of a dataset.\n\n3\n\nWhenever you wrap summarize() in a helper function it’s good practice to set .groups = \"drop\" to both avoid the message and leave the data in an ungrouped state.\n\n\n\n\n\n\n&gt; # A tibble: 1 × 6\n&gt;     min  mean median   max     n n_miss\n&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;  &lt;int&gt;\n&gt; 1   0.2 0.798    0.7  5.01 53940      0",
+    "crumbs": [
+      "Lectures",
+      "Lecture 8: Writing functions"
+    ]
   },
   {
     "objectID": "Lectures/CSSS508_Lecture8.html#data-frame-function-examples-1",
     "href": "Lectures/CSSS508_Lecture8.html#data-frame-function-examples-1",
     "title": "CSSS 508",
     "section": "Data Frame Function Examples",
-    "text": "Data Frame Function Examples\n\ncount_prop &lt;- function(df, var, sort = FALSE) {\n4  df |&gt;\n    count({{ var }}, sort = sort) |&gt;\n    mutate(prop = n / sum(n))\n}\n\ndiamonds |&gt; count_prop(clarity)\n\n\n4\n\nThis function is a variation of count() which also calculates the proportion (Source).\n\n\n\n\n\n\n&gt; # A tibble: 8 × 3\n&gt;   clarity     n   prop\n&gt;   &lt;ord&gt;   &lt;int&gt;  &lt;dbl&gt;\n&gt; 1 I1        741 0.0137\n&gt; 2 SI2      9194 0.170 \n&gt; 3 SI1     13065 0.242 \n&gt; 4 VS2     12258 0.227 \n&gt; 5 VS1      8171 0.151 \n&gt; 6 VVS2     5066 0.0939\n&gt; 7 VVS1     3655 0.0678\n&gt; 8 IF       1790 0.0332"
+    "text": "Data Frame Function Examples\n\ncount_prop &lt;- function(df, var, sort = FALSE) {\n4  df |&gt;\n    count({{ var }}, sort = sort) |&gt;\n    mutate(prop = n / sum(n))\n}\n\ndiamonds |&gt; count_prop(clarity)\n\n\n4\n\nThis function is a variation of count() which also calculates the proportion (Source).\n\n\n\n\n\n\n&gt; # A tibble: 8 × 3\n&gt;   clarity     n   prop\n&gt;   &lt;ord&gt;   &lt;int&gt;  &lt;dbl&gt;\n&gt; 1 I1        741 0.0137\n&gt; 2 SI2      9194 0.170 \n&gt; 3 SI1     13065 0.242 \n&gt; 4 VS2     12258 0.227 \n&gt; 5 VS1      8171 0.151 \n&gt; 6 VVS2     5066 0.0939\n&gt; 7 VVS1     3655 0.0678\n&gt; 8 IF       1790 0.0332",
+    "crumbs": [
+      "Lectures",
+      "Lecture 8: Writing functions"
+    ]
   },
   {
     "objectID": "Lectures/CSSS508_Lecture8.html#what-are-plot-functions",
     "href": "Lectures/CSSS508_Lecture8.html#what-are-plot-functions",
     "title": "CSSS 508",
     "section": "What are Plot Functions?",
-    "text": "What are Plot Functions?\n\n\nWhat if you have a lot of similar plots to create? You can use a function to eliminate redundency.\n\n\nThe same technique can be used if you want to write a function that returns a plot since aes() is a data-masking function.\n\n\n\nSimply use embracing within the aes() call to ggplot()!\n\n\n\n\nhistogram &lt;- function(df, var, binwidth = NULL) {\n  df |&gt; \n1    ggplot(aes(x = {{ var }})) +\n    geom_histogram(binwidth = binwidth)\n}\n\n2diamonds |&gt; histogram(carat, 0.1)\n\n\n1\n\nThis is a useful function for quickly getting histograms of a specified binwidth from a dataset.\n\n2\n\nNote that histogram() returns a ggplot2 plot, meaning you can still add on additional components if you want. Just remember to switch from |&gt; to +."
+    "text": "What are Plot Functions?\n\n\nWhat if you have a lot of similar plots to create? You can use a function to eliminate redundency.\n\n\nThe same technique can be used if you want to write a function that returns a plot since aes() is a data-masking function.\n\n\n\nSimply use embracing within the aes() call to ggplot()!\n\n\n\n\nhistogram &lt;- function(df, var, binwidth = NULL) {\n  df |&gt; \n1    ggplot(aes(x = {{ var }})) +\n    geom_histogram(binwidth = binwidth)\n}\n\n2diamonds |&gt; histogram(carat, 0.1)\n\n\n1\n\nThis is a useful function for quickly getting histograms of a specified binwidth from a dataset.\n\n2\n\nNote that histogram() returns a ggplot2 plot, meaning you can still add on additional components if you want. Just remember to switch from |&gt; to +.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 8: Writing functions"
+    ]
   },
   {
     "objectID": "Lectures/CSSS508_Lecture8.html#data-manipulation-plotting",
     "href": "Lectures/CSSS508_Lecture8.html#data-manipulation-plotting",
     "title": "CSSS 508",
     "section": "Data Manipulation & Plotting",
-    "text": "Data Manipulation & Plotting\nYou might want to create a function that has a bit of data manipulation and returns a plot.\n\n\n3sorted_bars &lt;- function(df, var) {\n  df |&gt; \n4    mutate({{ var }} := fct_rev(fct_infreq({{ var }})))  |&gt;\n    ggplot(aes(y = {{ var }})) + \n    geom_bar() \n}\n\ndiamonds |&gt; sorted_bars(clarity)\n\n\n3\n\nThis function creates a vertical bar chart where you automatically sort the bars in frequency order using fct_infreq().\n\n4\n\n:= (commonly referred to as the “walrus operator”) is used here because we are generating the variable name based on user-supplied data. R’s syntax doesn’t allow anything to the left of = except for a single, literal name. To work around this problem, we use the special operator := which tidy evaluation treats in exactly the same way as =."
+    "text": "Data Manipulation & Plotting\nYou might want to create a function that has a bit of data manipulation and returns a plot.\n\n\n3sorted_bars &lt;- function(df, var) {\n  df |&gt; \n4    mutate({{ var }} := fct_rev(fct_infreq({{ var }})))  |&gt;\n    ggplot(aes(y = {{ var }})) + \n    geom_bar() \n}\n\ndiamonds |&gt; sorted_bars(clarity)\n\n\n3\n\nThis function creates a vertical bar chart where you automatically sort the bars in frequency order using fct_infreq().\n\n4\n\n:= (commonly referred to as the “walrus operator”) is used here because we are generating the variable name based on user-supplied data. R’s syntax doesn’t allow anything to the left of = except for a single, literal name. To work around this problem, we use the special operator := which tidy evaluation treats in exactly the same way as =.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 8: Writing functions"
+    ]
   },
   {
     "objectID": "Lectures/CSSS508_Lecture8.html#functions-that-label",
     "href": "Lectures/CSSS508_Lecture8.html#functions-that-label",
     "title": "CSSS 508",
     "section": "Functions that Label",
-    "text": "Functions that Label\n\n\nWhat if we want to add labels using our function?\n\n\nFor that we need to use the low-level package rlang that’s used by just about every other package in the tidyverse because it implements tidy evaluation (as well as many other useful tools).\n\n\n\n\n\n\nLet’s take our histogram example from before:\n\nhistogram &lt;- function(df, var, binwidth) {\n5  label &lt;- rlang::englue(\"A histogram of {{ var }} with binwidth {binwidth}\")\n  \n  df |&gt; \n    ggplot(aes(x = {{ var }})) + \n    geom_histogram(binwidth = binwidth) + \n    labs(title = label)\n}\n\ndiamonds |&gt; histogram(carat, 0.1)\n\n\n5\n\nrlang::englue() works similarly to str_glue(), so any value wrapped in  { } will be inserted into the string. But it also understands { }, which automatically inserts the appropriate variable name."
+    "text": "Functions that Label\n\n\nWhat if we want to add labels using our function?\n\n\nFor that we need to use the low-level package rlang that’s used by just about every other package in the tidyverse because it implements tidy evaluation (as well as many other useful tools).\n\n\n\n\n\n\nLet’s take our histogram example from before:\n\nhistogram &lt;- function(df, var, binwidth) {\n5  label &lt;- rlang::englue(\"A histogram of {{ var }} with binwidth {binwidth}\")\n  \n  df |&gt; \n    ggplot(aes(x = {{ var }})) + \n    geom_histogram(binwidth = binwidth) + \n    labs(title = label)\n}\n\ndiamonds |&gt; histogram(carat, 0.1)\n\n\n5\n\nrlang::englue() works similarly to str_glue(), so any value wrapped in  { } will be inserted into the string. But it also understands { }, which automatically inserts the appropriate variable name.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 8: Writing functions"
+    ]
   },
   {
     "objectID": "Lectures/CSSS508_Lecture8.html#best-practices",
     "href": "Lectures/CSSS508_Lecture8.html#best-practices",
     "title": "CSSS 508",
     "section": "Best Practices",
-    "text": "Best Practices\n\n\nMake function names descriptive; again longer is better due to RStudio’s auto-complete feature.\nGenerally, function names should be verbs, and arguments should be nouns.\n\nSome exceptions: computation of a well-known noun (i.e. mean()), accessing a property of an object (i.e. coef())\n\nfunction() should always be followed by squiggly brackets ({}), and the contents should be indented by an additional two spaces1.\nYou should put extra spaces inside of { }. This makes it very obvious that something unusual is happening.\n\n\n\n\nYou can read the official tidyverse style guide for functions here.\nThis makes it easier to see the hierarchy in your code by skimming the left-hand margin."
+    "text": "Best Practices\n\n\nMake function names descriptive; again longer is better due to RStudio’s auto-complete feature.\nGenerally, function names should be verbs, and arguments should be nouns.\n\nSome exceptions: computation of a well-known noun (i.e. mean()), accessing a property of an object (i.e. coef())\n\nfunction() should always be followed by squiggly brackets ({}), and the contents should be indented by an additional two spaces1.\nYou should put extra spaces inside of { }. This makes it very obvious that something unusual is happening.\n\n\n\n\nYou can read the official tidyverse style guide for functions here.\nThis makes it easier to see the hierarchy in your code by skimming the left-hand margin.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 8: Writing functions"
+    ]
   },
   {
     "objectID": "Lectures/CSSS508_Lecture8.html#writing-functions",
     "href": "Lectures/CSSS508_Lecture8.html#writing-functions",
     "title": "CSSS 508",
     "section": "Writing Functions",
-    "text": "Writing Functions\n\nPractice turning the following code snippets into functions. Think about what each function does. What would you call it? How many arguments does it need?\n\n\n\nmean(is.na(x))\nmean(is.na(y))\nmean(is.na(z))\n\nx / sum(x, na.rm = TRUE)\ny / sum(y, na.rm = TRUE)\nz / sum(z, na.rm = TRUE)\n\nround(x / sum(x, na.rm = TRUE) * 100, 1)\nround(y / sum(y, na.rm = TRUE) * 100, 1)\nround(z / sum(z, na.rm = TRUE) * 100, 1)\n\n\n\n\n\nBonus: Write a function that takes a name as an input (i.e. a character string) and returns a greeting based on the current time of day. Hint: use a time argument that defaults to lubridate::now(). That will make it easier to test your function."
+    "text": "Writing Functions\n\nPractice turning the following code snippets into functions. Think about what each function does. What would you call it? How many arguments does it need?\n\n\n\nmean(is.na(x))\nmean(is.na(y))\nmean(is.na(z))\n\nx / sum(x, na.rm = TRUE)\ny / sum(y, na.rm = TRUE)\nz / sum(z, na.rm = TRUE)\n\nround(x / sum(x, na.rm = TRUE) * 100, 1)\nround(y / sum(y, na.rm = TRUE) * 100, 1)\nround(z / sum(z, na.rm = TRUE) * 100, 1)\n\n\n\n\n\nBonus: Write a function that takes a name as an input (i.e. a character string) and returns a greeting based on the current time of day. Hint: use a time argument that defaults to lubridate::now(). That will make it easier to test your function.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 8: Writing functions"
+    ]
   },
   {
     "objectID": "Lectures/CSSS508_Lecture8.html#answers",
     "href": "Lectures/CSSS508_Lecture8.html#answers",
     "title": "CSSS 508",
     "section": "Answers",
-    "text": "Answers\n\nPractice turning the following code snippets into functions. Think about what each function does. What would you call it? How many arguments does it need?\n\n\nmean(is.na(x))\nmean(is.na(y))\nmean(is.na(z))\n\n\n\n\nprop_na &lt;- function(x){\n  mean(is.na(x))\n}\n\n1set.seed(50)\nvalues &lt;- sample(c(seq(1, 10, 1), NA), 5, replace = TRUE)\nvalues\n\n\n1\n\nset.seed() is a function that can be used to create reproducible results when writing code that involves creating variables that take on random values.\n\n\n\n\n\n\n&gt; [1] NA  4  2  7  3\n\n\n\nprop_na(values)\n\n\n\n&gt; [1] 0.2\n\n\nThis code calculates the proportion of NA values in a vector. I would call it prop_na() which would take a single argument, x, and return a single numeric value, between 0 and 1."
+    "text": "Answers\n\nPractice turning the following code snippets into functions. Think about what each function does. What would you call it? How many arguments does it need?\n\n\nmean(is.na(x))\nmean(is.na(y))\nmean(is.na(z))\n\n\n\n\nprop_na &lt;- function(x){\n  mean(is.na(x))\n}\n\n1set.seed(50)\nvalues &lt;- sample(c(seq(1, 10, 1), NA), 5, replace = TRUE)\nvalues\n\n\n1\n\nset.seed() is a function that can be used to create reproducible results when writing code that involves creating variables that take on random values.\n\n\n\n\n\n\n&gt; [1] NA  4  2  7  3\n\n\n\nprop_na(values)\n\n\n\n&gt; [1] 0.2\n\n\nThis code calculates the proportion of NA values in a vector. I would call it prop_na() which would take a single argument, x, and return a single numeric value, between 0 and 1.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 8: Writing functions"
+    ]
   },
   {
     "objectID": "Lectures/CSSS508_Lecture8.html#answers-1",
     "href": "Lectures/CSSS508_Lecture8.html#answers-1",
     "title": "CSSS 508",
     "section": "Answers",
-    "text": "Answers\n\nPractice turning the following code snippets into functions. Think about what each function does. What would you call it? How many arguments does it need?\n\n\nx / sum(x, na.rm = TRUE)\ny / sum(y, na.rm = TRUE)\nz / sum(z, na.rm = TRUE)\n\n\n\nsums_to_one &lt;- function(x, na.rm = FALSE) {\n  x / sum(x, na.rm = na.rm)\n}\n\nsums_to_one(values)\n\n\n\n&gt; [1] NA NA NA NA NA\n\n\n\nsums_to_one(values, na.rm = TRUE)\n\n\n\n&gt; [1]     NA 0.2500 0.1250 0.4375 0.1875\n\n\nThis code standardizes a vector so that it sums to one. It takes a numeric vector and an optional specification for removing NAs. While the original code had na.rm = TRUE, it’s best to set the default to FALSE which will alert the user if NAs are present by returning NA."
+    "text": "Answers\n\nPractice turning the following code snippets into functions. Think about what each function does. What would you call it? How many arguments does it need?\n\n\nx / sum(x, na.rm = TRUE)\ny / sum(y, na.rm = TRUE)\nz / sum(z, na.rm = TRUE)\n\n\n\nsums_to_one &lt;- function(x, na.rm = FALSE) {\n  x / sum(x, na.rm = na.rm)\n}\n\nsums_to_one(values)\n\n\n\n&gt; [1] NA NA NA NA NA\n\n\n\nsums_to_one(values, na.rm = TRUE)\n\n\n\n&gt; [1]     NA 0.2500 0.1250 0.4375 0.1875\n\n\nThis code standardizes a vector so that it sums to one. It takes a numeric vector and an optional specification for removing NAs. While the original code had na.rm = TRUE, it’s best to set the default to FALSE which will alert the user if NAs are present by returning NA.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 8: Writing functions"
+    ]
   },
   {
     "objectID": "Lectures/CSSS508_Lecture8.html#answers-2",
     "href": "Lectures/CSSS508_Lecture8.html#answers-2",
     "title": "CSSS 508",
     "section": "Answers",
-    "text": "Answers\n\nPractice turning the following code snippets into functions. Think about what each function does. What would you call it? How many arguments does it need?\n\n\nround(x / sum(x, na.rm = TRUE) * 100, 1)\nround(y / sum(y, na.rm = TRUE) * 100, 1)\nround(z / sum(z, na.rm = TRUE) * 100, 1)\n\n\n\npct_vec &lt;- function(x, na.rm = FALSE){\n  round(x / sum(x, na.rm = na.rm) * 100, 1)\n}\n\npct_vec(values, na.rm = TRUE)\n\n\n\n&gt; [1]   NA 25.0 12.5 43.8 18.8\n\n\nThis code takes a numeric vector and finds what each value represents as a percentage of the sum of the entire vector and rounds it to the first decimal place. There is also an optional na.rm argument set to FALSE by default."
+    "text": "Answers\n\nPractice turning the following code snippets into functions. Think about what each function does. What would you call it? How many arguments does it need?\n\n\nround(x / sum(x, na.rm = TRUE) * 100, 1)\nround(y / sum(y, na.rm = TRUE) * 100, 1)\nround(z / sum(z, na.rm = TRUE) * 100, 1)\n\n\n\npct_vec &lt;- function(x, na.rm = FALSE){\n  round(x / sum(x, na.rm = na.rm) * 100, 1)\n}\n\npct_vec(values, na.rm = TRUE)\n\n\n\n&gt; [1]   NA 25.0 12.5 43.8 18.8\n\n\nThis code takes a numeric vector and finds what each value represents as a percentage of the sum of the entire vector and rounds it to the first decimal place. There is also an optional na.rm argument set to FALSE by default.",
+    "crumbs": [
+      "Lectures",
+      "Lecture 8: Writing functions"
+    ]
   },
   {
     "objectID": "Lectures/CSSS508_Lecture8.html#answers-3",
     "href": "Lectures/CSSS508_Lecture8.html#answers-3",
     "title": "CSSS 508",
     "section": "Answers",
-    "text": "Answers\n\nBonus: Write a function that takes a name as an input (i.e. a character string) and returns a greeting based on the current time of day. Hint 1: use a time argument that defaults to lubridate::now(). That will make it easier to test your function. Hint 2: Use rlang::englue to combine your greetings with the name input.\n\n\n\n2greet &lt;- function(name, time = now()){\n  hr &lt;- hour(time) \n3  greeting &lt;- case_when(hr &lt; 12 & hr &gt;= 5 ~ rlang::englue(\"Good morning {name}.\"),\n                        hr &lt; 17 & hr &gt;= 12 ~ rlang::englue(\"Good afternoon {name}.\"),\n                        hr &gt;= 17 ~ rlang::englue(\"Good evening {name}.\"),\n                        .default = rlang::englue(\"Why are you awake rn, {name}???\"))\n4  return(greeting)\n}\n\n5greet(\"Vic\")\n\n\n2\n\nBy default this function will take the current time to determine the specific greeting.\n\n\n3\n\nUsing englue() allows you to include user-specified values with { }.\n\n4\n\nreturn() or print() or simply calling the variable greeting is necessary for the function to work as expected.\n\n5\n\nThe last time this lecture (and therefore this code) was rendered was at 2025-05-20 12:14:46.450929\n\n\n\n\n\n\n&gt; [1] \"Good afternoon Vic.\"\n\n\n\ngreet(\"Vic\", time = ymd_h(\"2024-05-14 2am\"))\n\n\n\n&gt; [1] \"Why are you awake rn, Vic???\""
+    "text": "Answers\n\nBonus: Write a function that takes a name as an input (i.e. a character string) and returns a greeting based on the current time of day. Hint 1: use a time argument that defaults to lubridate::now(). That will make it easier to test your function. Hint 2: Use rlang::englue to combine your greetings with the name input.\n\n\n\n2greet &lt;- function(name, time = now()){\n  hr &lt;- hour(time) \n3  greeting &lt;- case_when(hr &lt; 12 & hr &gt;= 5 ~ rlang::englue(\"Good morning {name}.\"),\n                        hr &lt; 17 & hr &gt;= 12 ~ rlang::englue(\"Good afternoon {name}.\"),\n                        hr &gt;= 17 ~ rlang::englue(\"Good evening {name}.\"),\n                        .default = rlang::englue(\"Why are you awake rn, {name}???\"))\n4  return(greeting)\n}\n\n5greet(\"Vic\")\n\n\n2\n\nBy default this function will take the current time to determine the specific greeting.\n\n\n3\n\nUsing englue() allows you to include user-specified values with { }.\n\n4\n\nreturn() or print() or simply calling the variable greeting is necessary for the function to work as expected.\n\n5\n\nThe last time this lecture (and therefore this code) was rendered was at 2025-05-20 18:27:13.62471\n\n\n\n\n\n\n&gt; [1] \"Good evening Vic.\"\n\n\n\ngreet(\"Vic\", time = ymd_h(\"2024-05-14 2am\"))\n\n\n\n&gt; [1] \"Why are you awake rn, Vic???\"",
+    "crumbs": [
+      "Lectures",
+      "Lecture 8: Writing functions"
+    ]
   },
   {
     "objectID": "Lectures/CSSS508_Lecture1.html#title-slide",
