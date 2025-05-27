@@ -47,10 +47,10 @@ website:
           text: "Lecture 7: Text data"
         - file: Lectures/CSSS508_Lecture8.qmd
           text: "Lecture 8: Writing functions"
-        # - file: Lectures/CSSS508_Lecture9.qmd
-        #   text: "Lecture 9: Getting started"
+        - file: Lectures/CSSS508_Lecture9.qmd
+          text: "Lecture 9: Iteration"
         # - file: Lectures/CSSS508_Lecture10.qmd
-        #   text: "Lecture 10: Data viz"
+        #   text: "Lecture 10: Next steps"
 
     - title: "Homework"
       style: "docked"
@@ -72,6 +72,6 @@ website:
           text: "Homework 7"
         - file: Homework/homework8.qmd
           text: "Homework 8"
-        # - file: Homework/homework9.qmd
-        #   text: "Homework 9"
+        - file: Homework/homework9.qmd
+          text: "Homework 9"
 
