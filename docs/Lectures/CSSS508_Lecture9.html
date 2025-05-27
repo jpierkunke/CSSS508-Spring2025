@@ -1002,12 +1002,12 @@
 <h2>Bad repetition redux</h2>
 <p>Imagine you have a directory full of excel spreadsheets you want to read into <code>R</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a>data2019 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"data/y2019.xlsx"</span>)</span>
-<span id="cb31-2"><a></a>data2020 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"data/y2020.xlsx"</span>)</span>
-<span id="cb31-3"><a></a>data2021 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"data/y2021.xlsx"</span>)</span>
-<span id="cb31-4"><a></a>data2022 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"data/y2022.xlsx"</span>)</span>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a>data1 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"data/gapminder/1952.xlsx"</span>)</span>
+<span id="cb31-2"><a></a>data2 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"data/gapminder/1957.xlsx"</span>)</span>
+<span id="cb31-3"><a></a>data3 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"data/gapminder/1962.xlsx"</span>)</span>
+<span id="cb31-4"><a></a>data4 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"data/gapminder/1967.xlsx"</span>)</span>
 <span id="cb31-5"><a></a></span>
-<span id="cb31-6"><a></a>data <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(data2019, data2020, data2021, data2022)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb31-6"><a></a>data <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(data1, data2, data3, data4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You could <em>technically</em> do it with copy and paste but we know that that’s probably not the most efficient, least error-prone approach.</p>
 <div class="fragment">
@@ -1086,18 +1086,18 @@
 </section>
 <section id="step-2-using-map-instead" class="slide level2 scrollable">
 <h2>Step 2: Using <code>map()</code> instead!</h2>
-<p>Instead of listing out all the <code>read_excel()</code> calls in our list, we can used the <code>map()</code> function from the tidyverse’s <code>purrr</code> package. <code>map()</code> is similar to <code>across()</code>, but instead of doing something to each column in a data frame, it does something to each element of a vector.</p>
+<p>Instead of listing out all the <code>read_excel()</code> calls in our list, we can use the <code>map()</code> function from the tidyverse’s <code>purrr</code> package. <code>map()</code> is similar to <code>across()</code>, but instead of doing something to each column in a data frame, it does something to each element of a vector.</p>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a>files <span class="ot">&lt;-</span> <span class="fu">map</span>(paths, readxl<span class="sc">::</span>read_excel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a>gapmind <span class="ot">&lt;-</span> <span class="fu">map</span>(paths, readxl<span class="sc">::</span>read_excel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
-<p>Now, what does <code>files</code> contain?</p>
+<p>Now, what does <code>gapmind</code> contain?</p>
 <div class="columns">
 <div class="column" style="width:30%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a>files[[<span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a>gapmind[[<span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:70%;">
 <div class="cell">
@@ -1126,7 +1126,7 @@
 <p>Now that we have all our individual dataframes in elements of a list, we can use <code>list_rbind</code> to combine them into one dataframe.</p>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a><span class="fu">list_rbind</span>(files)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a><span class="fu">list_rbind</span>(gapmind)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&gt; # A tibble: 1,704 × 5
 &gt;    country     continent lifeExp      pop gdpPercap
@@ -1162,7 +1162,7 @@
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-22"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-22-1"><a href="#annotated-cell-22-1"></a>files <span class="ot">&lt;-</span> paths <span class="sc">|&gt;</span> </span>
+<div class="sourceCode cell-code" id="annotated-cell-22"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-22-1"><a href="#annotated-cell-22-1"></a>gapmind <span class="ot">&lt;-</span> paths <span class="sc">|&gt;</span> </span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-22-2" class="code-annotation-target"><a href="#annotated-cell-22-2"></a>  <span class="fu">set_names</span>(basename) <span class="sc">|&gt;</span></span>
 <span id="annotated-cell-22-3"><a href="#annotated-cell-22-3"></a>  <span class="fu">map</span>(readxl<span class="sc">::</span>read_excel)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
@@ -1208,7 +1208,7 @@
 <p>You may have noticed that we’re missing a year indicator in our final dataset. That’s because that information is actually a part of the filename itself.</p>
 <p>There’s a way to include the filename in the data but we have to add another step to our <code>paths</code> pipeline:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-23"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-23-1"><a href="#annotated-cell-23-1"></a>files <span class="ot">&lt;-</span> paths <span class="sc">|&gt;</span> </span>
+<div class="sourceCode cell-code" id="annotated-cell-23"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-23-1"><a href="#annotated-cell-23-1"></a>gapmind <span class="ot">&lt;-</span> paths <span class="sc">|&gt;</span> </span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-23" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-23-2" class="code-annotation-target"><a href="#annotated-cell-23-2"></a>  <span class="fu">set_names</span>(basename) <span class="sc">|&gt;</span></span>
 <span id="annotated-cell-23-3"><a href="#annotated-cell-23-3"></a>  <span class="fu">map</span>(readxl<span class="sc">::</span>read_excel)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
@@ -1431,12 +1431,12 @@
 <p>To create a <code>year</code> variable we need to tell <code>list_rbind</code> to save the filename information.</p>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-24"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-24-1"><a href="#annotated-cell-24-1"></a>gapminder <span class="ot">&lt;-</span> paths <span class="sc">|&gt;</span> </span>
+<div class="sourceCode cell-code" id="annotated-cell-24"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-24-1"><a href="#annotated-cell-24-1"></a>gapmind <span class="ot">&lt;-</span> paths <span class="sc">|&gt;</span> </span>
 <span id="annotated-cell-24-2"><a href="#annotated-cell-24-2"></a>  <span class="fu">set_names</span>(basename) <span class="sc">|&gt;</span> </span>
 <span id="annotated-cell-24-3"><a href="#annotated-cell-24-3"></a>  <span class="fu">map</span>(readxl<span class="sc">::</span>read_excel) <span class="sc">|&gt;</span> </span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-24-4" class="code-annotation-target"><a href="#annotated-cell-24-4"></a>  <span class="fu">list_rbind</span>(<span class="at">names_to =</span> <span class="st">"year"</span>) <span class="sc">|&gt;</span></span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-24-5" class="code-annotation-target"><a href="#annotated-cell-24-5"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">parse_number</span>(year))</span>
-<span id="annotated-cell-24-6"><a href="#annotated-cell-24-6"></a>gapminder</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="annotated-cell-24-6"><a href="#annotated-cell-24-6"></a>gapmind</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-24" data-target-annotation="5">5</dt>
@@ -1469,7 +1469,7 @@
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-25"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><a class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-25-1" class="code-annotation-target"><a href="#annotated-cell-25-1"></a><span class="fu">write_csv</span>(gapminder, <span class="st">"gapminder.csv"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-25"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><a class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-25-1" class="code-annotation-target"><a href="#annotated-cell-25-1"></a><span class="fu">write_csv</span>(gapmind, <span class="st">"gapminder.csv"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-25" data-target-annotation="7">7</dt>

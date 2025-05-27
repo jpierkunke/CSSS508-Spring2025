@@ -511,12 +511,12 @@ Imagine you have a directory full of excel spreadsheets you want to read into `R
 
 ```{r}
 #| eval: false
-data2019 <- readxl::read_excel("data/y2019.xlsx")
-data2020 <- readxl::read_excel("data/y2020.xlsx")
-data2021 <- readxl::read_excel("data/y2021.xlsx")
-data2022 <- readxl::read_excel("data/y2022.xlsx")
+data1 <- readxl::read_excel("data/gapminder/1952.xlsx")
+data2 <- readxl::read_excel("data/gapminder/1957.xlsx")
+data3 <- readxl::read_excel("data/gapminder/1962.xlsx")
+data4 <- readxl::read_excel("data/gapminder/1967.xlsx")
 
-data <- bind_rows(data2019, data2020, data2021, data2022)
+data <- bind_rows(data1, data2, data3, data4)
 ```
 
 You could *technically* do it with copy and paste but we know that that's probably not the most efficient, least error-prone approach. 
@@ -581,29 +581,29 @@ Unfortunately, this is just as tedious a method as reading in all the separate f
 
 ## Step 2: Using `map()` instead! {.scrollable}
 
-Instead of listing out all the `read_excel()` calls in our list, we can used the `map()` function from the tidyverse's `purrr` package. `map()` is similar to `across()`, but instead of doing something to each column in a data frame, it does something to each element of a vector.
+Instead of listing out all the `read_excel()` calls in our list, we can use the `map()` function from the tidyverse's `purrr` package. `map()` is similar to `across()`, but instead of doing something to each column in a data frame, it does something to each element of a vector.
 
 . . . 
 
 ```{r}
-files <- map(paths, readxl::read_excel)
+gapmind <- map(paths, readxl::read_excel)
 ```
 
 . . . 
 
-Now, what does `files` contain?
+Now, what does `gapmind` contain?
 
 :::: {.columns}
 ::: {.column width="30%"}
 ```{r}
 #| eval: false
-files[[1]]
+gapmind[[1]]
 ```
 :::
 ::: {.column width="70%"}
 ```{r}
 #| echo: false
-files[[1]]
+gapmind[[1]]
 ```
 :::
 ::::
@@ -615,7 +615,7 @@ Now that we have all our individual dataframes in elements of a list, we can use
 . . . 
 
 ```{r}
-list_rbind(files)
+list_rbind(gapmind)
 ```
 
 . . . 
@@ -641,7 +641,7 @@ There's a way to include the filename in the data but we have to add another ste
 
 ```{r}
 #| eval: false
-files <- paths |> 
+gapmind <- paths |> 
   set_names(basename) |> # <4>
   map(readxl::read_excel)
 ```
@@ -676,7 +676,7 @@ There's a way to include the filename in the data but we have to add another ste
 
 ```{r}
 #| eval: false
-files <- paths |> 
+gapmind <- paths |> 
   set_names(basename) |> # <4>
   map(readxl::read_excel)
 ```
@@ -710,12 +710,12 @@ To create a `year` variable we need to tell `list_rbind` to save the filename in
 . . . 
 
 ```{r}
-gapminder <- paths |> 
+gapmind <- paths |> 
   set_names(basename) |> 
   map(readxl::read_excel) |> 
   list_rbind(names_to = "year") |> # <5>
   mutate(year = parse_number(year)) # <6>
-gapminder
+gapmind
 ```
 5. The name of each list element (the filename) will be saved as the variable `year`.
 6. Extracting just the numeric part of the filename which is the actual year. 
@@ -723,7 +723,7 @@ gapminder
 . . . 
 
 ```{r}
-write_csv(gapminder, "gapminder.csv") # <7>
+write_csv(gapmind, "gapminder.csv") # <7>
 ```
 7. Be sure to save your work so you can simply read in one file when working on this project in the future!
 
