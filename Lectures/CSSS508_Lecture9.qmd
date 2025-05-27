@@ -287,7 +287,7 @@ df |> mutate(across(a:d, rescale01))
 
 :::
 
-## Basics of `across()`
+## Basics of `across()` {.scrollable}
 
 `across()` makes it easy to apply the same transformation to multiple columns. 
 
@@ -312,7 +312,7 @@ There are three particularly important arguments, the first two of which you'll 
 * `.names` specifies the names of the output columns. 
 :::
 
-## Reading in columns with `.cols`
+## Reading in columns with `.cols` {.scrollable}
 
 `.cols` uses the same specifications as `select()` so you can use `tidyselect` functions like `starts_with()` to select columns based on their name.
 
@@ -347,7 +347,7 @@ iris |>
 ```
 1. Just like other selectors, you can combine these with Boolean algebra. For example, `!where(is.numeric)` selects all non-numeric columns.
 
-## Calling a single function 
+## Calling a single function  {.scrollable}
 
 The second argument to `across()` is what makes `R` a functional programming language. Here we're passing a function to another function. 
 
@@ -373,7 +373,7 @@ airquality |>
 ```
 2. This error arises because you’re calling the function with no input, `i.e. median()`.
 
-## Anonymous Functions
+## Anonymous Functions {.scrollable}
 
 If the function you pass to `across()` has its own arguments that you want to specify, you'll need to use an anonymous function:  
 
@@ -397,7 +397,7 @@ airquality |>
 ```
 4. This is another way to write anonymous functions but it only works inside tidyverse functions and always uses the variable name `.x`. Base syntax is now recommended (i.e. `\(x) x + 1`).
 
-## Calling multiple functions
+## Calling multiple functions {.scrollable}
 
 What if we want to know how many missing values we removed, in addition to calculating the median without those values?
 
@@ -415,7 +415,7 @@ airquality |>
 ```
 5. The names of the list are used to name the new variables. In fact, the columns are named using a glue specification `{.col}_{.fn}` where `.col` is the name of the original column and `.fn` is the name of the function.
 
-## Column Names
+## Column Names {.scrollable}
 
 By default, the output of `across()` is given the same names as the inputs. This means that `across()` inside of mutate() will replace existing columns.
 
@@ -436,7 +436,7 @@ df |> mutate(across(a:d, rescale01, .names = "{.col}_rescaled")) # <6>
 ```
 6. `.col` simply represents the original variable name. 
 
-## `if_any()` and `if_all()`
+## `if_any()` and `if_all()` {.scrollable}
 
 `across()` works well with `mutate()` and `summarize()` but it has two variants that work with `filter()`.
 
@@ -452,7 +452,7 @@ airquality |> filter(if_all(Ozone:Temp, is.na)) # <8>
 ```
 8. This is the same as `airquality |> filter(is.na(Ozone) & is.na(Solar.R) & is.na(Wind) & is.na(Temp))`
 
-## `across()` in Functions
+## `across()` in Functions {.scrollable}
 
 Naturally, `across()` lends itself to functions because it allows you to operate on multiple columns simultaneously. 
 
@@ -505,7 +505,7 @@ diamonds |>
 
 # {data-menu-title="`purrr``" background-image="images/purrr.png" background-size="contain" background-position="center" .section-title background-color="#1e4655"}
 
-## Bad repetition redux 
+## Bad repetition redux  {.scrollable}
 
 Imagine you have a directory full of excel spreadsheets you want to read into `R`. 
 
@@ -535,7 +535,7 @@ The **iterative approach** involves three broad steps:
 * use `purrr::list_rbind()` to combine them into a single data frame
 :::
 
-## Step 1: Listing Files in a Directory
+## Step 1: Listing Files in a Directory {.scrollable}
 
 The first part of this method involves creating a character vector of all the file paths for the files you want to read in. We'll motivate this example by reading in the gapminder data that's saved in separate excel sheets by year in my working directory. 
 
@@ -551,7 +551,7 @@ paths
 2. `pattern` is a regular expression used to filter the file names. The most common pattern is something like `[.]xlsx$` or `[.]csv$` to find all files with a specified extension.
 3. `full.names` determines whether or not the directory name should be included in the output. You almost always want this to be `TRUE.`
 
-## Reading Files into a List
+## Reading Files into a List {.scrollable}
 
 Now we want to read these excel sheets into a single object so we can use iteration in the next step! A list is the perfect tool for this.
 
@@ -579,7 +579,7 @@ files <- list(
 Unfortunately, this is just as tedious a method as reading in all the separate file paths and creating individual data frame objects!
 
 
-## Step 2: Using `map()` instead!
+## Step 2: Using `map()` instead! {.scrollable}
 
 Instead of listing out all the `read_excel()` calls in our list, we can used the `map()` function from the tidyverse's `purrr` package. `map()` is similar to `across()`, but instead of doing something to each column in a data frame, it does something to each element of a vector.
 
@@ -608,7 +608,7 @@ files[[1]]
 :::
 ::::
 
-## Step 3: Combine Dataframes into One
+## Step 3: Combine Dataframes into One {.scrollable}
 
 Now that we have all our individual dataframes in elements of a list, we can use `list_rbind` to combine them into one dataframe. 
 
@@ -629,7 +629,7 @@ paths |>
   list_rbind()
 ```
 
-## Data in the Filepath
+## Data in the Filepath {.scrollable}
 
 You may have noticed that we're missing a year indicator in our final dataset. That's because that information is actually a part of the filename itself. 
 
@@ -668,7 +668,7 @@ paths |>
 :::
 ::::
 
-## Data in the Filepath
+## Data in the Filepath {.scrollable}
 
 You may have noticed that we're missing a year indicator in our final dataset. That's because that information is actually a part of the filename itself. 
 
@@ -703,7 +703,7 @@ paths |>
 :::
 ::::
 
-## Data in the Filepath
+## Data in the Filepath {.scrollable}
 
 To create a `year` variable we need to tell `list_rbind` to save the filename information.
 
@@ -727,7 +727,7 @@ write_csv(gapminder, "gapminder.csv") # <7>
 ```
 7. Be sure to save your work so you can simply read in one file when working on this project in the future!
 
-## More Complex Cases
+## More Complex Cases {.scrollable}
 
 . . . 
 
@@ -761,7 +761,7 @@ Read [this section](https://r4ds.hadley.nz/iteration#handling-failures) of *"R f
 
 # Saving Multiple Outputs {.section-title background-color="#99a486"}
 
-## Writing multiple csv files
+## Writing multiple csv files {.scrollable}
 
 Let's imagine we want to save multiple datasets based on a feature of the data. 
 
@@ -783,7 +783,7 @@ by_clarity
 1. Nests a tibble using a grouping specification. You can add the argument `keep = TRUE` if you want to include the grouping variable in the nested tibbles. 
 2. Creates a column that gives the name of output file. 
 
-## Writing multiple csv files
+## Writing multiple csv files {.scrollable}
 
 Let's imagine we want to save multiple datasets based on a feature of the data. 
 
@@ -795,7 +795,7 @@ The easiest way to make these individual datasets is using `group_nest()`:
 by_clarity$data[[1]]
 ```
 
-## Using `walk()`
+## Using `walk()` {.scrollable}
 
 We basically want to carry out the following but we can't simply use `map()` because now we have *2* arguments that vary. 
 
@@ -834,7 +834,7 @@ walk2(by_clarity$data, by_clarity$path, write_csv)
 
 This performs the exact same thing as `map2()` but throws the output away. Therefore we're left with just the file-saving behavior which is what we're after.  
 
-## Saving multiple plots
+## Saving multiple plots {.scrollable}
 
 The same basic approach can be used to save multiple plots. 
 
@@ -873,7 +873,7 @@ by_clarity$plot[[1]]
 ```
 
 
-## Saving multiple plots
+## Saving multiple plots {.scrollable}
 
 Then use `walk2()` with `ggsave()` to save each plot:
 
@@ -905,7 +905,7 @@ ggsave(by_clarity$path[[8]], by_clarity$plot[[8]], width = 6, height = 6)
 
 # Apply Family {.section-title background-color="#99a486"}
 
-## `lapply`
+## `lapply` {.scrollable}
 
 Base `R` has it's own family of iterative functions: the apply family of functions. 
 
@@ -922,7 +922,7 @@ lapply(swiss, FUN = median) # <1>
 
 Simply, `lapply()` is used to apply a function over a list of any kind (e.g. a data frame) and return a list.
 
-## `sapply()`: Simple `lapply()`
+## `sapply()`: Simple `lapply()` {.scrollable}
 
 A downside to `lapply()` is that lists can be hard to work with. `sapply()`, therefore, always tries to simplify the result. 
 
@@ -946,7 +946,7 @@ vapply(swiss, median, double(1))
 ```
 :::
 
-## `tapply()`
+## `tapply()` {.scrollable}
 
 Another important member of the apply family is `tapply()` which computes a single grouped summary. 
 
@@ -980,7 +980,7 @@ tapply(diamonds$price, diamonds$cut, mean)
 
 Unfortunately `tapply()` returns its results in a named vector which requires some gymnastics if you want to collect multiple summaries and grouping variables into a data frame. 
 
-## `apply()`
+## `apply()` {.scrollable}
 
 Lastly, there's `apply()`, which works over matrices or data frames. You can apply the function to each row `(MARGIN = 1)` or column `(MARGIN = 2)`.
 
@@ -995,7 +995,7 @@ apply(swiss, MARGIN = 2, FUN = summary)
 
 # `for` loops {.section-title background-color="#99a486"}
 
-## Anatomy of a `for` loop
+## Anatomy of a `for` loop {.scrollable}
 
 `for` loops are the fundamental building block of iteration that both the apply and map families use under the hood.
 
@@ -1016,7 +1016,7 @@ for (element in vector) {
 }
 ```
 
-## Parallel with `walk()`
+## Parallel with `walk()` {.scrollable}
 
 The most straightforward use of for loops is to achieve the same effect as `walk()`: call some function with a side-effect on each element of a vector/list.
 
@@ -1055,7 +1055,7 @@ When you're ready to dive into more advanced functional programming topics, incl
 
 # Lab{.section-title background-color="#99a486"}
 
-## Iteration with `across`
+## Iteration with `across` {.scrollable}
 
 1. Compute the number of unique values in each column of `palmerpenguins::penguins`^[You'll need to download the `palmerpenguins` package in order to use `penguins` dataset.].
 
@@ -1065,7 +1065,7 @@ When you're ready to dive into more advanced functional programming topics, incl
 
 4. What happens if you use a list of functions in `across()`, but don't name them? How is the output named?
 
-## Answers
+## Answers {.scrollable}
 
 1. Compute the number of unique values in each column of `palmerpenguins::penguins`^[You'll need to download the `palmerpenguins` package in order to use `penguins` dataset.].
 
@@ -1078,7 +1078,7 @@ data(penguins)
 penguins |> summarise(across(everything(), n_distinct))
 ```
 
-## Answers
+## Answers {.scrollable}
 
 2. Compute the mean of every column in `mtcars.`
 
@@ -1088,7 +1088,7 @@ penguins |> summarise(across(everything(), n_distinct))
 mtcars |> summarise(across(everything(), mean))
 ```
 
-## Answers 
+## Answers  {.scrollable}
 
 3. Group `diamonds` by `cut`, `clarity`, and `color` then count the number of observations and compute the mean of each numeric column.
 
@@ -1100,7 +1100,7 @@ diamonds |> summarise(n = n(),
                       .by = c(cut, clarity, color))
 ```
 
-## Answers 
+## Answers  {.scrollable}
 
 4. What happens if you use a list of functions in `across()` but don't name them? How is the output named?
 
