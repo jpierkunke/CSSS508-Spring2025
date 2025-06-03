@@ -30,7 +30,7 @@ require(tidyverse)
 knitr::opts_chunk$set(comment = ">")
 ```
 
-## {#title-slide data-menu-title="Next Steps" background="#1e4655" background-image="../../images/csss-logo.png" background-position="center top 5%" background-size="50%"}
+## {#title-slide data-menu-title="Next Steps" background="#1e4655" background-image="../images/csss-logo.png" background-position="center top 5%" background-size="50%"}
 
 [Next Steps]{.custom-title}
 
