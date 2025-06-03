@@ -49,8 +49,8 @@ website:
           text: "Lecture 8: Writing functions"
         - file: Lectures/CSSS508_Lecture9.qmd
           text: "Lecture 9: Iteration"
-        # - file: Lectures/CSSS508_Lecture10.qmd
-        #   text: "Lecture 10: Next steps"
+        - file: Lectures/CSSS508_Lecture10.qmd
+          text: "Lecture 10: Next steps"
 
     - title: "Homework"
       style: "docked"
